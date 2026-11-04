@@ -1,0 +1,1098 @@
+{
+  "schema": "neo2-control/swudp-negotiation-native/v1",
+  "sdk_sha256": "fb431e44f6a4971b159e7ac811bbd568016a300d959c958df99acb08c9fa9249",
+  "provenance": "Pinned native ARM64 instructions; retained acceptance plus synthetic datagrams, no radio",
+  "native_functions": {
+    "ground_receive_loop": "0x4078b18",
+    "acceptance_store": "0x4078f10",
+    "full_ground_ack": "0x4079adc",
+    "channel_ack_codec": "0x4078908",
+    "ack_decode": "0x4078704",
+    "stream_dispatch": "0x4078618",
+    "capability_query": "0x4076e88"
+  },
+  "native_code_windows": {
+    "ground_receive_loop": {
+      "start": "0x4078b18",
+      "end": "0x40793f0",
+      "sha256": "b95a1ed9c81249f2ead6e1d879ab1f3b5397019f155ea99db7c81f95ad3d31fd"
+    },
+    "full_ground_ack": {
+      "start": "0x4079adc",
+      "end": "0x4079d04",
+      "sha256": "8166b2a1b5e25ec2bd307b5964a0f45380b4209d01726ac90e16721b1006bcdb"
+    },
+    "channel_ack_codec": {
+      "start": "0x4078908",
+      "end": "0x4078b18",
+      "sha256": "1bce733c392198c8a44e7a311dc449dc7f53dec0e1b66f389a7bf59172716977"
+    },
+    "ack_decode": {
+      "start": "0x4078704",
+      "end": "0x4078908",
+      "sha256": "1246a2b09b534fe5dc157c81a472f6bab633f5c1bd8241bd1c54735e274d8f2f"
+    },
+    "stream_dispatch": {
+      "start": "0x4078618",
+      "end": "0x4078704",
+      "sha256": "ba6a6f05c53169772931418b69131e4dab89745ec8cbb98e4fac2b2580c8e798"
+    },
+    "capability_query": {
+      "start": "0x4076e88",
+      "end": "0x4076ef8",
+      "sha256": "aa94c0bf915ea34cb5c0c433edc71b224ba2ff8b0d05613bfb0ed855c852ea4a"
+    },
+    "receive_data": {
+      "start": "0x407e1dc",
+      "end": "0x407ecdc",
+      "sha256": "1b131e682dceabdc2ee835b34061452f52f8fe22b9d5d90ba3a019be75aa8300"
+    }
+  },
+  "handshakes": [
+    {
+      "input_hex": "0f803412000000a90100000505401f",
+      "accepted": true,
+      "feature_flags_stored": 0,
+      "monitor_calls": [
+        [
+          "0x41dc520",
+          0
+        ],
+        [
+          "0x41dc530",
+          8000
+        ]
+      ],
+      "capability_queries": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "input_hex": "0f803412000000a90101000505401f",
+      "accepted": true,
+      "feature_flags_stored": 1,
+      "monitor_calls": [
+        [
+          "0x41dc520",
+          5
+        ],
+        [
+          "0x41dc530",
+          8000
+        ]
+      ],
+      "capability_queries": [
+        1,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "input_hex": "0f803412000000a90102000505401f",
+      "accepted": true,
+      "feature_flags_stored": 2,
+      "monitor_calls": [
+        [
+          "0x41dc520",
+          0
+        ],
+        [
+          "0x41dc530",
+          8000
+        ]
+      ],
+      "capability_queries": [
+        0,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "input_hex": "0f803412000000a90104000505401f",
+      "accepted": true,
+      "feature_flags_stored": 4,
+      "monitor_calls": [
+        [
+          "0x41dc520",
+          0
+        ],
+        [
+          "0x41dc530",
+          8000
+        ]
+      ],
+      "capability_queries": [
+        0,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "input_hex": "0f803412000000a90108000505401f",
+      "accepted": true,
+      "feature_flags_stored": 8,
+      "monitor_calls": [
+        [
+          "0x41dc520",
+          0
+        ],
+        [
+          "0x41dc530",
+          8000
+        ]
+      ],
+      "capability_queries": [
+        0,
+        0,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "input_hex": "0f803412000000a9010f000505401f",
+      "accepted": true,
+      "feature_flags_stored": 15,
+      "monitor_calls": [
+        [
+          "0x41dc520",
+          5
+        ],
+        [
+          "0x41dc530",
+          8000
+        ]
+      ],
+      "capability_queries": [
+        1,
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "input_hex": "0f803412000000a901ffff0505401f",
+      "accepted": true,
+      "feature_flags_stored": 65535,
+      "monitor_calls": [
+        [
+          "0x41dc520",
+          5
+        ],
+        [
+          "0x41dc530",
+          8000
+        ]
+      ],
+      "capability_queries": [
+        1,
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "input_hex": "0f80c5af000000e5010f000505401f",
+      "accepted": true,
+      "feature_flags_stored": 15,
+      "monitor_calls": [
+        [
+          "0x41dc520",
+          5
+        ],
+        [
+          "0x41dc530",
+          8000
+        ]
+      ],
+      "capability_queries": [
+        1,
+        1,
+        1,
+        1,
+        0
+      ]
+    }
+  ],
+  "receive_cases": [
+    {
+      "flags": 0,
+      "input_hex": [
+        "23803412084002cf00400840000000000101000073796e7468657469632d766964656f",
+        "26803412084003cb00400840000000000101000073796e7468657469632d70726f746f636f6c",
+        "2f803412000001880040084000000000004008400000000000400040000000000d007261772d616767726567617465"
+      ],
+      "delivered": [
+        [
+          2,
+          "73796e7468657469632d766964656f"
+        ],
+        [
+          3,
+          "73796e7468657469632d70726f746f636f6c"
+        ],
+        [
+          3,
+          "7261772d616767726567617465"
+        ]
+      ],
+      "uplink_ack_decoder_output": [
+        {
+          "mode": 0,
+          "window_hex": "00400040",
+          "count": 0,
+          "words_hex": ""
+        }
+      ]
+    },
+    {
+      "flags": 1,
+      "input_hex": [
+        "23803412084002cf00400840000000000101000073796e7468657469632d766964656f",
+        "26803412084003cb00400840000000000101000073796e7468657469632d70726f746f636f6c",
+        "2f803412000001880040084000000000004008400000000000400040000000000d007261772d616767726567617465"
+      ],
+      "delivered": [
+        [
+          2,
+          "73796e7468657469632d766964656f"
+        ],
+        [
+          3,
+          "73796e7468657469632d70726f746f636f6c"
+        ],
+        [
+          3,
+          "7261772d616767726567617465"
+        ]
+      ],
+      "uplink_ack_decoder_output": [
+        {
+          "mode": 0,
+          "window_hex": "00400040",
+          "count": 0,
+          "words_hex": ""
+        }
+      ]
+    },
+    {
+      "flags": 2,
+      "input_hex": [
+        "23803412084002cf00400840000000000101000073796e7468657469632d766964656f",
+        "26803412084003cb00400840000000000101000073796e7468657469632d70726f746f636f6c",
+        "2f803412000001880040084000000000004008400000000000400040000000000d007261772d616767726567617465"
+      ],
+      "delivered": [
+        [
+          2,
+          "73796e7468657469632d766964656f"
+        ],
+        [
+          3,
+          "73796e7468657469632d70726f746f636f6c"
+        ],
+        [
+          3,
+          "7261772d616767726567617465"
+        ]
+      ],
+      "uplink_ack_decoder_output": [
+        {
+          "mode": 0,
+          "window_hex": "00400040",
+          "count": 0,
+          "words_hex": ""
+        }
+      ]
+    },
+    {
+      "flags": 4,
+      "input_hex": [
+        "23803412084002cf00400840000000000101000073796e7468657469632d766964656f",
+        "26803412084003cb00400840000000000101000073796e7468657469632d70726f746f636f6c",
+        "2f803412000001880040084000000000004008400000000000400040000000000d007261772d616767726567617465"
+      ],
+      "delivered": [
+        [
+          2,
+          "73796e7468657469632d766964656f"
+        ],
+        [
+          3,
+          "73796e7468657469632d70726f746f636f6c"
+        ],
+        [
+          3,
+          "7261772d616767726567617465"
+        ]
+      ],
+      "uplink_ack_decoder_output": [
+        {
+          "mode": 0,
+          "window_hex": "00400040",
+          "count": 0,
+          "words_hex": ""
+        }
+      ]
+    },
+    {
+      "flags": 8,
+      "input_hex": [
+        "23803412084002cf00400840000000000101000073796e7468657469632d766964656f",
+        "26803412084003cb00400840000000000101000073796e7468657469632d70726f746f636f6c",
+        "2f803412000001880040084000000000004008400000000000400040000000000d007261772d616767726567617465"
+      ],
+      "delivered": [
+        [
+          2,
+          "73796e7468657469632d766964656f"
+        ],
+        [
+          3,
+          "73796e7468657469632d70726f746f636f6c"
+        ],
+        [
+          3,
+          "7261772d616767726567617465"
+        ]
+      ],
+      "uplink_ack_decoder_output": [
+        {
+          "mode": 0,
+          "window_hex": "00400040",
+          "count": 0,
+          "words_hex": ""
+        }
+      ]
+    },
+    {
+      "flags": 15,
+      "input_hex": [
+        "23803412084002cf00400840000000000101000073796e7468657469632d766964656f",
+        "26803412084003cb00400840000000000101000073796e7468657469632d70726f746f636f6c",
+        "2f803412000001880040084000000000004008400000000000400040000000000d007261772d616767726567617465"
+      ],
+      "delivered": [
+        [
+          2,
+          "73796e7468657469632d766964656f"
+        ],
+        [
+          3,
+          "73796e7468657469632d70726f746f636f6c"
+        ],
+        [
+          3,
+          "7261772d616767726567617465"
+        ]
+      ],
+      "uplink_ack_decoder_output": [
+        {
+          "mode": 0,
+          "window_hex": "00400040",
+          "count": 0,
+          "words_hex": ""
+        }
+      ]
+    },
+    {
+      "flags": 15,
+      "input_hex": [
+        "2680341200000181004000400000000000400040000000000040184003000100f0030061636b"
+      ],
+      "delivered": [
+        [
+          3,
+          "61636b"
+        ]
+      ],
+      "uplink_ack_decoder_output": [
+        {
+          "mode": 0,
+          "window_hex": "00401840",
+          "count": 2,
+          "words_hex": "08401040"
+        }
+      ]
+    }
+  ],
+  "mode_1_ordering_fec_reference_steps": 17,
+  "receive_reference_sha256": "58e0dbb55a1586a491aba766d1be95fe4813159936d3f4b4531e57de4c23a4d8",
+  "ack_cases": [
+    {
+      "management_mode": 0,
+      "records": [
+        {
+          "kind": "packet",
+          "input_hex": "15803412184002e900401840000000000101000063",
+          "window": null,
+          "outputs": [
+            {
+              "incremental": true,
+              "output_hex": "22803412000006820040184002000840104000400040000000400040000000000000"
+            },
+            {
+              "incremental": true,
+              "output_hex": "1e803412000006be00401840000000400040000000400040000000000000"
+            },
+            {
+              "incremental": false,
+              "output_hex": "22803412000004800040184002000840104000400040000000400040000000000000"
+            },
+            {
+              "incremental": true,
+              "output_hex": "1e803412000006be00401840000000400040000000400040000000000000"
+            }
+          ]
+        },
+        {
+          "kind": "window",
+          "input_hex": null,
+          "window": [
+            16384,
+            16408,
+            16401,
+            0
+          ],
+          "outputs": [
+            {
+              "incremental": true,
+              "output_hex": "22803412000006820040184002000a40124000400040000000400040000000000000"
+            },
+            {
+              "incremental": true,
+              "output_hex": "1e803412000006be00401840000000400040000000400040000000000000"
+            },
+            {
+              "incremental": false,
+              "output_hex": "22803412000004800040184002000a40124000400040000000400040000000000000"
+            },
+            {
+              "incremental": true,
+              "output_hex": "1e803412000006be00401840000000400040000000400040000000000000"
+            }
+          ]
+        },
+        {
+          "kind": "window",
+          "input_hex": null,
+          "window": [
+            16384,
+            16408,
+            16401,
+            16401
+          ],
+          "outputs": [
+            {
+              "incremental": true,
+              "output_hex": "22803412000006820040184002000c40144000400040000000400040000000000000"
+            },
+            {
+              "incremental": true,
+              "output_hex": "1e803412000006be00401840000000400040000000400040000000000000"
+            },
+            {
+              "incremental": false,
+              "output_hex": "22803412000004800040184002000c40144000400040000000400040000000000000"
+            },
+            {
+              "incremental": true,
+              "output_hex": "1e803412000006be00401840000000400040000000400040000000000000"
+            }
+          ]
+        },
+        {
+          "kind": "packet",
+          "input_hex": "15803412084002f900401840000000000101000061",
+          "window": null,
+          "outputs": [
+            {
+              "incremental": true,
+              "output_hex": "1e803412000006be08401840000000400040000000400040000000000000"
+            },
+            {
+              "incremental": true,
+              "output_hex": "1e803412000006be08401840000000400040000000400040000000000000"
+            },
+            {
+              "incremental": false,
+              "output_hex": "2080341200000482084018400100144000400040000000400040000000000000"
+            },
+            {
+              "incremental": true,
+              "output_hex": "1e803412000006be08401840000000400040000000400040000000000000"
+            }
+          ]
+        },
+        {
+          "kind": "packet",
+          "input_hex": "15803412104002e100401840000000000101000062",
+          "window": null,
+          "outputs": [
+            {
+              "incremental": true,
+              "output_hex": "1e803412000006be18401840000000400040000000400040000000000000"
+            },
+            {
+              "incremental": true,
+              "output_hex": "1e803412000006be18401840000000400040000000400040000000000000"
+            },
+            {
+              "incremental": false,
+              "output_hex": "1e803412000004bc18401840000000400040000000400040000000000000"
+            },
+            {
+              "incremental": true,
+              "output_hex": "1e803412000006be18401840000000400040000000400040000000000000"
+            }
+          ]
+        }
+      ],
+      "pending_cases": [
+        {
+          "name": "full_ack_consumes_pending_events",
+          "capacity": 100,
+          "inputs": [
+            {
+              "kind": "packet",
+              "input_hex": "15803412184002e900401840000000000101000063",
+              "window": null
+            }
+          ],
+          "outputs": [
+            {
+              "incremental": false,
+              "output_hex": "22803412000004800040184002000840104000400040000000400040000000000000"
+            },
+            {
+              "incremental": true,
+              "output_hex": "1e803412000006be00401840000000400040000000400040000000000000"
+            }
+          ]
+        },
+        {
+          "name": "multiple_state_changes_preserve_events",
+          "capacity": 100,
+          "inputs": [
+            {
+              "kind": "packet",
+              "input_hex": "15803412184002e900401840000000000101000063",
+              "window": null
+            },
+            {
+              "kind": "window",
+              "input_hex": null,
+              "window": [
+                16384,
+                16408,
+                16401,
+                0
+              ]
+            },
+            {
+              "kind": "window",
+              "input_hex": null,
+              "window": [
+                16384,
+                16408,
+                16401,
+                16401
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "incremental": true,
+              "output_hex": "2a8034120000068a004018400600084010400a4012400c40144000400040000000400040000000000000"
+            },
+            {
+              "incremental": true,
+              "output_hex": "1e803412000006be00401840000000400040000000400040000000000000"
+            }
+          ]
+        },
+        {
+          "name": "receipt_before_ack_retains_event",
+          "capacity": 100,
+          "inputs": [
+            {
+              "kind": "packet",
+              "input_hex": "15803412184002e900401840000000000101000063",
+              "window": null
+            },
+            {
+              "kind": "packet",
+              "input_hex": "15803412084002f900401840000000000101000061",
+              "window": null
+            }
+          ],
+          "outputs": [
+            {
+              "incremental": true,
+              "output_hex": "22803412000006820840184002000840104000400040000000400040000000000000"
+            },
+            {
+              "incremental": true,
+              "output_hex": "1e803412000006be08401840000000400040000000400040000000000000"
+            }
+          ]
+        },
+        {
+          "name": "all_receipts_before_ack_retain_events",
+          "capacity": 100,
+          "inputs": [
+            {
+              "kind": "packet",
+              "input_hex": "15803412184002e900401840000000000101000063",
+              "window": null
+            },
+            {
+              "kind": "packet",
+              "input_hex": "15803412084002f900401840000000000101000061",
+              "window": null
+            },
+            {
+              "kind": "packet",
+              "input_hex": "15803412104002e100401840000000000101000062",
+              "window": null
+            }
+          ],
+          "outputs": [
+            {
+              "incremental": true,
+              "output_hex": "22803412000006821840184002000840104000400040000000400040000000000000"
+            },
+            {
+              "incremental": true,
+              "output_hex": "1e803412000006be18401840000000400040000000400040000000000000"
+            }
+          ]
+        },
+        {
+          "name": "overflow_retains_first_events",
+          "capacity": 4,
+          "inputs": [
+            {
+              "kind": "packet",
+              "input_hex": "15803412184002e900401840000000000101000063",
+              "window": null
+            },
+            {
+              "kind": "window",
+              "input_hex": null,
+              "window": [
+                16384,
+                16408,
+                16401,
+                0
+              ]
+            },
+            {
+              "kind": "window",
+              "input_hex": null,
+              "window": [
+                16384,
+                16408,
+                16401,
+                16401
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "incremental": true,
+              "output_hex": "2680341200000686004018400400084010400a40124000400040000000400040000000000000"
+            },
+            {
+              "incremental": false,
+              "output_hex": "22803412000004800040184002000c40144000400040000000400040000000000000"
+            },
+            {
+              "incremental": true,
+              "output_hex": "1e803412000006be00401840000000400040000000400040000000000000"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "management_mode": 1,
+      "records": [
+        {
+          "kind": "packet",
+          "input_hex": "15803412184002e900401840000000000101000063",
+          "window": null,
+          "outputs": [
+            {
+              "incremental": true,
+              "output_hex": "22803412000006820040184002000840104000400040000000400040000000000000"
+            },
+            {
+              "incremental": true,
+              "output_hex": "1e803412000006be00401840000000400040000000400040000000000000"
+            },
+            {
+              "incremental": false,
+              "output_hex": "23803412000004810040184002000100f0004000400000000000400040000000000000"
+            },
+            {
+              "incremental": true,
+              "output_hex": "1e803412000006be00401840000000400040000000400040000000000000"
+            }
+          ]
+        },
+        {
+          "kind": "window",
+          "input_hex": null,
+          "window": [
+            16384,
+            16408,
+            16401,
+            0
+          ],
+          "outputs": [
+            {
+              "incremental": true,
+              "output_hex": "22803412000006820040184002000a40124000400040000000400040000000000000"
+            },
+            {
+              "incremental": true,
+              "output_hex": "1e803412000006be00401840000000400040000000400040000000000000"
+            },
+            {
+              "incremental": false,
+              "output_hex": "23803412000004810040184002000100f5004000400000000000400040000000000000"
+            },
+            {
+              "incremental": true,
+              "output_hex": "1e803412000006be00401840000000400040000000400040000000000000"
+            }
+          ]
+        },
+        {
+          "kind": "window",
+          "input_hex": null,
+          "window": [
+            16384,
+            16408,
+            16401,
+            16401
+          ],
+          "outputs": [
+            {
+              "incremental": true,
+              "output_hex": "22803412000006820040184002000c40144000400040000000400040000000000000"
+            },
+            {
+              "incremental": true,
+              "output_hex": "1e803412000006be00401840000000400040000000400040000000000000"
+            },
+            {
+              "incremental": false,
+              "output_hex": "23803412000004810040184002000100fa004000400000000000400040000000000000"
+            },
+            {
+              "incremental": true,
+              "output_hex": "1e803412000006be00401840000000400040000000400040000000000000"
+            }
+          ]
+        },
+        {
+          "kind": "packet",
+          "input_hex": "15803412084002f900401840000000000101000061",
+          "window": null,
+          "outputs": [
+            {
+              "incremental": true,
+              "output_hex": "1e803412000006be08401840000000400040000000400040000000000000"
+            },
+            {
+              "incremental": true,
+              "output_hex": "1e803412000006be08401840000000400040000000400040000000000000"
+            },
+            {
+              "incremental": false,
+              "output_hex": "23803412000004810840184001000100fe004000400000000000400040000000000000"
+            },
+            {
+              "incremental": true,
+              "output_hex": "1e803412000006be08401840000000400040000000400040000000000000"
+            }
+          ]
+        },
+        {
+          "kind": "packet",
+          "input_hex": "15803412104002e100401840000000000101000062",
+          "window": null,
+          "outputs": [
+            {
+              "incremental": true,
+              "output_hex": "1e803412000006be18401840000000400040000000400040000000000000"
+            },
+            {
+              "incremental": true,
+              "output_hex": "1e803412000006be18401840000000400040000000400040000000000000"
+            },
+            {
+              "incremental": false,
+              "output_hex": "22803412000004801840184000000000004000400000000000400040000000000000"
+            },
+            {
+              "incremental": true,
+              "output_hex": "1e803412000006be18401840000000400040000000400040000000000000"
+            }
+          ]
+        }
+      ],
+      "pending_cases": [
+        {
+          "name": "full_ack_consumes_pending_events",
+          "capacity": 100,
+          "inputs": [
+            {
+              "kind": "packet",
+              "input_hex": "15803412184002e900401840000000000101000063",
+              "window": null
+            }
+          ],
+          "outputs": [
+            {
+              "incremental": false,
+              "output_hex": "23803412000004810040184002000100f0004000400000000000400040000000000000"
+            },
+            {
+              "incremental": true,
+              "output_hex": "1e803412000006be00401840000000400040000000400040000000000000"
+            }
+          ]
+        },
+        {
+          "name": "multiple_state_changes_preserve_events",
+          "capacity": 100,
+          "inputs": [
+            {
+              "kind": "packet",
+              "input_hex": "15803412184002e900401840000000000101000063",
+              "window": null
+            },
+            {
+              "kind": "window",
+              "input_hex": null,
+              "window": [
+                16384,
+                16408,
+                16401,
+                0
+              ]
+            },
+            {
+              "kind": "window",
+              "input_hex": null,
+              "window": [
+                16384,
+                16408,
+                16401,
+                16401
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "incremental": true,
+              "output_hex": "2a8034120000068a004018400600084010400a4012400c40144000400040000000400040000000000000"
+            },
+            {
+              "incremental": true,
+              "output_hex": "1e803412000006be00401840000000400040000000400040000000000000"
+            }
+          ]
+        },
+        {
+          "name": "receipt_before_ack_retains_event",
+          "capacity": 100,
+          "inputs": [
+            {
+              "kind": "packet",
+              "input_hex": "15803412184002e900401840000000000101000063",
+              "window": null
+            },
+            {
+              "kind": "packet",
+              "input_hex": "15803412084002f900401840000000000101000061",
+              "window": null
+            }
+          ],
+          "outputs": [
+            {
+              "incremental": true,
+              "output_hex": "22803412000006820840184002000840104000400040000000400040000000000000"
+            },
+            {
+              "incremental": true,
+              "output_hex": "1e803412000006be08401840000000400040000000400040000000000000"
+            }
+          ]
+        },
+        {
+          "name": "all_receipts_before_ack_retain_events",
+          "capacity": 100,
+          "inputs": [
+            {
+              "kind": "packet",
+              "input_hex": "15803412184002e900401840000000000101000063",
+              "window": null
+            },
+            {
+              "kind": "packet",
+              "input_hex": "15803412084002f900401840000000000101000061",
+              "window": null
+            },
+            {
+              "kind": "packet",
+              "input_hex": "15803412104002e100401840000000000101000062",
+              "window": null
+            }
+          ],
+          "outputs": [
+            {
+              "incremental": true,
+              "output_hex": "22803412000006821840184002000840104000400040000000400040000000000000"
+            },
+            {
+              "incremental": true,
+              "output_hex": "1e803412000006be18401840000000400040000000400040000000000000"
+            }
+          ]
+        },
+        {
+          "name": "overflow_retains_first_events",
+          "capacity": 4,
+          "inputs": [
+            {
+              "kind": "packet",
+              "input_hex": "15803412184002e900401840000000000101000063",
+              "window": null
+            },
+            {
+              "kind": "window",
+              "input_hex": null,
+              "window": [
+                16384,
+                16408,
+                16401,
+                0
+              ]
+            },
+            {
+              "kind": "window",
+              "input_hex": null,
+              "window": [
+                16384,
+                16408,
+                16401,
+                16401
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "incremental": true,
+              "output_hex": "2680341200000686004018400400084010400a40124000400040000000400040000000000000"
+            },
+            {
+              "incremental": false,
+              "output_hex": "23803412000004810040184002000100fa004000400000000000400040000000000000"
+            },
+            {
+              "incremental": true,
+              "output_hex": "1e803412000006be00401840000000400040000000400040000000000000"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "guest_imports": [
+    "clock_gettime",
+    "free",
+    "malloc",
+    "memcpy",
+    "memset",
+    "pthread_cond_init",
+    "pthread_mutex_init",
+    "pthread_mutex_lock",
+    "pthread_mutex_unlock",
+    "pthread_mutexattr_destroy",
+    "pthread_mutexattr_init",
+    "pthread_mutexattr_settype",
+    "strlen",
+    "synthetic_receive_callback",
+    "vsnprintf"
+  ],
+  "delta_queue_capacity_bounds": [
+    {
+      "requested": 0,
+      "stored": 1
+    },
+    {
+      "requested": 1,
+      "stored": 1
+    },
+    {
+      "requested": 4,
+      "stored": 4
+    },
+    {
+      "requested": 100,
+      "stored": 100
+    },
+    {
+      "requested": 256,
+      "stored": 256
+    },
+    {
+      "requested": 512,
+      "stored": 256
+    }
+  ],
+  "guest_boundaries": [
+    "monitor configuration sinks",
+    "stop before native reference release",
+    "stop before thread/application initialization",
+    "synthetic datagram acquisition callback",
+    "synthetic datagram output callback",
+    "synthetic idle uplink send-window provider",
+    "uplink ACK consumer, after native decode"
+  ],
+  "findings": {
+    "flags_retained_without_mask": true,
+    "bit_0": "monitor ACK reporting/limit configuration",
+    "bit_1": "QoS transmit queue instead of reliable sender",
+    "bit_2": "queryable capability; purpose unresolved, no consume in measured ground RX path",
+    "bit_3": "transmit priority queue categorization",
+    "mode_1_type_4": "full bitmap missing-state ACK",
+    "mode_0_type_4": "full explicit missing-state ACK",
+    "type_6": "ordered changed/new missing-state events, including stale entries and repeated states; consumed by either ACK kind; windows remain current",
+    "receive_framing": "type2 video and type3 protocol retain 20-byte stream header; type1 aggregate raw bytes"
+  },
+  "limits": [
+    "No physical delivery, drone command execution or live video established",
+    "Guest platform boundaries are explicit; no native threads, concurrency or clock timing tested",
+    "Uplink ACK parser is native but downstream sender acknowledgement is an observed boundary",
+    "Unknown capability bit2 purpose is not inferred from the exported query",
+    "No evidence establishes a firmware-supported QoS downgrade or arbitrary feature combinations",
+    "Receive scenarios cover retained mode1 layout and existing bounded ordering/FEC vectors"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "schema": "neo2-control/duml-identity-native/v1",
+  "sdk_sha256": "fb431e44f6a4971b159e7ac811bbd568016a300d959c958df99acb08c9fa9249",
+  "sdk_base_sha256": "54f77d990d5d1d09cab9ccd0cb3499edd03e47e18d75be5b449aa149bbd4233a",
+  "header": {
+    "getter_address": "0x002eb914",
+    "field_offset": 25,
+    "constructor_default_index": 0,
+    "byte_8_is_not_receiver_index": true
+  },
+  "vectors": [
+    {
+      "kind": "link",
+      "sequence": 32768,
+      "physical_port": 9003,
+      "synthetic_device_id": "0123456789abcdefABC",
+      "explicit_receiver_index": null,
+      "native_frame_hex": "5525048402070080400793012b23003031323334353637383961626364656641424300fb4e"
+    },
+    {
+      "kind": "wifi",
+      "sequence": 33059,
+      "physical_port": 9003,
+      "synthetic_device_id": "01234567-89ab-cdef-01234",
+      "explicit_receiver_index": null,
+      "native_frame_hex": "552c0436021b2381400793012b230400000030313233343536372d383961622d636465662d3031323334bd83"
+    },
+    {
+      "kind": "link",
+      "sequence": 65534,
+      "physical_port": 12345,
+      "synthetic_device_id": "pc",
+      "explicit_receiver_index": null,
+      "native_frame_hex": "552504840207feff400793013930007063000000000000000000000000000000000000939a"
+    },
+    {
+      "kind": "wifi",
+      "sequence": 33059,
+      "physical_port": 9003,
+      "synthetic_device_id": "01234567-89ab-cdef-01234",
+      "explicit_receiver_index": 3,
+      "native_frame_hex": "552c0436027b2381400793012b230400000030313233343536372d383961622d636465662d3031323334259c"
+    }
+  ],
+  "provenance": "Synthetic payloads through native constructors, Buffer, receiver getter, V1 encoder and CRCs",
+  "limits": [
+    "No live radio or application opening established",
+    "Uncontended locks, one-time guards, fixed gettid and ignored destructor registration",
+    "Constructor-default sender/index state; explicit index3 is a control, not a native report default"
+  ]
+}

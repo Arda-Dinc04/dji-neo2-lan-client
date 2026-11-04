@@ -1,0 +1,15 @@
+{
+  "format": "neo2-control/home-server-baseline/v1",
+  "source_archive_sha256": "10902e8a3154c0b7da25b6534a14180e2409482f9a1d7acb803d99f5255ed34d",
+  "files": {
+    "compose.yaml": "56d65fb8bb9f839ef3fe5f7ceaa61b796574eee4dc2e558ae7a8a8fc562060dd",
+    "apps/api/src/main.ts": "67c6263196cffe5ac24a4ff20d45dee5646513ba00e34594eced9f151a9ff1df",
+    "apps/api/src/drone/drone-video.module.ts": "4e3d338ad8703539ce887fc5352dba2d813c6b827215ee075e360368e92e6bea",
+    "apps/web/src/routes/drone/+page.server.ts": "2a48503b3711dbed61c24add61032a5f2f720bb5685fff0868c2e1f1390acac8",
+    "apps/web/src/routes/drone/+page.svelte": "3f70073873c7dad354f45cdc1bee9975dd1276876efc9ad228707ec8c3717485"
+  },
+  "preserve": {
+    "apps/web/src/routes/drone/+page.server.ts": "apps/web/src/routes/drone/video/+page.server.ts",
+    "apps/web/src/routes/drone/+page.svelte": "apps/web/src/routes/drone/video/+page.svelte"
+  }
+}

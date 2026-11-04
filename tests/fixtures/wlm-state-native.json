@@ -1,0 +1,758 @@
+{
+  "schema": "neo2-control/wlm-state-native/v1",
+  "sdk_sha256": "fb431e44f6a4971b159e7ac811bbd568016a300d959c958df99acb08c9fa9249",
+  "provenance": "Bounded ARM64 guest, own and peer identities synthetic; no capabilities chosen for a live PC",
+  "creation_cases": [
+    {
+      "beacon_flags": 4,
+      "device_type": 0,
+      "snapshot": {
+        "peer_hash": 2238176733,
+        "capability_flags": [
+          0,
+          1,
+          0,
+          0
+        ],
+        "ability_timer_exists": false,
+        "module_ability10_hex": "0000000000000000000000000000000000",
+        "module_ability6_hex": "0000000000000000000000000000000000",
+        "global_connection_state": 0
+      },
+      "timer_events": []
+    },
+    {
+      "beacon_flags": 68,
+      "device_type": 0,
+      "snapshot": {
+        "peer_hash": 2238242269,
+        "capability_flags": [
+          0,
+          1,
+          0,
+          1
+        ],
+        "ability_timer_exists": true,
+        "module_ability10_hex": "0000000000000000000000000000000000",
+        "module_ability6_hex": "0000000000000000000000000000000000",
+        "global_connection_state": 0
+      },
+      "timer_events": [
+        {
+          "event": "create",
+          "callback": "0x40d1030",
+          "interval_raw": 500000,
+          "repeat_count_raw": 0,
+          "peer_argument_nonzero": true
+        }
+      ]
+    },
+    {
+      "beacon_flags": 100,
+      "device_type": 0,
+      "snapshot": {
+        "peer_hash": 2238307805,
+        "capability_flags": [
+          0,
+          1,
+          1,
+          1
+        ],
+        "ability_timer_exists": true,
+        "module_ability10_hex": "0000000000000000000000000000000000",
+        "module_ability6_hex": "0000000000000000000000000000000000",
+        "global_connection_state": 0
+      },
+      "timer_events": [
+        {
+          "event": "create",
+          "callback": "0x40d1030",
+          "interval_raw": 500000,
+          "repeat_count_raw": 0,
+          "peer_argument_nonzero": true
+        }
+      ]
+    },
+    {
+      "beacon_flags": 68,
+      "device_type": 4,
+      "snapshot": {
+        "peer_hash": 2238373341,
+        "capability_flags": [
+          0,
+          1,
+          0,
+          1
+        ],
+        "ability_timer_exists": false,
+        "module_ability10_hex": "0000000000000000000000000000000000",
+        "module_ability6_hex": "0000000000000000000000000000000000",
+        "global_connection_state": 0
+      },
+      "timer_events": []
+    }
+  ],
+  "baseline_snapshot": {
+    "peer_hash": 910304650,
+    "capability_flags": [
+      0,
+      1,
+      0,
+      1
+    ],
+    "ability_timer_exists": true,
+    "module_ability10_hex": "0000000000000000000000000000000000",
+    "module_ability6_hex": "0000000000000000000000000000000000",
+    "global_connection_state": 0
+  },
+  "retry_callback_frames": [
+    {
+      "frame_hex": "553c04daeee90100405141100100e0076c55260006112000000000000000001f000100000000000a112000000000000000007d040000000000007335",
+      "sender": 238,
+      "receiver": 233,
+      "sequence": 1,
+      "command_type": 64,
+      "command_set": 81,
+      "command_id": 65,
+      "payload_hex": "100100e0076c55260006112000000000000000001f000100000000000a112000000000000000007d04000000000000",
+      "attribute_hex": "e0076c55ffffffff01000000"
+    },
+    {
+      "frame_hex": "553c04daeee90200405141100100e0076c55260006112000000000000000001f000100000000000a112000000000000000007d0400000000000055b5",
+      "sender": 238,
+      "receiver": 233,
+      "sequence": 2,
+      "command_type": 64,
+      "command_set": 81,
+      "command_id": 65,
+      "payload_hex": "100100e0076c55260006112000000000000000001f000100000000000a112000000000000000007d04000000000000",
+      "attribute_hex": "e0076c55ffffffff01000000"
+    }
+  ],
+  "request_ack_cases": [
+    {
+      "name": "valid_request_ack",
+      "input": {
+        "tlv": "0a11200102030405060708090a0b0c0d0e0f100611201112131415161718191a1b1c1d1e1f20"
+      },
+      "return_u32": 0,
+      "snapshot": {
+        "peer_hash": 910304650,
+        "capability_flags": [
+          0,
+          1,
+          0,
+          1
+        ],
+        "ability_timer_exists": false,
+        "module_ability10_hex": "200102030405060708090a0b0c0d0e0f10",
+        "module_ability6_hex": "201112131415161718191a1b1c1d1e1f20",
+        "global_connection_state": 0
+      },
+      "emitted_frames": [],
+      "timer_events": [
+        {
+          "event": "destroy"
+        }
+      ],
+      "agent_events": [
+        {
+          "destination_native_host": 512
+        },
+        {
+          "destination_native_host": 3584
+        }
+      ]
+    },
+    {
+      "name": "nonzero_status_request_ack",
+      "input": {
+        "status": 1,
+        "tlv": "0a11200102030405060708090a0b0c0d0e0f100611201112131415161718191a1b1c1d1e1f20"
+      },
+      "return_u32": 0,
+      "snapshot": {
+        "peer_hash": 910304650,
+        "capability_flags": [
+          0,
+          1,
+          0,
+          1
+        ],
+        "ability_timer_exists": false,
+        "module_ability10_hex": "200102030405060708090a0b0c0d0e0f10",
+        "module_ability6_hex": "201112131415161718191a1b1c1d1e1f20",
+        "global_connection_state": 0
+      },
+      "emitted_frames": [],
+      "timer_events": [
+        {
+          "event": "destroy"
+        }
+      ],
+      "agent_events": [
+        {
+          "destination_native_host": 512
+        },
+        {
+          "destination_native_host": 3584
+        }
+      ]
+    },
+    {
+      "name": "different_sequence_request_ack",
+      "input": {
+        "sequence": 4660,
+        "tlv": "0a11200102030405060708090a0b0c0d0e0f100611201112131415161718191a1b1c1d1e1f20"
+      },
+      "return_u32": 0,
+      "snapshot": {
+        "peer_hash": 910304650,
+        "capability_flags": [
+          0,
+          1,
+          0,
+          1
+        ],
+        "ability_timer_exists": false,
+        "module_ability10_hex": "200102030405060708090a0b0c0d0e0f10",
+        "module_ability6_hex": "201112131415161718191a1b1c1d1e1f20",
+        "global_connection_state": 0
+      },
+      "emitted_frames": [],
+      "timer_events": [
+        {
+          "event": "destroy"
+        }
+      ],
+      "agent_events": [
+        {
+          "destination_native_host": 512
+        },
+        {
+          "destination_native_host": 3584
+        }
+      ]
+    },
+    {
+      "name": "different_sender_request_ack",
+      "input": {
+        "sender": 4611,
+        "tlv": "0a11200102030405060708090a0b0c0d0e0f100611201112131415161718191a1b1c1d1e1f20"
+      },
+      "return_u32": 0,
+      "snapshot": {
+        "peer_hash": 910304650,
+        "capability_flags": [
+          0,
+          1,
+          0,
+          1
+        ],
+        "ability_timer_exists": false,
+        "module_ability10_hex": "200102030405060708090a0b0c0d0e0f10",
+        "module_ability6_hex": "201112131415161718191a1b1c1d1e1f20",
+        "global_connection_state": 0
+      },
+      "emitted_frames": [],
+      "timer_events": [
+        {
+          "event": "destroy"
+        }
+      ],
+      "agent_events": [
+        {
+          "destination_native_host": 512
+        },
+        {
+          "destination_native_host": 3584
+        }
+      ]
+    },
+    {
+      "name": "empty_request_ack",
+      "input": {},
+      "return_u32": 0,
+      "snapshot": {
+        "peer_hash": 910304650,
+        "capability_flags": [
+          0,
+          1,
+          0,
+          1
+        ],
+        "ability_timer_exists": false,
+        "module_ability10_hex": "0000000000000000000000000000000000",
+        "module_ability6_hex": "0000000000000000000000000000000000",
+        "global_connection_state": 0
+      },
+      "emitted_frames": [],
+      "timer_events": [
+        {
+          "event": "destroy"
+        }
+      ],
+      "agent_events": [
+        {
+          "destination_native_host": 512
+        },
+        {
+          "destination_native_host": 3584
+        }
+      ]
+    },
+    {
+      "name": "wrong_subtype_request_ack",
+      "input": {
+        "subtype": 1,
+        "tlv": "0a11200102030405060708090a0b0c0d0e0f100611201112131415161718191a1b1c1d1e1f20"
+      },
+      "return_u32": 4294966285,
+      "snapshot": {
+        "peer_hash": 910304650,
+        "capability_flags": [
+          0,
+          1,
+          0,
+          1
+        ],
+        "ability_timer_exists": true,
+        "module_ability10_hex": "0000000000000000000000000000000000",
+        "module_ability6_hex": "0000000000000000000000000000000000",
+        "global_connection_state": 0
+      },
+      "emitted_frames": [],
+      "timer_events": [],
+      "agent_events": []
+    },
+    {
+      "name": "unknown_hash_request_ack",
+      "input": {
+        "hash_value": 305419896,
+        "tlv": "0a11200102030405060708090a0b0c0d0e0f100611201112131415161718191a1b1c1d1e1f20"
+      },
+      "return_u32": 4294966281,
+      "snapshot": {
+        "peer_hash": 910304650,
+        "capability_flags": [
+          0,
+          1,
+          0,
+          1
+        ],
+        "ability_timer_exists": true,
+        "module_ability10_hex": "0000000000000000000000000000000000",
+        "module_ability6_hex": "0000000000000000000000000000000000",
+        "global_connection_state": 0
+      },
+      "emitted_frames": [],
+      "timer_events": [],
+      "agent_events": []
+    },
+    {
+      "name": "zero_hash_request_ack",
+      "input": {
+        "hash_value": 0,
+        "tlv": "0a11200102030405060708090a0b0c0d0e0f100611201112131415161718191a1b1c1d1e1f20"
+      },
+      "return_u32": 4294966281,
+      "snapshot": {
+        "peer_hash": 910304650,
+        "capability_flags": [
+          0,
+          1,
+          0,
+          1
+        ],
+        "ability_timer_exists": true,
+        "module_ability10_hex": "0000000000000000000000000000000000",
+        "module_ability6_hex": "0000000000000000000000000000000000",
+        "global_connection_state": 0
+      },
+      "emitted_frames": [],
+      "timer_events": [],
+      "agent_events": []
+    },
+    {
+      "name": "truncated_envelope_request_ack",
+      "input": {
+        "declared_length": 10
+      },
+      "return_u32": 4294966285,
+      "snapshot": {
+        "peer_hash": 910304650,
+        "capability_flags": [
+          0,
+          1,
+          0,
+          1
+        ],
+        "ability_timer_exists": true,
+        "module_ability10_hex": "0000000000000000000000000000000000",
+        "module_ability6_hex": "0000000000000000000000000000000000",
+        "global_connection_state": 0
+      },
+      "emitted_frames": [],
+      "timer_events": [],
+      "agent_events": []
+    },
+    {
+      "name": "query_ack",
+      "input": {
+        "operation": 2,
+        "tlv": "0a11200102030405060708090a0b0c0d0e0f100611201112131415161718191a1b1c1d1e1f20"
+      },
+      "return_u32": 0,
+      "snapshot": {
+        "peer_hash": 910304650,
+        "capability_flags": [
+          0,
+          1,
+          0,
+          1
+        ],
+        "ability_timer_exists": true,
+        "module_ability10_hex": "200102030405060708090a0b0c0d0e0f10",
+        "module_ability6_hex": "0000000000000000000000000000000000",
+        "global_connection_state": 0
+      },
+      "emitted_frames": [],
+      "timer_events": [],
+      "agent_events": []
+    },
+    {
+      "name": "push_ack",
+      "input": {
+        "operation": 0,
+        "tlv": "0a11200102030405060708090a0b0c0d0e0f100611201112131415161718191a1b1c1d1e1f20"
+      },
+      "return_u32": 0,
+      "snapshot": {
+        "peer_hash": 910304650,
+        "capability_flags": [
+          0,
+          1,
+          0,
+          1
+        ],
+        "ability_timer_exists": true,
+        "module_ability10_hex": "0000000000000000000000000000000000",
+        "module_ability6_hex": "0000000000000000000000000000000000",
+        "global_connection_state": 0
+      },
+      "emitted_frames": [],
+      "timer_events": [],
+      "agent_events": []
+    },
+    {
+      "name": "repeated_request_ack_after_timer_stopped",
+      "input": {
+        "tlv": "0a11200102030405060708090a0b0c0d0e0f100611201112131415161718191a1b1c1d1e1f20"
+      },
+      "return_u32": 0,
+      "snapshot": {
+        "peer_hash": 910304650,
+        "capability_flags": [
+          0,
+          1,
+          0,
+          1
+        ],
+        "ability_timer_exists": false,
+        "module_ability10_hex": "200102030405060708090a0b0c0d0e0f10",
+        "module_ability6_hex": "201112131415161718191a1b1c1d1e1f20",
+        "global_connection_state": 0
+      },
+      "emitted_frames": [],
+      "timer_events": [],
+      "agent_events": [
+        {
+          "destination_native_host": 512
+        },
+        {
+          "destination_native_host": 3584
+        }
+      ]
+    }
+  ],
+  "push_cases": [
+    {
+      "name": "uav_empty_push",
+      "input": {},
+      "return_u32": 0,
+      "snapshot": {
+        "peer_hash": 910304650,
+        "capability_flags": [
+          0,
+          1,
+          0,
+          1
+        ],
+        "ability_timer_exists": false,
+        "module_ability10_hex": "200102030405060708090a0b0c0d0e0f10",
+        "module_ability6_hex": "201112131415161718191a1b1c1d1e1f20",
+        "global_connection_state": 0
+      },
+      "emitted_frames": [
+        {
+          "frame_hex": "55180420eee92381c051410000000200e0076c550000bb23",
+          "sender": 238,
+          "receiver": 233,
+          "sequence": 33059,
+          "command_type": 192,
+          "command_set": 81,
+          "command_id": 65,
+          "payload_hex": "0000000200e0076c550000",
+          "attribute_hex": "e0076c558a25423601000000"
+        }
+      ],
+      "timer_events": [
+        {
+          "event": "destroy"
+        }
+      ],
+      "agent_events": [
+        {
+          "destination_native_host": 512
+        },
+        {
+          "destination_native_host": 3584
+        }
+      ]
+    },
+    {
+      "name": "non_uav_source_push",
+      "input": {
+        "sender": 4611
+      },
+      "return_u32": 4294966293,
+      "snapshot": {
+        "peer_hash": 910304650,
+        "capability_flags": [
+          0,
+          1,
+          0,
+          1
+        ],
+        "ability_timer_exists": true,
+        "module_ability10_hex": "200102030405060708090a0b0c0d0e0f10",
+        "module_ability6_hex": "201112131415161718191a1b1c1d1e1f20",
+        "global_connection_state": 0
+      },
+      "emitted_frames": [],
+      "timer_events": [],
+      "agent_events": []
+    },
+    {
+      "name": "wrong_uav_subtype_push",
+      "input": {
+        "subtype": 1
+      },
+      "return_u32": 4294966285,
+      "snapshot": {
+        "peer_hash": 910304650,
+        "capability_flags": [
+          0,
+          1,
+          0,
+          1
+        ],
+        "ability_timer_exists": true,
+        "module_ability10_hex": "200102030405060708090a0b0c0d0e0f10",
+        "module_ability6_hex": "201112131415161718191a1b1c1d1e1f20",
+        "global_connection_state": 0
+      },
+      "emitted_frames": [
+        {
+          "frame_hex": "55180420eee92381c051410100010100e0076c55000007b1",
+          "sender": 238,
+          "receiver": 233,
+          "sequence": 33059,
+          "command_type": 192,
+          "command_set": 81,
+          "command_id": 65,
+          "payload_hex": "0100010100e0076c550000",
+          "attribute_hex": "e0076c558a25423601000000"
+        }
+      ],
+      "timer_events": [],
+      "agent_events": []
+    },
+    {
+      "name": "uav_caps_push",
+      "input": {
+        "tlv": "0a11200102030405060708090a0b0c0d0e0f100611201112131415161718191a1b1c1d1e1f20"
+      },
+      "return_u32": 0,
+      "snapshot": {
+        "peer_hash": 910304650,
+        "capability_flags": [
+          0,
+          1,
+          0,
+          1
+        ],
+        "ability_timer_exists": false,
+        "module_ability10_hex": "200102030405060708090a0b0c0d0e0f10",
+        "module_ability6_hex": "201112131415161718191a1b1c1d1e1f20",
+        "global_connection_state": 0
+      },
+      "emitted_frames": [
+        {
+          "frame_hex": "551c041beee92381c051410000000200e0076c5504000a0006009754",
+          "sender": 238,
+          "receiver": 233,
+          "sequence": 33059,
+          "command_type": 192,
+          "command_set": 81,
+          "command_id": 65,
+          "payload_hex": "0000000200e0076c5504000a000600",
+          "attribute_hex": "e0076c558a25423601000000"
+        }
+      ],
+      "timer_events": [
+        {
+          "event": "destroy"
+        }
+      ],
+      "agent_events": [
+        {
+          "destination_native_host": 512
+        },
+        {
+          "destination_native_host": 3584
+        }
+      ]
+    }
+  ],
+  "read_only_query": {
+    "before": {
+      "peer_hash": 910304650,
+      "capability_flags": [
+        0,
+        1,
+        0,
+        1
+      ],
+      "ability_timer_exists": true,
+      "module_ability10_hex": "200102030405060708090a0b0c0d0e0f10",
+      "module_ability6_hex": "201112131415161718191a1b1c1d1e1f20",
+      "global_connection_state": 0
+    },
+    "producer_frames": [
+      {
+        "frame_hex": "551a04b1eee90300405141200100e0076c55040006000a00555e",
+        "sender": 238,
+        "receiver": 233,
+        "sequence": 3,
+        "command_type": 64,
+        "command_set": 81,
+        "command_id": 65,
+        "payload_hex": "200100e0076c55040006000a00",
+        "attribute_hex": "e0076c55ffffffff01000000"
+      }
+    ],
+    "native_query_consumer_result": {
+      "return_u32": 0,
+      "snapshot": {
+        "peer_hash": 910304650,
+        "capability_flags": [
+          0,
+          1,
+          0,
+          1
+        ],
+        "ability_timer_exists": true,
+        "module_ability10_hex": "200102030405060708090a0b0c0d0e0f10",
+        "module_ability6_hex": "201112131415161718191a1b1c1d1e1f20",
+        "global_connection_state": 0
+      },
+      "emitted_frames": [
+        {
+          "frame_hex": "553e044beee92381c051410020000100e0076c55260006112000000000000000001f000100000000000a112000000000000000007d04000000000000c6e2",
+          "sender": 238,
+          "receiver": 233,
+          "sequence": 33059,
+          "command_type": 192,
+          "command_set": 81,
+          "command_id": 65,
+          "payload_hex": "0020000100e0076c55260006112000000000000000001f000100000000000a112000000000000000007d04000000000000",
+          "attribute_hex": "e0076c558a25423601000000"
+        }
+      ]
+    }
+  },
+  "native_ack_header_projection": [
+    {
+      "operation": 0,
+      "request_command_type": 64,
+      "native_ack_frames": [
+        {
+          "frame_hex": "55180420eee92381c051410000000200e0076c550000bb23",
+          "sender": 238,
+          "receiver": 233,
+          "sequence": 33059,
+          "command_type": 192,
+          "command_set": 81,
+          "command_id": 65,
+          "payload_hex": "0000000200e0076c550000",
+          "attribute_hex": "e0076c558a25423601000000"
+        }
+      ]
+    },
+    {
+      "operation": 1,
+      "request_command_type": 64,
+      "native_ack_frames": [
+        {
+          "frame_hex": "55180420eee92381c051410010000200e0076c550000e9f1",
+          "sender": 238,
+          "receiver": 233,
+          "sequence": 33059,
+          "command_type": 192,
+          "command_set": 81,
+          "command_id": 65,
+          "payload_hex": "0010000200e0076c550000",
+          "attribute_hex": "e0076c558a25423601000000"
+        }
+      ]
+    },
+    {
+      "operation": 2,
+      "request_command_type": 64,
+      "native_ack_frames": [
+        {
+          "frame_hex": "55180420eee92381c051410020000200e0076c5500000e8f",
+          "sender": 238,
+          "receiver": 233,
+          "sequence": 33059,
+          "command_type": 192,
+          "command_set": 81,
+          "command_id": 65,
+          "payload_hex": "0020000200e0076c550000",
+          "attribute_hex": "e0076c558a25423601000000"
+        }
+      ]
+    }
+  ],
+  "guest_imports": [
+    "__memcpy_chk",
+    "__strcat_chk",
+    "__strlen_chk",
+    "calloc",
+    "free",
+    "malloc",
+    "memcpy",
+    "memset",
+    "strcmp",
+    "strlen",
+    "strncmp",
+    "strncpy"
+  ],
+  "boundaries": [
+    "Native constructor, hash lookup, consumers and DUML formatter execute unchanged.",
+    "Timer creation/destruction are captured; callbacks are invoked explicitly, no real scheduler runs.",
+    "Locks, queues, threads, hardware, networking, agent and dynamic-capability notifications are inert.",
+    "The full55-byte beacon consumer and its target/global connection-state transitions are static evidence only."
+  ]
+}

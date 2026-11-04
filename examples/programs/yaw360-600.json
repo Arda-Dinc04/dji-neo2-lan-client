@@ -1,0 +1,8 @@
+{
+  "version": 1,
+  "finish": "land",
+  "steps": [
+    {"kind": "hold", "seconds": 0.3},
+    {"kind": "rotate", "degrees": 360, "channel": 600, "minimum_channel": 600, "timeout_seconds": 20}
+  ]
+}

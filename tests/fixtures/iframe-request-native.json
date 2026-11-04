@@ -1,0 +1,252 @@
+{
+  "schema": "neo2-control/iframe-request-native/v1",
+  "provenance": "SYNTHETIC ONLY: bounded ARM64 guest; no real peer or RF",
+  "sdk_sha256": "fb431e44f6a4971b159e7ac811bbd568016a300d959c958df99acb08c9fa9249",
+  "native_route_table": {
+    "address": "0x43b94e0",
+    "slot0": "duss_mb_send_to_wlm@0x40af280",
+    "slot5": "duss_mb_send_to_wifi@0x40af038"
+  },
+  "vectors": [
+    {
+      "ssfn": 0,
+      "requested": true,
+      "sequence": 33059,
+      "peer_kind": 0,
+      "peer_current_liveview": 4,
+      "input_special_control11_hex": "0000000000240000002400",
+      "wlm_fallback_calls": [
+        {
+          "metadata_hex": "00000000000000090002000023810000010001000b000000000000000000000000000000000000000000000000000000",
+          "body_hex": "0000000000240000002400"
+        }
+      ],
+      "wifi_transport_calls": [
+        {
+          "raw_hex": "5517043802e92381001847000800000000010000006f7e",
+          "data_type": 2,
+          "extra": 0
+        }
+      ]
+    },
+    {
+      "ssfn": 0,
+      "requested": false,
+      "sequence": 33059,
+      "peer_kind": 0,
+      "peer_current_liveview": 4,
+      "input_special_control11_hex": "0000000000040000000400",
+      "wlm_fallback_calls": [
+        {
+          "metadata_hex": "00000000000000090002000023810000010001000b000000000000000000000000000000000000000000000000000000",
+          "body_hex": "0000000000040000000400"
+        }
+      ],
+      "wifi_transport_calls": [
+        {
+          "raw_hex": "5517043802e9238100184700080000000000000000d462",
+          "data_type": 2,
+          "extra": 0
+        }
+      ]
+    },
+    {
+      "ssfn": 573785173,
+      "requested": true,
+      "sequence": 33059,
+      "peer_kind": 0,
+      "peer_current_liveview": 4,
+      "input_special_control11_hex": "0000000000240000002400",
+      "wlm_fallback_calls": [
+        {
+          "metadata_hex": "00000000000000090002000023810000010001000b000000000000000000000000000000000000000000000000000000",
+          "body_hex": "0000000000240000002400"
+        }
+      ],
+      "wifi_transport_calls": [
+        {
+          "raw_hex": "5517043802e923810018470008554433220100000043c2",
+          "data_type": 2,
+          "extra": 0
+        }
+      ]
+    },
+    {
+      "ssfn": 573785173,
+      "requested": false,
+      "sequence": 33059,
+      "peer_kind": 0,
+      "peer_current_liveview": 4,
+      "input_special_control11_hex": "0000000000040000000400",
+      "wlm_fallback_calls": [
+        {
+          "metadata_hex": "00000000000000090002000023810000010001000b000000000000000000000000000000000000000000000000000000",
+          "body_hex": "0000000000040000000400"
+        }
+      ],
+      "wifi_transport_calls": [
+        {
+          "raw_hex": "5517043802e9238100184700085544332200000000f8de",
+          "data_type": 2,
+          "extra": 0
+        }
+      ]
+    },
+    {
+      "ssfn": 4294967295,
+      "requested": true,
+      "sequence": 33059,
+      "peer_kind": 0,
+      "peer_current_liveview": 4,
+      "input_special_control11_hex": "0000000000240000002400",
+      "wlm_fallback_calls": [
+        {
+          "metadata_hex": "00000000000000090002000023810000010001000b000000000000000000000000000000000000000000000000000000",
+          "body_hex": "0000000000240000002400"
+        }
+      ],
+      "wifi_transport_calls": [
+        {
+          "raw_hex": "5517043802e923810018470008ffffffff01000000930a",
+          "data_type": 2,
+          "extra": 0
+        }
+      ]
+    },
+    {
+      "ssfn": 4294967295,
+      "requested": false,
+      "sequence": 33059,
+      "peer_kind": 0,
+      "peer_current_liveview": 4,
+      "input_special_control11_hex": "0000000000040000000400",
+      "wlm_fallback_calls": [
+        {
+          "metadata_hex": "00000000000000090002000023810000010001000b000000000000000000000000000000000000000000000000000000",
+          "body_hex": "0000000000040000000400"
+        }
+      ],
+      "wifi_transport_calls": [
+        {
+          "raw_hex": "5517043802e923810018470008ffffffff000000002816",
+          "data_type": 2,
+          "extra": 0
+        }
+      ]
+    }
+  ],
+  "admission_controls": [
+    {
+      "ssfn": 0,
+      "requested": true,
+      "sequence": 33059,
+      "peer_kind": 4,
+      "peer_current_liveview": 4,
+      "input_special_control11_hex": "0000000000240000002400",
+      "wlm_fallback_calls": [
+        {
+          "metadata_hex": "00000000000000090002000023810000010001000b000000000000000000000000000000000000000000000000000000",
+          "body_hex": "0000000000240000002400"
+        }
+      ],
+      "wifi_transport_calls": []
+    },
+    {
+      "ssfn": 0,
+      "requested": true,
+      "sequence": 33059,
+      "peer_kind": 0,
+      "peer_current_liveview": 1,
+      "input_special_control11_hex": "0000000000240000002400",
+      "wlm_fallback_calls": [
+        {
+          "metadata_hex": "00000000000000090002000023810000010001000b000000000000000000000000000000000000000000000000000000",
+          "body_hex": "0000000000240000002400"
+        }
+      ],
+      "wifi_transport_calls": []
+    }
+  ],
+  "sequence_cases": [
+    {
+      "synthetic_counter_before": 0,
+      "native_sequence": 1
+    },
+    {
+      "synthetic_counter_before": 32767,
+      "native_sequence": 32768
+    },
+    {
+      "synthetic_counter_before": 33058,
+      "native_sequence": 33059
+    },
+    {
+      "synthetic_counter_before": 65533,
+      "native_sequence": 65534
+    },
+    {
+      "synthetic_counter_before": 65534,
+      "native_sequence": 32768
+    },
+    {
+      "synthetic_counter_before": 65535,
+      "native_sequence": 32768
+    }
+  ],
+  "native_windows": {
+    "special_control_router": {
+      "address": "0x40a9108",
+      "length": 1096,
+      "sha256": "2dee5fbea56a85979922174f65f1225f29ee6c109b82dfb4d9aa6c283a60dc42"
+    },
+    "iframe_info_producer": {
+      "address": "0x40a8e14",
+      "length": 352,
+      "sha256": "29a14fceb8d356f7c097bafa566291cf832d8ce5f9e4a0ec6f522ac1100de887"
+    },
+    "wifi_backend": {
+      "address": "0x40af038",
+      "length": 300,
+      "sha256": "79e6783cfe412160a5747b320d90db4f491b6d7a0bd29145dcd46127585a235c"
+    },
+    "core_sequence_allocator": {
+      "address": "0x4069a64",
+      "length": 56,
+      "sha256": "03b7fcda3399558dd6934fa3f1791425e231310b479b105c2c88fad05a7aba6b"
+    },
+    "beacon_current_modes_prefix": {
+      "address": "0x40b4900",
+      "length": 296,
+      "sha256": "77b4104cdbf71ec74743b6fcb2b5e639ad6cdc40a7f2ad9d6d5dd1603a762ed6"
+    },
+    "session_sequence_to_encoder": {
+      "address": "0x405a780",
+      "length": 84,
+      "sha256": "7a0391b351af85b5182a61b23a193ea45f55d68d691f0bd4da921d563f8e5390"
+    }
+  },
+  "guest_imports": [
+    "memcpy",
+    "memset"
+  ],
+  "bounds": {
+    "per_call_instructions": 500000,
+    "per_call_timeout_us": 1000000
+  },
+  "boundaries": [
+    "Modes5/4/4, WiFi connected, selected synthetic peer, localWiFi host1b01 and SSFN supplied.",
+    "Original relocated route table and actual slot5 WiFi backend execute. Slot0 generic WLM fallback is captured before its queue.",
+    "Actual protocol formatter executes; call_csdk_route_command_data captures direct bytes/type2/extra0 before host transport callback.",
+    "No forwarding51/01, attributes, hash, WLM forwarding counter or application ACK is produced by this direct path.",
+    "Beacon current-liveview byteab is a supplied input here; native updater prefix is separately retained evidence.",
+    "Only shared core sequence allocator and its encoder call site are followed; actual SDK session lifetime/allocation is not replayed."
+  ],
+  "limitations": [
+    "No new device capability query, iframe_v3 support, firmware acceptance, response, decoding success or video readiness is established.",
+    "The complete router and iframe-info producer do not read CAP6; downstream firmware behavior for an unknown peer is unproven.",
+    "18/47 inherits the original special-control sequence. A PC standalone request using its shared sequence allocator is an explicit reconstruction policy.",
+    "Standalone18/47 does not reproduce the full SDK timer and generic WLM fallback. Its use after video arrives, cooldown and retry budget are PC policies.",
+    "Payload constants00/08, LE32 SSFN, request bit and three zero bytes are native bytes; SSFN validity must be supplied by the socket owner.",
+    "Current peer kind0/current liveview4 gate the extra WiFi send; an ACK or successful keyframe return is not proved."
+  ]
+}

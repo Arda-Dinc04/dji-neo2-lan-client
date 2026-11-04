@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "neo2-control"
+version = "0.1.0"
+description = "Instrumented DJI Neo 2 protocol laboratory for Linux PCs and Raspberry Pi"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "smichea" }]
+dependencies = ["bleak>=0.22,<2"]
+
+[project.optional-dependencies]
+camera = ["dbus-fast>=5.2,<6"]
+flight = ["dbus-fast>=5.2,<6"]
+test = ["pytest>=8,<10", "scipy>=1.14,<2", "scikit-image==0.26.0"]
+vision = ["numpy>=2,<3", "opencv-python-headless>=4.12,<5", "spatial-capture @ git+https://github.com/smichea/spatial-capture-3d.git@e14ec1702e934d473c3327bcaaeeafba061bc127"]
+depth = ["spatial-capture[depth] @ git+https://github.com/smichea/spatial-capture-3d.git@e14ec1702e934d473c3327bcaaeeafba061bc127"]
+video-analysis = ["av>=19.0.1,<20"]
+sfm = ["pycolmap==4.2.1"]
+
+[project.scripts]
+neo2ctl = "neo2_control.cli:main"
+
+[project.urls]
+Repository = "https://github.com/smichea/dji-neo2-lan-client"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+neo2_control = ["web/*.html", "web/*.css", "web/*.js", "web/*.svg"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+norecursedirs = ["private"]

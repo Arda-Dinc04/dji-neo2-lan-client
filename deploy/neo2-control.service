@@ -1,0 +1,33 @@
+[Unit]
+Description=DJI Neo 2 protocol diagnostic service
+After=network-online.target bluetooth.target
+Wants=network-online.target bluetooth.target
+
+[Service]
+Type=simple
+User=neo2control
+Group=neo2control
+WorkingDirectory=/opt/neo2-control
+ExecStart=/opt/neo2-control/.venv/bin/neo2ctl serve \
+  --listen 127.0.0.1 \
+  --port 8792 \
+  --token-file /etc/neo2-control/api.token \
+  --capture-dir /var/lib/neo2-control/captures \
+  --report-dir /var/lib/neo2-control/reports
+Restart=on-failure
+RestartSec=3
+UMask=0077
+
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/neo2-control
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6 AF_BLUETOOTH
+AmbientCapabilities=CAP_NET_RAW
+CapabilityBoundingSet=CAP_NET_RAW
+RestrictSUIDSGID=true
+LockPersonality=true
+
+[Install]
+WantedBy=multi-user.target

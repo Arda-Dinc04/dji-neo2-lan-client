@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+.venv/
+*.egg-info/
+.pytest_cache/
+captures/*
+!captures/.gitkeep
+reports/*
+!reports/.gitkeep
+private/
+build/
+dist/
+node_modules/

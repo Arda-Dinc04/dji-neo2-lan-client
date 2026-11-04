@@ -1,0 +1,441 @@
+{
+  "schema": "neo2-control/wlm-mode-follow-wire-native/v1",
+  "sdk_sha256": "fb431e44f6a4971b159e7ac811bbd568016a300d959c958df99acb08c9fa9249",
+  "provenance": "Synthetic bounded ARM64 guest; no radio/device/network I/O",
+  "synthetic_link_states": [
+    0,
+    0,
+    1
+  ],
+  "source_handler_ack": {
+    "stack_fill": 0,
+    "caller_frame_pointer": 0,
+    "request_sequence": 33059,
+    "request_payload_hex": "0100008a254236000101010000000000000000",
+    "before": {
+      "link_modes_hex": "040404040404",
+      "service_modes_hex": "000000000000",
+      "ability_timer_exists": false
+    },
+    "after": {
+      "link_modes_hex": "010101010101",
+      "service_modes_hex": "000000000000",
+      "ability_timer_exists": false
+    },
+    "source_send": {
+      "frame_hex": "552e04a7eee90000c0511c010204e0076c550000000000010101000000000000000000000000000000000000de2e",
+      "attribute12_hex": "e0076c55ffffffff0e000000",
+      "forward_flag": 0
+    },
+    "queue_record_hex": "341278562e00000000e0076c55ffffffff0e0000000000000000000000000000000000000000000000000000552e04a7eee90000c0511c010204e0076c550000000000010101000000000000000000000000000000000000de2e"
+  },
+  "transfer_decisions": [
+    {
+      "flags": 0,
+      "selected": [
+        0,
+        0,
+        0
+      ],
+      "attribute_word13_hex": "0002"
+    },
+    {
+      "flags": 1,
+      "selected": [
+        0,
+        0,
+        1
+      ],
+      "attribute_word13_hex": "0082"
+    },
+    {
+      "flags": 2,
+      "selected": [
+        1,
+        0,
+        0
+      ],
+      "attribute_word13_hex": "0022"
+    },
+    {
+      "flags": 4,
+      "selected": [
+        0,
+        1,
+        0
+      ],
+      "attribute_word13_hex": "0042"
+    },
+    {
+      "flags": 8,
+      "selected": [
+        0,
+        0,
+        1
+      ],
+      "attribute_word13_hex": "0082"
+    },
+    {
+      "flags": 14,
+      "selected": [
+        1,
+        1,
+        1
+      ],
+      "attribute_word13_hex": "00e2"
+    },
+    {
+      "flags": 16,
+      "selected": [
+        0,
+        0,
+        0
+      ],
+      "attribute_word13_hex": "0002"
+    },
+    {
+      "flags": 32,
+      "selected": [
+        0,
+        0,
+        0
+      ],
+      "attribute_word13_hex": "0002"
+    },
+    {
+      "flags": 64,
+      "selected": [
+        0,
+        0,
+        1
+      ],
+      "attribute_word13_hex": "0082"
+    },
+    {
+      "flags": 129,
+      "selected": [
+        0,
+        0,
+        1
+      ],
+      "attribute_word13_hex": "0082"
+    }
+  ],
+  "native_flags0e_routes": [
+    {
+      "transfer_flags": 14,
+      "counter_before": 4660,
+      "counter_after": 4661,
+      "per_link_calls": [
+        {
+          "category": 0,
+          "attributes22_hex": "e0076c550034120000ffffffff01e200000000000000",
+          "inner_hex": "552e04a7eee90000c0511c010204e0076c550000000000010101000000000000000000000000000000000000de2e"
+        },
+        {
+          "category": 1,
+          "attributes22_hex": "e0076c550134120000ffffffff01e200000000000000",
+          "inner_hex": "552e04a7eee90000c0511c010204e0076c550000000000010101000000000000000000000000000000000000de2e"
+        },
+        {
+          "category": 2,
+          "attributes22_hex": "e0076c550234120000ffffffff01e200000000000000",
+          "inner_hex": "552e04a7eee90000c0511c010204e0076c550000000000010101000000000000000000000000000000000000de2e"
+        }
+      ],
+      "wifi_wire_hex": "555104093be93412005101552e04a7eee90000c0511c010204e0076c550000000000010101000000000000000000000000000000000000de2ee0076c550234120000ffffffff01e200000000000000ef4c",
+      "outer": {
+        "sender": 59,
+        "receiver": 233,
+        "type": 0,
+        "sequence": 4660
+      },
+      "inner": {
+        "sender": 238,
+        "receiver": 233,
+        "type": 192,
+        "sequence": 0,
+        "payload_length": 33,
+        "payload_hex": "010204e0076c550000000000010101000000000000000000000000000000000000"
+      }
+    },
+    {
+      "transfer_flags": 14,
+      "counter_before": 65535,
+      "counter_after": 65536,
+      "per_link_calls": [
+        {
+          "category": 0,
+          "attributes22_hex": "e0076c5500ffff0000ffffffff01e200000000000000",
+          "inner_hex": "552e04a7eee90000c0511c010204e0076c550000000000010101000000000000000000000000000000000000de2e"
+        },
+        {
+          "category": 1,
+          "attributes22_hex": "e0076c5501ffff0000ffffffff01e200000000000000",
+          "inner_hex": "552e04a7eee90000c0511c010204e0076c550000000000010101000000000000000000000000000000000000de2e"
+        },
+        {
+          "category": 2,
+          "attributes22_hex": "e0076c5502ffff0000ffffffff01e200000000000000",
+          "inner_hex": "552e04a7eee90000c0511c010204e0076c550000000000010101000000000000000000000000000000000000de2e"
+        }
+      ],
+      "wifi_wire_hex": "555104093be9ffff005101552e04a7eee90000c0511c010204e0076c550000000000010101000000000000000000000000000000000000de2ee0076c5502ffff0000ffffffff01e2000000000000009fcc",
+      "outer": {
+        "sender": 59,
+        "receiver": 233,
+        "type": 0,
+        "sequence": 65535
+      },
+      "inner": {
+        "sender": 238,
+        "receiver": 233,
+        "type": 192,
+        "sequence": 0,
+        "payload_length": 33,
+        "payload_hex": "010204e0076c550000000000010101000000000000000000000000000000000000"
+      }
+    },
+    {
+      "transfer_flags": 14,
+      "counter_before": 4294967295,
+      "counter_after": 0,
+      "per_link_calls": [
+        {
+          "category": 0,
+          "attributes22_hex": "e0076c5500ffffffffffffffff01e200000000000000",
+          "inner_hex": "552e04a7eee90000c0511c010204e0076c550000000000010101000000000000000000000000000000000000de2e"
+        },
+        {
+          "category": 1,
+          "attributes22_hex": "e0076c5501ffffffffffffffff01e200000000000000",
+          "inner_hex": "552e04a7eee90000c0511c010204e0076c550000000000010101000000000000000000000000000000000000de2e"
+        },
+        {
+          "category": 2,
+          "attributes22_hex": "e0076c5502ffffffffffffffff01e200000000000000",
+          "inner_hex": "552e04a7eee90000c0511c010204e0076c550000000000010101000000000000000000000000000000000000de2e"
+        }
+      ],
+      "wifi_wire_hex": "555104093be9ffff005101552e04a7eee90000c0511c010204e0076c550000000000010101000000000000000000000000000000000000de2ee0076c5502ffffffffffffffff01e200000000000000ed0f",
+      "outer": {
+        "sender": 59,
+        "receiver": 233,
+        "type": 0,
+        "sequence": 65535
+      },
+      "inner": {
+        "sender": 238,
+        "receiver": 233,
+        "type": 192,
+        "sequence": 0,
+        "payload_length": 33,
+        "payload_hex": "010204e0076c550000000000010101000000000000000000000000000000000000"
+      }
+    }
+  ],
+  "wifi_only_flags08_controls": [
+    {
+      "transfer_flags": 8,
+      "counter_before": 4660,
+      "counter_after": 4661,
+      "per_link_calls": [
+        {
+          "category": 2,
+          "attributes22_hex": "e0076c550234120000ffffffff018200000000000000",
+          "inner_hex": "552e04a7eee90000c0511c010204e0076c550000000000010101000000000000000000000000000000000000de2e"
+        }
+      ],
+      "wifi_wire_hex": "555104093be93412005101552e04a7eee90000c0511c010204e0076c550000000000010101000000000000000000000000000000000000de2ee0076c550234120000ffffffff018200000000000000ee9f",
+      "outer": {
+        "sender": 59,
+        "receiver": 233,
+        "type": 0,
+        "sequence": 4660
+      },
+      "inner": {
+        "sender": 238,
+        "receiver": 233,
+        "type": 192,
+        "sequence": 0,
+        "payload_length": 33,
+        "payload_hex": "010204e0076c550000000000010101000000000000000000000000000000000000"
+      }
+    },
+    {
+      "transfer_flags": 8,
+      "counter_before": 65535,
+      "counter_after": 65536,
+      "per_link_calls": [
+        {
+          "category": 2,
+          "attributes22_hex": "e0076c5502ffff0000ffffffff018200000000000000",
+          "inner_hex": "552e04a7eee90000c0511c010204e0076c550000000000010101000000000000000000000000000000000000de2e"
+        }
+      ],
+      "wifi_wire_hex": "555104093be9ffff005101552e04a7eee90000c0511c010204e0076c550000000000010101000000000000000000000000000000000000de2ee0076c5502ffff0000ffffffff0182000000000000009e1f",
+      "outer": {
+        "sender": 59,
+        "receiver": 233,
+        "type": 0,
+        "sequence": 65535
+      },
+      "inner": {
+        "sender": 238,
+        "receiver": 233,
+        "type": 192,
+        "sequence": 0,
+        "payload_length": 33,
+        "payload_hex": "010204e0076c550000000000010101000000000000000000000000000000000000"
+      }
+    },
+    {
+      "transfer_flags": 8,
+      "counter_before": 4294967295,
+      "counter_after": 0,
+      "per_link_calls": [
+        {
+          "category": 2,
+          "attributes22_hex": "e0076c5502ffffffffffffffff018200000000000000",
+          "inner_hex": "552e04a7eee90000c0511c010204e0076c550000000000010101000000000000000000000000000000000000de2e"
+        }
+      ],
+      "wifi_wire_hex": "555104093be9ffff005101552e04a7eee90000c0511c010204e0076c550000000000010101000000000000000000000000000000000000de2ee0076c5502ffffffffffffffff018200000000000000ecdc",
+      "outer": {
+        "sender": 59,
+        "receiver": 233,
+        "type": 0,
+        "sequence": 65535
+      },
+      "inner": {
+        "sender": 238,
+        "receiver": 233,
+        "type": 192,
+        "sequence": 0,
+        "payload_length": 33,
+        "payload_hex": "010204e0076c550000000000010101000000000000000000000000000000000000"
+      }
+    }
+  ],
+  "poisoned_handler_ack": {
+    "stack_fill": 165,
+    "caller_frame_pointer": 0,
+    "request_sequence": 33059,
+    "request_payload_hex": "0100008a254236000101010000000000000000",
+    "before": {
+      "link_modes_hex": "040404040404",
+      "service_modes_hex": "000000000000",
+      "ability_timer_exists": false
+    },
+    "after": {
+      "link_modes_hex": "010101010101",
+      "service_modes_hex": "000000000000",
+      "ability_timer_exists": false
+    },
+    "source_send": {
+      "frame_hex": "552e04a7eee9a5a5c0511c010204e0076c55000000000001010100000000a5a5a5a5a50000000000000000000857",
+      "attribute12_hex": "e0076c55ffffffff0e000000",
+      "forward_flag": 0
+    },
+    "queue_record_hex": "341278562e00000000e0076c55ffffffff0e0000000000000000000000000000000000000000000000000000552e04a7eee9a5a5c0511c010204e0076c55000000000001010100000000a5a5a5a5a50000000000000000000857"
+  },
+  "frame_pointer_handler_ack": {
+    "stack_fill": 0,
+    "caller_frame_pointer": 165,
+    "request_sequence": 33059,
+    "request_payload_hex": "0100008a254236000101010000000000000000",
+    "before": {
+      "link_modes_hex": "040404040404",
+      "service_modes_hex": "000000000000",
+      "ability_timer_exists": false
+    },
+    "after": {
+      "link_modes_hex": "010101010101",
+      "service_modes_hex": "000000000000",
+      "ability_timer_exists": false
+    },
+    "source_send": {
+      "frame_hex": "552e04a7eee90000c0511c010204e0076c5500000000000101010000000000000000000000000000000000a579dc",
+      "attribute12_hex": "e0076c55ffffffff0e000000",
+      "forward_flag": 0
+    },
+    "queue_record_hex": "341278562e00000000e0076c55ffffffff0e0000000000000000000000000000000000000000000000000000552e04a7eee90000c0511c010204e0076c5500000000000101010000000000000000000000000000000000a579dc"
+  },
+  "stack_dependent_payload_offsets": [
+    19,
+    20,
+    21,
+    22,
+    23
+  ],
+  "native_windows": {
+    "handler": {
+      "address": "0x40c2bac",
+      "length": 828,
+      "sha256": "a23108e0b9792eca44eb64bfcaccfa6669844b1838b6ae5da463ecb1209bf4bf"
+    },
+    "service_update": {
+      "address": "0x40b5954",
+      "length": 452,
+      "sha256": "7f55b50039787c88501fce16228099281c7c30df893220d942ee2623de6ef222"
+    },
+    "enqueue": {
+      "address": "0x40cafbc",
+      "length": 336,
+      "sha256": "c5d942639e3f8c4a4f43acad7eed39f37b697b2dc7ac9e9c6b1278908ef477a8"
+    },
+    "dispatcher": {
+      "address": "0x40cb300",
+      "length": 1016,
+      "sha256": "6143a33b01ba58b4acf079fb803f184633ee8a2a434da37e73b6cb922ad1fdb9"
+    },
+    "transfer_decision": {
+      "address": "0x40cbc50",
+      "length": 344,
+      "sha256": "32e6baf34aac40b57b646368cb14c602ac56838c62da59c5a7caafb819f71ea9"
+    },
+    "per_link": {
+      "address": "0x40cb768",
+      "length": 656,
+      "sha256": "e6847a307dd6dbe3bb75770ebce861ba35a61e898d68c28cd874d5004885a89e"
+    },
+    "wifi_agent": {
+      "address": "0x40f24a0",
+      "length": 92,
+      "sha256": "3d402ce34d82324098d3b3a48116a43b46eb9cdda42c184a3d927c3e1ee3498c"
+    },
+    "formatter": {
+      "address": "0x40cb10c",
+      "length": 280,
+      "sha256": "bf4fd7089bf05cd83f6945dc095b9c5c824731017430faf522a58f1582fc8925"
+    }
+  },
+  "frame_pointer_dependent_payload_offsets": [
+    32
+  ],
+  "guest_imports": [
+    "__memcpy_chk",
+    "__strcat_chk",
+    "__strlen_chk",
+    "calloc",
+    "malloc",
+    "memcpy",
+    "memset",
+    "strcmp",
+    "strlen",
+    "strncpy"
+  ],
+  "boundaries": [
+    "Actual callback, updater, enqueue, dispatcher, per-link send, WiFi relay and DUML formatter execute.",
+    "Queue, locks, platform and MID mutations end at explicit memory-only boundaries.",
+    "Own/peer identities and SDR0/LTE0/WiFi1 profile are synthetic inputs.",
+    "Canonical source controls set caller stack memory and saved frame pointer to zero.",
+    "flags08 controls intentionally replace the native ACK default0e; they establish encoding, not peer acceptance."
+  ],
+  "limits": [
+    "No UAV response consumer, acceptance, handshake readiness, video or flight behavior is established.",
+    "SDK ACK sequence and payload bytes19..32 are unwritten, not a native deterministic contract.",
+    "PC zero tail and explicit sequence are policy choices; correlation to a nonzero request sequence is not native equivalence.",
+    "Expanded trailer bytes15..21 are also unwritten; zero is the canonical PC policy."
+  ]
+}

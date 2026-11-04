@@ -1,0 +1,1519 @@
+{
+  "schema": "neo2-control/camera-control-native/v1",
+  "provenance": "SYNTHETIC ONLY: bounded ARM64 guest, not a drone capture",
+  "sdk_sha256": "fb431e44f6a4971b159e7ac811bbd568016a300d959c958df99acb08c9fa9249",
+  "sdk_base_sha256": "54f77d990d5d1d09cab9ccd0cb3499edd03e47e18d75be5b449aa149bbd4233a",
+  "key_value_sha256": "3dfb16ae06d9d29d995b2fcb95f67214183b264a58de7c389f3c138562189c75",
+  "model_got_relocations": [
+    {
+      "relocation_offset": "0x5a5490",
+      "target": "0xb945c0",
+      "symbol": "_ZTVN3uav3sdk19GimbalAngleRotationE",
+      "symbol_value": "0xb7d290"
+    },
+    {
+      "relocation_offset": "0x57a050",
+      "target": "0xb94590",
+      "symbol": "_ZTVN3uav3sdk21GimbalResetCommandMsgE",
+      "symbol_value": "0xb7d160"
+    }
+  ],
+  "functions": {
+    "angle_model_constructor": "key-value:0xa71704",
+    "angle_model_serialization": "key-value:0xa71908",
+    "angle_model_deserialization": "key-value:0xa7196c",
+    "complete_angle_packet_assembler": "sdk:0x24a8284",
+    "angle_action": "sdk:0x24a79ac",
+    "angle_send_pack": "sdk:0x20e77ac",
+    "reset_action": "sdk:0x30d10b4",
+    "start_record_action": "sdk:0x303a08c",
+    "stop_record_action": "sdk:0x303a4d0",
+    "start_photo_action": "sdk:0x3057f90",
+    "photo_admission_helper": "sdk:0x30594c4",
+    "normal_photo_type_conversion": "sdk:0x20da220",
+    "work_mode_setter": "sdk:0x303dbe4",
+    "work_mode_push": "sdk:0x303e104",
+    "raw_result_getters": {
+      "record": "sdk:0x303b3c0",
+      "photo": "sdk:0x3059b90",
+      "reset": "sdk:0x30d21b4",
+      "work_mode": "sdk:0x303e2d0"
+    },
+    "camera_error_mapping": "sdk:0x2430b94",
+    "record_status_push": "sdk:0x308026c",
+    "is_recording_push": "sdk:0x304945c",
+    "recording_time_push": "sdk:0x30495f0",
+    "shutter_push": "sdk:0x307acb4",
+    "storing_push": "sdk:0x3076660",
+    "camera_status_register": "sdk:0x23e3cb0",
+    "v1_encoder": "sdk:0x4068b04"
+  },
+  "camera_status_observer_tag": "0x40020080",
+  "java_enum_evidence": {
+    "scope": "Static DEX source join retained separately; not Java execution by this tool",
+    "dex5_sha256": "d94578f5cff700c0d82d4bdc1346408a2b2b5f3ff59944eeeef6e65e889343fa",
+    "CameraWorkMode": {
+      "code_offset": "0x67d60c",
+      "SHOOT_PHOTO": 0,
+      "RECORD_VIDEO": 1
+    },
+    "CameraRecordingStatus": {
+      "code_offset": "0x6701ec",
+      "IDEL": 0,
+      "STARTING": 1,
+      "RECORDING": 2,
+      "STOPPING": 3
+    },
+    "CameraShootPhotoMode": {
+      "code_offset": "0x67269c",
+      "NORMAL": 0
+    }
+  },
+  "vectors": [
+    {
+      "label": "pitch_zero",
+      "kind": "angle",
+      "input": {
+        "pitch": 0,
+        "roll": 0,
+        "yaw": 0,
+        "mode": 1,
+        "ignored": [
+          false,
+          true,
+          true
+        ],
+        "duration": 1,
+        "joint_reference": false,
+        "timeout": 0
+      },
+      "explicit_receiver_index": null,
+      "serialized_model44_hex": "01000000000000000000000000000000000000000000000000000000000101000000000000f03f0000000000",
+      "native_frame_hex": "551504a902042381400414000000000000070adc59",
+      "source": 2,
+      "destination": 4,
+      "sequence": 33059,
+      "command_type": 64,
+      "command_set": 4,
+      "command_id": 20,
+      "payload_hex": "000000000000070a"
+    },
+    {
+      "label": "pitch_minus15",
+      "kind": "angle",
+      "input": {
+        "pitch": -15,
+        "roll": 0,
+        "yaw": 0,
+        "mode": 1,
+        "ignored": [
+          false,
+          true,
+          true
+        ],
+        "duration": 1,
+        "joint_reference": false,
+        "timeout": 0
+      },
+      "explicit_receiver_index": null,
+      "serialized_model44_hex": "010000000000000000002ec000000000000000000000000000000000000101000000000000f03f0000000000",
+      "native_frame_hex": "551504a902042381400414000000006aff070a65da",
+      "source": 2,
+      "destination": 4,
+      "sequence": 33059,
+      "command_type": 64,
+      "command_set": 4,
+      "command_id": 20,
+      "payload_hex": "000000006aff070a"
+    },
+    {
+      "label": "pitch_minus30",
+      "kind": "angle",
+      "input": {
+        "pitch": -30,
+        "roll": 0,
+        "yaw": 0,
+        "mode": 1,
+        "ignored": [
+          false,
+          true,
+          true
+        ],
+        "duration": 1,
+        "joint_reference": false,
+        "timeout": 0
+      },
+      "explicit_receiver_index": null,
+      "serialized_model44_hex": "010000000000000000003ec000000000000000000000000000000000000101000000000000f03f0000000000",
+      "native_frame_hex": "551504a90204238140041400000000d4fe070a674f",
+      "source": 2,
+      "destination": 4,
+      "sequence": 33059,
+      "command_type": 64,
+      "command_set": 4,
+      "command_id": 20,
+      "payload_hex": "00000000d4fe070a"
+    },
+    {
+      "label": "pitch_minus45",
+      "kind": "angle",
+      "input": {
+        "pitch": -45,
+        "roll": 0,
+        "yaw": 0,
+        "mode": 1,
+        "ignored": [
+          false,
+          true,
+          true
+        ],
+        "duration": 1,
+        "joint_reference": false,
+        "timeout": 0
+      },
+      "explicit_receiver_index": null,
+      "serialized_model44_hex": "0100000000000000008046c000000000000000000000000000000000000101000000000000f03f0000000000",
+      "native_frame_hex": "551504a902042381400414000000003efe070a4327",
+      "source": 2,
+      "destination": 4,
+      "sequence": 33059,
+      "command_type": 64,
+      "command_set": 4,
+      "command_id": 20,
+      "payload_hex": "000000003efe070a"
+    },
+    {
+      "label": "pitch_fractional",
+      "kind": "angle",
+      "input": {
+        "pitch": -90.09,
+        "roll": 0,
+        "yaw": 0,
+        "mode": 1,
+        "ignored": [
+          false,
+          true,
+          true
+        ],
+        "duration": 1.9,
+        "joint_reference": false,
+        "timeout": 0
+      },
+      "explicit_receiver_index": null,
+      "serialized_model44_hex": "01000000f6285c8fc28556c000000000000000000000000000000000000101666666666666fe3f0000000000",
+      "native_frame_hex": "551504a902042381400414000000007cfc070a3abd",
+      "source": 2,
+      "destination": 4,
+      "sequence": 33059,
+      "command_type": 64,
+      "command_set": 4,
+      "command_id": 20,
+      "payload_hex": "000000007cfc070a"
+    },
+    {
+      "label": "pitch_positive_control",
+      "kind": "angle",
+      "input": {
+        "pitch": 15.25,
+        "roll": 0,
+        "yaw": 0,
+        "mode": 1,
+        "ignored": [
+          false,
+          true,
+          true
+        ],
+        "duration": 1,
+        "joint_reference": false,
+        "timeout": 0
+      },
+      "explicit_receiver_index": null,
+      "serialized_model44_hex": "010000000000000000802e4000000000000000000000000000000000000101000000000000f03f0000000000",
+      "native_frame_hex": "551504a902042381400414000000009800070acb52",
+      "source": 2,
+      "destination": 4,
+      "sequence": 33059,
+      "command_type": 64,
+      "command_set": 4,
+      "command_id": 20,
+      "payload_hex": "000000009800070a"
+    },
+    {
+      "label": "relative_control",
+      "kind": "angle",
+      "input": {
+        "pitch": -5,
+        "roll": 0,
+        "yaw": 0,
+        "mode": 0,
+        "ignored": [
+          false,
+          true,
+          true
+        ],
+        "duration": 1,
+        "joint_reference": false,
+        "timeout": 0
+      },
+      "explicit_receiver_index": null,
+      "serialized_model44_hex": "0000000000000000000014c000000000000000000000000000000000000101000000000000f03f0000000000",
+      "native_frame_hex": "551504a90204238140041400000000ceff060a6c13",
+      "source": 2,
+      "destination": 4,
+      "sequence": 33059,
+      "command_type": 64,
+      "command_set": 4,
+      "command_id": 20,
+      "payload_hex": "00000000ceff060a"
+    },
+    {
+      "label": "three_axes_control",
+      "kind": "angle",
+      "input": {
+        "pitch": -15,
+        "roll": 2.34,
+        "yaw": -3.45,
+        "mode": 1,
+        "ignored": [
+          false,
+          false,
+          false
+        ],
+        "duration": 1,
+        "joint_reference": false,
+        "timeout": 0
+      },
+      "explicit_receiver_index": null,
+      "serialized_model44_hex": "010000000000000000002ec0b81e85eb51b802409a99999999990bc0000000000000000000f03f0000000000",
+      "native_frame_hex": "551504a902042381400414deff17006aff010a179b",
+      "source": 2,
+      "destination": 4,
+      "sequence": 33059,
+      "command_type": 64,
+      "command_set": 4,
+      "command_id": 20,
+      "payload_hex": "deff17006aff010a"
+    },
+    {
+      "label": "duration_subunit",
+      "kind": "angle",
+      "input": {
+        "pitch": -45,
+        "roll": 0,
+        "yaw": 0,
+        "mode": 1,
+        "ignored": [
+          false,
+          true,
+          true
+        ],
+        "duration": 0.5,
+        "joint_reference": false,
+        "timeout": 0
+      },
+      "explicit_receiver_index": null,
+      "serialized_model44_hex": "0100000000000000008046c000000000000000000000000000000000000101000000000000e03f0000000000",
+      "native_frame_hex": "551504a902042381400414000000003efe07001988",
+      "source": 2,
+      "destination": 4,
+      "sequence": 33059,
+      "command_type": 64,
+      "command_set": 4,
+      "command_id": 20,
+      "payload_hex": "000000003efe0700"
+    },
+    {
+      "label": "duration_25",
+      "kind": "angle",
+      "input": {
+        "pitch": -45,
+        "roll": 0,
+        "yaw": 0,
+        "mode": 1,
+        "ignored": [
+          false,
+          true,
+          true
+        ],
+        "duration": 25.9,
+        "joint_reference": false,
+        "timeout": 0
+      },
+      "explicit_receiver_index": null,
+      "serialized_model44_hex": "0100000000000000008046c0000000000000000000000000000000000001016666666666e639400000000000",
+      "native_frame_hex": "551504a902042381400414000000003efe07faccd0",
+      "source": 2,
+      "destination": 4,
+      "sequence": 33059,
+      "command_type": 64,
+      "command_set": 4,
+      "command_id": 20,
+      "payload_hex": "000000003efe07fa"
+    },
+    {
+      "label": "duration_wrap_control",
+      "kind": "angle",
+      "input": {
+        "pitch": -45,
+        "roll": 0,
+        "yaw": 0,
+        "mode": 1,
+        "ignored": [
+          false,
+          true,
+          true
+        ],
+        "duration": 26,
+        "joint_reference": false,
+        "timeout": 0
+      },
+      "explicit_receiver_index": null,
+      "serialized_model44_hex": "0100000000000000008046c0000000000000000000000000000000000001010000000000003a400000000000",
+      "native_frame_hex": "551504a902042381400414000000003efe07043dce",
+      "source": 2,
+      "destination": 4,
+      "sequence": 33059,
+      "command_type": 64,
+      "command_set": 4,
+      "command_id": 20,
+      "payload_hex": "000000003efe0704"
+    },
+    {
+      "label": "upper_fields_control",
+      "kind": "angle",
+      "input": {
+        "pitch": -45,
+        "roll": 0,
+        "yaw": 0,
+        "mode": 1,
+        "ignored": [
+          false,
+          true,
+          true
+        ],
+        "duration": 1,
+        "joint_reference": true,
+        "timeout": 42
+      },
+      "explicit_receiver_index": null,
+      "serialized_model44_hex": "0100000000000000008046c000000000000000000000000000000000000101000000000000f03f012a000000",
+      "native_frame_hex": "551504a902042381400414000000003efe070a4327",
+      "source": 2,
+      "destination": 4,
+      "sequence": 33059,
+      "command_type": 64,
+      "command_set": 4,
+      "command_id": 20,
+      "payload_hex": "000000003efe070a"
+    },
+    {
+      "label": "receiver_index_control",
+      "kind": "angle",
+      "input": {
+        "pitch": -45,
+        "roll": 0,
+        "yaw": 0,
+        "mode": 1,
+        "ignored": [
+          false,
+          true,
+          true
+        ],
+        "duration": 1,
+        "joint_reference": false,
+        "timeout": 0
+      },
+      "explicit_receiver_index": 3,
+      "serialized_model44_hex": "0100000000000000008046c000000000000000000000000000000000000101000000000000f03f0000000000",
+      "native_frame_hex": "551504a902643412400414000000003efe070af6bf",
+      "source": 2,
+      "destination": 100,
+      "sequence": 4660,
+      "command_type": 64,
+      "command_set": 4,
+      "command_id": 20,
+      "payload_hex": "000000003efe070a"
+    },
+    {
+      "label": "reset_1",
+      "kind": "reset",
+      "input_value": 1,
+      "window_start": "0x30d126c",
+      "window_stop": "0x30d12b8",
+      "native_frame_hex": "550f04a20204238140044cfe01f3a4",
+      "source": 2,
+      "destination": 4,
+      "sequence": 33059,
+      "command_type": 64,
+      "command_set": 4,
+      "command_id": 76,
+      "payload_hex": "fe01"
+    },
+    {
+      "label": "reset_4",
+      "kind": "reset",
+      "input_value": 4,
+      "window_start": "0x30d126c",
+      "window_stop": "0x30d12b8",
+      "native_frame_hex": "550f04a20204238140044cfe045ef3",
+      "source": 2,
+      "destination": 4,
+      "sequence": 33059,
+      "command_type": 64,
+      "command_set": 4,
+      "command_id": 76,
+      "payload_hex": "fe04"
+    },
+    {
+      "label": "reset_10",
+      "kind": "reset",
+      "input_value": 10,
+      "window_start": "0x30d126c",
+      "window_stop": "0x30d12b8",
+      "native_frame_hex": "550f04a20204238140044cfe0a201a",
+      "source": 2,
+      "destination": 4,
+      "sequence": 33059,
+      "command_type": 64,
+      "command_set": 4,
+      "command_id": 76,
+      "payload_hex": "fe0a"
+    },
+    {
+      "label": "reset_13",
+      "kind": "reset",
+      "input_value": 13,
+      "window_start": "0x30d126c",
+      "window_stop": "0x30d12b8",
+      "native_frame_hex": "550f04a20204238140044cfe0d9f6e",
+      "source": 2,
+      "destination": 4,
+      "sequence": 33059,
+      "command_type": 64,
+      "command_set": 4,
+      "command_id": 76,
+      "payload_hex": "fe0d"
+    },
+    {
+      "label": "record_start_0",
+      "kind": "record_start",
+      "input_value": 0,
+      "window_start": "0x303a0d0",
+      "window_stop": "0x303a110",
+      "native_frame_hex": "550e04660201238140020201044c",
+      "source": 2,
+      "destination": 1,
+      "sequence": 33059,
+      "command_type": 64,
+      "command_set": 2,
+      "command_id": 2,
+      "payload_hex": "01"
+    },
+    {
+      "label": "record_stop_0",
+      "kind": "record_stop",
+      "input_value": 0,
+      "window_start": "0x303a4f8",
+      "window_stop": "0x303a538",
+      "native_frame_hex": "550e046602012381400202008d5d",
+      "source": 2,
+      "destination": 1,
+      "sequence": 33059,
+      "command_type": 64,
+      "command_set": 2,
+      "command_id": 2,
+      "payload_hex": "00"
+    },
+    {
+      "label": "photo_normal_0",
+      "kind": "photo_normal",
+      "input_value": 0,
+      "window_start": "0x3058178",
+      "window_stop": "0x30581b8",
+      "native_frame_hex": "550e046602012381400201016c66",
+      "source": 2,
+      "destination": 1,
+      "sequence": 33059,
+      "command_type": 64,
+      "command_set": 2,
+      "command_id": 1,
+      "payload_hex": "01"
+    },
+    {
+      "label": "work_mode_0",
+      "kind": "work_mode",
+      "input_value": 0,
+      "window_start": "0x303dc5c",
+      "window_stop": "0x303dc9c",
+      "native_frame_hex": "550e04660201238140021000acfb",
+      "source": 2,
+      "destination": 1,
+      "sequence": 33059,
+      "command_type": 64,
+      "command_set": 2,
+      "command_id": 16,
+      "payload_hex": "00"
+    },
+    {
+      "label": "work_mode_1",
+      "kind": "work_mode",
+      "input_value": 1,
+      "window_start": "0x303dc5c",
+      "window_stop": "0x303dc9c",
+      "native_frame_hex": "550e0466020123814002100125ea",
+      "source": 2,
+      "destination": 1,
+      "sequence": 33059,
+      "command_type": 64,
+      "command_set": 2,
+      "command_id": 16,
+      "payload_hex": "01"
+    }
+  ],
+  "status_vectors": [
+    {
+      "payload_hex": "000000000000000000000000000000000000000000000000000000000034120000000000000000000000000000000000000000000000000000000000",
+      "native": {
+        "record_status": 0,
+        "is_recording": 0,
+        "recording_time_raw": 4660,
+        "shutter": 0,
+        "storing": 0,
+        "work_mode": 0
+      }
+    },
+    {
+      "payload_hex": "380008000000000000000000000000000000000000000000000000000034120000000000000000000000000000000000000000000000000000000000",
+      "native": {
+        "record_status": 0,
+        "is_recording": 0,
+        "recording_time_raw": 4660,
+        "shutter": 1,
+        "storing": 1,
+        "work_mode": 0
+      }
+    },
+    {
+      "payload_hex": "3f00ffff0000000000000000000000000000000000000000000000000034120000000000000000000000000000000000000000000000000000000000",
+      "native": {
+        "record_status": 0,
+        "is_recording": 0,
+        "recording_time_raw": 4660,
+        "shutter": 1,
+        "storing": 1,
+        "work_mode": 0
+      }
+    },
+    {
+      "payload_hex": "400000000100000000000000000000000000000000000000000000000034120000000000000000000000000000000000000000000000000000000000",
+      "native": {
+        "record_status": 1,
+        "is_recording": 1,
+        "recording_time_raw": 4660,
+        "shutter": 0,
+        "storing": 0,
+        "work_mode": 1
+      }
+    },
+    {
+      "payload_hex": "780008000100000000000000000000000000000000000000000000000034120000000000000000000000000000000000000000000000000000000000",
+      "native": {
+        "record_status": 1,
+        "is_recording": 1,
+        "recording_time_raw": 4660,
+        "shutter": 1,
+        "storing": 1,
+        "work_mode": 1
+      }
+    },
+    {
+      "payload_hex": "7f00ffff0100000000000000000000000000000000000000000000000034120000000000000000000000000000000000000000000000000000000000",
+      "native": {
+        "record_status": 1,
+        "is_recording": 1,
+        "recording_time_raw": 4660,
+        "shutter": 1,
+        "storing": 1,
+        "work_mode": 1
+      }
+    },
+    {
+      "payload_hex": "800000000000000000000000000000000000000000000000000000000034120000000000000000000000000000000000000000000000000000000000",
+      "native": {
+        "record_status": 2,
+        "is_recording": 1,
+        "recording_time_raw": 4660,
+        "shutter": 0,
+        "storing": 0,
+        "work_mode": 0
+      }
+    },
+    {
+      "payload_hex": "b80008000000000000000000000000000000000000000000000000000034120000000000000000000000000000000000000000000000000000000000",
+      "native": {
+        "record_status": 2,
+        "is_recording": 1,
+        "recording_time_raw": 4660,
+        "shutter": 1,
+        "storing": 1,
+        "work_mode": 0
+      }
+    },
+    {
+      "payload_hex": "bf00ffff0000000000000000000000000000000000000000000000000034120000000000000000000000000000000000000000000000000000000000",
+      "native": {
+        "record_status": 2,
+        "is_recording": 1,
+        "recording_time_raw": 4660,
+        "shutter": 1,
+        "storing": 1,
+        "work_mode": 0
+      }
+    },
+    {
+      "payload_hex": "c00000000100000000000000000000000000000000000000000000000034120000000000000000000000000000000000000000000000000000000000",
+      "native": {
+        "record_status": 3,
+        "is_recording": 1,
+        "recording_time_raw": 4660,
+        "shutter": 0,
+        "storing": 0,
+        "work_mode": 1
+      }
+    },
+    {
+      "payload_hex": "f80008000100000000000000000000000000000000000000000000000034120000000000000000000000000000000000000000000000000000000000",
+      "native": {
+        "record_status": 3,
+        "is_recording": 1,
+        "recording_time_raw": 4660,
+        "shutter": 1,
+        "storing": 1,
+        "work_mode": 1
+      }
+    },
+    {
+      "payload_hex": "ff00ffff0100000000000000000000000000000000000000000000000034120000000000000000000000000000000000000000000000000000000000",
+      "native": {
+        "record_status": 3,
+        "is_recording": 1,
+        "recording_time_raw": 4660,
+        "shutter": 1,
+        "storing": 1,
+        "work_mode": 1
+      }
+    }
+  ],
+  "response_vectors": [
+    {
+      "kind": "record",
+      "payload_hex": "00",
+      "missing_response": false,
+      "nonnull_zero_length": false,
+      "transport_error": 0,
+      "native_callback": "0x303c130",
+      "observed": {
+        "boundary": "SDK_error_mapping",
+        "value": 0
+      }
+    },
+    {
+      "kind": "record",
+      "payload_hex": "01",
+      "missing_response": false,
+      "nonnull_zero_length": false,
+      "transport_error": 0,
+      "native_callback": "0x303c130",
+      "observed": {
+        "boundary": "SDK_error_mapping",
+        "value": 1
+      }
+    },
+    {
+      "kind": "record",
+      "payload_hex": "7f",
+      "missing_response": false,
+      "nonnull_zero_length": false,
+      "transport_error": 0,
+      "native_callback": "0x303c130",
+      "observed": {
+        "boundary": "SDK_error_mapping",
+        "value": 127
+      }
+    },
+    {
+      "kind": "record",
+      "payload_hex": "ff",
+      "missing_response": false,
+      "nonnull_zero_length": false,
+      "transport_error": 0,
+      "native_callback": "0x303c130",
+      "observed": {
+        "boundary": "SDK_error_mapping",
+        "value": 255
+      }
+    },
+    {
+      "kind": "record",
+      "payload_hex": "00ff",
+      "missing_response": false,
+      "nonnull_zero_length": false,
+      "transport_error": 0,
+      "native_callback": "0x303c130",
+      "observed": {
+        "boundary": "SDK_error_mapping",
+        "value": 0
+      }
+    },
+    {
+      "kind": "record",
+      "payload_hex": "0100",
+      "missing_response": false,
+      "nonnull_zero_length": false,
+      "transport_error": 0,
+      "native_callback": "0x303c130",
+      "observed": {
+        "boundary": "SDK_error_mapping",
+        "value": 1
+      }
+    },
+    {
+      "kind": "record",
+      "payload_hex": "",
+      "missing_response": false,
+      "nonnull_zero_length": false,
+      "transport_error": 0,
+      "native_callback": "0x303c130",
+      "observed": {
+        "boundary": "completion",
+        "value": -11
+      }
+    },
+    {
+      "kind": "record",
+      "payload_hex": "",
+      "missing_response": true,
+      "nonnull_zero_length": false,
+      "transport_error": 0,
+      "native_callback": "0x303c130",
+      "observed": {
+        "boundary": "completion",
+        "value": -11
+      }
+    },
+    {
+      "kind": "record",
+      "payload_hex": "",
+      "missing_response": false,
+      "nonnull_zero_length": true,
+      "transport_error": 0,
+      "native_callback": "0x303c130",
+      "observed": {
+        "boundary": "SDK_error_mapping",
+        "value": 127
+      }
+    },
+    {
+      "kind": "record",
+      "payload_hex": "00",
+      "missing_response": false,
+      "nonnull_zero_length": false,
+      "transport_error": -3,
+      "native_callback": "0x303c130",
+      "observed": {
+        "boundary": "completion",
+        "value": -3
+      }
+    },
+    {
+      "kind": "record",
+      "payload_hex": "00",
+      "missing_response": false,
+      "nonnull_zero_length": false,
+      "transport_error": -99,
+      "native_callback": "0x303c130",
+      "observed": {
+        "boundary": "completion",
+        "value": -99
+      }
+    },
+    {
+      "kind": "photo",
+      "payload_hex": "00",
+      "missing_response": false,
+      "nonnull_zero_length": false,
+      "transport_error": 0,
+      "native_callback": "0x305ab50",
+      "observed": {
+        "boundary": "SDK_error_mapping",
+        "value": 0
+      }
+    },
+    {
+      "kind": "photo",
+      "payload_hex": "01",
+      "missing_response": false,
+      "nonnull_zero_length": false,
+      "transport_error": 0,
+      "native_callback": "0x305ab50",
+      "observed": {
+        "boundary": "SDK_error_mapping",
+        "value": 1
+      }
+    },
+    {
+      "kind": "photo",
+      "payload_hex": "7f",
+      "missing_response": false,
+      "nonnull_zero_length": false,
+      "transport_error": 0,
+      "native_callback": "0x305ab50",
+      "observed": {
+        "boundary": "SDK_error_mapping",
+        "value": 127
+      }
+    },
+    {
+      "kind": "photo",
+      "payload_hex": "ff",
+      "missing_response": false,
+      "nonnull_zero_length": false,
+      "transport_error": 0,
+      "native_callback": "0x305ab50",
+      "observed": {
+        "boundary": "SDK_error_mapping",
+        "value": 255
+      }
+    },
+    {
+      "kind": "photo",
+      "payload_hex": "00ff",
+      "missing_response": false,
+      "nonnull_zero_length": false,
+      "transport_error": 0,
+      "native_callback": "0x305ab50",
+      "observed": {
+        "boundary": "SDK_error_mapping",
+        "value": 0
+      }
+    },
+    {
+      "kind": "photo",
+      "payload_hex": "0100",
+      "missing_response": false,
+      "nonnull_zero_length": false,
+      "transport_error": 0,
+      "native_callback": "0x305ab50",
+      "observed": {
+        "boundary": "SDK_error_mapping",
+        "value": 1
+      }
+    },
+    {
+      "kind": "photo",
+      "payload_hex": "",
+      "missing_response": false,
+      "nonnull_zero_length": false,
+      "transport_error": 0,
+      "native_callback": "0x305ab50",
+      "observed": {
+        "boundary": "completion",
+        "value": -11
+      }
+    },
+    {
+      "kind": "photo",
+      "payload_hex": "",
+      "missing_response": true,
+      "nonnull_zero_length": false,
+      "transport_error": 0,
+      "native_callback": "0x305ab50",
+      "observed": {
+        "boundary": "completion",
+        "value": -11
+      }
+    },
+    {
+      "kind": "photo",
+      "payload_hex": "",
+      "missing_response": false,
+      "nonnull_zero_length": true,
+      "transport_error": 0,
+      "native_callback": "0x305ab50",
+      "observed": {
+        "boundary": "SDK_error_mapping",
+        "value": 127
+      }
+    },
+    {
+      "kind": "photo",
+      "payload_hex": "00",
+      "missing_response": false,
+      "nonnull_zero_length": false,
+      "transport_error": -3,
+      "native_callback": "0x305ab50",
+      "observed": {
+        "boundary": "completion",
+        "value": -3
+      }
+    },
+    {
+      "kind": "photo",
+      "payload_hex": "00",
+      "missing_response": false,
+      "nonnull_zero_length": false,
+      "transport_error": -99,
+      "native_callback": "0x305ab50",
+      "observed": {
+        "boundary": "completion",
+        "value": -99
+      }
+    },
+    {
+      "kind": "reset",
+      "payload_hex": "00",
+      "missing_response": false,
+      "nonnull_zero_length": false,
+      "transport_error": 0,
+      "native_callback": "0x30d40a8",
+      "observed": {
+        "boundary": "SDK_error_mapping",
+        "value": 0
+      }
+    },
+    {
+      "kind": "reset",
+      "payload_hex": "01",
+      "missing_response": false,
+      "nonnull_zero_length": false,
+      "transport_error": 0,
+      "native_callback": "0x30d40a8",
+      "observed": {
+        "boundary": "SDK_error_mapping",
+        "value": 1
+      }
+    },
+    {
+      "kind": "reset",
+      "payload_hex": "7f",
+      "missing_response": false,
+      "nonnull_zero_length": false,
+      "transport_error": 0,
+      "native_callback": "0x30d40a8",
+      "observed": {
+        "boundary": "SDK_error_mapping",
+        "value": 127
+      }
+    },
+    {
+      "kind": "reset",
+      "payload_hex": "ff",
+      "missing_response": false,
+      "nonnull_zero_length": false,
+      "transport_error": 0,
+      "native_callback": "0x30d40a8",
+      "observed": {
+        "boundary": "SDK_error_mapping",
+        "value": 255
+      }
+    },
+    {
+      "kind": "reset",
+      "payload_hex": "00ff",
+      "missing_response": false,
+      "nonnull_zero_length": false,
+      "transport_error": 0,
+      "native_callback": "0x30d40a8",
+      "observed": {
+        "boundary": "SDK_error_mapping",
+        "value": 0
+      }
+    },
+    {
+      "kind": "reset",
+      "payload_hex": "0100",
+      "missing_response": false,
+      "nonnull_zero_length": false,
+      "transport_error": 0,
+      "native_callback": "0x30d40a8",
+      "observed": {
+        "boundary": "SDK_error_mapping",
+        "value": 1
+      }
+    },
+    {
+      "kind": "reset",
+      "payload_hex": "",
+      "missing_response": false,
+      "nonnull_zero_length": false,
+      "transport_error": 0,
+      "native_callback": "0x30d40a8",
+      "observed": {
+        "boundary": "completion",
+        "value": -11
+      }
+    },
+    {
+      "kind": "reset",
+      "payload_hex": "",
+      "missing_response": true,
+      "nonnull_zero_length": false,
+      "transport_error": 0,
+      "native_callback": "0x30d40a8",
+      "observed": {
+        "boundary": "completion",
+        "value": -11
+      }
+    },
+    {
+      "kind": "reset",
+      "payload_hex": "",
+      "missing_response": false,
+      "nonnull_zero_length": true,
+      "transport_error": 0,
+      "native_callback": "0x30d40a8",
+      "observed": {
+        "boundary": "SDK_error_mapping",
+        "value": 127
+      }
+    },
+    {
+      "kind": "reset",
+      "payload_hex": "00",
+      "missing_response": false,
+      "nonnull_zero_length": false,
+      "transport_error": -3,
+      "native_callback": "0x30d40a8",
+      "observed": {
+        "boundary": "completion",
+        "value": -3
+      }
+    },
+    {
+      "kind": "reset",
+      "payload_hex": "00",
+      "missing_response": false,
+      "nonnull_zero_length": false,
+      "transport_error": -99,
+      "native_callback": "0x30d40a8",
+      "observed": {
+        "boundary": "completion",
+        "value": -99
+      }
+    },
+    {
+      "kind": "work_mode",
+      "payload_hex": "00",
+      "missing_response": false,
+      "nonnull_zero_length": false,
+      "transport_error": 0,
+      "native_callback": "0x303eda0",
+      "observed": {
+        "boundary": "SDK_error_mapping",
+        "value": 0
+      }
+    },
+    {
+      "kind": "work_mode",
+      "payload_hex": "01",
+      "missing_response": false,
+      "nonnull_zero_length": false,
+      "transport_error": 0,
+      "native_callback": "0x303eda0",
+      "observed": {
+        "boundary": "SDK_error_mapping",
+        "value": 1
+      }
+    },
+    {
+      "kind": "work_mode",
+      "payload_hex": "7f",
+      "missing_response": false,
+      "nonnull_zero_length": false,
+      "transport_error": 0,
+      "native_callback": "0x303eda0",
+      "observed": {
+        "boundary": "SDK_error_mapping",
+        "value": 127
+      }
+    },
+    {
+      "kind": "work_mode",
+      "payload_hex": "ff",
+      "missing_response": false,
+      "nonnull_zero_length": false,
+      "transport_error": 0,
+      "native_callback": "0x303eda0",
+      "observed": {
+        "boundary": "SDK_error_mapping",
+        "value": 255
+      }
+    },
+    {
+      "kind": "work_mode",
+      "payload_hex": "00ff",
+      "missing_response": false,
+      "nonnull_zero_length": false,
+      "transport_error": 0,
+      "native_callback": "0x303eda0",
+      "observed": {
+        "boundary": "SDK_error_mapping",
+        "value": 0
+      }
+    },
+    {
+      "kind": "work_mode",
+      "payload_hex": "0100",
+      "missing_response": false,
+      "nonnull_zero_length": false,
+      "transport_error": 0,
+      "native_callback": "0x303eda0",
+      "observed": {
+        "boundary": "SDK_error_mapping",
+        "value": 1
+      }
+    },
+    {
+      "kind": "work_mode",
+      "payload_hex": "",
+      "missing_response": false,
+      "nonnull_zero_length": false,
+      "transport_error": 0,
+      "native_callback": "0x303eda0",
+      "observed": {
+        "boundary": "completion",
+        "value": -11
+      }
+    },
+    {
+      "kind": "work_mode",
+      "payload_hex": "",
+      "missing_response": true,
+      "nonnull_zero_length": false,
+      "transport_error": 0,
+      "native_callback": "0x303eda0",
+      "observed": {
+        "boundary": "completion",
+        "value": -11
+      }
+    },
+    {
+      "kind": "work_mode",
+      "payload_hex": "",
+      "missing_response": false,
+      "nonnull_zero_length": true,
+      "transport_error": 0,
+      "native_callback": "0x303eda0",
+      "observed": {
+        "boundary": "SDK_error_mapping",
+        "value": 127
+      }
+    },
+    {
+      "kind": "work_mode",
+      "payload_hex": "00",
+      "missing_response": false,
+      "nonnull_zero_length": false,
+      "transport_error": -3,
+      "native_callback": "0x303eda0",
+      "observed": {
+        "boundary": "completion",
+        "value": -3
+      }
+    },
+    {
+      "kind": "work_mode",
+      "payload_hex": "00",
+      "missing_response": false,
+      "nonnull_zero_length": false,
+      "transport_error": -99,
+      "native_callback": "0x303eda0",
+      "observed": {
+        "boundary": "completion",
+        "value": -99
+      }
+    }
+  ],
+  "camera_error_mapping_by_raw_byte": [
+    0,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -448,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -464,
+    -465,
+    -466,
+    -467,
+    -468,
+    -469,
+    -470,
+    -471,
+    -472,
+    -473,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -7,
+    -480,
+    -481,
+    -482,
+    -483,
+    -484,
+    -485,
+    -230,
+    -487,
+    -488,
+    -489,
+    -490,
+    -491,
+    -492,
+    -493,
+    -494,
+    -495,
+    -496,
+    -497,
+    -498,
+    -499,
+    -500,
+    -501,
+    -502,
+    -503,
+    -504,
+    -505,
+    -506,
+    -507,
+    -508,
+    -509,
+    -510,
+    -511
+  ],
+  "guest_imports": [
+    "malloc",
+    "memcpy",
+    "memset"
+  ],
+  "bounds": {
+    "per_call_instructions": 500000,
+    "per_call_timeout_us": 1000000,
+    "heap_bytes": 33554432
+  },
+  "limitations": [
+    "All inputs are synthetic; no host SDK, socket, phone, device or RF execution.",
+    "Angle model constructor/serialization/deserialization, complete GetRotateAnglePack, Buffer and V1 encoder execute.",
+    "Reset, photo, record and work-mode use explicit producer windows after upper-layer type/cache/state admission; no complete SDK action lifecycle is claimed.",
+    "Only two model vtable GOT relocations are installed in key-value; those vtables are not dispatched.",
+    "Constructor receiver index0 and sourceAPP2 are verified, but Neo2 runtime abstraction choice and firmware support are unproven.",
+    "Pitch mechanical range, duration unit, upper-action joint reference and camera recording-time unit are unproven.",
+    "ActionRotateAngle uses SendPack with an empty callback and enqueue completion; no application ACK parser for04/14 is established.",
+    "Other actual response callbacks and raw byte0 getters execute to error-mapping/completion observation boundaries. The separately executed native mapper maps only raw0 to success; publication is not executed.",
+    "Null response and native empty Buffer complete\u221211. Contrived zero-length/non-null Buffer cases expose missing getter length checks, not valid empty-wire ACK acceptance.",
+    "Sequence is supplied to the encoder. Core request matching, outer WiFi51/01 wrapping, firmware acceptance, motion and file persistence are outside this probe.",
+    "Status getter leaves execute to value-construction/publication boundaries; no real push, causal action-to-status correlation or device identity is included.",
+    "CameraWorkMode0/1 names are static Java joins; mode-switch-before-action policy and waiting for a fresh matching push are PC choices, not a proven firmware requirement."
+  ]
+}

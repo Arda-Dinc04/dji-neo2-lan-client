@@ -1,0 +1,66 @@
+{
+  "schema": "neo2-control/virtual-joystick-native/v1",
+  "sdk_sha256": "fb431e44f6a4971b159e7ac811bbd568016a300d959c958df99acb08c9fa9249",
+  "sdk_base_sha256": "54f77d990d5d1d09cab9ccd0cb3499edd03e47e18d75be5b449aa149bbd4233a",
+  "virtual_vectors": [
+    {
+      "channels": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "cache_Int64Msg_value": null,
+      "synthetic_now_ns": 123456789000,
+      "native_header_hex": "01010a0003020009000002000000495700000000f40100000005000000000000",
+      "native_payload_hex": "010d00000420000108400002000006550104",
+      "native_frame_hex": "551f044e02a9238100010a010d000004200001084000020000065501042057"
+    },
+    {
+      "channels": [
+        1000,
+        -1000,
+        500,
+        -500
+      ],
+      "cache_Int64Msg_value": null,
+      "synthetic_now_ns": 123456789000,
+      "native_header_hex": "01010a0003020009000002000000495700000000f40100000005000000000000",
+      "native_payload_hex": "010d0094668b526d05400002000006550104",
+      "native_frame_hex": "551f044e02a9238100010a010d0094668b526d0540000200000655010470d1"
+    },
+    {
+      "channels": [
+        1500,
+        -2000,
+        1,
+        -1
+      ],
+      "cache_Int64Msg_value": null,
+      "synthetic_now_ns": 123456789000,
+      "native_header_hex": "01010a0003020009000002000000495700000000f40100000005000000000000",
+      "native_payload_hex": "010d00dec73600ff07400002000006550104",
+      "native_frame_hex": "551f044e02a9238100010a010d00dec73600ff07400002000006550104fd91"
+    },
+    {
+      "channels": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "cache_Int64Msg_value": 123400000,
+      "synthetic_now_ns": 123456789000,
+      "native_header_hex": "01010a0003020009000002000000495700000000f40100000005000000000000",
+      "native_payload_hex": "010d0000042000010840000200000655010456083800000000000000",
+      "native_frame_hex": "552904c902a9238100010a010d000004200001084000020000065501045608380000000000000003bd"
+    }
+  ],
+  "native_timer": [
+    {
+      "interval": 50,
+      "repeat": true
+    }
+  ],
+  "provenance": "Synthetic inputs executed by the pinned native AssemblePack and V1 encoder in a memory-only ARM64 guest; no radio traffic."
+}

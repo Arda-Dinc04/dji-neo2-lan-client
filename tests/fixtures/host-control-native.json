@@ -1,0 +1,296 @@
+{
+  "schema": "neo2-control/host-control-classification-native/v1",
+  "source_sha256": "2e1687303eef2fc224179ef10b16d0cfdf20fb2c9b7b83ce30f3c2c4a85e028c",
+  "sdk_sha256": "fb431e44f6a4971b159e7ac811bbd568016a300d959c958df99acb08c9fa9249",
+  "scope": "Native peer service copies and local51/04 callback with synthetic connection prefix; PC connectivity policy is separate",
+  "cases": [
+    {
+      "peer_services": [
+        0,
+        0
+      ],
+      "local_services": [
+        0,
+        0
+      ],
+      "connected": false,
+      "expected_sdk_mode": 65535
+    },
+    {
+      "peer_services": [
+        0,
+        0
+      ],
+      "local_services": [
+        0,
+        0
+      ],
+      "connected": true,
+      "expected_sdk_mode": 0
+    },
+    {
+      "peer_services": [
+        0,
+        0
+      ],
+      "local_services": [
+        2,
+        1
+      ],
+      "connected": false,
+      "expected_sdk_mode": 65535
+    },
+    {
+      "peer_services": [
+        0,
+        0
+      ],
+      "local_services": [
+        2,
+        1
+      ],
+      "connected": true,
+      "expected_sdk_mode": 0
+    },
+    {
+      "peer_services": [
+        0,
+        1
+      ],
+      "local_services": [
+        0,
+        0
+      ],
+      "connected": false,
+      "expected_sdk_mode": 65535
+    },
+    {
+      "peer_services": [
+        0,
+        1
+      ],
+      "local_services": [
+        0,
+        0
+      ],
+      "connected": true,
+      "expected_sdk_mode": 1
+    },
+    {
+      "peer_services": [
+        0,
+        1
+      ],
+      "local_services": [
+        2,
+        1
+      ],
+      "connected": false,
+      "expected_sdk_mode": 65535
+    },
+    {
+      "peer_services": [
+        0,
+        1
+      ],
+      "local_services": [
+        2,
+        1
+      ],
+      "connected": true,
+      "expected_sdk_mode": 1
+    },
+    {
+      "peer_services": [
+        1,
+        0
+      ],
+      "local_services": [
+        0,
+        0
+      ],
+      "connected": false,
+      "expected_sdk_mode": 65535
+    },
+    {
+      "peer_services": [
+        1,
+        0
+      ],
+      "local_services": [
+        0,
+        0
+      ],
+      "connected": true,
+      "expected_sdk_mode": 0
+    },
+    {
+      "peer_services": [
+        1,
+        0
+      ],
+      "local_services": [
+        2,
+        1
+      ],
+      "connected": false,
+      "expected_sdk_mode": 65535
+    },
+    {
+      "peer_services": [
+        1,
+        0
+      ],
+      "local_services": [
+        2,
+        1
+      ],
+      "connected": true,
+      "expected_sdk_mode": 0
+    },
+    {
+      "peer_services": [
+        1,
+        1
+      ],
+      "local_services": [
+        0,
+        0
+      ],
+      "connected": false,
+      "expected_sdk_mode": 65535
+    },
+    {
+      "peer_services": [
+        1,
+        1
+      ],
+      "local_services": [
+        0,
+        0
+      ],
+      "connected": true,
+      "expected_sdk_mode": 1
+    },
+    {
+      "peer_services": [
+        1,
+        1
+      ],
+      "local_services": [
+        2,
+        1
+      ],
+      "connected": false,
+      "expected_sdk_mode": 65535
+    },
+    {
+      "peer_services": [
+        1,
+        1
+      ],
+      "local_services": [
+        2,
+        1
+      ],
+      "connected": true,
+      "expected_sdk_mode": 1
+    },
+    {
+      "peer_services": [
+        2,
+        0
+      ],
+      "local_services": [
+        0,
+        0
+      ],
+      "connected": false,
+      "expected_sdk_mode": 65535
+    },
+    {
+      "peer_services": [
+        2,
+        0
+      ],
+      "local_services": [
+        0,
+        0
+      ],
+      "connected": true,
+      "expected_sdk_mode": 2
+    },
+    {
+      "peer_services": [
+        2,
+        0
+      ],
+      "local_services": [
+        2,
+        1
+      ],
+      "connected": false,
+      "expected_sdk_mode": 65535
+    },
+    {
+      "peer_services": [
+        2,
+        0
+      ],
+      "local_services": [
+        2,
+        1
+      ],
+      "connected": true,
+      "expected_sdk_mode": 2
+    },
+    {
+      "peer_services": [
+        2,
+        1
+      ],
+      "local_services": [
+        0,
+        0
+      ],
+      "connected": false,
+      "expected_sdk_mode": 65535
+    },
+    {
+      "peer_services": [
+        2,
+        1
+      ],
+      "local_services": [
+        0,
+        0
+      ],
+      "connected": true,
+      "expected_sdk_mode": 2
+    },
+    {
+      "peer_services": [
+        2,
+        1
+      ],
+      "local_services": [
+        2,
+        1
+      ],
+      "connected": false,
+      "expected_sdk_mode": 65535
+    },
+    {
+      "peer_services": [
+        2,
+        1
+      ],
+      "local_services": [
+        2,
+        1
+      ],
+      "connected": true,
+      "expected_sdk_mode": 2
+    }
+  ]
+}

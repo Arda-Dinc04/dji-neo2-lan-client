@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="neo2-token" content="__NEO2_TOKEN__">
+  <title>Neo 2 · Caméra</title><link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/camera.css">
+  <script type="module" src="/camera.js"></script>
+</head>
+<body>
+  <main class="console">
+    <header class="topbar"><div class="brand"><span class="brand-mark">N<span>2</span></span><div><p class="eyebrow">DJI NEO 2</p><h1>Caméra frontale</h1></div></div><div class="connection"><span id="link-state" class="status"><i></i>Déconnecté</span><button id="connect" class="primary">Connecter le drone</button><button id="disconnect" hidden>Déconnecter</button></div></header>
+    <section class="workspace" aria-label="Commande caméra">
+      <div class="viewer-column">
+        <div class="viewer"><img id="preview" alt="Image de la caméra du Neo 2" hidden><div id="empty-preview"><span class="camera-icon">◉</span><h2>Le regard du Neo 2</h2><p>Connecte le drone pour recevoir son image.</p></div><div class="viewer-top"><span id="image-state" class="image-badge">En attente</span><span id="record-state" hidden>● Enregistrement</span></div><div class="viewer-bottom"><span id="image-detail">Caméra</span><span id="battery">Batterie —</span></div></div>
+        <div class="viewer-caption"><span class="dot"></span><span id="caption">Aucune connexion active</span></div>
+        <div class="capture-bar"><div><h2>Capture</h2><p>Photos et vidéos sur le drone</p></div><div class="capture-actions"><button id="photo" disabled>◎ Prendre une photo</button><button id="record" class="record" disabled><span></span> Enregistrer</button><button id="stop-record" hidden disabled>■ Arrêter</button></div></div>
+      </div>
+      <aside class="controls">
+        <section class="control-card"><div class="card-heading"><p class="eyebrow">CADRAGE</p><h2>Inclinaison</h2><p>Oriente la caméra vers l'avant ou le bas.</p></div><div class="tilt-visual" aria-hidden="true"><div class="horizon"></div><div id="camera-direction">▰<span></span></div><span class="front-label">AVANT</span><span class="down-label">BAS</span></div><output id="pitch-label">—</output><input id="pitch" type="range" min="-30" max="0" step="1" value="0" aria-label="Angle d'inclinaison demandé" disabled><div class="range-labels"><span id="pitch-min">−30°</span><span id="pitch-max">0°</span></div><div class="tilt-buttons"><button id="tilt-up" aria-label="Incliner vers le haut" disabled>↑</button><button id="tilt-down" aria-label="Incliner vers le bas" disabled>↓</button><button id="recenter" disabled>Recentrer</button></div><p id="pitch-note" class="muted">Commande disponible après connexion.</p></section>
+        <section class="session-card"><p class="eyebrow">SESSION LOCALE</p><dl><div><dt>Connexion</dt><dd id="session-state">Au repos</dd></div><div><dt>Vidéo</dt><dd id="video-state">—</dd></div><div><dt>Dernière commande</dt><dd id="last-command">—</dd></div></dl></section>
+      </aside>
+    </section>
+    <p id="message" role="status" aria-live="polite"></p><footer>Caméra · PC local <span id="clock"></span></footer>
+  </main>
+</body>
+</html>

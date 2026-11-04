@@ -1,0 +1,652 @@
+{
+  "schema": "neo2-control/wlm-own-beacon-wire-native/v1",
+  "sdk_sha256": "fb431e44f6a4971b159e7ac811bbd568016a300d959c958df99acb08c9fa9249",
+  "provenance": "Synthetic memory-only ARM64 guest; no network/hardware or host SDK execution",
+  "cases": [
+    {
+      "producer_stack_fill": 0,
+      "dispatcher_stack_fill": 0,
+      "produced": {
+        "record_hex": "341278564400000000e0076c55ffffffff8100000000000000000000000000000000000000000000000000005544041aeee900000051130504020070632d73746174652d73796e746865746963000004040400000000000000000100000100000000000000000000341204000000865d",
+        "frame_hex": "5544041aeee900000051130504020070632d73746174652d73796e746865746963000004040400000000000000000100000100000000000000000000341204000000865d",
+        "attribute12_hex": "e0076c55ffffffff81000000",
+        "forward_flag": 0,
+        "enqueue_attribute12_hex": "e0076c55ffffffff81000000",
+        "enqueue_forward_flag": 0
+      },
+      "dispatch": {
+        "stack_fill": 0,
+        "forwarding_counter_before": 4660,
+        "forwarding_counter_after": 4660,
+        "per_link": {
+          "category": 2,
+          "attributes22_hex": "e0076c550234120000ffffffff018200000000000000",
+          "inner_hex": "5544041aeee900000051130504020070632d73746174652d73796e746865746963000004040400000000000000000100000100000000000000000000341204000000865d"
+        },
+        "attribute_writes": [
+          {
+            "pc": "0x40cbde4",
+            "offset": 13,
+            "size": 2
+          },
+          {
+            "pc": "0x40cb4a8",
+            "offset": 0,
+            "size": 4
+          },
+          {
+            "pc": "0x40cb4ac",
+            "offset": 4,
+            "size": 1
+          },
+          {
+            "pc": "0x40cb4c4",
+            "offset": 5,
+            "size": 4
+          },
+          {
+            "pc": "0x40cb4c8",
+            "offset": 9,
+            "size": 4
+          },
+          {
+            "pc": "0x40cbd50",
+            "offset": 13,
+            "size": 2
+          },
+          {
+            "pc": "0x40cbd60",
+            "offset": 13,
+            "size": 2
+          },
+          {
+            "pc": "0x40cbd70",
+            "offset": 13,
+            "size": 2
+          },
+          {
+            "pc": "0x40cbd7c",
+            "offset": 13,
+            "size": 2
+          },
+          {
+            "pc": "0x40cbe30",
+            "offset": 13,
+            "size": 2
+          },
+          {
+            "pc": "0x40cb678",
+            "offset": 4,
+            "size": 1
+          }
+        ],
+        "event_hex": "010051000000011b00100000341200005a0000005544041aeee900000051130504020070632d73746174652d73796e746865746963000004040400000000000000000100000100000000000000000000341204000000865de0076c550234120000ffffffff018200000000000000",
+        "metadata_hex": "000000000000011b070e000034120010010051005a000000000000000000000000000000000000000000000000000000",
+        "payload_hex": "5544041aeee900000051130504020070632d73746174652d73796e746865746963000004040400000000000000000100000100000000000000000000341204000000865de0076c550234120000ffffffff018200000000000000"
+      },
+      "wifi_carrier_hex": "5567048e3be934120051015544041aeee900000051130504020070632d73746174652d73796e746865746963000004040400000000000000000100000100000000000000000000341204000000865de0076c550234120000ffffffff018200000000000000670b"
+    },
+    {
+      "producer_stack_fill": 0,
+      "dispatcher_stack_fill": 0,
+      "produced": {
+        "record_hex": "341278564400000000e0076c55ffffffff8100000000000000000000000000000000000000000000000000005544041aeee900000051130504020070632d73746174652d73796e746865746963000004040400000000000000000100000100000000000000000000341204000000865d",
+        "frame_hex": "5544041aeee900000051130504020070632d73746174652d73796e746865746963000004040400000000000000000100000100000000000000000000341204000000865d",
+        "attribute12_hex": "e0076c55ffffffff81000000",
+        "forward_flag": 0,
+        "enqueue_attribute12_hex": "e0076c55ffffffff81000000",
+        "enqueue_forward_flag": 0
+      },
+      "dispatch": {
+        "stack_fill": 0,
+        "forwarding_counter_before": 65535,
+        "forwarding_counter_after": 65535,
+        "per_link": {
+          "category": 2,
+          "attributes22_hex": "e0076c5502ffff0000ffffffff018200000000000000",
+          "inner_hex": "5544041aeee900000051130504020070632d73746174652d73796e746865746963000004040400000000000000000100000100000000000000000000341204000000865d"
+        },
+        "attribute_writes": [
+          {
+            "pc": "0x40cbde4",
+            "offset": 13,
+            "size": 2
+          },
+          {
+            "pc": "0x40cb4a8",
+            "offset": 0,
+            "size": 4
+          },
+          {
+            "pc": "0x40cb4ac",
+            "offset": 4,
+            "size": 1
+          },
+          {
+            "pc": "0x40cb4c4",
+            "offset": 5,
+            "size": 4
+          },
+          {
+            "pc": "0x40cb4c8",
+            "offset": 9,
+            "size": 4
+          },
+          {
+            "pc": "0x40cbd50",
+            "offset": 13,
+            "size": 2
+          },
+          {
+            "pc": "0x40cbd60",
+            "offset": 13,
+            "size": 2
+          },
+          {
+            "pc": "0x40cbd70",
+            "offset": 13,
+            "size": 2
+          },
+          {
+            "pc": "0x40cbd7c",
+            "offset": 13,
+            "size": 2
+          },
+          {
+            "pc": "0x40cbe30",
+            "offset": 13,
+            "size": 2
+          },
+          {
+            "pc": "0x40cb678",
+            "offset": 4,
+            "size": 1
+          }
+        ],
+        "event_hex": "010051000000011b00100000ffff00005a0000005544041aeee900000051130504020070632d73746174652d73796e746865746963000004040400000000000000000100000100000000000000000000341204000000865de0076c5502ffff0000ffffffff018200000000000000",
+        "metadata_hex": "000000000000011b070e0000ffff0010010051005a000000000000000000000000000000000000000000000000000000",
+        "payload_hex": "5544041aeee900000051130504020070632d73746174652d73796e746865746963000004040400000000000000000100000100000000000000000000341204000000865de0076c5502ffff0000ffffffff018200000000000000"
+      },
+      "wifi_carrier_hex": "5567048e3be9ffff0051015544041aeee900000051130504020070632d73746174652d73796e746865746963000004040400000000000000000100000100000000000000000000341204000000865de0076c5502ffff0000ffffffff0182000000000000005dbc"
+    },
+    {
+      "producer_stack_fill": 0,
+      "dispatcher_stack_fill": 0,
+      "produced": {
+        "record_hex": "341278564400000000e0076c55ffffffff8100000000000000000000000000000000000000000000000000005544041aeee900000051130504020070632d73746174652d73796e746865746963000004040400000000000000000100000100000000000000000000341204000000865d",
+        "frame_hex": "5544041aeee900000051130504020070632d73746174652d73796e746865746963000004040400000000000000000100000100000000000000000000341204000000865d",
+        "attribute12_hex": "e0076c55ffffffff81000000",
+        "forward_flag": 0,
+        "enqueue_attribute12_hex": "e0076c55ffffffff81000000",
+        "enqueue_forward_flag": 0
+      },
+      "dispatch": {
+        "stack_fill": 0,
+        "forwarding_counter_before": 305419896,
+        "forwarding_counter_after": 305419896,
+        "per_link": {
+          "category": 2,
+          "attributes22_hex": "e0076c550278563412ffffffff018200000000000000",
+          "inner_hex": "5544041aeee900000051130504020070632d73746174652d73796e746865746963000004040400000000000000000100000100000000000000000000341204000000865d"
+        },
+        "attribute_writes": [
+          {
+            "pc": "0x40cbde4",
+            "offset": 13,
+            "size": 2
+          },
+          {
+            "pc": "0x40cb4a8",
+            "offset": 0,
+            "size": 4
+          },
+          {
+            "pc": "0x40cb4ac",
+            "offset": 4,
+            "size": 1
+          },
+          {
+            "pc": "0x40cb4c4",
+            "offset": 5,
+            "size": 4
+          },
+          {
+            "pc": "0x40cb4c8",
+            "offset": 9,
+            "size": 4
+          },
+          {
+            "pc": "0x40cbd50",
+            "offset": 13,
+            "size": 2
+          },
+          {
+            "pc": "0x40cbd60",
+            "offset": 13,
+            "size": 2
+          },
+          {
+            "pc": "0x40cbd70",
+            "offset": 13,
+            "size": 2
+          },
+          {
+            "pc": "0x40cbd7c",
+            "offset": 13,
+            "size": 2
+          },
+          {
+            "pc": "0x40cbe30",
+            "offset": 13,
+            "size": 2
+          },
+          {
+            "pc": "0x40cb678",
+            "offset": 4,
+            "size": 1
+          }
+        ],
+        "event_hex": "010051000000011b00100000785600005a0000005544041aeee900000051130504020070632d73746174652d73796e746865746963000004040400000000000000000100000100000000000000000000341204000000865de0076c550278563412ffffffff018200000000000000",
+        "metadata_hex": "000000000000011b070e000078560010010051005a000000000000000000000000000000000000000000000000000000",
+        "payload_hex": "5544041aeee900000051130504020070632d73746174652d73796e746865746963000004040400000000000000000100000100000000000000000000341204000000865de0076c550278563412ffffffff018200000000000000"
+      },
+      "wifi_carrier_hex": "5567048e3be978560051015544041aeee900000051130504020070632d73746174652d73796e746865746963000004040400000000000000000100000100000000000000000000341204000000865de0076c550278563412ffffffff0182000000000000005744"
+    },
+    {
+      "producer_stack_fill": 0,
+      "dispatcher_stack_fill": 165,
+      "produced": {
+        "record_hex": "341278564400000000e0076c55ffffffff8100000000000000000000000000000000000000000000000000005544041aeee900000051130504020070632d73746174652d73796e746865746963000004040400000000000000000100000100000000000000000000341204000000865d",
+        "frame_hex": "5544041aeee900000051130504020070632d73746174652d73796e746865746963000004040400000000000000000100000100000000000000000000341204000000865d",
+        "attribute12_hex": "e0076c55ffffffff81000000",
+        "forward_flag": 0,
+        "enqueue_attribute12_hex": "e0076c55ffffffff81000000",
+        "enqueue_forward_flag": 0
+      },
+      "dispatch": {
+        "stack_fill": 165,
+        "forwarding_counter_before": 4660,
+        "forwarding_counter_after": 4660,
+        "per_link": {
+          "category": 2,
+          "attributes22_hex": "e0076c550234120000ffffffff0182a5a5a5a5a5a5a5",
+          "inner_hex": "5544041aeee900000051130504020070632d73746174652d73796e746865746963000004040400000000000000000100000100000000000000000000341204000000865d"
+        },
+        "attribute_writes": [
+          {
+            "pc": "0x40cbde4",
+            "offset": 13,
+            "size": 2
+          },
+          {
+            "pc": "0x40cb4a8",
+            "offset": 0,
+            "size": 4
+          },
+          {
+            "pc": "0x40cb4ac",
+            "offset": 4,
+            "size": 1
+          },
+          {
+            "pc": "0x40cb4c4",
+            "offset": 5,
+            "size": 4
+          },
+          {
+            "pc": "0x40cb4c8",
+            "offset": 9,
+            "size": 4
+          },
+          {
+            "pc": "0x40cbd50",
+            "offset": 13,
+            "size": 2
+          },
+          {
+            "pc": "0x40cbd60",
+            "offset": 13,
+            "size": 2
+          },
+          {
+            "pc": "0x40cbd70",
+            "offset": 13,
+            "size": 2
+          },
+          {
+            "pc": "0x40cbd7c",
+            "offset": 13,
+            "size": 2
+          },
+          {
+            "pc": "0x40cbe30",
+            "offset": 13,
+            "size": 2
+          },
+          {
+            "pc": "0x40cb678",
+            "offset": 4,
+            "size": 1
+          }
+        ],
+        "event_hex": "010051000000011b00100000341200005a0000005544041aeee900000051130504020070632d73746174652d73796e746865746963000004040400000000000000000100000100000000000000000000341204000000865de0076c550234120000ffffffff0182a5a5a5a5a5a5a5",
+        "metadata_hex": "000000000000011b070e000034120010010051005a00000000000000000000000000000000000000000000a5a5a5a5a5",
+        "payload_hex": "5544041aeee900000051130504020070632d73746174652d73796e746865746963000004040400000000000000000100000100000000000000000000341204000000865de0076c550234120000ffffffff0182a5a5a5a5a5a5a5"
+      },
+      "wifi_carrier_hex": "5567048e3be934120051015544041aeee900000051130504020070632d73746174652d73796e746865746963000004040400000000000000000100000100000000000000000000341204000000865de0076c550234120000ffffffff0182a5a5a5a5a5a5a56f9f"
+    },
+    {
+      "producer_stack_fill": 165,
+      "dispatcher_stack_fill": 0,
+      "produced": {
+        "record_hex": "341278564400000000e0076c55ffffffff8100000000000000000000000000000000000000000000000000005544041aeee9a5a50051130504020070632d73746174652d73796e74686574696300000404040000000000000000010000010000000000000000000034120400000030c3",
+        "frame_hex": "5544041aeee9a5a50051130504020070632d73746174652d73796e74686574696300000404040000000000000000010000010000000000000000000034120400000030c3",
+        "attribute12_hex": "e0076c55ffffffff81000000",
+        "forward_flag": 0,
+        "enqueue_attribute12_hex": "e0076c55ffffffff81000000",
+        "enqueue_forward_flag": 0
+      },
+      "dispatch": {
+        "stack_fill": 0,
+        "forwarding_counter_before": 4660,
+        "forwarding_counter_after": 4660,
+        "per_link": {
+          "category": 2,
+          "attributes22_hex": "e0076c550234120000ffffffff018200000000000000",
+          "inner_hex": "5544041aeee9a5a50051130504020070632d73746174652d73796e74686574696300000404040000000000000000010000010000000000000000000034120400000030c3"
+        },
+        "attribute_writes": [
+          {
+            "pc": "0x40cbde4",
+            "offset": 13,
+            "size": 2
+          },
+          {
+            "pc": "0x40cb4a8",
+            "offset": 0,
+            "size": 4
+          },
+          {
+            "pc": "0x40cb4ac",
+            "offset": 4,
+            "size": 1
+          },
+          {
+            "pc": "0x40cb4c4",
+            "offset": 5,
+            "size": 4
+          },
+          {
+            "pc": "0x40cb4c8",
+            "offset": 9,
+            "size": 4
+          },
+          {
+            "pc": "0x40cbd50",
+            "offset": 13,
+            "size": 2
+          },
+          {
+            "pc": "0x40cbd60",
+            "offset": 13,
+            "size": 2
+          },
+          {
+            "pc": "0x40cbd70",
+            "offset": 13,
+            "size": 2
+          },
+          {
+            "pc": "0x40cbd7c",
+            "offset": 13,
+            "size": 2
+          },
+          {
+            "pc": "0x40cbe30",
+            "offset": 13,
+            "size": 2
+          },
+          {
+            "pc": "0x40cb678",
+            "offset": 4,
+            "size": 1
+          }
+        ],
+        "event_hex": "010051000000011b00100000341200005a0000005544041aeee9a5a50051130504020070632d73746174652d73796e74686574696300000404040000000000000000010000010000000000000000000034120400000030c3e0076c550234120000ffffffff018200000000000000",
+        "metadata_hex": "000000000000011b070e000034120010010051005a000000000000000000000000000000000000000000000000000000",
+        "payload_hex": "5544041aeee9a5a50051130504020070632d73746174652d73796e74686574696300000404040000000000000000010000010000000000000000000034120400000030c3e0076c550234120000ffffffff018200000000000000"
+      },
+      "wifi_carrier_hex": "5567048e3be934120051015544041aeee9a5a50051130504020070632d73746174652d73796e74686574696300000404040000000000000000010000010000000000000000000034120400000030c3e0076c550234120000ffffffff018200000000000000670b"
+    }
+  ],
+  "non_broadcast_controls": [
+    {
+      "changed_queue_transfer_flags": 1,
+      "dispatch": {
+        "stack_fill": 0,
+        "forwarding_counter_before": 4660,
+        "forwarding_counter_after": 4661,
+        "per_link": {
+          "category": 2,
+          "attributes22_hex": "e0076c550234120000ffffffff018200000000000000",
+          "inner_hex": "5544041aeee900000051130504020070632d73746174652d73796e746865746963000004040400000000000000000100000100000000000000000000341204000000865d"
+        },
+        "attribute_writes": [
+          {
+            "pc": "0x40cbde4",
+            "offset": 13,
+            "size": 2
+          },
+          {
+            "pc": "0x40cb4a8",
+            "offset": 0,
+            "size": 4
+          },
+          {
+            "pc": "0x40cb4ac",
+            "offset": 4,
+            "size": 1
+          },
+          {
+            "pc": "0x40cb4c4",
+            "offset": 5,
+            "size": 4
+          },
+          {
+            "pc": "0x40cb4c8",
+            "offset": 9,
+            "size": 4
+          },
+          {
+            "pc": "0x40cbd50",
+            "offset": 13,
+            "size": 2
+          },
+          {
+            "pc": "0x40cbd60",
+            "offset": 13,
+            "size": 2
+          },
+          {
+            "pc": "0x40cbd70",
+            "offset": 13,
+            "size": 2
+          },
+          {
+            "pc": "0x40cbd7c",
+            "offset": 13,
+            "size": 2
+          },
+          {
+            "pc": "0x40cbe30",
+            "offset": 13,
+            "size": 2
+          },
+          {
+            "pc": "0x40cb678",
+            "offset": 4,
+            "size": 1
+          }
+        ],
+        "event_hex": "010051000000011b00100000341200005a0000005544041aeee900000051130504020070632d73746174652d73796e746865746963000004040400000000000000000100000100000000000000000000341204000000865de0076c550234120000ffffffff018200000000000000",
+        "metadata_hex": "000000000000011b070e000034120010010051005a000000000000000000000000000000000000000000000000000000",
+        "payload_hex": "5544041aeee900000051130504020070632d73746174652d73796e746865746963000004040400000000000000000100000100000000000000000000341204000000865de0076c550234120000ffffffff018200000000000000"
+      }
+    },
+    {
+      "changed_queue_transfer_flags": 1,
+      "dispatch": {
+        "stack_fill": 0,
+        "forwarding_counter_before": 4294967295,
+        "forwarding_counter_after": 0,
+        "per_link": {
+          "category": 2,
+          "attributes22_hex": "e0076c5502ffffffffffffffff018200000000000000",
+          "inner_hex": "5544041aeee900000051130504020070632d73746174652d73796e746865746963000004040400000000000000000100000100000000000000000000341204000000865d"
+        },
+        "attribute_writes": [
+          {
+            "pc": "0x40cbde4",
+            "offset": 13,
+            "size": 2
+          },
+          {
+            "pc": "0x40cb4a8",
+            "offset": 0,
+            "size": 4
+          },
+          {
+            "pc": "0x40cb4ac",
+            "offset": 4,
+            "size": 1
+          },
+          {
+            "pc": "0x40cb4c4",
+            "offset": 5,
+            "size": 4
+          },
+          {
+            "pc": "0x40cb4c8",
+            "offset": 9,
+            "size": 4
+          },
+          {
+            "pc": "0x40cbd50",
+            "offset": 13,
+            "size": 2
+          },
+          {
+            "pc": "0x40cbd60",
+            "offset": 13,
+            "size": 2
+          },
+          {
+            "pc": "0x40cbd70",
+            "offset": 13,
+            "size": 2
+          },
+          {
+            "pc": "0x40cbd7c",
+            "offset": 13,
+            "size": 2
+          },
+          {
+            "pc": "0x40cbe30",
+            "offset": 13,
+            "size": 2
+          },
+          {
+            "pc": "0x40cb678",
+            "offset": 4,
+            "size": 1
+          }
+        ],
+        "event_hex": "010051000000011b00100000ffff00005a0000005544041aeee900000051130504020070632d73746174652d73796e746865746963000004040400000000000000000100000100000000000000000000341204000000865de0076c5502ffffffffffffffff018200000000000000",
+        "metadata_hex": "000000000000011b070e0000ffff0010010051005a000000000000000000000000000000000000000000000000000000",
+        "payload_hex": "5544041aeee900000051130504020070632d73746174652d73796e746865746963000004040400000000000000000100000100000000000000000000341204000000865de0076c5502ffffffffffffffff018200000000000000"
+      }
+    }
+  ],
+  "native_windows": {
+    "beacon": {
+      "address": "0x40b72a0",
+      "length": 772,
+      "sha256": "4f86fc8dae5d67be209d500cbf0be8cb7aa3993c04cb574bc3fa0d22c7158e85"
+    },
+    "enqueue": {
+      "address": "0x40cafbc",
+      "length": 336,
+      "sha256": "c5d942639e3f8c4a4f43acad7eed39f37b697b2dc7ac9e9c6b1278908ef477a8"
+    },
+    "dispatcher": {
+      "address": "0x40cb300",
+      "length": 1016,
+      "sha256": "6143a33b01ba58b4acf079fb803f184633ee8a2a434da37e73b6cb922ad1fdb9"
+    },
+    "transfer_attributes_suffix": {
+      "address": "0x40cb474",
+      "length": 644,
+      "sha256": "e4a0e023b80f1b82faaf53002adc0b65509916dfc243d49e47e6fb003b3cffa9"
+    },
+    "per_link": {
+      "address": "0x40cb768",
+      "length": 656,
+      "sha256": "e6847a307dd6dbe3bb75770ebce861ba35a61e898d68c28cd874d5004885a89e"
+    },
+    "append_select": {
+      "address": "0x40cb9f8",
+      "length": 308,
+      "sha256": "8728afdc87d1ae72541890478019bfa4f65a37d9c7464e0fefbc7f1c95574453"
+    },
+    "outer_event": {
+      "address": "0x40cbb2c",
+      "length": 292,
+      "sha256": "67be4aadfb17adde88fd43ad620ad28f4127efb527d1f6e0038297d330950647"
+    },
+    "event_to_metadata": {
+      "address": "0x40b9888",
+      "length": 292,
+      "sha256": "cb4d5ab69cbad209fb650341b86c2bba9dac429d8fcda455c66123f73886c3b8"
+    },
+    "wifi_agent": {
+      "address": "0x40f24a0",
+      "length": 92,
+      "sha256": "3d402ce34d82324098d3b3a48116a43b46eb9cdda42c184a3d927c3e1ee3498c"
+    },
+    "formatter": {
+      "address": "0x40cb10c",
+      "length": 280,
+      "sha256": "bf4fd7089bf05cd83f6945dc095b9c5c824731017430faf522a58f1582fc8925"
+    }
+  },
+  "guest_imports": [
+    "__memcpy_chk",
+    "__strcat_chk",
+    "__strlen_chk",
+    "calloc",
+    "malloc",
+    "memcpy",
+    "memset",
+    "strcmp",
+    "strlen",
+    "strncpy"
+  ],
+  "boundaries": [
+    "Queue available/send/receive are captured and replayed in guest memory.",
+    "Dispatcher stops using its real exit flag after one actual dequeued message.",
+    "Actual per-link buffer/event construction and WiFi relay execute; duss_mb_send_v2 ends at metadata capture.",
+    "Captured WiFi metadata is encoded with actual native DUML/CRC instructions; final enqueue is a memory capture.",
+    "WiFi-only native link state, lower client host and WiFi agent peer context are synthetic profile inputs."
+  ],
+  "limits": [
+    "No radio delivery, firmware acceptance, negotiation, MIDv3, video or flight readiness established.",
+    "The own DUML sequence halfword is uninitialized; canonical PC zero is an explicit choice.",
+    "Attribute22 bytes15..21 are untouched stack bytes; canonical PC zero is an explicit choice.",
+    "The candidate policy fields were established in verify_wlm_own_beacon, not inferred as Android defaults."
+  ],
+  "policy_choices": [
+    "Own identity pc-state-synthetic, session0x1234, SSFN0, WiFi link modes4, user_enable/access0,0,1, v3/ability0.",
+    "WiFi state0,0,1 and endpoints local WLM0e07, local WiFi agent1b01, remote WLM0907 are explicit guest inputs.",
+    "Canonical PC sequence0 and trailing7 attribute bytes0 are explicit choices for native uninitialized fields."
+  ]
+}

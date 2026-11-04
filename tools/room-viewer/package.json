@@ -1,0 +1,9 @@
+{
+  "name": "neo2-room-viewer-build",
+  "private": true,
+  "version": "1.0.0",
+  "dependencies": {
+    "esbuild": "0.25.10",
+    "three": "0.180.0"
+  }
+}

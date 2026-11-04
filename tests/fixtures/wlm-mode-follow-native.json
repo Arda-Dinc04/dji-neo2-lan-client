@@ -1,0 +1,544 @@
+{
+  "schema": "neo2-control/wlm-follow-native/v1",
+  "sdk_sha256": "fb431e44f6a4971b159e7ac811bbd568016a300d959c958df99acb08c9fa9249",
+  "registration": {
+    "cmdset_table": "0x43bbd68",
+    "cmdset": 81,
+    "command": 28,
+    "entry": "0x43bc008",
+    "slots": [
+      "0x40c2bac",
+      "0x0",
+      "0x0"
+    ]
+  },
+  "link_mode_literals": [
+    {
+      "value": 0,
+      "literal": "Unknown"
+    },
+    {
+      "value": 1,
+      "literal": "SDR_ONLY"
+    },
+    {
+      "value": 2,
+      "literal": "LTE_ONLY"
+    },
+    {
+      "value": 3,
+      "literal": "HYBRID_LTE_SDR"
+    },
+    {
+      "value": 4,
+      "literal": "WIFI_ONLY"
+    },
+    {
+      "value": 5,
+      "literal": "HYBRID_SDR_WIFI"
+    },
+    {
+      "value": 6,
+      "literal": "HYBRID_LTE_WIFI"
+    }
+  ],
+  "cases": [
+    {
+      "name": "known_uav_v1",
+      "input_payload_hex": "0100008a254236000101010000000000000000",
+      "declared_length": 19,
+      "busy": 0,
+      "stack_poison": 0,
+      "peer_hybrid": false,
+      "return_u32": 0,
+      "before": {
+        "link_modes_hex": "020202020202",
+        "service_modes_hex": "010101010000",
+        "ability_timer_exists": false
+      },
+      "after": {
+        "link_modes_hex": "010101010101",
+        "service_modes_hex": "000000000101",
+        "ability_timer_exists": false
+      },
+      "service_updates": [
+        {
+          "service_mode_hex": "0000",
+          "explicit_service_mode": 1,
+          "reason": 4
+        }
+      ],
+      "mid_updates": [
+        {
+          "mid": 0,
+          "tag": 2,
+          "body_prefix_hex": "01000000"
+        }
+      ],
+      "fmsg_arguments": [
+        {
+          "header_hex": "908d152000000709070e00000000c0001c0051002100",
+          "payload_length": 33,
+          "payload_hex": "010204e0076c550000000000010101000000000000000000000000000000000000",
+          "attribute_hex": "e0076c55ffffffff0e000000"
+        }
+      ],
+      "frames": [
+        {
+          "frame_hex": "552e04a7eee90000c0511c010204e0076c550000000000010101000000000000000000000000000000000000de2e",
+          "sender": 238,
+          "receiver": 233,
+          "sequence": 0,
+          "command_type": 192,
+          "command_set": 81,
+          "command_id": 28,
+          "payload_hex": "010204e0076c550000000000010101000000000000000000000000000000000000",
+          "attribute_hex": "e0076c55ffffffff0e000000"
+        }
+      ],
+      "timer_events": []
+    },
+    {
+      "name": "known_uav_v1_poison",
+      "input_payload_hex": "0100008a254236000101010000000000000000",
+      "declared_length": 19,
+      "busy": 0,
+      "stack_poison": 165,
+      "peer_hybrid": false,
+      "return_u32": 0,
+      "before": {
+        "link_modes_hex": "020202020202",
+        "service_modes_hex": "010101010000",
+        "ability_timer_exists": false
+      },
+      "after": {
+        "link_modes_hex": "010101010101",
+        "service_modes_hex": "000000000101",
+        "ability_timer_exists": false
+      },
+      "service_updates": [
+        {
+          "service_mode_hex": "0000",
+          "explicit_service_mode": 1,
+          "reason": 4
+        }
+      ],
+      "mid_updates": [
+        {
+          "mid": 0,
+          "tag": 2,
+          "body_prefix_hex": "01000000"
+        }
+      ],
+      "fmsg_arguments": [
+        {
+          "header_hex": "908d152000000709070ea5a5a5a5c0001c0051002100",
+          "payload_length": 33,
+          "payload_hex": "010204e0076c55000000000001010100000000a5a5a5a5a5000000000000000000",
+          "attribute_hex": "e0076c55ffffffff0e000000"
+        }
+      ],
+      "frames": [
+        {
+          "frame_hex": "552e04a7eee9a5a5c0511c010204e0076c55000000000001010100000000a5a5a5a5a50000000000000000000857",
+          "sender": 238,
+          "receiver": 233,
+          "sequence": 42405,
+          "command_type": 192,
+          "command_set": 81,
+          "command_id": 28,
+          "payload_hex": "010204e0076c55000000000001010100000000a5a5a5a5a5000000000000000000",
+          "attribute_hex": "e0076c55ffffffff0e000000"
+        }
+      ],
+      "timer_events": []
+    },
+    {
+      "name": "scene_echo",
+      "input_payload_hex": "0100008a254236070101010000000000000000",
+      "declared_length": 19,
+      "busy": 0,
+      "stack_poison": 0,
+      "peer_hybrid": false,
+      "return_u32": 0,
+      "before": {
+        "link_modes_hex": "020202020202",
+        "service_modes_hex": "010101010000",
+        "ability_timer_exists": false
+      },
+      "after": {
+        "link_modes_hex": "010101010101",
+        "service_modes_hex": "000000000101",
+        "ability_timer_exists": false
+      },
+      "service_updates": [
+        {
+          "service_mode_hex": "0000",
+          "explicit_service_mode": 1,
+          "reason": 4
+        }
+      ],
+      "mid_updates": [
+        {
+          "mid": 0,
+          "tag": 2,
+          "body_prefix_hex": "01000000"
+        }
+      ],
+      "fmsg_arguments": [
+        {
+          "header_hex": "908d152000000709070e00000000c0001c0051002100",
+          "payload_length": 33,
+          "payload_hex": "010204e0076c550700000000010101000000000000000000000000000000000000",
+          "attribute_hex": "e0076c55ffffffff0e000000"
+        }
+      ],
+      "frames": [
+        {
+          "frame_hex": "552e04a7eee90000c0511c010204e0076c5507000000000101010000000000000000000000000000000000004c5c",
+          "sender": 238,
+          "receiver": 233,
+          "sequence": 0,
+          "command_type": 192,
+          "command_set": 81,
+          "command_id": 28,
+          "payload_hex": "010204e0076c550700000000010101000000000000000000000000000000000000",
+          "attribute_hex": "e0076c55ffffffff0e000000"
+        }
+      ],
+      "timer_events": []
+    },
+    {
+      "name": "link_switch_busy",
+      "input_payload_hex": "0100008a254236000101010000000000000000",
+      "declared_length": 19,
+      "busy": 1,
+      "stack_poison": 0,
+      "peer_hybrid": false,
+      "return_u32": 0,
+      "before": {
+        "link_modes_hex": "020202020202",
+        "service_modes_hex": "010101010000",
+        "ability_timer_exists": false
+      },
+      "after": {
+        "link_modes_hex": "020202020202",
+        "service_modes_hex": "010101010000",
+        "ability_timer_exists": false
+      },
+      "service_updates": [],
+      "mid_updates": [],
+      "fmsg_arguments": [
+        {
+          "header_hex": "0000000000000709070e00000000c0001c0051002100",
+          "payload_length": 33,
+          "payload_hex": "010204e0076c550000000000020202010100000000000000000000000000000000",
+          "attribute_hex": "e0076c55ffffffff0e000000"
+        }
+      ],
+      "frames": [
+        {
+          "frame_hex": "552e04a7eee90000c0511c010204e0076c550000000000020202010100000000000000000000000000000000a34b",
+          "sender": 238,
+          "receiver": 233,
+          "sequence": 0,
+          "command_type": 192,
+          "command_set": 81,
+          "command_id": 28,
+          "payload_hex": "010204e0076c550000000000020202010100000000000000000000000000000000",
+          "attribute_hex": "e0076c55ffffffff0e000000"
+        }
+      ],
+      "timer_events": []
+    },
+    {
+      "name": "unknown_hash",
+      "input_payload_hex": "01000078563412000101010000000000000000",
+      "declared_length": 19,
+      "busy": 0,
+      "stack_poison": 0,
+      "peer_hybrid": false,
+      "return_u32": 4294966295,
+      "before": {
+        "link_modes_hex": "020202020202",
+        "service_modes_hex": "010101010000",
+        "ability_timer_exists": false
+      },
+      "after": {
+        "link_modes_hex": "020202020202",
+        "service_modes_hex": "010101010000",
+        "ability_timer_exists": false
+      },
+      "service_updates": [],
+      "mid_updates": [],
+      "fmsg_arguments": [
+        {
+          "header_hex": "0000000000000709070e00000000c0001c0051002100",
+          "payload_length": 33,
+          "payload_hex": "010204e0076c550017fcffff020202010100000000000000000000000000000000",
+          "attribute_hex": "e0076c55ffffffff0e000000"
+        }
+      ],
+      "frames": [
+        {
+          "frame_hex": "552e04a7eee90000c0511c010204e0076c550017fcffff020202010100000000000000000000000000000000a6d8",
+          "sender": 238,
+          "receiver": 233,
+          "sequence": 0,
+          "command_type": 192,
+          "command_set": 81,
+          "command_id": 28,
+          "payload_hex": "010204e0076c550017fcffff020202010100000000000000000000000000000000",
+          "attribute_hex": "e0076c55ffffffff0e000000"
+        }
+      ],
+      "timer_events": []
+    },
+    {
+      "name": "wrong_device_type",
+      "input_payload_hex": "0100048a254236000101010000000000000000",
+      "declared_length": 19,
+      "busy": 0,
+      "stack_poison": 0,
+      "peer_hybrid": false,
+      "return_u32": 4294966295,
+      "before": {
+        "link_modes_hex": "020202020202",
+        "service_modes_hex": "010101010000",
+        "ability_timer_exists": false
+      },
+      "after": {
+        "link_modes_hex": "020202020202",
+        "service_modes_hex": "010101010000",
+        "ability_timer_exists": false
+      },
+      "service_updates": [],
+      "mid_updates": [],
+      "fmsg_arguments": [
+        {
+          "header_hex": "908d152000000709070e00000000c0001c0051002100",
+          "payload_length": 33,
+          "payload_hex": "010204e0076c550017fcffff020202010100000000000000000000000000000000",
+          "attribute_hex": "e0076c55ffffffff0e000000"
+        }
+      ],
+      "frames": [
+        {
+          "frame_hex": "552e04a7eee90000c0511c010204e0076c550017fcffff020202010100000000000000000000000000000000a6d8",
+          "sender": 238,
+          "receiver": 233,
+          "sequence": 0,
+          "command_type": 192,
+          "command_set": 81,
+          "command_id": 28,
+          "payload_hex": "010204e0076c550017fcffff020202010100000000000000000000000000000000",
+          "attribute_hex": "e0076c55ffffffff0e000000"
+        }
+      ],
+      "timer_events": []
+    },
+    {
+      "name": "wrong_length",
+      "input_payload_hex": "0100008a254236000101010000000000000000",
+      "declared_length": 18,
+      "busy": 0,
+      "stack_poison": 0,
+      "peer_hybrid": false,
+      "return_u32": 4294966293,
+      "before": {
+        "link_modes_hex": "020202020202",
+        "service_modes_hex": "010101010000",
+        "ability_timer_exists": false
+      },
+      "after": {
+        "link_modes_hex": "020202020202",
+        "service_modes_hex": "010101010000",
+        "ability_timer_exists": false
+      },
+      "service_updates": [],
+      "mid_updates": [],
+      "fmsg_arguments": [],
+      "frames": [],
+      "timer_events": []
+    },
+    {
+      "name": "version0_derived_service",
+      "input_payload_hex": "0000008a254236000103040000000000000000",
+      "declared_length": 19,
+      "busy": 0,
+      "stack_poison": 0,
+      "peer_hybrid": false,
+      "return_u32": 0,
+      "before": {
+        "link_modes_hex": "020202020202",
+        "service_modes_hex": "010101010000",
+        "ability_timer_exists": false
+      },
+      "after": {
+        "link_modes_hex": "010103030404",
+        "service_modes_hex": "010101010101",
+        "ability_timer_exists": false
+      },
+      "service_updates": [
+        {
+          "service_mode_hex": "0000",
+          "explicit_service_mode": 0,
+          "reason": 4
+        }
+      ],
+      "mid_updates": [],
+      "fmsg_arguments": [
+        {
+          "header_hex": "908d152000000709070e00000000c0001c0051002100",
+          "payload_length": 33,
+          "payload_hex": "010204e0076c550000000000010304010100000000000000000000000000000000",
+          "attribute_hex": "e0076c55ffffffff0e000000"
+        }
+      ],
+      "frames": [
+        {
+          "frame_hex": "552e04a7eee90000c0511c010204e0076c550000000000010304010100000000000000000000000000000000c4be",
+          "sender": 238,
+          "receiver": 233,
+          "sequence": 0,
+          "command_type": 192,
+          "command_set": 81,
+          "command_id": 28,
+          "payload_hex": "010204e0076c550000000000010304010100000000000000000000000000000000",
+          "attribute_hex": "e0076c55ffffffff0e000000"
+        }
+      ],
+      "timer_events": []
+    },
+    {
+      "name": "hybrid_peer_override",
+      "input_payload_hex": "0100008a254236000101010000000000000000",
+      "declared_length": 19,
+      "busy": 0,
+      "stack_poison": 0,
+      "peer_hybrid": true,
+      "return_u32": 0,
+      "before": {
+        "link_modes_hex": "020202020202",
+        "service_modes_hex": "010101010000",
+        "ability_timer_exists": false
+      },
+      "after": {
+        "link_modes_hex": "020203030202",
+        "service_modes_hex": "010001000101",
+        "ability_timer_exists": false
+      },
+      "service_updates": [
+        {
+          "service_mode_hex": "0100",
+          "explicit_service_mode": 1,
+          "reason": 4
+        }
+      ],
+      "mid_updates": [
+        {
+          "mid": 0,
+          "tag": 2,
+          "body_prefix_hex": "03000000"
+        }
+      ],
+      "fmsg_arguments": [
+        {
+          "header_hex": "908d152000000709070e00000000c0001c0051002100",
+          "payload_length": 33,
+          "payload_hex": "010204e0076c550000000000020302010000000000000000000000000000000000",
+          "attribute_hex": "e0076c55ffffffff0e000000"
+        }
+      ],
+      "frames": [
+        {
+          "frame_hex": "552e04a7eee90000c0511c010204e0076c550000000000020302010000000000000000000000000000000000fa84",
+          "sender": 238,
+          "receiver": 233,
+          "sequence": 0,
+          "command_type": 192,
+          "command_set": 81,
+          "command_id": 28,
+          "payload_hex": "010204e0076c550000000000020302010000000000000000000000000000000000",
+          "attribute_hex": "e0076c55ffffffff0e000000"
+        }
+      ],
+      "timer_events": []
+    },
+    {
+      "name": "hybrid_version0_derived_service",
+      "input_payload_hex": "0000008a254236000101010000000000000000",
+      "declared_length": 19,
+      "busy": 0,
+      "stack_poison": 0,
+      "peer_hybrid": true,
+      "return_u32": 0,
+      "before": {
+        "link_modes_hex": "020202020202",
+        "service_modes_hex": "010101010000",
+        "ability_timer_exists": false
+      },
+      "after": {
+        "link_modes_hex": "020203030202",
+        "service_modes_hex": "010101000101",
+        "ability_timer_exists": false
+      },
+      "service_updates": [
+        {
+          "service_mode_hex": "0201",
+          "explicit_service_mode": 0,
+          "reason": 4
+        }
+      ],
+      "mid_updates": [
+        {
+          "mid": 0,
+          "tag": 2,
+          "body_prefix_hex": "03000000"
+        }
+      ],
+      "fmsg_arguments": [
+        {
+          "header_hex": "908d152000000709070e00000000c0001c0051002100",
+          "payload_length": 33,
+          "payload_hex": "010204e0076c550000000000020302010000000000000000000000000000000000",
+          "attribute_hex": "e0076c55ffffffff0e000000"
+        }
+      ],
+      "frames": [
+        {
+          "frame_hex": "552e04a7eee90000c0511c010204e0076c550000000000020302010000000000000000000000000000000000fa84",
+          "sender": 238,
+          "receiver": 233,
+          "sequence": 0,
+          "command_type": 192,
+          "command_set": 81,
+          "command_id": 28,
+          "payload_hex": "010204e0076c550000000000020302010000000000000000000000000000000000",
+          "attribute_hex": "e0076c55ffffffff0e000000"
+        }
+      ],
+      "timer_events": []
+    }
+  ],
+  "guest_imports": [
+    "__memcpy_chk",
+    "__strcat_chk",
+    "__strlen_chk",
+    "calloc",
+    "malloc",
+    "memcpy",
+    "memset",
+    "strcmp",
+    "strlen",
+    "strncpy"
+  ],
+  "boundaries": [
+    "All identities and packet hashes are synthetic; no capture identity is replayed.",
+    "StateNative platform/agent/timer/send boundaries remain inert.",
+    "Native busy guard, hash lookup, handler, service updater and DUML formatter execute unchanged.",
+    "MID info update PLT0x41dd6d0 is captured and returns0; no real MID pool, route or scheduler is used.",
+    "ACK payload length and unwritten stack-dependent fields are retained as observations, not a wire-template recommendation."
+  ],
+  "scope": "Synthetic APP-side native51/1c cases; no real peer identities; reply tail and sequence retained as indeterminate evidence"
+}

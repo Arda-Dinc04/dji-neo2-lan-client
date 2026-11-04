@@ -1,0 +1,104 @@
+{
+  "schema": "neo2-control/wlm-forwarding-native/v1",
+  "sdk_sha256": "fb431e44f6a4971b159e7ac811bbd568016a300d959c958df99acb08c9fa9249",
+  "provenance": "Synthetic memory-only ARM64 guest; not a radio capture",
+  "examples": [
+    {
+      "link_category": 0,
+      "injected_outer_native_destination": 1795,
+      "attributes_hex": "44332211003412000088776655000000000000000000",
+      "event_metadata_hex": "0000000000000307070e0000341200100100510030000000000000000000000000000000000000000000000000000000",
+      "carrier_hex": "553d041eee673412005101551a04b1eee9238140514120010078563412040006000a00f1b244332211003412000088776655000000000000000000be10",
+      "inner_hex": "551a04b1eee9238140514120010078563412040006000a00f1b2",
+      "forwarded_hex": "551a04b1eee9238140514120010078563412040006000a00f1b244332211003412000088776655000000000000000000"
+    },
+    {
+      "link_category": 1,
+      "injected_outer_native_destination": 1794,
+      "attributes_hex": "44332211013412000088776655000000000000000000",
+      "event_metadata_hex": "0000000000000207070e0000341200100100510030000000000000000000000000000000000000000000000000000000",
+      "carrier_hex": "553d041eee473412005101551a04b1eee9238140514120010078563412040006000a00f1b244332211013412000088776655000000000000000000d393",
+      "inner_hex": "551a04b1eee9238140514120010078563412040006000a00f1b2",
+      "forwarded_hex": "551a04b1eee9238140514120010078563412040006000a00f1b244332211013412000088776655000000000000000000"
+    },
+    {
+      "link_category": 2,
+      "injected_outer_native_destination": 1793,
+      "attributes_hex": "44332211023412000088776655000000000000000000",
+      "event_metadata_hex": "0000000000000107070e0000341200100100510030000000000000000000000000000000000000000000000000000000",
+      "carrier_hex": "553d041eee273412005101551a04b1eee9238140514120010078563412040006000a00f1b244332211023412000088776655000000000000000000751e",
+      "inner_hex": "551a04b1eee9238140514120010078563412040006000a00f1b2",
+      "forwarded_hex": "551a04b1eee9238140514120010078563412040006000a00f1b244332211023412000088776655000000000000000000"
+    }
+  ],
+  "wifi_agent_frames": [
+    {
+      "injected_peer_native_host": 2311,
+      "input_local_event_hex": "010051000000011b001000003412000030000000551a04b1eee9238140514120010078563412040006000a00f1b2785634120234120000ffffffff018200000000000000",
+      "carrier_hex": "553d041e3be93412005101551a04b1eee9238140514120010078563412040006000a00f1b2785634120234120000ffffffff0182000000000000002095"
+    },
+    {
+      "injected_peer_native_host": 4611,
+      "input_local_event_hex": "010051000000011b001000003412000030000000551a04b1eee9238140514120010078563412040006000a00f1b2785634120234120000ffffffff018200000000000000",
+      "carrier_hex": "553d041e3b723412005101551a04b1eee9238140514120010078563412040006000a00f1b2785634120234120000ffffffff018200000000000000dd27"
+    }
+  ],
+  "native_windows": {
+    "per_link_buffer": {
+      "address": "0x40cb768",
+      "length": 656,
+      "sha256": "e6847a307dd6dbe3bb75770ebce861ba35a61e898d68c28cd874d5004885a89e"
+    },
+    "append_and_select_link_host": {
+      "address": "0x40cb9f8",
+      "length": 308,
+      "sha256": "8728afdc87d1ae72541890478019bfa4f65a37d9c7464e0fefbc7f1c95574453"
+    },
+    "outer_event": {
+      "address": "0x40cbb2c",
+      "length": 292,
+      "sha256": "67be4aadfb17adde88fd43ad620ad28f4127efb527d1f6e0038297d330950647"
+    },
+    "event_to_metadata": {
+      "address": "0x40b9888",
+      "length": 292,
+      "sha256": "cb4d5ab69cbad209fb650341b86c2bba9dac429d8fcda455c66123f73886c3b8"
+    },
+    "frame_encoder": {
+      "address": "0x40cb10c",
+      "length": 280,
+      "sha256": "bf4fd7089bf05cd83f6945dc095b9c5c824731017430faf522a58f1582fc8925"
+    },
+    "wifi_event_handler": {
+      "address": "0x40f24a0",
+      "length": 92,
+      "sha256": "3d402ce34d82324098d3b3a48116a43b46eb9cdda42c184a3d927c3e1ee3498c"
+    },
+    "wifi_task_peer_source": {
+      "address": "0x40f22a8",
+      "length": 128,
+      "sha256": "129432d2b9924b565bbe5a640ec9be8617e02144c1f2c9fa4684a1d7d9122803"
+    },
+    "wifi_event_registration": {
+      "address": "0x40f237c",
+      "length": 276,
+      "sha256": "14229f7d35d15d9e9efc3e88854af6c44f94650bf93d228c24f681d79796a7b6"
+    }
+  },
+  "guest_imports": [
+    "__memcpy_chk",
+    "memcpy",
+    "memset"
+  ],
+  "boundaries": [
+    "Link selection,22byte input attributes, endpoint hosts and counters injected",
+    "Native per-link buffer and event construction execute; boot time fixed0 and system-init state2",
+    "duss_mb_send_v2 captured at metadata boundary; metadata passed unchanged to native frame encoder",
+    "Frame encoding stops at enqueue capture before logging/teardown; no task, socket or device I/O"
+  ],
+  "limits": [
+    "Does not prove runtime link selection, endpoint allocation or upstream attributes",
+    "Wi-Fi agent handle and peer context are supplied; registration and peer getter separately pinned",
+    "Does not establish Neo2 query support, response, negotiation, video or flight readiness"
+  ]
+}

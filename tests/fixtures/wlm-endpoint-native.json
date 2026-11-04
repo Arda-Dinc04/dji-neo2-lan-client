@@ -1,0 +1,372 @@
+{
+  "schema": "neo2-control/wlm-endpoint-native/v1",
+  "sdk_sha256": "fb431e44f6a4971b159e7ac811bbd568016a300d959c958df99acb08c9fa9249",
+  "provenance": "Pinned native ARM64 guest; own identities synthetic; no host SDK execution or I/O",
+  "functions": {
+    "service_init": "0x40bd0f4",
+    "event_task_start": "0x40c0670",
+    "endpoint_selector": "0x40a85e8",
+    "endpoint_constructor": "0x40bb784",
+    "constant_local_wlm_host": "0x40a7e8c",
+    "set_identification": "0x40a4328",
+    "recalculate_identity": "0x40b7e2c",
+    "hash_device_id": "0x40b0620",
+    "packed_to_aligned_device_id": "0x40b22c0",
+    "ability_producer": "0x40d4380"
+  },
+  "endpoint": {
+    "native_host": 3591,
+    "wire_host": 238,
+    "context_handle_offset": 80,
+    "module_literal": "wl_manager",
+    "module_container_literal": "wl_manager_service",
+    "source": "native module selector constant; not lte_service.config.local_wlm_host_id"
+  },
+  "selectors": [
+    {
+      "module": "wl_manager",
+      "config_pointer": null,
+      "return_u32": 0,
+      "native_host": 3591
+    },
+    {
+      "module": "lte",
+      "config_pointer": null,
+      "return_u32": 0,
+      "native_host": 3590
+    },
+    {
+      "module": "pc-unsupported",
+      "config_pointer": null,
+      "return_u32": 4294966295,
+      "native_host": 43605
+    }
+  ],
+  "identities": [
+    {
+      "synthetic_identification": "pc-synthetic",
+      "usb_state": 0,
+      "device_id_hex": "04020070632d73796e7468657469630000000000000000",
+      "hash_u32": 535500460,
+      "wire": {
+        "frame_hex": "551604fcee720100405141100100ac16eb1f0000f92e",
+        "source_handle_native_host": 0,
+        "forward_flag": 0
+      }
+    },
+    {
+      "synthetic_identification": "pc-synthetic",
+      "usb_state": 1,
+      "device_id_hex": "04020770632d73796e7468657469630000000000000000",
+      "hash_u32": 535500460,
+      "wire": {
+        "frame_hex": "551604fcee720200405141100100ac16eb1f0000c7ad",
+        "source_handle_native_host": 0,
+        "forward_flag": 0
+      }
+    },
+    {
+      "synthetic_identification": "pc-synthetic",
+      "usb_state": 2,
+      "device_id_hex": "04020070632d73796e7468657469630000000000000000",
+      "hash_u32": 535500460,
+      "wire": {
+        "frame_hex": "551604fcee720300405141100100ac16eb1f00002dd3",
+        "source_handle_native_host": 0,
+        "forward_flag": 0
+      }
+    },
+    {
+      "synthetic_identification": "0123456789abcdefABC",
+      "usb_state": 0,
+      "device_id_hex": "0402003031323334353637383961626364656641424300",
+      "hash_u32": 3922411353,
+      "wire": {
+        "frame_hex": "551604fcee720400405141100100593fcbe90000c593",
+        "source_handle_native_host": 0,
+        "forward_flag": 0
+      }
+    },
+    {
+      "synthetic_identification": "0123456789abcdefABC",
+      "usb_state": 1,
+      "device_id_hex": "0402073031323334353637383961626364656641424300",
+      "hash_u32": 3922411353,
+      "wire": {
+        "frame_hex": "551604fcee720500405141100100593fcbe900002fed",
+        "source_handle_native_host": 0,
+        "forward_flag": 0
+      }
+    },
+    {
+      "synthetic_identification": "0123456789abcdefABC",
+      "usb_state": 2,
+      "device_id_hex": "0402003031323334353637383961626364656641424300",
+      "hash_u32": 3922411353,
+      "wire": {
+        "frame_hex": "551604fcee720600405141100100593fcbe90000116e",
+        "source_handle_native_host": 0,
+        "forward_flag": 0
+      }
+    },
+    {
+      "synthetic_identification": "0123456789abcdefABCD-extra",
+      "usb_state": 0,
+      "device_id_hex": "0402003031323334353637383961626364656641424300",
+      "hash_u32": 3922411353,
+      "wire": {
+        "frame_hex": "551604fcee720700405141100100593fcbe90000fb10",
+        "source_handle_native_host": 0,
+        "forward_flag": 0
+      }
+    },
+    {
+      "synthetic_identification": "0123456789abcdefABCD-extra",
+      "usb_state": 1,
+      "device_id_hex": "0402073031323334353637383961626364656641424300",
+      "hash_u32": 3922411353,
+      "wire": {
+        "frame_hex": "551604fcee720800405141100100593fcbe900001f8f",
+        "source_handle_native_host": 0,
+        "forward_flag": 0
+      }
+    },
+    {
+      "synthetic_identification": "0123456789abcdefABCD-extra",
+      "usb_state": 2,
+      "device_id_hex": "0402003031323334353637383961626364656641424300",
+      "hash_u32": 3922411353,
+      "wire": {
+        "frame_hex": "551604fcee720900405141100100593fcbe90000f5f1",
+        "source_handle_native_host": 0,
+        "forward_flag": 0
+      }
+    }
+  ],
+  "hash_header_independence": [
+    {
+      "synthetic_serial_hex": "61",
+      "hashes_for_three_headers": [
+        6381360,
+        6381360,
+        6381360
+      ]
+    },
+    {
+      "synthetic_serial_hex": "3031323334353637383961626364656641424344",
+      "hashes_for_three_headers": [
+        3408170173,
+        3408170173,
+        3408170173
+      ]
+    },
+    {
+      "synthetic_serial_hex": "808182838485868788898a8b8c8d8e8f90919293",
+      "hashes_for_three_headers": [
+        1013370350,
+        1013370350,
+        1013370350
+      ]
+    }
+  ],
+  "setter_preserves_nonempty_identity": true,
+  "device_id_layout": {
+    "packed_bytes": 23,
+    "dev_type_offset": 0,
+    "dev_index_offset": 1,
+    "dev_model_offset": 2,
+    "serial_offset": 3,
+    "serial_bytes": 20,
+    "synthetic_packed_hex": "a1b2c373796e7468657469632d6c61796f757400000000",
+    "native_aligned_hex": "a1b2c35573796e7468657469632d6c61796f757400000000",
+    "aligned_serial_offset": 4,
+    "native_semantic_log_sites": [
+      "0x40b9468..0x40b9488",
+      "0x40c4750..0x40c4768"
+    ]
+  },
+  "hash": {
+    "serial_offset": 3,
+    "serial_max_bytes": 20,
+    "suffix_ascii": "_0",
+    "base": 256,
+    "modulus": 4294967291,
+    "initial": 0,
+    "setter_serial_prefix_bytes": 19,
+    "context_result_offset": 40
+  },
+  "guest_boundaries": [
+    {
+      "synthetic_config_boundary": "wlm_parse_config",
+      "destination_native_host": 4611
+    },
+    {
+      "inert_platform_or_module_boundary": "0x41ddcb0"
+    },
+    {
+      "inert_platform_or_module_boundary": "0x41ddcc0"
+    },
+    {
+      "inert_platform_or_module_boundary": "0x41ddcd0"
+    },
+    {
+      "inert_platform_or_module_boundary": "0x41ddce0"
+    },
+    {
+      "inert_platform_or_module_boundary": "0x41ddcf0"
+    },
+    {
+      "inert_platform_or_module_boundary": "0x41ddd00"
+    },
+    {
+      "inert_platform_or_module_boundary": "0x41ddd10"
+    },
+    {
+      "inert_platform_or_module_boundary": "0x41ddd30"
+    },
+    {
+      "inert_platform_or_module_boundary": "0x41ddd40"
+    },
+    {
+      "inert_boundary": "duss_event_create_msgq_and_task"
+    },
+    {
+      "inert_boundary": "duss_mb_create_client_v2",
+      "native_host": 3591
+    },
+    {
+      "inert_boundary": "duss_event_start_client",
+      "native_host": 3591
+    },
+    {
+      "inert_platform_or_module_boundary": "0x41ddd60"
+    },
+    {
+      "inert_platform_or_module_boundary": "0x41ddd70"
+    },
+    {
+      "inert_platform_or_module_boundary": "0x41ddd80"
+    },
+    {
+      "inert_platform_or_module_boundary": "0x41ddd90"
+    },
+    {
+      "inert_platform_or_module_boundary": "0x41ddda0"
+    },
+    {
+      "inert_platform_or_module_boundary": "0x41dddb0"
+    },
+    {
+      "inert_platform_or_module_boundary": "0x41dddc0"
+    },
+    {
+      "inert_platform_or_module_boundary": "0x41dddd0"
+    },
+    {
+      "inert_platform_or_module_boundary": "0x41ddde0"
+    },
+    {
+      "inert_platform_or_module_boundary": "0x41dddf0"
+    },
+    {
+      "identity_notification_boundary": "0x41dcea0"
+    },
+    {
+      "identity_notification_boundary": "0x41dceb0"
+    },
+    {
+      "identity_notification_boundary": "0x41dcec0"
+    },
+    {
+      "identity_notification_boundary": "0x41dcea0"
+    },
+    {
+      "identity_notification_boundary": "0x41dceb0"
+    },
+    {
+      "identity_notification_boundary": "0x41dcec0"
+    },
+    {
+      "identity_notification_boundary": "0x41dcea0"
+    },
+    {
+      "identity_notification_boundary": "0x41dceb0"
+    },
+    {
+      "identity_notification_boundary": "0x41dcec0"
+    },
+    {
+      "identity_notification_boundary": "0x41dcea0"
+    },
+    {
+      "identity_notification_boundary": "0x41dceb0"
+    },
+    {
+      "identity_notification_boundary": "0x41dcec0"
+    },
+    {
+      "identity_notification_boundary": "0x41dcea0"
+    },
+    {
+      "identity_notification_boundary": "0x41dceb0"
+    },
+    {
+      "identity_notification_boundary": "0x41dcec0"
+    },
+    {
+      "identity_notification_boundary": "0x41dcea0"
+    },
+    {
+      "identity_notification_boundary": "0x41dceb0"
+    },
+    {
+      "identity_notification_boundary": "0x41dcec0"
+    },
+    {
+      "identity_notification_boundary": "0x41dcea0"
+    },
+    {
+      "identity_notification_boundary": "0x41dceb0"
+    },
+    {
+      "identity_notification_boundary": "0x41dcec0"
+    },
+    {
+      "identity_notification_boundary": "0x41dcea0"
+    },
+    {
+      "identity_notification_boundary": "0x41dceb0"
+    },
+    {
+      "identity_notification_boundary": "0x41dcec0"
+    },
+    {
+      "identity_notification_boundary": "0x41dcea0"
+    },
+    {
+      "identity_notification_boundary": "0x41dceb0"
+    },
+    {
+      "identity_notification_boundary": "0x41dcec0"
+    }
+  ],
+  "guest_imports": [
+    "__memcpy_chk",
+    "__strcat_chk",
+    "__strlen_chk",
+    "calloc",
+    "malloc",
+    "memcpy",
+    "memset",
+    "strcmp",
+    "strlen",
+    "strncpy"
+  ],
+  "limitations": [
+    "Configuration parser and unrelated service/module initializers are inert boundaries.",
+    "Queue/task/client setup and send boundary never perform host I/O.",
+    "Constant endpoint is this SDK build's application endpoint; no runtime endpoint arbitration proven.",
+    "Does not justify adopting the RC/master_RC packaged service profile or its capability vectors.",
+    "Does not prove peer acceptance, negotiation state completion, video or flight readiness."
+  ]
+}

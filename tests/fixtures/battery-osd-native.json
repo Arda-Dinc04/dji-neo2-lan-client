@@ -1,0 +1,239 @@
+{
+  "schema": "neo2-control/battery-osd-fixtures/v1",
+  "sdk_sha256": "fb431e44f6a4971b159e7ac811bbd568016a300d959c958df99acb08c9fa9249",
+  "sdk_base_sha256": "54f77d990d5d1d09cab9ccd0cb3499edd03e47e18d75be5b449aa149bbd4233a",
+  "provenance": "Synthetic inputs through actual FC SDK callback; not a device capture",
+  "vectors": [
+    {
+      "name": "zero",
+      "source": "fc_03_55",
+      "payload_hex": "00000000000000000000",
+      "native": {
+        "BatteryPowerPercent": 0,
+        "BatteryVoltage": 0,
+        "FCBatteryType": 0,
+        "RequireGoHomeByLowBatteryVoltage": false,
+        "RequireLandingByLowBatteryVoltage": false,
+        "RequireGoHomeBySmartBatteryPercent": false,
+        "RequireLandingBySmartBatteryPercent": false,
+        "IsBatteryFirstChargeNotFull": false,
+        "LowBatteryWarningThreshold": 0,
+        "SeriousLowBatteryWarningThreshold": 0,
+        "VoltageWarningInfo": [
+          false,
+          false
+        ]
+      }
+    },
+    {
+      "name": "nominal-synthetic",
+      "source": "fc_03_55",
+      "payload_hex": "00000000201d32144901",
+      "native": {
+        "BatteryPowerPercent": 73,
+        "BatteryVoltage": 7456,
+        "FCBatteryType": 1,
+        "RequireGoHomeByLowBatteryVoltage": false,
+        "RequireLandingByLowBatteryVoltage": false,
+        "RequireGoHomeBySmartBatteryPercent": false,
+        "RequireLandingBySmartBatteryPercent": false,
+        "IsBatteryFirstChargeNotFull": false,
+        "LowBatteryWarningThreshold": 50,
+        "SeriousLowBatteryWarningThreshold": 20,
+        "VoltageWarningInfo": [
+          false,
+          false
+        ]
+      }
+    },
+    {
+      "name": "all-bits",
+      "source": "fc_03_55",
+      "payload_hex": "ffffffffffffffffffff",
+      "native": {
+        "BatteryPowerPercent": 255,
+        "BatteryVoltage": 65535,
+        "FCBatteryType": 3,
+        "RequireGoHomeByLowBatteryVoltage": true,
+        "RequireLandingByLowBatteryVoltage": true,
+        "RequireGoHomeBySmartBatteryPercent": true,
+        "RequireLandingBySmartBatteryPercent": true,
+        "IsBatteryFirstChargeNotFull": true,
+        "LowBatteryWarningThreshold": 127,
+        "SeriousLowBatteryWarningThreshold": 127,
+        "VoltageWarningInfo": [
+          true,
+          true
+        ]
+      }
+    },
+    {
+      "name": "low-voltage-only",
+      "source": "fc_03_55",
+      "payload_hex": "10000000d31b190f1b02",
+      "native": {
+        "BatteryPowerPercent": 27,
+        "BatteryVoltage": 7123,
+        "FCBatteryType": 2,
+        "RequireGoHomeByLowBatteryVoltage": true,
+        "RequireLandingByLowBatteryVoltage": false,
+        "RequireGoHomeBySmartBatteryPercent": false,
+        "RequireLandingBySmartBatteryPercent": false,
+        "IsBatteryFirstChargeNotFull": false,
+        "LowBatteryWarningThreshold": 25,
+        "SeriousLowBatteryWarningThreshold": 15,
+        "VoltageWarningInfo": [
+          true,
+          false
+        ]
+      }
+    },
+    {
+      "name": "percent-alerts",
+      "source": "fc_03_55",
+      "payload_hex": "0c080000201c1f951303",
+      "native": {
+        "BatteryPowerPercent": 19,
+        "BatteryVoltage": 7200,
+        "FCBatteryType": 3,
+        "RequireGoHomeByLowBatteryVoltage": false,
+        "RequireLandingByLowBatteryVoltage": false,
+        "RequireGoHomeBySmartBatteryPercent": true,
+        "RequireLandingBySmartBatteryPercent": true,
+        "IsBatteryFirstChargeNotFull": true,
+        "LowBatteryWarningThreshold": 31,
+        "SeriousLowBatteryWarningThreshold": 21,
+        "VoltageWarningInfo": [
+          false,
+          false
+        ]
+      }
+    },
+    {
+      "name": "ignored-threshold-bits",
+      "source": "fc_03_55",
+      "payload_hex": "00000000401f808064fc",
+      "native": {
+        "BatteryPowerPercent": 100,
+        "BatteryVoltage": 8000,
+        "FCBatteryType": 0,
+        "RequireGoHomeByLowBatteryVoltage": false,
+        "RequireLandingByLowBatteryVoltage": false,
+        "RequireGoHomeBySmartBatteryPercent": false,
+        "RequireLandingBySmartBatteryPercent": false,
+        "IsBatteryFirstChargeNotFull": false,
+        "LowBatteryWarningThreshold": 0,
+        "SeriousLowBatteryWarningThreshold": 0,
+        "VoltageWarningInfo": [
+          false,
+          false
+        ]
+      }
+    },
+    {
+      "name": "independent-flag-2",
+      "source": "fc_03_55",
+      "payload_hex": "04000000000000003200",
+      "native": {
+        "BatteryPowerPercent": 50,
+        "BatteryVoltage": 0,
+        "FCBatteryType": 0,
+        "RequireGoHomeByLowBatteryVoltage": false,
+        "RequireLandingByLowBatteryVoltage": false,
+        "RequireGoHomeBySmartBatteryPercent": true,
+        "RequireLandingBySmartBatteryPercent": false,
+        "IsBatteryFirstChargeNotFull": false,
+        "LowBatteryWarningThreshold": 0,
+        "SeriousLowBatteryWarningThreshold": 0,
+        "VoltageWarningInfo": [
+          false,
+          false
+        ]
+      }
+    },
+    {
+      "name": "independent-flag-3",
+      "source": "fc_03_55",
+      "payload_hex": "08000000000000003200",
+      "native": {
+        "BatteryPowerPercent": 50,
+        "BatteryVoltage": 0,
+        "FCBatteryType": 0,
+        "RequireGoHomeByLowBatteryVoltage": false,
+        "RequireLandingByLowBatteryVoltage": false,
+        "RequireGoHomeBySmartBatteryPercent": false,
+        "RequireLandingBySmartBatteryPercent": true,
+        "IsBatteryFirstChargeNotFull": false,
+        "LowBatteryWarningThreshold": 0,
+        "SeriousLowBatteryWarningThreshold": 0,
+        "VoltageWarningInfo": [
+          false,
+          false
+        ]
+      }
+    },
+    {
+      "name": "independent-flag-4",
+      "source": "fc_03_55",
+      "payload_hex": "10000000000000003200",
+      "native": {
+        "BatteryPowerPercent": 50,
+        "BatteryVoltage": 0,
+        "FCBatteryType": 0,
+        "RequireGoHomeByLowBatteryVoltage": true,
+        "RequireLandingByLowBatteryVoltage": false,
+        "RequireGoHomeBySmartBatteryPercent": false,
+        "RequireLandingBySmartBatteryPercent": false,
+        "IsBatteryFirstChargeNotFull": false,
+        "LowBatteryWarningThreshold": 0,
+        "SeriousLowBatteryWarningThreshold": 0,
+        "VoltageWarningInfo": [
+          true,
+          false
+        ]
+      }
+    },
+    {
+      "name": "independent-flag-5",
+      "source": "fc_03_55",
+      "payload_hex": "20000000000000003200",
+      "native": {
+        "BatteryPowerPercent": 50,
+        "BatteryVoltage": 0,
+        "FCBatteryType": 0,
+        "RequireGoHomeByLowBatteryVoltage": false,
+        "RequireLandingByLowBatteryVoltage": true,
+        "RequireGoHomeBySmartBatteryPercent": false,
+        "RequireLandingBySmartBatteryPercent": false,
+        "IsBatteryFirstChargeNotFull": false,
+        "LowBatteryWarningThreshold": 0,
+        "SeriousLowBatteryWarningThreshold": 0,
+        "VoltageWarningInfo": [
+          false,
+          true
+        ]
+      }
+    },
+    {
+      "name": "independent-flag-11",
+      "source": "fc_03_55",
+      "payload_hex": "00080000000000003200",
+      "native": {
+        "BatteryPowerPercent": 50,
+        "BatteryVoltage": 0,
+        "FCBatteryType": 0,
+        "RequireGoHomeByLowBatteryVoltage": false,
+        "RequireLandingByLowBatteryVoltage": false,
+        "RequireGoHomeBySmartBatteryPercent": false,
+        "RequireLandingBySmartBatteryPercent": false,
+        "IsBatteryFirstChargeNotFull": true,
+        "LowBatteryWarningThreshold": 0,
+        "SeriousLowBatteryWarningThreshold": 0,
+        "VoltageWarningInfo": [
+          false,
+          false
+        ]
+      }
+    }
+  ]
+}

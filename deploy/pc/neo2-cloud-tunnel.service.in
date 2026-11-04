@@ -1,0 +1,17 @@
+[Unit]
+Description=Neo 2 private cloud tunnel
+Wants=neo2-flight-web.service
+After=network-online.target neo2-flight-web.service
+StartLimitIntervalSec=0
+
+[Service]
+Type=exec
+WorkingDirectory=@REPO@
+ExecStart=@PYTHON@ -u @TUNNEL@ --ssh-target @SSH_TARGET@
+UMask=0077
+Restart=on-failure
+RestartSec=10
+TimeoutStopSec=15
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,2690 @@
+{
+  "schema": "neo2-control/wlm-service-switch-native/v1",
+  "sdk_sha256": "fb431e44f6a4971b159e7ac811bbd568016a300d959c958df99acb08c9fa9249",
+  "all_identities_synthetic": true,
+  "own_identity_hex": "04020070632d73746174652d73796e7468657469630000",
+  "peer_identity_hex": "000024706565722d73796e7468657469632d3030310000",
+  "own_hash": 1433143264,
+  "peer_hash": 910304650,
+  "inputs": {
+    "peer_beacon_version": 5,
+    "peer_flags": 4,
+    "peer_device_type": 0,
+    "peer_model": 36,
+    "common_version_injected": true,
+    "requester_native_host": 512,
+    "initial_modes_hex": "010101010101",
+    "initial_services_hex": "0000"
+  },
+  "registrations": [
+    {
+      "command": 2,
+      "address": "0x43bbd98",
+      "handlers": [
+        "0x40c0c00",
+        "0x0",
+        "0x0"
+      ]
+    },
+    {
+      "command": 6,
+      "address": "0x43bbdf8",
+      "handlers": [
+        "0x40c18a0",
+        "0x40c1b04",
+        "0x0"
+      ]
+    },
+    {
+      "command": 8,
+      "address": "0x43bbe28",
+      "handlers": [
+        "0x40c1c94",
+        "0x40c1f74",
+        "0x0"
+      ]
+    },
+    {
+      "command": 26,
+      "address": "0x43bbfd8",
+      "handlers": [
+        "0x40c2670",
+        "0x0",
+        "0x0"
+      ]
+    }
+  ],
+  "native_windows": {
+    "local_service_consumer": {
+      "address": "0x40c2670",
+      "file_offset": "0x40c2670",
+      "length": 1340,
+      "sha256": "697fb584f3495aabba740605a352cddb74726e36e582eadb7c79014ece329246"
+    },
+    "mode_valid_check": {
+      "address": "0x40bfd5c",
+      "file_offset": "0x40bfd5c",
+      "length": 316,
+      "sha256": "459db648edea4d4c6030cee7d13897804b659c29f256d77517af39a2cd88734e"
+    },
+    "link_switch_request": {
+      "address": "0x40c8a00",
+      "file_offset": "0x40c8a00",
+      "length": 584,
+      "sha256": "e87b465cccb7597fe7c7e6a0465b4b6fa47bfd37adbaabcfbaf8a2e363cb45d2"
+    },
+    "switch_task_loop": {
+      "address": "0x40c93a8",
+      "file_offset": "0x40c93a8",
+      "length": 540,
+      "sha256": "2256945cc2e0b15d9f8fbbd3069527e2a50792e796c0fe2b35194a6baa27423c"
+    },
+    "idle_done": {
+      "address": "0x40c9944",
+      "file_offset": "0x40c9944",
+      "length": 296,
+      "sha256": "d8ad217fc068323819467052bf75ad86d08ba6109e94a574f0085f5334baba95"
+    },
+    "state_setter_and_commit": {
+      "address": "0x40c9a6c",
+      "file_offset": "0x40c9a6c",
+      "length": 2364,
+      "sha256": "a790f50971d1d12df575d1c1d9b0782bb31ab53e45706ca353db1d64df68feb0"
+    },
+    "trigger51_02_producer": {
+      "address": "0x40ca4c8",
+      "file_offset": "0x40ca4c8",
+      "length": 320,
+      "sha256": "771621e4eb4019a5dda8b4af4b1c72d25e2e191e6e52de1def6796f8057bea60"
+    },
+    "negotiation51_08_producer": {
+      "address": "0x40ca610",
+      "file_offset": "0x40ca610",
+      "length": 408,
+      "sha256": "fee6a082afff0526d873dc904f0238c8bc2a45e61292c6de29dddeb750b00438"
+    },
+    "request51_08_consumer": {
+      "address": "0x40c1c94",
+      "file_offset": "0x40c1c94",
+      "length": 736,
+      "sha256": "6a8cf422a0810fb99510ae3d1fb8199a8a2a9132398108896a514c77cd5abf0c"
+    },
+    "ack51_08_consumer": {
+      "address": "0x40c1f74",
+      "file_offset": "0x40c1f74",
+      "length": 356,
+      "sha256": "ccf672a48a45e62510b9b0165e6ac8c78eacdb516b09ef5b21b52b31019a213d"
+    },
+    "request51_06_consumer": {
+      "address": "0x40c18a0",
+      "file_offset": "0x40c18a0",
+      "length": 612,
+      "sha256": "f0b80e098a833f3d44334d6272897431d19efed3f44acf303b52f33d5aa49109"
+    },
+    "ack51_06_consumer": {
+      "address": "0x40c1b04",
+      "file_offset": "0x40c1b04",
+      "length": 360,
+      "sha256": "a71e937defaec95c27ac9cd4b1743fc1ab0d61657f2a306af052d11f227efeb9"
+    },
+    "completion51_06_producer": {
+      "address": "0x40c8d38",
+      "file_offset": "0x40c8d38",
+      "length": 380,
+      "sha256": "9d5a3bb062831178cf576692508477c9bb6eb71a39c7ad72622ada3d0fd8bc11"
+    },
+    "agent_prepare_and_done": {
+      "address": "0x40caa64",
+      "file_offset": "0x40caa64",
+      "length": 204,
+      "sha256": "8e1ac73eddc840169d34e477015782ce695da3c8f4c51a21e4c954a0c93b440e"
+    },
+    "agent_callback": {
+      "address": "0x40cab30",
+      "file_offset": "0x40cab30",
+      "length": 136,
+      "sha256": "b4df28ca7cabbc77d0ae9fc59e8eea4e289a8301ca31ccaa2f8decad0087a705"
+    },
+    "route_prepare_and_done": {
+      "address": "0x40cabb8",
+      "file_offset": "0x40cabb8",
+      "length": 100,
+      "sha256": "47ab433e029b77a9d38684efa8216fce4c15bba5261bfc0ea158fa05359e0374"
+    },
+    "route_callback": {
+      "address": "0x40cac1c",
+      "file_offset": "0x40cac1c",
+      "length": 136,
+      "sha256": "100af88b385953d1dbdcd0d7c2fdb4331e1b4a1269d69b656dda0dfaabac6f81"
+    },
+    "completion_inform_prepare": {
+      "address": "0x40caca4",
+      "file_offset": "0x40caca4",
+      "length": 76,
+      "sha256": "9037cadf984f2238f82b890eac4c1fa34005320707df09dabd7a126f56dc9573"
+    },
+    "completion_and_wait_done": {
+      "address": "0x40cacf0",
+      "file_offset": "0x40cacf0",
+      "length": 12,
+      "sha256": "0ecfe1cb97f79ac70cbff76ed28a82a227edf4177c2c795b7ff646f0b4540090"
+    },
+    "global_timeout": {
+      "address": "0x40ca460",
+      "file_offset": "0x40ca460",
+      "length": 104,
+      "sha256": "ac90127f12e6cd3aa33d739eb9504432f43f758b9d0c7a0d5e9c63fbbea5af40"
+    },
+    "local_service_result_callback": {
+      "address": "0x40c4838",
+      "file_offset": "0x40c4838",
+      "length": 276,
+      "sha256": "dcb929e0b2f859049a8cb3bbfc3cd397c3726d5054681febf64241fd6baebe70"
+    },
+    "common_version_gate": {
+      "address": "0x40b6bc4",
+      "file_offset": "0x40b6bc4",
+      "length": 24,
+      "sha256": "01665c1cfcf5dd8fa301adff0c34769f5ad491fb148ac60483501b8d6bfa0e9e"
+    },
+    "service_mode_commit": {
+      "address": "0x40b5954",
+      "file_offset": "0x40b5954",
+      "length": 452,
+      "sha256": "7f55b50039787c88501fce16228099281c7c30df893220d942ee2623de6ef222"
+    },
+    "native_fmsg_formatter": {
+      "address": "0x40cb10c",
+      "file_offset": "0x40cb10c",
+      "length": 280,
+      "sha256": "bf4fd7089bf05cd83f6945dc095b9c5c824731017430faf522a58f1582fc8925"
+    }
+  },
+  "states": [
+    {
+      "index": 0,
+      "address": "0x43be140",
+      "name": "Idle",
+      "prepare": "0x0",
+      "done": "0x40c9944",
+      "prepare_executed_byte": 0,
+      "prepare_once_bit": 0,
+      "wait_enabled_bit": 1,
+      "wait_mask": 1,
+      "include_error_events": false,
+      "wait_ms": 500
+    },
+    {
+      "index": 1,
+      "address": "0x43be168",
+      "name": "Trigger",
+      "prepare": "0x40ca4c8",
+      "done": "0x40ca608",
+      "prepare_executed_byte": 0,
+      "prepare_once_bit": 0,
+      "wait_enabled_bit": 1,
+      "wait_mask": 2,
+      "include_error_events": true,
+      "wait_ms": 400
+    },
+    {
+      "index": 2,
+      "address": "0x43be190",
+      "name": "Negotiation",
+      "prepare": "0x40ca610",
+      "done": "0x40ca7a8",
+      "prepare_executed_byte": 0,
+      "prepare_once_bit": 0,
+      "wait_enabled_bit": 1,
+      "wait_mask": 2,
+      "include_error_events": true,
+      "wait_ms": 300
+    },
+    {
+      "index": 3,
+      "address": "0x0"
+    },
+    {
+      "index": 4,
+      "address": "0x43be1b8",
+      "name": "Agent Prepare",
+      "prepare": "0x40caa64",
+      "done": "0x40caab8",
+      "prepare_executed_byte": 0,
+      "prepare_once_bit": 1,
+      "wait_enabled_bit": 1,
+      "wait_mask": 8,
+      "include_error_events": true,
+      "wait_ms": 400
+    },
+    {
+      "index": 5,
+      "address": "0x43be1e0",
+      "name": "Route Switch",
+      "prepare": "0x40cabb8",
+      "done": "0x40cac14",
+      "prepare_executed_byte": 0,
+      "prepare_once_bit": 1,
+      "wait_enabled_bit": 1,
+      "wait_mask": 16,
+      "include_error_events": true,
+      "wait_ms": 550
+    },
+    {
+      "index": 6,
+      "address": "0x43be208",
+      "name": "Completion Inform",
+      "prepare": "0x40caca4",
+      "done": "0x40cacf0",
+      "prepare_executed_byte": 0,
+      "prepare_once_bit": 0,
+      "wait_enabled_bit": 1,
+      "wait_mask": 64,
+      "include_error_events": true,
+      "wait_ms": 200
+    },
+    {
+      "index": 7,
+      "address": "0x43be230",
+      "name": "Result Wait",
+      "prepare": "0x0",
+      "done": "0x40cacf8",
+      "prepare_executed_byte": 0,
+      "prepare_once_bit": 0,
+      "wait_enabled_bit": 1,
+      "wait_mask": 32,
+      "include_error_events": true,
+      "wait_ms": 200
+    },
+    {
+      "index": 8,
+      "address": "0x43be258",
+      "name": "Exception Report",
+      "prepare": "0x40cad00",
+      "done": "0x40cad4c",
+      "prepare_executed_byte": 0,
+      "prepare_once_bit": 0,
+      "wait_enabled_bit": 1,
+      "wait_mask": 128,
+      "include_error_events": true,
+      "wait_ms": 200
+    },
+    {
+      "index": 9,
+      "address": "0x43be280",
+      "name": "Exception Undo",
+      "prepare": "0x40cad54",
+      "done": "0x40cae8c",
+      "prepare_executed_byte": 0,
+      "prepare_once_bit": 0,
+      "wait_enabled_bit": 0,
+      "wait_mask": 128,
+      "include_error_events": true,
+      "wait_ms": 200
+    }
+  ],
+  "local_requests": [
+    {
+      "name": "no_peer",
+      "body_hex": "0000020000000000000000000000000000000000000000000000000000000000",
+      "requester_host": 512,
+      "synthetic_peer_present": false,
+      "common_version_input": 5,
+      "initial_current_services_hex": "0000",
+      "native_explicit_service_flag": 1,
+      "return_u32": 4294966293,
+      "responses": [
+        {
+          "event_prefix_hex": "1a00510000000002400000002381000020000000",
+          "body_hex": "07070700000000"
+        }
+      ],
+      "switches": [],
+      "events": [],
+      "beacon_boundaries": 0,
+      "cached_modes_hex": "010101010101",
+      "cached_service_hex": "ff000000000000",
+      "busy": 0,
+      "peer_selected": false,
+      "callback": "0x0"
+    },
+    {
+      "name": "wifi_liveview_version3",
+      "body_hex": "0000020000000000000000000000000000000000000000000000000000000000",
+      "requester_host": 512,
+      "synthetic_peer_present": true,
+      "common_version_input": 3,
+      "initial_current_services_hex": "0000",
+      "native_explicit_service_flag": 0,
+      "return_u32": 0,
+      "responses": [],
+      "switches": [
+        {
+          "modes_hex": "050404",
+          "length": 3,
+          "trigger_seq": 33059,
+          "callback": "0x40c4838",
+          "user_prefix_hex": "1a00510000000002400000002381000003000000",
+          "timeout_ms": 3000
+        }
+      ],
+      "events": [
+        {
+          "handle_nonzero": true,
+          "bits": 1
+        }
+      ],
+      "beacon_boundaries": 1,
+      "cached_modes_hex": "050104010401",
+      "cached_service_hex": "00020100000000",
+      "busy": 1,
+      "peer_selected": true,
+      "callback": "0x40c4838"
+    },
+    {
+      "name": "wifi_liveview_version5",
+      "body_hex": "0000020000000000000000000000000000000000000000000000000000000000",
+      "requester_host": 512,
+      "synthetic_peer_present": true,
+      "common_version_input": 5,
+      "initial_current_services_hex": "0000",
+      "native_explicit_service_flag": 1,
+      "return_u32": 0,
+      "responses": [],
+      "switches": [
+        {
+          "modes_hex": "0504040000000200020000",
+          "length": 11,
+          "trigger_seq": 33059,
+          "callback": "0x40c4838",
+          "user_prefix_hex": "1a0051000000000240000000238100000b000000",
+          "timeout_ms": 3000
+        }
+      ],
+      "events": [
+        {
+          "handle_nonzero": true,
+          "bits": 1
+        }
+      ],
+      "beacon_boundaries": 1,
+      "cached_modes_hex": "050104010401",
+      "cached_service_hex": "00020100000000",
+      "busy": 1,
+      "peer_selected": true,
+      "callback": "0x40c4838"
+    },
+    {
+      "name": "sdr_liveview",
+      "body_hex": "0000000000000000000000000000000000000000000000000000000000000000",
+      "requester_host": 512,
+      "synthetic_peer_present": true,
+      "common_version_input": 5,
+      "initial_current_services_hex": "0000",
+      "native_explicit_service_flag": 1,
+      "return_u32": 0,
+      "responses": [],
+      "switches": [
+        {
+          "modes_hex": "0101010000000200000000",
+          "length": 11,
+          "trigger_seq": 33059,
+          "callback": "0x40c4838",
+          "user_prefix_hex": "1a0051000000000240000000238100000b000000",
+          "timeout_ms": 3000
+        }
+      ],
+      "events": [
+        {
+          "handle_nonzero": true,
+          "bits": 1
+        }
+      ],
+      "beacon_boundaries": 1,
+      "cached_modes_hex": "010101010101",
+      "cached_service_hex": "00000000000000",
+      "busy": 1,
+      "peer_selected": true,
+      "callback": "0x40c4838"
+    },
+    {
+      "name": "invalid_liveview",
+      "body_hex": "0000030000000000000000000000000000000000000000000000000000000000",
+      "requester_host": 512,
+      "synthetic_peer_present": true,
+      "common_version_input": 5,
+      "initial_current_services_hex": "0000",
+      "native_explicit_service_flag": 1,
+      "return_u32": 4294966293,
+      "responses": [
+        {
+          "event_prefix_hex": "1a00510000000002400000002381000020000000",
+          "body_hex": "09090900000000"
+        }
+      ],
+      "switches": [],
+      "events": [],
+      "beacon_boundaries": 0,
+      "cached_modes_hex": "010101010101",
+      "cached_service_hex": "ff000000000000",
+      "busy": 0,
+      "peer_selected": true,
+      "callback": "0x40c4838"
+    },
+    {
+      "name": "highspeed_download",
+      "body_hex": "0001010000000000000000000000000000000000000000000000000000000000",
+      "requester_host": 512,
+      "synthetic_peer_present": true,
+      "common_version_input": 5,
+      "initial_current_services_hex": "0000",
+      "native_explicit_service_flag": 1,
+      "return_u32": 0,
+      "responses": [],
+      "switches": [
+        {
+          "modes_hex": "05ff040000000201010000",
+          "length": 11,
+          "trigger_seq": 33059,
+          "callback": "0x40c4838",
+          "user_prefix_hex": "1a0051000000000240000000238100000b000000",
+          "timeout_ms": 3000
+        }
+      ],
+      "events": [
+        {
+          "handle_nonzero": true,
+          "bits": 1
+        }
+      ],
+      "beacon_boundaries": 1,
+      "cached_modes_hex": "0501ff010401",
+      "cached_service_hex": "01000100000000",
+      "busy": 1,
+      "peer_selected": true,
+      "callback": "0x40c4838"
+    },
+    {
+      "name": "wifi_liveview_previous_services",
+      "body_hex": "0000020000000000000000000000000000000000000000000000000000000000",
+      "requester_host": 512,
+      "synthetic_peer_present": true,
+      "common_version_input": 5,
+      "initial_current_services_hex": "0101",
+      "native_explicit_service_flag": 1,
+      "return_u32": 0,
+      "responses": [],
+      "switches": [
+        {
+          "modes_hex": "0504040000000200020101",
+          "length": 11,
+          "trigger_seq": 33059,
+          "callback": "0x40c4838",
+          "user_prefix_hex": "1a0051000000000240000000238100000b000000",
+          "timeout_ms": 3000
+        }
+      ],
+      "events": [
+        {
+          "handle_nonzero": true,
+          "bits": 1
+        }
+      ],
+      "beacon_boundaries": 1,
+      "cached_modes_hex": "050104010401",
+      "cached_service_hex": "00020101010000",
+      "busy": 1,
+      "peer_selected": true,
+      "callback": "0x40c4838"
+    }
+  ],
+  "trigger_producers": [
+    {
+      "stack_poison": 0,
+      "return_u32": 0,
+      "frames": [
+        {
+          "frame_hex": "55180420eee90000405102050404000000020002000037f9",
+          "sender": 238,
+          "receiver": 233,
+          "sequence": 0,
+          "command_type": 64,
+          "command_set": 81,
+          "command_id": 2,
+          "payload_hex": "0504040000000200020000",
+          "attribute_hex": "e0076c558a2542360e000000"
+        }
+      ],
+      "fmsg_arguments": [
+        {
+          "header_hex": "0000000000000709070e000000004000020051000b00",
+          "payload_hex": "0504040000000200020000",
+          "attribute_hex": "e0076c558a2542360e000000"
+        }
+      ],
+      "state_pointer": "0x43be168",
+      "link_switch_seq": 6,
+      "service_cache11_hex": "0504040000000200020000",
+      "timer_events": [
+        {
+          "event": "create",
+          "callback": "0x40ca460",
+          "interval_raw": 3000000,
+          "repeat_count_raw": 1,
+          "peer_argument_nonzero": true
+        }
+      ]
+    },
+    {
+      "stack_poison": 165,
+      "return_u32": 0,
+      "frames": [
+        {
+          "frame_hex": "55180420eee9a5a540510205040400000002000200006e22",
+          "sender": 238,
+          "receiver": 233,
+          "sequence": 42405,
+          "command_type": 64,
+          "command_set": 81,
+          "command_id": 2,
+          "payload_hex": "0504040000000200020000",
+          "attribute_hex": "e0076c558a2542360e000000"
+        }
+      ],
+      "fmsg_arguments": [
+        {
+          "header_hex": "a5a5a5a5a5a50709070ea5a5a5a54000020051000b00",
+          "payload_hex": "0504040000000200020000",
+          "attribute_hex": "e0076c558a2542360e000000"
+        }
+      ],
+      "state_pointer": "0x43be168",
+      "link_switch_seq": 7,
+      "service_cache11_hex": "0504040000000200020000",
+      "timer_events": [
+        {
+          "event": "create",
+          "callback": "0x40ca460",
+          "interval_raw": 3000000,
+          "repeat_count_raw": 1,
+          "peer_argument_nonzero": true
+        }
+      ]
+    }
+  ],
+  "ack51_08": [
+    {
+      "name": "success",
+      "input_body_hex": "04020070632d73746174652d73796e746865746963000000",
+      "declared_length": 24,
+      "sequence": 33059,
+      "return_u32": 0,
+      "events": [
+        {
+          "handle_nonzero": true,
+          "bits": 2
+        }
+      ],
+      "before": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 0,
+        "state_pointer": "0x43be140",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "010101010101",
+        "peer_services_hex": "0000"
+      },
+      "after": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 0,
+        "state_pointer": "0x43be140",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "010101010101",
+        "peer_services_hex": "0000"
+      }
+    },
+    {
+      "name": "error_status",
+      "input_body_hex": "04020070632d73746174652d73796e746865746963000007",
+      "declared_length": 24,
+      "sequence": 33059,
+      "return_u32": 0,
+      "events": [
+        {
+          "handle_nonzero": true,
+          "bits": 512
+        }
+      ],
+      "before": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 0,
+        "state_pointer": "0x43be140",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "010101010101",
+        "peer_services_hex": "0000"
+      },
+      "after": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 0,
+        "state_pointer": "0x43be140",
+        "local_error": 0,
+        "peer_error": 10,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "010101010101",
+        "peer_services_hex": "0000"
+      }
+    },
+    {
+      "name": "wrong_own_sn",
+      "input_body_hex": "04020071632d73746174652d73796e746865746963000000",
+      "declared_length": 24,
+      "sequence": 33059,
+      "return_u32": 0,
+      "events": [],
+      "before": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 0,
+        "state_pointer": "0x43be140",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "010101010101",
+        "peer_services_hex": "0000"
+      },
+      "after": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 0,
+        "state_pointer": "0x43be140",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "010101010101",
+        "peer_services_hex": "0000"
+      }
+    },
+    {
+      "name": "not_busy",
+      "input_body_hex": "04020070632d73746174652d73796e746865746963000000",
+      "declared_length": 24,
+      "sequence": 33059,
+      "return_u32": 0,
+      "events": [],
+      "before": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 0,
+        "state_id": 0,
+        "state_pointer": "0x43be140",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "010101010101",
+        "peer_services_hex": "0000"
+      },
+      "after": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 0,
+        "state_id": 0,
+        "state_pointer": "0x43be140",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "010101010101",
+        "peer_services_hex": "0000"
+      }
+    },
+    {
+      "name": "short",
+      "input_body_hex": "04020070632d73746174652d73796e746865746963000000",
+      "declared_length": 23,
+      "sequence": 33059,
+      "return_u32": 0,
+      "events": [],
+      "before": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 0,
+        "state_pointer": "0x43be140",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "010101010101",
+        "peer_services_hex": "0000"
+      },
+      "after": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 0,
+        "state_pointer": "0x43be140",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "010101010101",
+        "peer_services_hex": "0000"
+      }
+    },
+    {
+      "name": "extra_byte",
+      "input_body_hex": "04020070632d73746174652d73796e746865746963000000",
+      "declared_length": 25,
+      "sequence": 33059,
+      "return_u32": 0,
+      "events": [
+        {
+          "handle_nonzero": true,
+          "bits": 2
+        }
+      ],
+      "before": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 0,
+        "state_pointer": "0x43be140",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "010101010101",
+        "peer_services_hex": "0000"
+      },
+      "after": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 0,
+        "state_pointer": "0x43be140",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "010101010101",
+        "peer_services_hex": "0000"
+      }
+    },
+    {
+      "name": "different_sequence",
+      "input_body_hex": "04020070632d73746174652d73796e746865746963000000",
+      "declared_length": 24,
+      "sequence": 4660,
+      "return_u32": 0,
+      "events": [
+        {
+          "handle_nonzero": true,
+          "bits": 2
+        }
+      ],
+      "before": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 0,
+        "state_pointer": "0x43be140",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "010101010101",
+        "peer_services_hex": "0000"
+      },
+      "after": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 0,
+        "state_pointer": "0x43be140",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "010101010101",
+        "peer_services_hex": "0000"
+      }
+    }
+  ],
+  "ack51_06": [
+    {
+      "name": "success",
+      "input_body_hex": "04020070632d73746174652d73796e746865746963000000",
+      "declared_length": 24,
+      "sequence": 33059,
+      "return_u32": 0,
+      "events": [
+        {
+          "handle_nonzero": true,
+          "bits": 64
+        }
+      ],
+      "before": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 0,
+        "state_pointer": "0x43be140",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "010101010101",
+        "peer_services_hex": "0000"
+      },
+      "after": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 0,
+        "state_pointer": "0x43be140",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "010101010101",
+        "peer_services_hex": "0000"
+      }
+    },
+    {
+      "name": "error_status",
+      "input_body_hex": "04020070632d73746174652d73796e746865746963000007",
+      "declared_length": 24,
+      "sequence": 33059,
+      "return_u32": 0,
+      "events": [
+        {
+          "handle_nonzero": true,
+          "bits": 128
+        }
+      ],
+      "before": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 0,
+        "state_pointer": "0x43be140",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "010101010101",
+        "peer_services_hex": "0000"
+      },
+      "after": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 0,
+        "state_pointer": "0x43be140",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "010101010101",
+        "peer_services_hex": "0000"
+      }
+    },
+    {
+      "name": "wrong_own_sn",
+      "input_body_hex": "04020071632d73746174652d73796e746865746963000000",
+      "declared_length": 24,
+      "sequence": 33059,
+      "return_u32": 0,
+      "events": [],
+      "before": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 0,
+        "state_pointer": "0x43be140",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "010101010101",
+        "peer_services_hex": "0000"
+      },
+      "after": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 0,
+        "state_pointer": "0x43be140",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "010101010101",
+        "peer_services_hex": "0000"
+      }
+    },
+    {
+      "name": "not_busy",
+      "input_body_hex": "04020070632d73746174652d73796e746865746963000000",
+      "declared_length": 24,
+      "sequence": 33059,
+      "return_u32": 0,
+      "events": [],
+      "before": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 0,
+        "state_id": 0,
+        "state_pointer": "0x43be140",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "010101010101",
+        "peer_services_hex": "0000"
+      },
+      "after": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 0,
+        "state_id": 0,
+        "state_pointer": "0x43be140",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "010101010101",
+        "peer_services_hex": "0000"
+      }
+    },
+    {
+      "name": "short",
+      "input_body_hex": "04020070632d73746174652d73796e746865746963000000",
+      "declared_length": 23,
+      "sequence": 33059,
+      "return_u32": 0,
+      "events": [],
+      "before": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 0,
+        "state_pointer": "0x43be140",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "010101010101",
+        "peer_services_hex": "0000"
+      },
+      "after": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 0,
+        "state_pointer": "0x43be140",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "010101010101",
+        "peer_services_hex": "0000"
+      }
+    },
+    {
+      "name": "extra_byte",
+      "input_body_hex": "04020070632d73746174652d73796e746865746963000000",
+      "declared_length": 25,
+      "sequence": 33059,
+      "return_u32": 0,
+      "events": [],
+      "before": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 0,
+        "state_pointer": "0x43be140",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "010101010101",
+        "peer_services_hex": "0000"
+      },
+      "after": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 0,
+        "state_pointer": "0x43be140",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "010101010101",
+        "peer_services_hex": "0000"
+      }
+    },
+    {
+      "name": "different_sequence",
+      "input_body_hex": "04020070632d73746174652d73796e746865746963000000",
+      "declared_length": 24,
+      "sequence": 4660,
+      "return_u32": 0,
+      "events": [
+        {
+          "handle_nonzero": true,
+          "bits": 64
+        }
+      ],
+      "before": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 0,
+        "state_pointer": "0x43be140",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "010101010101",
+        "peer_services_hex": "0000"
+      },
+      "after": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 0,
+        "state_pointer": "0x43be140",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "010101010101",
+        "peer_services_hex": "0000"
+      }
+    }
+  ],
+  "incoming51_06": [
+    {
+      "name": "success",
+      "input_body_hex": "000024706565722d73796e7468657469632d303031000004020070632d73746174652d73796e74686574696300000000000000",
+      "declared_length": 51,
+      "stack_poison": 0,
+      "return_u32": 0,
+      "frames": [
+        {
+          "frame_hex": "55250484eee92381c05106000024706565722d73796e7468657469632d3030310000002907",
+          "sender": 238,
+          "receiver": 233,
+          "sequence": 33059,
+          "command_type": 192,
+          "command_set": 81,
+          "command_id": 6,
+          "payload_hex": "000024706565722d73796e7468657469632d303031000000",
+          "attribute_hex": "e0076c558a2542360e000000"
+        }
+      ],
+      "fmsg_arguments": [
+        {
+          "header_hex": "0000000000000709070e00002381c000060051001800",
+          "payload_hex": "000024706565722d73796e7468657469632d303031000000",
+          "attribute_hex": "e0076c558a2542360e000000"
+        }
+      ],
+      "events": [
+        {
+          "handle_nonzero": true,
+          "bits": 32
+        }
+      ],
+      "before": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 0,
+        "state_pointer": "0x43be140",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "010101010101",
+        "peer_services_hex": "0000"
+      },
+      "after": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 0,
+        "state_pointer": "0x43be140",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "010101010101",
+        "peer_services_hex": "0000"
+      }
+    },
+    {
+      "name": "error_status",
+      "input_body_hex": "000024706565722d73796e7468657469632d303031000004020070632d73746174652d73796e74686574696300000778563412",
+      "declared_length": 51,
+      "stack_poison": 0,
+      "return_u32": 0,
+      "frames": [
+        {
+          "frame_hex": "55250484eee92381c05106000024706565722d73796e7468657469632d3030310000079673",
+          "sender": 238,
+          "receiver": 233,
+          "sequence": 33059,
+          "command_type": 192,
+          "command_set": 81,
+          "command_id": 6,
+          "payload_hex": "000024706565722d73796e7468657469632d303031000007",
+          "attribute_hex": "e0076c558a2542360e000000"
+        }
+      ],
+      "fmsg_arguments": [
+        {
+          "header_hex": "0000000000000709070e00002381c000060051001800",
+          "payload_hex": "000024706565722d73796e7468657469632d303031000007",
+          "attribute_hex": "e0076c558a2542360e000000"
+        }
+      ],
+      "events": [
+        {
+          "handle_nonzero": true,
+          "bits": 512
+        }
+      ],
+      "before": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 0,
+        "state_pointer": "0x43be140",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "010101010101",
+        "peer_services_hex": "0000"
+      },
+      "after": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 0,
+        "state_pointer": "0x43be140",
+        "local_error": 0,
+        "peer_error": 7,
+        "peer_detail_hex": "78563412",
+        "peer_current_modes_hex": "010101010101",
+        "peer_services_hex": "0000"
+      }
+    },
+    {
+      "name": "wrong_target_sn",
+      "input_body_hex": "000024706565722d73796e7468657469632d303031000004020071632d73746174652d73796e74686574696300000000000000",
+      "declared_length": 51,
+      "stack_poison": 0,
+      "return_u32": 0,
+      "frames": [],
+      "fmsg_arguments": [],
+      "events": [],
+      "before": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 0,
+        "state_pointer": "0x43be140",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "010101010101",
+        "peer_services_hex": "0000"
+      },
+      "after": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 0,
+        "state_pointer": "0x43be140",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "010101010101",
+        "peer_services_hex": "0000"
+      }
+    },
+    {
+      "name": "not_busy",
+      "input_body_hex": "000024706565722d73796e7468657469632d303031000004020070632d73746174652d73796e74686574696300000000000000",
+      "declared_length": 51,
+      "stack_poison": 0,
+      "return_u32": 0,
+      "frames": [
+        {
+          "frame_hex": "55250484eee92381c05106000024706565722d73796e7468657469632d3030310000002907",
+          "sender": 238,
+          "receiver": 233,
+          "sequence": 33059,
+          "command_type": 192,
+          "command_set": 81,
+          "command_id": 6,
+          "payload_hex": "000024706565722d73796e7468657469632d303031000000",
+          "attribute_hex": "e0076c558a2542360e000000"
+        }
+      ],
+      "fmsg_arguments": [
+        {
+          "header_hex": "0000000000000709070e00002381c000060051001800",
+          "payload_hex": "000024706565722d73796e7468657469632d303031000000",
+          "attribute_hex": "e0076c558a2542360e000000"
+        }
+      ],
+      "events": [],
+      "before": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 0,
+        "state_id": 0,
+        "state_pointer": "0x43be140",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "010101010101",
+        "peer_services_hex": "0000"
+      },
+      "after": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 0,
+        "state_id": 0,
+        "state_pointer": "0x43be140",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "010101010101",
+        "peer_services_hex": "0000"
+      }
+    },
+    {
+      "name": "short46",
+      "input_body_hex": "000024706565722d73796e7468657469632d303031000004020070632d73746174652d73796e74686574696300000000000000",
+      "declared_length": 46,
+      "stack_poison": 0,
+      "return_u32": 0,
+      "frames": [],
+      "fmsg_arguments": [],
+      "events": [],
+      "before": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 0,
+        "state_pointer": "0x43be140",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "010101010101",
+        "peer_services_hex": "0000"
+      },
+      "after": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 0,
+        "state_pointer": "0x43be140",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "010101010101",
+        "peer_services_hex": "0000"
+      }
+    },
+    {
+      "name": "short47_zero",
+      "input_body_hex": "000024706565722d73796e7468657469632d303031000004020070632d73746174652d73796e74686574696300000000000000",
+      "declared_length": 47,
+      "stack_poison": 0,
+      "return_u32": 0,
+      "frames": [
+        {
+          "frame_hex": "55250484eee92381c05106000024706565722d73796e7468657469632d3030310000002907",
+          "sender": 238,
+          "receiver": 233,
+          "sequence": 33059,
+          "command_type": 192,
+          "command_set": 81,
+          "command_id": 6,
+          "payload_hex": "000024706565722d73796e7468657469632d303031000000",
+          "attribute_hex": "e0076c558a2542360e000000"
+        }
+      ],
+      "fmsg_arguments": [
+        {
+          "header_hex": "0000000000000709070e00002381c000060051001800",
+          "payload_hex": "000024706565722d73796e7468657469632d303031000000",
+          "attribute_hex": "e0076c558a2542360e000000"
+        }
+      ],
+      "events": [
+        {
+          "handle_nonzero": true,
+          "bits": 32
+        }
+      ],
+      "before": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 0,
+        "state_pointer": "0x43be140",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "010101010101",
+        "peer_services_hex": "0000"
+      },
+      "after": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 0,
+        "state_pointer": "0x43be140",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "010101010101",
+        "peer_services_hex": "0000"
+      }
+    },
+    {
+      "name": "short47_a5",
+      "input_body_hex": "000024706565722d73796e7468657469632d303031000004020070632d73746174652d73796e74686574696300000000000000",
+      "declared_length": 47,
+      "stack_poison": 165,
+      "return_u32": 0,
+      "frames": [
+        {
+          "frame_hex": "55250484eee92381c05106000024706565722d73796e7468657469632d3030310000002907",
+          "sender": 238,
+          "receiver": 233,
+          "sequence": 33059,
+          "command_type": 192,
+          "command_set": 81,
+          "command_id": 6,
+          "payload_hex": "000024706565722d73796e7468657469632d303031000000",
+          "attribute_hex": "e0076c558a2542360e000000"
+        }
+      ],
+      "fmsg_arguments": [
+        {
+          "header_hex": "a5a5a5a500000709070e00002381c000060051001800",
+          "payload_hex": "000024706565722d73796e7468657469632d303031000000",
+          "attribute_hex": "e0076c558a2542360e000000"
+        }
+      ],
+      "events": [
+        {
+          "handle_nonzero": true,
+          "bits": 32
+        }
+      ],
+      "before": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 0,
+        "state_pointer": "0x43be140",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "010101010101",
+        "peer_services_hex": "0000"
+      },
+      "after": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 0,
+        "state_pointer": "0x43be140",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "a5a5a5a5",
+        "peer_current_modes_hex": "010101010101",
+        "peer_services_hex": "0000"
+      }
+    },
+    {
+      "name": "success_a5",
+      "input_body_hex": "000024706565722d73796e7468657469632d303031000004020070632d73746174652d73796e74686574696300000000000000",
+      "declared_length": 51,
+      "stack_poison": 165,
+      "return_u32": 0,
+      "frames": [
+        {
+          "frame_hex": "55250484eee92381c05106000024706565722d73796e7468657469632d3030310000002907",
+          "sender": 238,
+          "receiver": 233,
+          "sequence": 33059,
+          "command_type": 192,
+          "command_set": 81,
+          "command_id": 6,
+          "payload_hex": "000024706565722d73796e7468657469632d303031000000",
+          "attribute_hex": "e0076c558a2542360e000000"
+        }
+      ],
+      "fmsg_arguments": [
+        {
+          "header_hex": "a5a5a5a500000709070e00002381c000060051001800",
+          "payload_hex": "000024706565722d73796e7468657469632d303031000000",
+          "attribute_hex": "e0076c558a2542360e000000"
+        }
+      ],
+      "events": [
+        {
+          "handle_nonzero": true,
+          "bits": 32
+        }
+      ],
+      "before": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 0,
+        "state_pointer": "0x43be140",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "010101010101",
+        "peer_services_hex": "0000"
+      },
+      "after": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 0,
+        "state_pointer": "0x43be140",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "010101010101",
+        "peer_services_hex": "0000"
+      }
+    }
+  ],
+  "successful_phase_callbacks": [
+    {
+      "name": "idle_done",
+      "entry": "0x40c9944",
+      "synthetic_completion_input": null,
+      "return_u32": 0,
+      "before": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 0,
+        "state_pointer": "0x43be140",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "010101010101",
+        "peer_services_hex": "0000"
+      },
+      "after": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 1,
+        "state_pointer": "0x43be168",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "010101010101",
+        "peer_services_hex": "0000"
+      },
+      "frames": [],
+      "fmsg_arguments": [],
+      "events": [],
+      "local_responses": [],
+      "agent_calls": []
+    },
+    {
+      "name": "trigger_prepare",
+      "entry": "0x40ca4c8",
+      "synthetic_completion_input": null,
+      "return_u32": 0,
+      "before": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 1,
+        "state_pointer": "0x43be168",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "010101010101",
+        "peer_services_hex": "0000"
+      },
+      "after": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 1,
+        "state_pointer": "0x43be168",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "010101010101",
+        "peer_services_hex": "0000"
+      },
+      "frames": [
+        {
+          "frame_hex": "55180420eee90000405102050404000000020002000037f9",
+          "sender": 238,
+          "receiver": 233,
+          "sequence": 0,
+          "command_type": 64,
+          "command_set": 81,
+          "command_id": 2,
+          "payload_hex": "0504040000000200020000",
+          "attribute_hex": "e0076c558a2542360e000000"
+        }
+      ],
+      "fmsg_arguments": [
+        {
+          "header_hex": "0000000000000709070e000000004000020051000b00",
+          "payload_hex": "0504040000000200020000",
+          "attribute_hex": "e0076c558a2542360e000000"
+        }
+      ],
+      "events": [],
+      "local_responses": [],
+      "agent_calls": []
+    },
+    {
+      "name": "peer_negotiation51_08",
+      "entry": "0x40c1c94",
+      "synthetic_completion_input": "Remote request, synthetic identities, desired modes050404",
+      "return_u32": 0,
+      "before": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 1,
+        "state_pointer": "0x43be168",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "010101010101",
+        "peer_services_hex": "0000"
+      },
+      "after": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 1,
+        "state_pointer": "0x43be168",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "050104010401",
+        "peer_services_hex": "0000"
+      },
+      "frames": [
+        {
+          "frame_hex": "55250484eee92381c05108000024706565722d73796e7468657469632d303031000000eb3d",
+          "sender": 238,
+          "receiver": 233,
+          "sequence": 33059,
+          "command_type": 192,
+          "command_set": 81,
+          "command_id": 8,
+          "payload_hex": "000024706565722d73796e7468657469632d303031000000",
+          "attribute_hex": "e0076c558a2542360e000000"
+        }
+      ],
+      "fmsg_arguments": [
+        {
+          "header_hex": "0000000000000709070e00002381c000080051001800",
+          "payload_hex": "000024706565722d73796e7468657469632d303031000000",
+          "attribute_hex": "e0076c558a2542360e000000"
+        }
+      ],
+      "events": [
+        {
+          "handle_nonzero": true,
+          "bits": 2
+        }
+      ],
+      "local_responses": [],
+      "agent_calls": []
+    },
+    {
+      "name": "trigger_done",
+      "entry": "0x40ca608",
+      "synthetic_completion_input": null,
+      "return_u32": 0,
+      "before": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 1,
+        "state_pointer": "0x43be168",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "050104010401",
+        "peer_services_hex": "0000"
+      },
+      "after": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 4,
+        "state_pointer": "0x43be1b8",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "050104010401",
+        "peer_services_hex": "0000"
+      },
+      "frames": [],
+      "fmsg_arguments": [],
+      "events": [],
+      "local_responses": [],
+      "agent_calls": []
+    },
+    {
+      "name": "agent_prepare",
+      "entry": "0x40caa64",
+      "synthetic_completion_input": null,
+      "return_u32": 0,
+      "before": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 4,
+        "state_pointer": "0x43be1b8",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "050104010401",
+        "peer_services_hex": "0000"
+      },
+      "after": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 4,
+        "state_pointer": "0x43be1b8",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "050104010401",
+        "peer_services_hex": "0000"
+      },
+      "frames": [],
+      "fmsg_arguments": [],
+      "events": [
+        {
+          "handle_nonzero": true,
+          "bits": 2048
+        }
+      ],
+      "local_responses": [],
+      "agent_calls": [
+        {
+          "boundary": "wlm_link_ctl_request",
+          "mode": 5,
+          "callback": "0x40cab30",
+          "user_is_context": true,
+          "timeout_ms": 1500
+        }
+      ]
+    },
+    {
+      "name": "agent_success_callback",
+      "entry": "0x40cab30",
+      "synthetic_completion_input": "Physical-agent status0; event800 worker not scheduled",
+      "return_u32": 0,
+      "before": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 4,
+        "state_pointer": "0x43be1b8",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "050104010401",
+        "peer_services_hex": "0000"
+      },
+      "after": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 4,
+        "state_pointer": "0x43be1b8",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "050104010401",
+        "peer_services_hex": "0000"
+      },
+      "frames": [],
+      "fmsg_arguments": [],
+      "events": [
+        {
+          "handle_nonzero": true,
+          "bits": 8
+        }
+      ],
+      "local_responses": [],
+      "agent_calls": []
+    },
+    {
+      "name": "agent_prepare_done",
+      "entry": "0x40caab8",
+      "synthetic_completion_input": null,
+      "return_u32": 0,
+      "before": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 4,
+        "state_pointer": "0x43be1b8",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "050104010401",
+        "peer_services_hex": "0000"
+      },
+      "after": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 5,
+        "state_pointer": "0x43be1e0",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "050104010401",
+        "peer_services_hex": "0000"
+      },
+      "frames": [],
+      "fmsg_arguments": [],
+      "events": [],
+      "local_responses": [],
+      "agent_calls": []
+    },
+    {
+      "name": "route_switch_prepare",
+      "entry": "0x40cabb8",
+      "synthetic_completion_input": null,
+      "return_u32": 0,
+      "before": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 5,
+        "state_pointer": "0x43be1e0",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "050104010401",
+        "peer_services_hex": "0000"
+      },
+      "after": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 5,
+        "state_pointer": "0x43be1e0",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "050104010401",
+        "peer_services_hex": "0000"
+      },
+      "frames": [],
+      "fmsg_arguments": [],
+      "events": [
+        {
+          "handle_nonzero": true,
+          "bits": 131072
+        }
+      ],
+      "local_responses": [],
+      "agent_calls": [
+        {
+          "boundary": "wlm_route_ctl_request",
+          "mode": 5,
+          "peer_kind": 0,
+          "callback": "0x40cac1c",
+          "user_is_context": true,
+          "timeout_ms": 1500
+        }
+      ]
+    },
+    {
+      "name": "route_success_callback",
+      "entry": "0x40cac1c",
+      "synthetic_completion_input": "Route-agent status0; event20000 worker not scheduled",
+      "return_u32": 0,
+      "before": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 5,
+        "state_pointer": "0x43be1e0",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "050104010401",
+        "peer_services_hex": "0000"
+      },
+      "after": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 5,
+        "state_pointer": "0x43be1e0",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "050104010401",
+        "peer_services_hex": "0000"
+      },
+      "frames": [],
+      "fmsg_arguments": [],
+      "events": [
+        {
+          "handle_nonzero": true,
+          "bits": 16
+        }
+      ],
+      "local_responses": [],
+      "agent_calls": []
+    },
+    {
+      "name": "route_switch_done",
+      "entry": "0x40cac14",
+      "synthetic_completion_input": null,
+      "return_u32": 0,
+      "before": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 5,
+        "state_pointer": "0x43be1e0",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "050104010401",
+        "peer_services_hex": "0000"
+      },
+      "after": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 6,
+        "state_pointer": "0x43be208",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "050104010401",
+        "peer_services_hex": "0000"
+      },
+      "frames": [],
+      "fmsg_arguments": [],
+      "events": [],
+      "local_responses": [],
+      "agent_calls": []
+    },
+    {
+      "name": "completion_inform_prepare",
+      "entry": "0x40caca4",
+      "synthetic_completion_input": null,
+      "return_u32": 0,
+      "before": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 6,
+        "state_pointer": "0x43be208",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "050104010401",
+        "peer_services_hex": "0000"
+      },
+      "after": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 6,
+        "state_pointer": "0x43be208",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "050104010401",
+        "peer_services_hex": "0000"
+      },
+      "frames": [
+        {
+          "frame_hex": "55400421eee9000040510604020070632d73746174652d73796e7468657469630000000024706565722d73796e7468657469632d30303100000000000000772a",
+          "sender": 238,
+          "receiver": 233,
+          "sequence": 0,
+          "command_type": 64,
+          "command_set": 81,
+          "command_id": 6,
+          "payload_hex": "04020070632d73746174652d73796e7468657469630000000024706565722d73796e7468657469632d30303100000000000000",
+          "attribute_hex": "e0076c558a2542360e000000"
+        }
+      ],
+      "fmsg_arguments": [
+        {
+          "header_hex": "0000000000000709070e000000004000060051003300",
+          "payload_hex": "04020070632d73746174652d73796e7468657469630000000024706565722d73796e7468657469632d30303100000000000000",
+          "attribute_hex": "e0076c558a2542360e000000"
+        }
+      ],
+      "events": [],
+      "local_responses": [],
+      "agent_calls": []
+    },
+    {
+      "name": "ack51_06",
+      "entry": "0x40c1b04",
+      "synthetic_completion_input": "Remote ACK, own synthetic identity, status0",
+      "return_u32": 0,
+      "before": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 6,
+        "state_pointer": "0x43be208",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "050104010401",
+        "peer_services_hex": "0000"
+      },
+      "after": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 6,
+        "state_pointer": "0x43be208",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "050104010401",
+        "peer_services_hex": "0000"
+      },
+      "frames": [],
+      "fmsg_arguments": [],
+      "events": [
+        {
+          "handle_nonzero": true,
+          "bits": 64
+        }
+      ],
+      "local_responses": [],
+      "agent_calls": []
+    },
+    {
+      "name": "completion_inform_done",
+      "entry": "0x40cacf0",
+      "synthetic_completion_input": null,
+      "return_u32": 0,
+      "before": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 6,
+        "state_pointer": "0x43be208",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "050104010401",
+        "peer_services_hex": "0000"
+      },
+      "after": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 7,
+        "state_pointer": "0x43be230",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "050104010401",
+        "peer_services_hex": "0000"
+      },
+      "frames": [],
+      "fmsg_arguments": [],
+      "events": [],
+      "local_responses": [],
+      "agent_calls": []
+    },
+    {
+      "name": "peer_completion51_06",
+      "entry": "0x40c18a0",
+      "synthetic_completion_input": "Remote request, synthetic identities, result0/detail0",
+      "return_u32": 0,
+      "before": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 7,
+        "state_pointer": "0x43be230",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "050104010401",
+        "peer_services_hex": "0000"
+      },
+      "after": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 7,
+        "state_pointer": "0x43be230",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "050104010401",
+        "peer_services_hex": "0000"
+      },
+      "frames": [
+        {
+          "frame_hex": "55250484eee92381c05106000024706565722d73796e7468657469632d3030310000002907",
+          "sender": 238,
+          "receiver": 233,
+          "sequence": 33059,
+          "command_type": 192,
+          "command_set": 81,
+          "command_id": 6,
+          "payload_hex": "000024706565722d73796e7468657469632d303031000000",
+          "attribute_hex": "e0076c558a2542360e000000"
+        }
+      ],
+      "fmsg_arguments": [
+        {
+          "header_hex": "3074052000000709070e00002381c000060051001800",
+          "payload_hex": "000024706565722d73796e7468657469632d303031000000",
+          "attribute_hex": "e0076c558a2542360e000000"
+        }
+      ],
+      "events": [
+        {
+          "handle_nonzero": true,
+          "bits": 32
+        }
+      ],
+      "local_responses": [],
+      "agent_calls": []
+    },
+    {
+      "name": "result_wait_done_commit",
+      "entry": "0x40cacf8",
+      "synthetic_completion_input": null,
+      "return_u32": 0,
+      "before": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 7,
+        "state_pointer": "0x43be230",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "050104010401",
+        "peer_services_hex": "0000"
+      },
+      "after": {
+        "modes_hex": "050504040404",
+        "services_current_hex": "0201",
+        "services_desired_hex": "0201",
+        "busy": 0,
+        "state_id": 0,
+        "state_pointer": "0x43be140",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "050504040404",
+        "peer_services_hex": "0201"
+      },
+      "frames": [],
+      "fmsg_arguments": [],
+      "events": [
+        {
+          "handle_nonzero": false,
+          "bits": 16
+        },
+        {
+          "handle_nonzero": false,
+          "bits": 1
+        }
+      ],
+      "local_responses": [
+        {
+          "event_prefix_hex": "1a0051000000000240000000238100000b000000",
+          "body_hex": "00000000000000"
+        }
+      ],
+      "agent_calls": []
+    }
+  ],
+  "failure_callbacks": [
+    {
+      "name": "agent_error",
+      "entry": "0x40cab30",
+      "synthetic_status": 7,
+      "return_u32": 0,
+      "before": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 4,
+        "state_pointer": "0x43be1b8",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "010101010101",
+        "peer_services_hex": "0000"
+      },
+      "after_failure": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 4,
+        "state_pointer": "0x43be1b8",
+        "local_error": 3,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "010101010101",
+        "peer_services_hex": "0000"
+      },
+      "failure_events": [
+        {
+          "handle_nonzero": true,
+          "bits": 256
+        }
+      ],
+      "frames": [],
+      "guard_probe": {
+        "entry": "0x40c9a6c",
+        "requested_state": 0,
+        "scheduler_transition_simulated": false,
+        "return_u32": 0,
+        "after": {
+          "modes_hex": "050104010401",
+          "services_current_hex": "0000",
+          "services_desired_hex": "0201",
+          "busy": 0,
+          "state_id": 0,
+          "state_pointer": "0x43be140",
+          "local_error": 3,
+          "peer_error": 0,
+          "peer_detail_hex": "00000000",
+          "peer_current_modes_hex": "010101010101",
+          "peer_services_hex": "0000"
+        },
+        "local_responses": [
+          {
+            "event_prefix_hex": "1a0051000000000240000000238100000b000000",
+            "body_hex": "03030000000000"
+          }
+        ]
+      }
+    },
+    {
+      "name": "route_error",
+      "entry": "0x40cac1c",
+      "synthetic_status": 7,
+      "return_u32": 0,
+      "before": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 5,
+        "state_pointer": "0x43be1e0",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "010101010101",
+        "peer_services_hex": "0000"
+      },
+      "after_failure": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 5,
+        "state_pointer": "0x43be1e0",
+        "local_error": 4,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "010101010101",
+        "peer_services_hex": "0000"
+      },
+      "failure_events": [
+        {
+          "handle_nonzero": true,
+          "bits": 256
+        }
+      ],
+      "frames": [],
+      "guard_probe": {
+        "entry": "0x40c9a6c",
+        "requested_state": 0,
+        "scheduler_transition_simulated": false,
+        "return_u32": 0,
+        "after": {
+          "modes_hex": "050104010401",
+          "services_current_hex": "0000",
+          "services_desired_hex": "0201",
+          "busy": 0,
+          "state_id": 0,
+          "state_pointer": "0x43be140",
+          "local_error": 4,
+          "peer_error": 0,
+          "peer_detail_hex": "00000000",
+          "peer_current_modes_hex": "010101010101",
+          "peer_services_hex": "0000"
+        },
+        "local_responses": [
+          {
+            "event_prefix_hex": "1a0051000000000240000000238100000b000000",
+            "body_hex": "04040000000000"
+          }
+        ]
+      }
+    },
+    {
+      "name": "global_timeout",
+      "entry": "0x40ca460",
+      "synthetic_status": null,
+      "return_u32": 0,
+      "before": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 1,
+        "state_pointer": "0x43be168",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "010101010101",
+        "peer_services_hex": "0000"
+      },
+      "after_failure": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 1,
+        "state_pointer": "0x43be168",
+        "local_error": 1,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "010101010101",
+        "peer_services_hex": "0000"
+      },
+      "failure_events": [
+        {
+          "handle_nonzero": true,
+          "bits": 256
+        }
+      ],
+      "frames": [],
+      "guard_probe": {
+        "entry": "0x40c9a6c",
+        "requested_state": 0,
+        "scheduler_transition_simulated": false,
+        "return_u32": 0,
+        "after": {
+          "modes_hex": "050104010401",
+          "services_current_hex": "0000",
+          "services_desired_hex": "0201",
+          "busy": 0,
+          "state_id": 0,
+          "state_pointer": "0x43be140",
+          "local_error": 1,
+          "peer_error": 0,
+          "peer_detail_hex": "00000000",
+          "peer_current_modes_hex": "010101010101",
+          "peer_services_hex": "0000"
+        },
+        "local_responses": [
+          {
+            "event_prefix_hex": "1a0051000000000240000000238100000b000000",
+            "body_hex": "01010000000000"
+          }
+        ]
+      }
+    },
+    {
+      "name": "peer_completion_error",
+      "entry": "0x40c18a0",
+      "synthetic_status": 7,
+      "return_u32": 0,
+      "before": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 7,
+        "state_pointer": "0x43be230",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "010101010101",
+        "peer_services_hex": "0000"
+      },
+      "after_failure": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 7,
+        "state_pointer": "0x43be230",
+        "local_error": 0,
+        "peer_error": 7,
+        "peer_detail_hex": "78563412",
+        "peer_current_modes_hex": "010101010101",
+        "peer_services_hex": "0000"
+      },
+      "failure_events": [
+        {
+          "handle_nonzero": true,
+          "bits": 512
+        }
+      ],
+      "frames": [
+        {
+          "frame_hex": "55250484eee92381c05106000024706565722d73796e7468657469632d3030310000079673",
+          "sender": 238,
+          "receiver": 233,
+          "sequence": 33059,
+          "command_type": 192,
+          "command_set": 81,
+          "command_id": 6,
+          "payload_hex": "000024706565722d73796e7468657469632d303031000007",
+          "attribute_hex": "e0076c558a2542360e000000"
+        }
+      ],
+      "guard_probe": {
+        "entry": "0x40c9a6c",
+        "requested_state": 0,
+        "scheduler_transition_simulated": false,
+        "return_u32": 0,
+        "after": {
+          "modes_hex": "050104010401",
+          "services_current_hex": "0000",
+          "services_desired_hex": "0201",
+          "busy": 0,
+          "state_id": 0,
+          "state_pointer": "0x43be140",
+          "local_error": 0,
+          "peer_error": 7,
+          "peer_detail_hex": "78563412",
+          "peer_current_modes_hex": "010101010101",
+          "peer_services_hex": "0000"
+        },
+        "local_responses": [
+          {
+            "event_prefix_hex": "1a0051000000000240000000238100000b000000",
+            "body_hex": "07000778563412"
+          }
+        ]
+      }
+    },
+    {
+      "name": "peer_negotiation_ack_error",
+      "entry": "0x40c1f74",
+      "synthetic_status": 7,
+      "return_u32": 0,
+      "before": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 1,
+        "state_pointer": "0x43be168",
+        "local_error": 0,
+        "peer_error": 0,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "010101010101",
+        "peer_services_hex": "0000"
+      },
+      "after_failure": {
+        "modes_hex": "050104010401",
+        "services_current_hex": "0000",
+        "services_desired_hex": "0201",
+        "busy": 1,
+        "state_id": 1,
+        "state_pointer": "0x43be168",
+        "local_error": 0,
+        "peer_error": 10,
+        "peer_detail_hex": "00000000",
+        "peer_current_modes_hex": "010101010101",
+        "peer_services_hex": "0000"
+      },
+      "failure_events": [
+        {
+          "handle_nonzero": true,
+          "bits": 512
+        }
+      ],
+      "frames": [],
+      "guard_probe": {
+        "entry": "0x40c9a6c",
+        "requested_state": 0,
+        "scheduler_transition_simulated": false,
+        "return_u32": 0,
+        "after": {
+          "modes_hex": "050104010401",
+          "services_current_hex": "0000",
+          "services_desired_hex": "0201",
+          "busy": 0,
+          "state_id": 0,
+          "state_pointer": "0x43be140",
+          "local_error": 0,
+          "peer_error": 10,
+          "peer_detail_hex": "00000000",
+          "peer_current_modes_hex": "010101010101",
+          "peer_services_hex": "0000"
+        },
+        "local_responses": [
+          {
+            "event_prefix_hex": "1a0051000000000240000000238100000b000000",
+            "body_hex": "0a000a00000000"
+          }
+        ]
+      }
+    }
+  ],
+  "source_frames": {
+    "sdk_sha256": "fb431e44f6a4971b159e7ac811bbd568016a300d959c958df99acb08c9fa9249",
+    "all_identities_synthetic": true,
+    "own_identity_hex": "04020070632d73746174652d73796e7468657469630000",
+    "peer_identity_hex": "000024706565722d73796e7468657469632d3030310000",
+    "own_hash": 1433143264,
+    "peer_hash": 910304650,
+    "frames": [
+      {
+        "name": "trigger51_02_request",
+        "frame_hex": "55180420eee90000405102050404000000020002000037f9",
+        "sender": 238,
+        "receiver": 233,
+        "sequence": 0,
+        "command_type": 64,
+        "command_set": 81,
+        "command_id": 2,
+        "payload_hex": "0504040000000200020000",
+        "attribute_hex": "e0076c558a2542360e000000"
+      },
+      {
+        "name": "negotiation51_08_ack",
+        "frame_hex": "55250484eee92381c05108000024706565722d73796e7468657469632d303031000000eb3d",
+        "sender": 238,
+        "receiver": 233,
+        "sequence": 33059,
+        "command_type": 192,
+        "command_set": 81,
+        "command_id": 8,
+        "payload_hex": "000024706565722d73796e7468657469632d303031000000",
+        "attribute_hex": "e0076c558a2542360e000000"
+      },
+      {
+        "name": "completion51_06_request",
+        "frame_hex": "55400421eee9000040510604020070632d73746174652d73796e7468657469630000000024706565722d73796e7468657469632d30303100000000000000772a",
+        "sender": 238,
+        "receiver": 233,
+        "sequence": 0,
+        "command_type": 64,
+        "command_set": 81,
+        "command_id": 6,
+        "payload_hex": "04020070632d73746174652d73796e7468657469630000000024706565722d73796e7468657469632d30303100000000000000",
+        "attribute_hex": "e0076c558a2542360e000000"
+      },
+      {
+        "name": "completion51_06_ack",
+        "frame_hex": "55250484eee92381c05106000024706565722d73796e7468657469632d3030310000002907",
+        "sender": 238,
+        "receiver": 233,
+        "sequence": 33059,
+        "command_type": 192,
+        "command_set": 81,
+        "command_id": 6,
+        "payload_hex": "000024706565722d73796e7468657469632d303031000000",
+        "attribute_hex": "e0076c558a2542360e000000"
+      }
+    ],
+    "capture_boundary": "0x41de630, before enqueue/dispatch and forwarding51/01",
+    "synthetic_physical_successes": true
+  },
+  "semantic_notification_boundaries": [
+    "0x41dd5b0",
+    "0x41dd5c0",
+    "0x41dcd10",
+    "0x41de5a0",
+    "0x41dd970",
+    {
+      "boundary": "wlm_dev_mid_update_info",
+      "mid": 0,
+      "kind": 2,
+      "word_hex": "15000000"
+    },
+    "0x41dd730",
+    "0x41de470",
+    "0x41de4f0",
+    "0x41de5d0"
+  ],
+  "guest_imports": [
+    "__memcpy_chk",
+    "__strcat_chk",
+    "__strlen_chk",
+    "calloc",
+    "free",
+    "malloc",
+    "memcpy",
+    "memset",
+    "strcmp",
+    "strlen",
+    "strncmp",
+    "strncpy"
+  ],
+  "bounds": {
+    "per_call_instructions": 500000,
+    "per_call_timeout_microseconds": 1000000
+  },
+  "boundaries": [
+    "All identities and hashes are synthetic; no device capture identity or firmware bytes are replayed.",
+    "Pinned SDK ARM64 executes only in Unicorn; all host I/O and SDK host loading are excluded.",
+    "The common-version gate runs with injected version3/5. Full beacon admission is static evidence only.",
+    "Local51/1a, target lookup, switch cache, handlers, request launchers, phase transitions, mode/service commit and DUML formatter execute.",
+    "Phase callbacks are invoked explicitly; the task-loop wait/retry scheduler and real timers do not run.",
+    "Physical-agent and remote-peer results are synthetic inputs, not proof of a usable PC service or actual UAV video.",
+    "Native link/route request launchers execute and signal work800/20000; their physical workers are not scheduled.",
+    "Networking, dispatch, clocks, threads, locks, beacon transmission, JSON tracking, shared storage, topology, MID updates and agent notifications stop at inert boundaries.",
+    "Captured WLM DUML frames stop at41de630 before dispatch and require the separately proved forwarding51/01/Wi-Fi-agent route.",
+    "Header sequences and truncated51/06 detail left unwritten by native code are retained as observations, not PC wire templates.",
+    "Failure cleanup directly invokes the Idle setter to prove its no-commit guard; exception reporting/undo and natural error transitions are excluded."
+  ]
+}

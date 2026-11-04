@@ -1,0 +1,16 @@
+[Unit]
+Description=Neo 2 PC controller (starts disconnected)
+After=network-online.target
+
+[Service]
+Type=exec
+WorkingDirectory=@REPO@
+ExecStart=@PYTHON@ -u -m neo2_control.cli flight-web --interface @INTERFACE@ --duration 600 @PROFILE@
+UMask=0077
+Restart=no
+KillMode=process
+TimeoutStopSec=90
+SendSIGKILL=no
+
+[Install]
+WantedBy=default.target

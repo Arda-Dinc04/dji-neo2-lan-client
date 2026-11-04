@@ -1,0 +1,174 @@
+{
+  "schema": "neo2-control/flight-actions-native/v1",
+  "sdk_sha256": "fb431e44f6a4971b159e7ac811bbd568016a300d959c958df99acb08c9fa9249",
+  "sdk_base_sha256": "54f77d990d5d1d09cab9ccd0cb3499edd03e47e18d75be5b449aa149bbd4233a",
+  "provenance": "Synthetic inputs through saved SDK action producers, constructors, Buffer, V1 encoder and CRCs",
+  "vectors": [
+    {
+      "action": "takeoff",
+      "family": "base",
+      "producer": 41285136,
+      "sequence": 33024,
+      "payload_hex": "01",
+      "receiver_index": 0,
+      "frame_hex": "550e04660203008140032a018d45"
+    },
+    {
+      "action": "takeoff",
+      "family": "key",
+      "producer": 43147684,
+      "sequence": 33025,
+      "payload_hex": "01",
+      "receiver_index": 0,
+      "frame_hex": "550e04660203018140032a01a641"
+    },
+    {
+      "action": "precision_takeoff",
+      "family": "base",
+      "producer": 41285588,
+      "sequence": 33026,
+      "payload_hex": "22",
+      "receiver_index": 0,
+      "frame_hex": "550e04660203028140032a22425e"
+    },
+    {
+      "action": "cancel_takeoff",
+      "family": "base",
+      "producer": 41286040,
+      "sequence": 33027,
+      "payload_hex": "0d",
+      "receiver_index": 0,
+      "frame_hex": "550e04660203038140032a0d9c83"
+    },
+    {
+      "action": "cancel_takeoff",
+      "family": "key",
+      "producer": 43148624,
+      "sequence": 33028,
+      "payload_hex": "0d",
+      "receiver_index": 0,
+      "frame_hex": "550e04660203048140032a0d4d9f"
+    },
+    {
+      "action": "landing",
+      "family": "base",
+      "producer": 41286492,
+      "sequence": 33029,
+      "payload_hex": "02",
+      "receiver_index": 0,
+      "frame_hex": "550e04660203058140032a029163"
+    },
+    {
+      "action": "landing",
+      "family": "key",
+      "producer": 43197136,
+      "sequence": 33030,
+      "payload_hex": "02",
+      "receiver_index": 0,
+      "frame_hex": "550e04660203068140032a02ec6f"
+    },
+    {
+      "action": "cancel_landing",
+      "family": "base",
+      "producer": 41286944,
+      "sequence": 33031,
+      "payload_hex": "0e",
+      "receiver_index": 0,
+      "frame_hex": "550e04660203078140032a0eaba1"
+    },
+    {
+      "action": "cancel_landing",
+      "family": "key",
+      "producer": 43198076,
+      "sequence": 33032,
+      "payload_hex": "0e",
+      "receiver_index": 0,
+      "frame_hex": "550e04660203088140032a0e229c"
+    },
+    {
+      "action": "return_home",
+      "family": "base",
+      "producer": 41288296,
+      "sequence": 33033,
+      "payload_hex": "06",
+      "receiver_index": 0,
+      "frame_hex": "550e04660203098140032a064114"
+    },
+    {
+      "action": "return_home",
+      "family": "key",
+      "producer": 43119424,
+      "sequence": 33034,
+      "payload_hex": "06",
+      "receiver_index": 0,
+      "frame_hex": "550e046602030a8140032a063c18"
+    },
+    {
+      "action": "cancel_return_home",
+      "family": "base",
+      "producer": 41288748,
+      "sequence": 33035,
+      "payload_hex": "0c",
+      "receiver_index": 0,
+      "frame_hex": "550e046602030b8140032a0c4db3"
+    },
+    {
+      "action": "cancel_return_home",
+      "family": "key",
+      "producer": 43120364,
+      "sequence": 33036,
+      "payload_hex": "0c",
+      "receiver_index": 0,
+      "frame_hex": "550e046602030c8140032a0c9caf"
+    },
+    {
+      "action": "confirm_landing",
+      "family": "base",
+      "producer": 41289200,
+      "sequence": 33037,
+      "payload_hex": "1e",
+      "receiver_index": 0,
+      "frame_hex": "550e046602030d8140032a1e2498"
+    },
+    {
+      "action": "confirm_landing",
+      "family": "key",
+      "producer": 43162504,
+      "sequence": 33038,
+      "payload_hex": "1e",
+      "receiver_index": 0,
+      "frame_hex": "550e046602030e8140032a1e5994"
+    },
+    {
+      "action": "confirm_force_landing",
+      "family": "base",
+      "producer": 41289652,
+      "sequence": 33039,
+      "payload_hex": "1f",
+      "receiver_index": 0,
+      "frame_hex": "550e046602030f8140032a1ffb81"
+    },
+    {
+      "action": "takeoff",
+      "family": "explicit-index-control",
+      "sequence": 0,
+      "payload_hex": "01",
+      "receiver_index": 1,
+      "frame_hex": "550e04660223000040032a011fa7"
+    },
+    {
+      "action": "takeoff",
+      "family": "explicit-index-control",
+      "sequence": 65535,
+      "payload_hex": "01",
+      "receiver_index": 3,
+      "frame_hex": "550e04660263ffff40032a016968"
+    }
+  ],
+  "limitations": [
+    "SendSetPack is intercepted before routing or transmission, with empty synthetic Characteristics and callbacks.",
+    "Base virtual dispatch uses the saved base FlightControllerAbstraction vtable; Neo2 runtime product selection is unproven.",
+    "Constructor default receiver index is zero; later route/profile changes are outside the emulated producer boundary.",
+    "No physical arming, takeoff, landing, return-home, response acceptance or flight readiness is established."
+  ]
+}

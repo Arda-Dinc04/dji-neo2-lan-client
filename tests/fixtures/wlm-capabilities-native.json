@@ -1,0 +1,5437 @@
+{
+  "schema": "neo2-control/wlm-capabilities-native/v1",
+  "sdk_sha256": "fb431e44f6a4971b159e7ac811bbd568016a300d959c958df99acb08c9fa9249",
+  "provenance": "Synthetic memory-only ARM64 guest inputs; no device identities or captured traffic",
+  "native_functions": [
+    {
+      "name": "wlm_init_self_dev_ability",
+      "address": "0x40d463c",
+      "size": 144,
+      "sha256": "b92a277222677eb0cf3bf6ce09455689bde3ac8c1c6747a8cb7d9e4b2f770e76"
+    },
+    {
+      "name": "ability_value_formatter",
+      "address": "0x40d043c",
+      "size": 1692,
+      "sha256": "7a87a78b0e870283aa5fe4d6563de9028681ea67494e9ad475e1e327bb155d9d"
+    },
+    {
+      "name": "wlm_merge_service_common_ability",
+      "address": "0x40d1c98",
+      "size": 592,
+      "sha256": "cd47ecd466c681135a83cc4eae2da0cf39b98e33d93a87465d5d21015bf68462"
+    },
+    {
+      "name": "wlm_update_dev_csdk_service_ability",
+      "address": "0x40d21ac",
+      "size": 520,
+      "sha256": "89df8b817fe032ceff0eb32192625d9fd19e5dd8f21f129465b0bbd0ff507598"
+    },
+    {
+      "name": "wlm_update_dev_csdk_dynamic_ability_enable_hybrid_liveview",
+      "address": "0x40d20b4",
+      "size": 248,
+      "sha256": "c96dc1a59a9160c7db16ac329f7f74722ab53fb7d50514bad8e2e82295bb3d30"
+    },
+    {
+      "name": "wlm_update_dev_wlm_ability_bind_dev_5134",
+      "address": "0x40d247c",
+      "size": 460,
+      "sha256": "3e86b689682077b509de36191d12947f21a4e08f28a4c4e8eeeb5b985731cafb"
+    },
+    {
+      "name": "wlm_update_ability_nego_result",
+      "address": "0x40d2648",
+      "size": 292,
+      "sha256": "555f5882cbaf5224ccab87405d1e4b08a046cdffa42cc836c8ebd2d09dc029d9"
+    },
+    {
+      "name": "wlm_handle_dev_ability_nego_set",
+      "address": "0x40d391c",
+      "size": 556,
+      "sha256": "26f1df3351bd8520156bf8ea71e4cb29c4b18ef3c83923b15c7f56d64edf1256"
+    }
+  ],
+  "layout": {
+    "value_length": 17,
+    "header_version": 0,
+    "words_per_bank": 2,
+    "mask_offset": 1,
+    "support_offset": 9,
+    "word_bytes": 4,
+    "word_byte_order": "little",
+    "native_dump_pair_order": [
+      "support",
+      "mask"
+    ]
+  },
+  "initialization": [
+    {
+      "initial_support_poisoned": false,
+      "context_v3_route": 0,
+      "context_ability_nego": 0,
+      "cap6_hex": "2000000000000000001f00010000000000",
+      "cap10_hex": "2000000000000000007d04000000000000",
+      "cap6_decoded": {
+        "tag": 6,
+        "format_literal": "tag %s, len %d, hdr_ver %d, item_num %d, dual_video %d,%d, slice_hdr 4d %d,%d, 5d %d,%d, 6d %d,%d, 6d_with_ssfn %d,%d, whole_frame %d,%d, iframe_v3 %d,%d; ",
+        "tag_name": "SERVICE_COMMON",
+        "length": 17,
+        "header_version": 0,
+        "words_per_bank": 2,
+        "fields": [
+          {
+            "bit": 0,
+            "name": "dual_video",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 1,
+            "name": "slice_hdr_4d",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 2,
+            "name": "slice_hdr_5d",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 3,
+            "name": "slice_hdr_6d",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 4,
+            "name": "slice_hdr_6d_with_ssfn",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 5,
+            "name": "whole_frame",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 16,
+            "name": "iframe_v3",
+            "support": 1,
+            "mask": 0
+          }
+        ]
+      },
+      "cap10_decoded": {
+        "tag": 10,
+        "format_literal": "tag %s, len %d, hdr_ver %d, item_num %d; mode follow %d,%d, force switch %d,%d, lv_switch %d,%d, dl_switch %d,%d, hybrid_liveview %d,%d, wifi_liveview %d,%d, wifi_download %d,%d, tunnel forward %d,%d, v3 route %d,%d, ability_nego %d,%d, bind_dev_5134 %d %d; ",
+        "tag_name": "WLM_MODULE",
+        "length": 17,
+        "header_version": 0,
+        "words_per_bank": 2,
+        "fields": [
+          {
+            "bit": 0,
+            "name": "mode_follow",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 1,
+            "name": "force_switch",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 2,
+            "name": "lv_switch",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 3,
+            "name": "dl_switch",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 4,
+            "name": "hybrid_liveview",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 5,
+            "name": "wifi_liveview",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 6,
+            "name": "wifi_download",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 7,
+            "name": "tunnel_forward",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 8,
+            "name": "v3_route",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 9,
+            "name": "ability_nego",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 10,
+            "name": "bind_dev_5134",
+            "support": 1,
+            "mask": 0
+          }
+        ]
+      }
+    },
+    {
+      "initial_support_poisoned": false,
+      "context_v3_route": 0,
+      "context_ability_nego": 1,
+      "cap6_hex": "2000000000000000001f00010000000000",
+      "cap10_hex": "2000000000000000007d06000000000000",
+      "cap6_decoded": {
+        "tag": 6,
+        "format_literal": "tag %s, len %d, hdr_ver %d, item_num %d, dual_video %d,%d, slice_hdr 4d %d,%d, 5d %d,%d, 6d %d,%d, 6d_with_ssfn %d,%d, whole_frame %d,%d, iframe_v3 %d,%d; ",
+        "tag_name": "SERVICE_COMMON",
+        "length": 17,
+        "header_version": 0,
+        "words_per_bank": 2,
+        "fields": [
+          {
+            "bit": 0,
+            "name": "dual_video",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 1,
+            "name": "slice_hdr_4d",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 2,
+            "name": "slice_hdr_5d",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 3,
+            "name": "slice_hdr_6d",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 4,
+            "name": "slice_hdr_6d_with_ssfn",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 5,
+            "name": "whole_frame",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 16,
+            "name": "iframe_v3",
+            "support": 1,
+            "mask": 0
+          }
+        ]
+      },
+      "cap10_decoded": {
+        "tag": 10,
+        "format_literal": "tag %s, len %d, hdr_ver %d, item_num %d; mode follow %d,%d, force switch %d,%d, lv_switch %d,%d, dl_switch %d,%d, hybrid_liveview %d,%d, wifi_liveview %d,%d, wifi_download %d,%d, tunnel forward %d,%d, v3 route %d,%d, ability_nego %d,%d, bind_dev_5134 %d %d; ",
+        "tag_name": "WLM_MODULE",
+        "length": 17,
+        "header_version": 0,
+        "words_per_bank": 2,
+        "fields": [
+          {
+            "bit": 0,
+            "name": "mode_follow",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 1,
+            "name": "force_switch",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 2,
+            "name": "lv_switch",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 3,
+            "name": "dl_switch",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 4,
+            "name": "hybrid_liveview",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 5,
+            "name": "wifi_liveview",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 6,
+            "name": "wifi_download",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 7,
+            "name": "tunnel_forward",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 8,
+            "name": "v3_route",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 9,
+            "name": "ability_nego",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 10,
+            "name": "bind_dev_5134",
+            "support": 1,
+            "mask": 0
+          }
+        ]
+      }
+    },
+    {
+      "initial_support_poisoned": false,
+      "context_v3_route": 1,
+      "context_ability_nego": 0,
+      "cap6_hex": "2000000000000000001f00010000000000",
+      "cap10_hex": "2000000000000000007d05000000000000",
+      "cap6_decoded": {
+        "tag": 6,
+        "format_literal": "tag %s, len %d, hdr_ver %d, item_num %d, dual_video %d,%d, slice_hdr 4d %d,%d, 5d %d,%d, 6d %d,%d, 6d_with_ssfn %d,%d, whole_frame %d,%d, iframe_v3 %d,%d; ",
+        "tag_name": "SERVICE_COMMON",
+        "length": 17,
+        "header_version": 0,
+        "words_per_bank": 2,
+        "fields": [
+          {
+            "bit": 0,
+            "name": "dual_video",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 1,
+            "name": "slice_hdr_4d",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 2,
+            "name": "slice_hdr_5d",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 3,
+            "name": "slice_hdr_6d",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 4,
+            "name": "slice_hdr_6d_with_ssfn",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 5,
+            "name": "whole_frame",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 16,
+            "name": "iframe_v3",
+            "support": 1,
+            "mask": 0
+          }
+        ]
+      },
+      "cap10_decoded": {
+        "tag": 10,
+        "format_literal": "tag %s, len %d, hdr_ver %d, item_num %d; mode follow %d,%d, force switch %d,%d, lv_switch %d,%d, dl_switch %d,%d, hybrid_liveview %d,%d, wifi_liveview %d,%d, wifi_download %d,%d, tunnel forward %d,%d, v3 route %d,%d, ability_nego %d,%d, bind_dev_5134 %d %d; ",
+        "tag_name": "WLM_MODULE",
+        "length": 17,
+        "header_version": 0,
+        "words_per_bank": 2,
+        "fields": [
+          {
+            "bit": 0,
+            "name": "mode_follow",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 1,
+            "name": "force_switch",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 2,
+            "name": "lv_switch",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 3,
+            "name": "dl_switch",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 4,
+            "name": "hybrid_liveview",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 5,
+            "name": "wifi_liveview",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 6,
+            "name": "wifi_download",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 7,
+            "name": "tunnel_forward",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 8,
+            "name": "v3_route",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 9,
+            "name": "ability_nego",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 10,
+            "name": "bind_dev_5134",
+            "support": 1,
+            "mask": 0
+          }
+        ]
+      }
+    },
+    {
+      "initial_support_poisoned": false,
+      "context_v3_route": 1,
+      "context_ability_nego": 1,
+      "cap6_hex": "2000000000000000001f00010000000000",
+      "cap10_hex": "2000000000000000007d07000000000000",
+      "cap6_decoded": {
+        "tag": 6,
+        "format_literal": "tag %s, len %d, hdr_ver %d, item_num %d, dual_video %d,%d, slice_hdr 4d %d,%d, 5d %d,%d, 6d %d,%d, 6d_with_ssfn %d,%d, whole_frame %d,%d, iframe_v3 %d,%d; ",
+        "tag_name": "SERVICE_COMMON",
+        "length": 17,
+        "header_version": 0,
+        "words_per_bank": 2,
+        "fields": [
+          {
+            "bit": 0,
+            "name": "dual_video",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 1,
+            "name": "slice_hdr_4d",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 2,
+            "name": "slice_hdr_5d",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 3,
+            "name": "slice_hdr_6d",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 4,
+            "name": "slice_hdr_6d_with_ssfn",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 5,
+            "name": "whole_frame",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 16,
+            "name": "iframe_v3",
+            "support": 1,
+            "mask": 0
+          }
+        ]
+      },
+      "cap10_decoded": {
+        "tag": 10,
+        "format_literal": "tag %s, len %d, hdr_ver %d, item_num %d; mode follow %d,%d, force switch %d,%d, lv_switch %d,%d, dl_switch %d,%d, hybrid_liveview %d,%d, wifi_liveview %d,%d, wifi_download %d,%d, tunnel forward %d,%d, v3 route %d,%d, ability_nego %d,%d, bind_dev_5134 %d %d; ",
+        "tag_name": "WLM_MODULE",
+        "length": 17,
+        "header_version": 0,
+        "words_per_bank": 2,
+        "fields": [
+          {
+            "bit": 0,
+            "name": "mode_follow",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 1,
+            "name": "force_switch",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 2,
+            "name": "lv_switch",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 3,
+            "name": "dl_switch",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 4,
+            "name": "hybrid_liveview",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 5,
+            "name": "wifi_liveview",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 6,
+            "name": "wifi_download",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 7,
+            "name": "tunnel_forward",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 8,
+            "name": "v3_route",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 9,
+            "name": "ability_nego",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 10,
+            "name": "bind_dev_5134",
+            "support": 1,
+            "mask": 0
+          }
+        ]
+      }
+    },
+    {
+      "initial_support_poisoned": true,
+      "context_v3_route": 0,
+      "context_ability_nego": 0,
+      "cap6_hex": "2000000000000000009fa5a5a5a5a5a5a5",
+      "cap10_hex": "2000000000000000007da4a5a5a5a5a5a5",
+      "cap6_decoded": {
+        "tag": 6,
+        "format_literal": "tag %s, len %d, hdr_ver %d, item_num %d, dual_video %d,%d, slice_hdr 4d %d,%d, 5d %d,%d, 6d %d,%d, 6d_with_ssfn %d,%d, whole_frame %d,%d, iframe_v3 %d,%d; ",
+        "tag_name": "SERVICE_COMMON",
+        "length": 17,
+        "header_version": 0,
+        "words_per_bank": 2,
+        "fields": [
+          {
+            "bit": 0,
+            "name": "dual_video",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 1,
+            "name": "slice_hdr_4d",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 2,
+            "name": "slice_hdr_5d",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 3,
+            "name": "slice_hdr_6d",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 4,
+            "name": "slice_hdr_6d_with_ssfn",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 5,
+            "name": "whole_frame",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 16,
+            "name": "iframe_v3",
+            "support": 1,
+            "mask": 0
+          }
+        ]
+      },
+      "cap10_decoded": {
+        "tag": 10,
+        "format_literal": "tag %s, len %d, hdr_ver %d, item_num %d; mode follow %d,%d, force switch %d,%d, lv_switch %d,%d, dl_switch %d,%d, hybrid_liveview %d,%d, wifi_liveview %d,%d, wifi_download %d,%d, tunnel forward %d,%d, v3 route %d,%d, ability_nego %d,%d, bind_dev_5134 %d %d; ",
+        "tag_name": "WLM_MODULE",
+        "length": 17,
+        "header_version": 0,
+        "words_per_bank": 2,
+        "fields": [
+          {
+            "bit": 0,
+            "name": "mode_follow",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 1,
+            "name": "force_switch",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 2,
+            "name": "lv_switch",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 3,
+            "name": "dl_switch",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 4,
+            "name": "hybrid_liveview",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 5,
+            "name": "wifi_liveview",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 6,
+            "name": "wifi_download",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 7,
+            "name": "tunnel_forward",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 8,
+            "name": "v3_route",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 9,
+            "name": "ability_nego",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 10,
+            "name": "bind_dev_5134",
+            "support": 1,
+            "mask": 0
+          }
+        ]
+      }
+    },
+    {
+      "initial_support_poisoned": true,
+      "context_v3_route": 0,
+      "context_ability_nego": 1,
+      "cap6_hex": "2000000000000000009fa5a5a5a5a5a5a5",
+      "cap10_hex": "2000000000000000007da6a5a5a5a5a5a5",
+      "cap6_decoded": {
+        "tag": 6,
+        "format_literal": "tag %s, len %d, hdr_ver %d, item_num %d, dual_video %d,%d, slice_hdr 4d %d,%d, 5d %d,%d, 6d %d,%d, 6d_with_ssfn %d,%d, whole_frame %d,%d, iframe_v3 %d,%d; ",
+        "tag_name": "SERVICE_COMMON",
+        "length": 17,
+        "header_version": 0,
+        "words_per_bank": 2,
+        "fields": [
+          {
+            "bit": 0,
+            "name": "dual_video",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 1,
+            "name": "slice_hdr_4d",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 2,
+            "name": "slice_hdr_5d",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 3,
+            "name": "slice_hdr_6d",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 4,
+            "name": "slice_hdr_6d_with_ssfn",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 5,
+            "name": "whole_frame",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 16,
+            "name": "iframe_v3",
+            "support": 1,
+            "mask": 0
+          }
+        ]
+      },
+      "cap10_decoded": {
+        "tag": 10,
+        "format_literal": "tag %s, len %d, hdr_ver %d, item_num %d; mode follow %d,%d, force switch %d,%d, lv_switch %d,%d, dl_switch %d,%d, hybrid_liveview %d,%d, wifi_liveview %d,%d, wifi_download %d,%d, tunnel forward %d,%d, v3 route %d,%d, ability_nego %d,%d, bind_dev_5134 %d %d; ",
+        "tag_name": "WLM_MODULE",
+        "length": 17,
+        "header_version": 0,
+        "words_per_bank": 2,
+        "fields": [
+          {
+            "bit": 0,
+            "name": "mode_follow",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 1,
+            "name": "force_switch",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 2,
+            "name": "lv_switch",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 3,
+            "name": "dl_switch",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 4,
+            "name": "hybrid_liveview",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 5,
+            "name": "wifi_liveview",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 6,
+            "name": "wifi_download",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 7,
+            "name": "tunnel_forward",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 8,
+            "name": "v3_route",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 9,
+            "name": "ability_nego",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 10,
+            "name": "bind_dev_5134",
+            "support": 1,
+            "mask": 0
+          }
+        ]
+      }
+    },
+    {
+      "initial_support_poisoned": true,
+      "context_v3_route": 1,
+      "context_ability_nego": 0,
+      "cap6_hex": "2000000000000000009fa5a5a5a5a5a5a5",
+      "cap10_hex": "2000000000000000007da5a5a5a5a5a5a5",
+      "cap6_decoded": {
+        "tag": 6,
+        "format_literal": "tag %s, len %d, hdr_ver %d, item_num %d, dual_video %d,%d, slice_hdr 4d %d,%d, 5d %d,%d, 6d %d,%d, 6d_with_ssfn %d,%d, whole_frame %d,%d, iframe_v3 %d,%d; ",
+        "tag_name": "SERVICE_COMMON",
+        "length": 17,
+        "header_version": 0,
+        "words_per_bank": 2,
+        "fields": [
+          {
+            "bit": 0,
+            "name": "dual_video",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 1,
+            "name": "slice_hdr_4d",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 2,
+            "name": "slice_hdr_5d",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 3,
+            "name": "slice_hdr_6d",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 4,
+            "name": "slice_hdr_6d_with_ssfn",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 5,
+            "name": "whole_frame",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 16,
+            "name": "iframe_v3",
+            "support": 1,
+            "mask": 0
+          }
+        ]
+      },
+      "cap10_decoded": {
+        "tag": 10,
+        "format_literal": "tag %s, len %d, hdr_ver %d, item_num %d; mode follow %d,%d, force switch %d,%d, lv_switch %d,%d, dl_switch %d,%d, hybrid_liveview %d,%d, wifi_liveview %d,%d, wifi_download %d,%d, tunnel forward %d,%d, v3 route %d,%d, ability_nego %d,%d, bind_dev_5134 %d %d; ",
+        "tag_name": "WLM_MODULE",
+        "length": 17,
+        "header_version": 0,
+        "words_per_bank": 2,
+        "fields": [
+          {
+            "bit": 0,
+            "name": "mode_follow",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 1,
+            "name": "force_switch",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 2,
+            "name": "lv_switch",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 3,
+            "name": "dl_switch",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 4,
+            "name": "hybrid_liveview",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 5,
+            "name": "wifi_liveview",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 6,
+            "name": "wifi_download",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 7,
+            "name": "tunnel_forward",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 8,
+            "name": "v3_route",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 9,
+            "name": "ability_nego",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 10,
+            "name": "bind_dev_5134",
+            "support": 1,
+            "mask": 0
+          }
+        ]
+      }
+    },
+    {
+      "initial_support_poisoned": true,
+      "context_v3_route": 1,
+      "context_ability_nego": 1,
+      "cap6_hex": "2000000000000000009fa5a5a5a5a5a5a5",
+      "cap10_hex": "2000000000000000007da7a5a5a5a5a5a5",
+      "cap6_decoded": {
+        "tag": 6,
+        "format_literal": "tag %s, len %d, hdr_ver %d, item_num %d, dual_video %d,%d, slice_hdr 4d %d,%d, 5d %d,%d, 6d %d,%d, 6d_with_ssfn %d,%d, whole_frame %d,%d, iframe_v3 %d,%d; ",
+        "tag_name": "SERVICE_COMMON",
+        "length": 17,
+        "header_version": 0,
+        "words_per_bank": 2,
+        "fields": [
+          {
+            "bit": 0,
+            "name": "dual_video",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 1,
+            "name": "slice_hdr_4d",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 2,
+            "name": "slice_hdr_5d",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 3,
+            "name": "slice_hdr_6d",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 4,
+            "name": "slice_hdr_6d_with_ssfn",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 5,
+            "name": "whole_frame",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 16,
+            "name": "iframe_v3",
+            "support": 1,
+            "mask": 0
+          }
+        ]
+      },
+      "cap10_decoded": {
+        "tag": 10,
+        "format_literal": "tag %s, len %d, hdr_ver %d, item_num %d; mode follow %d,%d, force switch %d,%d, lv_switch %d,%d, dl_switch %d,%d, hybrid_liveview %d,%d, wifi_liveview %d,%d, wifi_download %d,%d, tunnel forward %d,%d, v3 route %d,%d, ability_nego %d,%d, bind_dev_5134 %d %d; ",
+        "tag_name": "WLM_MODULE",
+        "length": 17,
+        "header_version": 0,
+        "words_per_bank": 2,
+        "fields": [
+          {
+            "bit": 0,
+            "name": "mode_follow",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 1,
+            "name": "force_switch",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 2,
+            "name": "lv_switch",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 3,
+            "name": "dl_switch",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 4,
+            "name": "hybrid_liveview",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 5,
+            "name": "wifi_liveview",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 6,
+            "name": "wifi_download",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 7,
+            "name": "tunnel_forward",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 8,
+            "name": "v3_route",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 9,
+            "name": "ability_nego",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 10,
+            "name": "bind_dev_5134",
+            "support": 1,
+            "mask": 0
+          }
+        ]
+      }
+    }
+  ],
+  "named_bits": [
+    {
+      "tag": 6,
+      "bit": 0,
+      "name": "dual_video",
+      "input_bank": "support",
+      "input_hex": "2000000000000000000100000000000000",
+      "decoded": {
+        "tag": 6,
+        "format_literal": "tag %s, len %d, hdr_ver %d, item_num %d, dual_video %d,%d, slice_hdr 4d %d,%d, 5d %d,%d, 6d %d,%d, 6d_with_ssfn %d,%d, whole_frame %d,%d, iframe_v3 %d,%d; ",
+        "tag_name": "SERVICE_COMMON",
+        "length": 17,
+        "header_version": 0,
+        "words_per_bank": 2,
+        "fields": [
+          {
+            "bit": 0,
+            "name": "dual_video",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 1,
+            "name": "slice_hdr_4d",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 2,
+            "name": "slice_hdr_5d",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 3,
+            "name": "slice_hdr_6d",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 4,
+            "name": "slice_hdr_6d_with_ssfn",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 5,
+            "name": "whole_frame",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 16,
+            "name": "iframe_v3",
+            "support": 0,
+            "mask": 0
+          }
+        ]
+      }
+    },
+    {
+      "tag": 6,
+      "bit": 0,
+      "name": "dual_video",
+      "input_bank": "mask",
+      "input_hex": "2001000000000000000000000000000000",
+      "decoded": {
+        "tag": 6,
+        "format_literal": "tag %s, len %d, hdr_ver %d, item_num %d, dual_video %d,%d, slice_hdr 4d %d,%d, 5d %d,%d, 6d %d,%d, 6d_with_ssfn %d,%d, whole_frame %d,%d, iframe_v3 %d,%d; ",
+        "tag_name": "SERVICE_COMMON",
+        "length": 17,
+        "header_version": 0,
+        "words_per_bank": 2,
+        "fields": [
+          {
+            "bit": 0,
+            "name": "dual_video",
+            "support": 0,
+            "mask": 1
+          },
+          {
+            "bit": 1,
+            "name": "slice_hdr_4d",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 2,
+            "name": "slice_hdr_5d",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 3,
+            "name": "slice_hdr_6d",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 4,
+            "name": "slice_hdr_6d_with_ssfn",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 5,
+            "name": "whole_frame",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 16,
+            "name": "iframe_v3",
+            "support": 0,
+            "mask": 0
+          }
+        ]
+      }
+    },
+    {
+      "tag": 6,
+      "bit": 1,
+      "name": "slice_hdr_4d",
+      "input_bank": "support",
+      "input_hex": "2000000000000000000200000000000000",
+      "decoded": {
+        "tag": 6,
+        "format_literal": "tag %s, len %d, hdr_ver %d, item_num %d, dual_video %d,%d, slice_hdr 4d %d,%d, 5d %d,%d, 6d %d,%d, 6d_with_ssfn %d,%d, whole_frame %d,%d, iframe_v3 %d,%d; ",
+        "tag_name": "SERVICE_COMMON",
+        "length": 17,
+        "header_version": 0,
+        "words_per_bank": 2,
+        "fields": [
+          {
+            "bit": 0,
+            "name": "dual_video",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 1,
+            "name": "slice_hdr_4d",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 2,
+            "name": "slice_hdr_5d",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 3,
+            "name": "slice_hdr_6d",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 4,
+            "name": "slice_hdr_6d_with_ssfn",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 5,
+            "name": "whole_frame",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 16,
+            "name": "iframe_v3",
+            "support": 0,
+            "mask": 0
+          }
+        ]
+      }
+    },
+    {
+      "tag": 6,
+      "bit": 1,
+      "name": "slice_hdr_4d",
+      "input_bank": "mask",
+      "input_hex": "2002000000000000000000000000000000",
+      "decoded": {
+        "tag": 6,
+        "format_literal": "tag %s, len %d, hdr_ver %d, item_num %d, dual_video %d,%d, slice_hdr 4d %d,%d, 5d %d,%d, 6d %d,%d, 6d_with_ssfn %d,%d, whole_frame %d,%d, iframe_v3 %d,%d; ",
+        "tag_name": "SERVICE_COMMON",
+        "length": 17,
+        "header_version": 0,
+        "words_per_bank": 2,
+        "fields": [
+          {
+            "bit": 0,
+            "name": "dual_video",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 1,
+            "name": "slice_hdr_4d",
+            "support": 0,
+            "mask": 1
+          },
+          {
+            "bit": 2,
+            "name": "slice_hdr_5d",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 3,
+            "name": "slice_hdr_6d",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 4,
+            "name": "slice_hdr_6d_with_ssfn",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 5,
+            "name": "whole_frame",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 16,
+            "name": "iframe_v3",
+            "support": 0,
+            "mask": 0
+          }
+        ]
+      }
+    },
+    {
+      "tag": 6,
+      "bit": 2,
+      "name": "slice_hdr_5d",
+      "input_bank": "support",
+      "input_hex": "2000000000000000000400000000000000",
+      "decoded": {
+        "tag": 6,
+        "format_literal": "tag %s, len %d, hdr_ver %d, item_num %d, dual_video %d,%d, slice_hdr 4d %d,%d, 5d %d,%d, 6d %d,%d, 6d_with_ssfn %d,%d, whole_frame %d,%d, iframe_v3 %d,%d; ",
+        "tag_name": "SERVICE_COMMON",
+        "length": 17,
+        "header_version": 0,
+        "words_per_bank": 2,
+        "fields": [
+          {
+            "bit": 0,
+            "name": "dual_video",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 1,
+            "name": "slice_hdr_4d",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 2,
+            "name": "slice_hdr_5d",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 3,
+            "name": "slice_hdr_6d",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 4,
+            "name": "slice_hdr_6d_with_ssfn",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 5,
+            "name": "whole_frame",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 16,
+            "name": "iframe_v3",
+            "support": 0,
+            "mask": 0
+          }
+        ]
+      }
+    },
+    {
+      "tag": 6,
+      "bit": 2,
+      "name": "slice_hdr_5d",
+      "input_bank": "mask",
+      "input_hex": "2004000000000000000000000000000000",
+      "decoded": {
+        "tag": 6,
+        "format_literal": "tag %s, len %d, hdr_ver %d, item_num %d, dual_video %d,%d, slice_hdr 4d %d,%d, 5d %d,%d, 6d %d,%d, 6d_with_ssfn %d,%d, whole_frame %d,%d, iframe_v3 %d,%d; ",
+        "tag_name": "SERVICE_COMMON",
+        "length": 17,
+        "header_version": 0,
+        "words_per_bank": 2,
+        "fields": [
+          {
+            "bit": 0,
+            "name": "dual_video",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 1,
+            "name": "slice_hdr_4d",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 2,
+            "name": "slice_hdr_5d",
+            "support": 0,
+            "mask": 1
+          },
+          {
+            "bit": 3,
+            "name": "slice_hdr_6d",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 4,
+            "name": "slice_hdr_6d_with_ssfn",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 5,
+            "name": "whole_frame",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 16,
+            "name": "iframe_v3",
+            "support": 0,
+            "mask": 0
+          }
+        ]
+      }
+    },
+    {
+      "tag": 6,
+      "bit": 3,
+      "name": "slice_hdr_6d",
+      "input_bank": "support",
+      "input_hex": "2000000000000000000800000000000000",
+      "decoded": {
+        "tag": 6,
+        "format_literal": "tag %s, len %d, hdr_ver %d, item_num %d, dual_video %d,%d, slice_hdr 4d %d,%d, 5d %d,%d, 6d %d,%d, 6d_with_ssfn %d,%d, whole_frame %d,%d, iframe_v3 %d,%d; ",
+        "tag_name": "SERVICE_COMMON",
+        "length": 17,
+        "header_version": 0,
+        "words_per_bank": 2,
+        "fields": [
+          {
+            "bit": 0,
+            "name": "dual_video",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 1,
+            "name": "slice_hdr_4d",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 2,
+            "name": "slice_hdr_5d",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 3,
+            "name": "slice_hdr_6d",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 4,
+            "name": "slice_hdr_6d_with_ssfn",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 5,
+            "name": "whole_frame",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 16,
+            "name": "iframe_v3",
+            "support": 0,
+            "mask": 0
+          }
+        ]
+      }
+    },
+    {
+      "tag": 6,
+      "bit": 3,
+      "name": "slice_hdr_6d",
+      "input_bank": "mask",
+      "input_hex": "2008000000000000000000000000000000",
+      "decoded": {
+        "tag": 6,
+        "format_literal": "tag %s, len %d, hdr_ver %d, item_num %d, dual_video %d,%d, slice_hdr 4d %d,%d, 5d %d,%d, 6d %d,%d, 6d_with_ssfn %d,%d, whole_frame %d,%d, iframe_v3 %d,%d; ",
+        "tag_name": "SERVICE_COMMON",
+        "length": 17,
+        "header_version": 0,
+        "words_per_bank": 2,
+        "fields": [
+          {
+            "bit": 0,
+            "name": "dual_video",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 1,
+            "name": "slice_hdr_4d",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 2,
+            "name": "slice_hdr_5d",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 3,
+            "name": "slice_hdr_6d",
+            "support": 0,
+            "mask": 1
+          },
+          {
+            "bit": 4,
+            "name": "slice_hdr_6d_with_ssfn",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 5,
+            "name": "whole_frame",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 16,
+            "name": "iframe_v3",
+            "support": 0,
+            "mask": 0
+          }
+        ]
+      }
+    },
+    {
+      "tag": 6,
+      "bit": 4,
+      "name": "slice_hdr_6d_with_ssfn",
+      "input_bank": "support",
+      "input_hex": "2000000000000000001000000000000000",
+      "decoded": {
+        "tag": 6,
+        "format_literal": "tag %s, len %d, hdr_ver %d, item_num %d, dual_video %d,%d, slice_hdr 4d %d,%d, 5d %d,%d, 6d %d,%d, 6d_with_ssfn %d,%d, whole_frame %d,%d, iframe_v3 %d,%d; ",
+        "tag_name": "SERVICE_COMMON",
+        "length": 17,
+        "header_version": 0,
+        "words_per_bank": 2,
+        "fields": [
+          {
+            "bit": 0,
+            "name": "dual_video",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 1,
+            "name": "slice_hdr_4d",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 2,
+            "name": "slice_hdr_5d",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 3,
+            "name": "slice_hdr_6d",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 4,
+            "name": "slice_hdr_6d_with_ssfn",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 5,
+            "name": "whole_frame",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 16,
+            "name": "iframe_v3",
+            "support": 0,
+            "mask": 0
+          }
+        ]
+      }
+    },
+    {
+      "tag": 6,
+      "bit": 4,
+      "name": "slice_hdr_6d_with_ssfn",
+      "input_bank": "mask",
+      "input_hex": "2010000000000000000000000000000000",
+      "decoded": {
+        "tag": 6,
+        "format_literal": "tag %s, len %d, hdr_ver %d, item_num %d, dual_video %d,%d, slice_hdr 4d %d,%d, 5d %d,%d, 6d %d,%d, 6d_with_ssfn %d,%d, whole_frame %d,%d, iframe_v3 %d,%d; ",
+        "tag_name": "SERVICE_COMMON",
+        "length": 17,
+        "header_version": 0,
+        "words_per_bank": 2,
+        "fields": [
+          {
+            "bit": 0,
+            "name": "dual_video",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 1,
+            "name": "slice_hdr_4d",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 2,
+            "name": "slice_hdr_5d",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 3,
+            "name": "slice_hdr_6d",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 4,
+            "name": "slice_hdr_6d_with_ssfn",
+            "support": 0,
+            "mask": 1
+          },
+          {
+            "bit": 5,
+            "name": "whole_frame",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 16,
+            "name": "iframe_v3",
+            "support": 0,
+            "mask": 0
+          }
+        ]
+      }
+    },
+    {
+      "tag": 6,
+      "bit": 5,
+      "name": "whole_frame",
+      "input_bank": "support",
+      "input_hex": "2000000000000000002000000000000000",
+      "decoded": {
+        "tag": 6,
+        "format_literal": "tag %s, len %d, hdr_ver %d, item_num %d, dual_video %d,%d, slice_hdr 4d %d,%d, 5d %d,%d, 6d %d,%d, 6d_with_ssfn %d,%d, whole_frame %d,%d, iframe_v3 %d,%d; ",
+        "tag_name": "SERVICE_COMMON",
+        "length": 17,
+        "header_version": 0,
+        "words_per_bank": 2,
+        "fields": [
+          {
+            "bit": 0,
+            "name": "dual_video",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 1,
+            "name": "slice_hdr_4d",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 2,
+            "name": "slice_hdr_5d",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 3,
+            "name": "slice_hdr_6d",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 4,
+            "name": "slice_hdr_6d_with_ssfn",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 5,
+            "name": "whole_frame",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 16,
+            "name": "iframe_v3",
+            "support": 0,
+            "mask": 0
+          }
+        ]
+      }
+    },
+    {
+      "tag": 6,
+      "bit": 5,
+      "name": "whole_frame",
+      "input_bank": "mask",
+      "input_hex": "2020000000000000000000000000000000",
+      "decoded": {
+        "tag": 6,
+        "format_literal": "tag %s, len %d, hdr_ver %d, item_num %d, dual_video %d,%d, slice_hdr 4d %d,%d, 5d %d,%d, 6d %d,%d, 6d_with_ssfn %d,%d, whole_frame %d,%d, iframe_v3 %d,%d; ",
+        "tag_name": "SERVICE_COMMON",
+        "length": 17,
+        "header_version": 0,
+        "words_per_bank": 2,
+        "fields": [
+          {
+            "bit": 0,
+            "name": "dual_video",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 1,
+            "name": "slice_hdr_4d",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 2,
+            "name": "slice_hdr_5d",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 3,
+            "name": "slice_hdr_6d",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 4,
+            "name": "slice_hdr_6d_with_ssfn",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 5,
+            "name": "whole_frame",
+            "support": 0,
+            "mask": 1
+          },
+          {
+            "bit": 16,
+            "name": "iframe_v3",
+            "support": 0,
+            "mask": 0
+          }
+        ]
+      }
+    },
+    {
+      "tag": 6,
+      "bit": 16,
+      "name": "iframe_v3",
+      "input_bank": "support",
+      "input_hex": "2000000000000000000000010000000000",
+      "decoded": {
+        "tag": 6,
+        "format_literal": "tag %s, len %d, hdr_ver %d, item_num %d, dual_video %d,%d, slice_hdr 4d %d,%d, 5d %d,%d, 6d %d,%d, 6d_with_ssfn %d,%d, whole_frame %d,%d, iframe_v3 %d,%d; ",
+        "tag_name": "SERVICE_COMMON",
+        "length": 17,
+        "header_version": 0,
+        "words_per_bank": 2,
+        "fields": [
+          {
+            "bit": 0,
+            "name": "dual_video",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 1,
+            "name": "slice_hdr_4d",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 2,
+            "name": "slice_hdr_5d",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 3,
+            "name": "slice_hdr_6d",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 4,
+            "name": "slice_hdr_6d_with_ssfn",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 5,
+            "name": "whole_frame",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 16,
+            "name": "iframe_v3",
+            "support": 1,
+            "mask": 0
+          }
+        ]
+      }
+    },
+    {
+      "tag": 6,
+      "bit": 16,
+      "name": "iframe_v3",
+      "input_bank": "mask",
+      "input_hex": "2000000100000000000000000000000000",
+      "decoded": {
+        "tag": 6,
+        "format_literal": "tag %s, len %d, hdr_ver %d, item_num %d, dual_video %d,%d, slice_hdr 4d %d,%d, 5d %d,%d, 6d %d,%d, 6d_with_ssfn %d,%d, whole_frame %d,%d, iframe_v3 %d,%d; ",
+        "tag_name": "SERVICE_COMMON",
+        "length": 17,
+        "header_version": 0,
+        "words_per_bank": 2,
+        "fields": [
+          {
+            "bit": 0,
+            "name": "dual_video",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 1,
+            "name": "slice_hdr_4d",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 2,
+            "name": "slice_hdr_5d",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 3,
+            "name": "slice_hdr_6d",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 4,
+            "name": "slice_hdr_6d_with_ssfn",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 5,
+            "name": "whole_frame",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 16,
+            "name": "iframe_v3",
+            "support": 0,
+            "mask": 1
+          }
+        ]
+      }
+    },
+    {
+      "tag": 10,
+      "bit": 0,
+      "name": "mode_follow",
+      "input_bank": "support",
+      "input_hex": "2000000000000000000100000000000000",
+      "decoded": {
+        "tag": 10,
+        "format_literal": "tag %s, len %d, hdr_ver %d, item_num %d; mode follow %d,%d, force switch %d,%d, lv_switch %d,%d, dl_switch %d,%d, hybrid_liveview %d,%d, wifi_liveview %d,%d, wifi_download %d,%d, tunnel forward %d,%d, v3 route %d,%d, ability_nego %d,%d, bind_dev_5134 %d %d; ",
+        "tag_name": "WLM_MODULE",
+        "length": 17,
+        "header_version": 0,
+        "words_per_bank": 2,
+        "fields": [
+          {
+            "bit": 0,
+            "name": "mode_follow",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 1,
+            "name": "force_switch",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 2,
+            "name": "lv_switch",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 3,
+            "name": "dl_switch",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 4,
+            "name": "hybrid_liveview",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 5,
+            "name": "wifi_liveview",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 6,
+            "name": "wifi_download",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 7,
+            "name": "tunnel_forward",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 8,
+            "name": "v3_route",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 9,
+            "name": "ability_nego",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 10,
+            "name": "bind_dev_5134",
+            "support": 0,
+            "mask": 0
+          }
+        ]
+      }
+    },
+    {
+      "tag": 10,
+      "bit": 0,
+      "name": "mode_follow",
+      "input_bank": "mask",
+      "input_hex": "2001000000000000000000000000000000",
+      "decoded": {
+        "tag": 10,
+        "format_literal": "tag %s, len %d, hdr_ver %d, item_num %d; mode follow %d,%d, force switch %d,%d, lv_switch %d,%d, dl_switch %d,%d, hybrid_liveview %d,%d, wifi_liveview %d,%d, wifi_download %d,%d, tunnel forward %d,%d, v3 route %d,%d, ability_nego %d,%d, bind_dev_5134 %d %d; ",
+        "tag_name": "WLM_MODULE",
+        "length": 17,
+        "header_version": 0,
+        "words_per_bank": 2,
+        "fields": [
+          {
+            "bit": 0,
+            "name": "mode_follow",
+            "support": 0,
+            "mask": 1
+          },
+          {
+            "bit": 1,
+            "name": "force_switch",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 2,
+            "name": "lv_switch",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 3,
+            "name": "dl_switch",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 4,
+            "name": "hybrid_liveview",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 5,
+            "name": "wifi_liveview",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 6,
+            "name": "wifi_download",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 7,
+            "name": "tunnel_forward",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 8,
+            "name": "v3_route",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 9,
+            "name": "ability_nego",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 10,
+            "name": "bind_dev_5134",
+            "support": 0,
+            "mask": 0
+          }
+        ]
+      }
+    },
+    {
+      "tag": 10,
+      "bit": 1,
+      "name": "force_switch",
+      "input_bank": "support",
+      "input_hex": "2000000000000000000200000000000000",
+      "decoded": {
+        "tag": 10,
+        "format_literal": "tag %s, len %d, hdr_ver %d, item_num %d; mode follow %d,%d, force switch %d,%d, lv_switch %d,%d, dl_switch %d,%d, hybrid_liveview %d,%d, wifi_liveview %d,%d, wifi_download %d,%d, tunnel forward %d,%d, v3 route %d,%d, ability_nego %d,%d, bind_dev_5134 %d %d; ",
+        "tag_name": "WLM_MODULE",
+        "length": 17,
+        "header_version": 0,
+        "words_per_bank": 2,
+        "fields": [
+          {
+            "bit": 0,
+            "name": "mode_follow",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 1,
+            "name": "force_switch",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 2,
+            "name": "lv_switch",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 3,
+            "name": "dl_switch",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 4,
+            "name": "hybrid_liveview",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 5,
+            "name": "wifi_liveview",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 6,
+            "name": "wifi_download",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 7,
+            "name": "tunnel_forward",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 8,
+            "name": "v3_route",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 9,
+            "name": "ability_nego",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 10,
+            "name": "bind_dev_5134",
+            "support": 0,
+            "mask": 0
+          }
+        ]
+      }
+    },
+    {
+      "tag": 10,
+      "bit": 1,
+      "name": "force_switch",
+      "input_bank": "mask",
+      "input_hex": "2002000000000000000000000000000000",
+      "decoded": {
+        "tag": 10,
+        "format_literal": "tag %s, len %d, hdr_ver %d, item_num %d; mode follow %d,%d, force switch %d,%d, lv_switch %d,%d, dl_switch %d,%d, hybrid_liveview %d,%d, wifi_liveview %d,%d, wifi_download %d,%d, tunnel forward %d,%d, v3 route %d,%d, ability_nego %d,%d, bind_dev_5134 %d %d; ",
+        "tag_name": "WLM_MODULE",
+        "length": 17,
+        "header_version": 0,
+        "words_per_bank": 2,
+        "fields": [
+          {
+            "bit": 0,
+            "name": "mode_follow",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 1,
+            "name": "force_switch",
+            "support": 0,
+            "mask": 1
+          },
+          {
+            "bit": 2,
+            "name": "lv_switch",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 3,
+            "name": "dl_switch",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 4,
+            "name": "hybrid_liveview",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 5,
+            "name": "wifi_liveview",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 6,
+            "name": "wifi_download",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 7,
+            "name": "tunnel_forward",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 8,
+            "name": "v3_route",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 9,
+            "name": "ability_nego",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 10,
+            "name": "bind_dev_5134",
+            "support": 0,
+            "mask": 0
+          }
+        ]
+      }
+    },
+    {
+      "tag": 10,
+      "bit": 2,
+      "name": "lv_switch",
+      "input_bank": "support",
+      "input_hex": "2000000000000000000400000000000000",
+      "decoded": {
+        "tag": 10,
+        "format_literal": "tag %s, len %d, hdr_ver %d, item_num %d; mode follow %d,%d, force switch %d,%d, lv_switch %d,%d, dl_switch %d,%d, hybrid_liveview %d,%d, wifi_liveview %d,%d, wifi_download %d,%d, tunnel forward %d,%d, v3 route %d,%d, ability_nego %d,%d, bind_dev_5134 %d %d; ",
+        "tag_name": "WLM_MODULE",
+        "length": 17,
+        "header_version": 0,
+        "words_per_bank": 2,
+        "fields": [
+          {
+            "bit": 0,
+            "name": "mode_follow",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 1,
+            "name": "force_switch",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 2,
+            "name": "lv_switch",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 3,
+            "name": "dl_switch",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 4,
+            "name": "hybrid_liveview",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 5,
+            "name": "wifi_liveview",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 6,
+            "name": "wifi_download",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 7,
+            "name": "tunnel_forward",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 8,
+            "name": "v3_route",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 9,
+            "name": "ability_nego",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 10,
+            "name": "bind_dev_5134",
+            "support": 0,
+            "mask": 0
+          }
+        ]
+      }
+    },
+    {
+      "tag": 10,
+      "bit": 2,
+      "name": "lv_switch",
+      "input_bank": "mask",
+      "input_hex": "2004000000000000000000000000000000",
+      "decoded": {
+        "tag": 10,
+        "format_literal": "tag %s, len %d, hdr_ver %d, item_num %d; mode follow %d,%d, force switch %d,%d, lv_switch %d,%d, dl_switch %d,%d, hybrid_liveview %d,%d, wifi_liveview %d,%d, wifi_download %d,%d, tunnel forward %d,%d, v3 route %d,%d, ability_nego %d,%d, bind_dev_5134 %d %d; ",
+        "tag_name": "WLM_MODULE",
+        "length": 17,
+        "header_version": 0,
+        "words_per_bank": 2,
+        "fields": [
+          {
+            "bit": 0,
+            "name": "mode_follow",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 1,
+            "name": "force_switch",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 2,
+            "name": "lv_switch",
+            "support": 0,
+            "mask": 1
+          },
+          {
+            "bit": 3,
+            "name": "dl_switch",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 4,
+            "name": "hybrid_liveview",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 5,
+            "name": "wifi_liveview",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 6,
+            "name": "wifi_download",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 7,
+            "name": "tunnel_forward",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 8,
+            "name": "v3_route",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 9,
+            "name": "ability_nego",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 10,
+            "name": "bind_dev_5134",
+            "support": 0,
+            "mask": 0
+          }
+        ]
+      }
+    },
+    {
+      "tag": 10,
+      "bit": 3,
+      "name": "dl_switch",
+      "input_bank": "support",
+      "input_hex": "2000000000000000000800000000000000",
+      "decoded": {
+        "tag": 10,
+        "format_literal": "tag %s, len %d, hdr_ver %d, item_num %d; mode follow %d,%d, force switch %d,%d, lv_switch %d,%d, dl_switch %d,%d, hybrid_liveview %d,%d, wifi_liveview %d,%d, wifi_download %d,%d, tunnel forward %d,%d, v3 route %d,%d, ability_nego %d,%d, bind_dev_5134 %d %d; ",
+        "tag_name": "WLM_MODULE",
+        "length": 17,
+        "header_version": 0,
+        "words_per_bank": 2,
+        "fields": [
+          {
+            "bit": 0,
+            "name": "mode_follow",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 1,
+            "name": "force_switch",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 2,
+            "name": "lv_switch",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 3,
+            "name": "dl_switch",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 4,
+            "name": "hybrid_liveview",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 5,
+            "name": "wifi_liveview",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 6,
+            "name": "wifi_download",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 7,
+            "name": "tunnel_forward",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 8,
+            "name": "v3_route",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 9,
+            "name": "ability_nego",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 10,
+            "name": "bind_dev_5134",
+            "support": 0,
+            "mask": 0
+          }
+        ]
+      }
+    },
+    {
+      "tag": 10,
+      "bit": 3,
+      "name": "dl_switch",
+      "input_bank": "mask",
+      "input_hex": "2008000000000000000000000000000000",
+      "decoded": {
+        "tag": 10,
+        "format_literal": "tag %s, len %d, hdr_ver %d, item_num %d; mode follow %d,%d, force switch %d,%d, lv_switch %d,%d, dl_switch %d,%d, hybrid_liveview %d,%d, wifi_liveview %d,%d, wifi_download %d,%d, tunnel forward %d,%d, v3 route %d,%d, ability_nego %d,%d, bind_dev_5134 %d %d; ",
+        "tag_name": "WLM_MODULE",
+        "length": 17,
+        "header_version": 0,
+        "words_per_bank": 2,
+        "fields": [
+          {
+            "bit": 0,
+            "name": "mode_follow",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 1,
+            "name": "force_switch",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 2,
+            "name": "lv_switch",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 3,
+            "name": "dl_switch",
+            "support": 0,
+            "mask": 1
+          },
+          {
+            "bit": 4,
+            "name": "hybrid_liveview",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 5,
+            "name": "wifi_liveview",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 6,
+            "name": "wifi_download",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 7,
+            "name": "tunnel_forward",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 8,
+            "name": "v3_route",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 9,
+            "name": "ability_nego",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 10,
+            "name": "bind_dev_5134",
+            "support": 0,
+            "mask": 0
+          }
+        ]
+      }
+    },
+    {
+      "tag": 10,
+      "bit": 4,
+      "name": "hybrid_liveview",
+      "input_bank": "support",
+      "input_hex": "2000000000000000001000000000000000",
+      "decoded": {
+        "tag": 10,
+        "format_literal": "tag %s, len %d, hdr_ver %d, item_num %d; mode follow %d,%d, force switch %d,%d, lv_switch %d,%d, dl_switch %d,%d, hybrid_liveview %d,%d, wifi_liveview %d,%d, wifi_download %d,%d, tunnel forward %d,%d, v3 route %d,%d, ability_nego %d,%d, bind_dev_5134 %d %d; ",
+        "tag_name": "WLM_MODULE",
+        "length": 17,
+        "header_version": 0,
+        "words_per_bank": 2,
+        "fields": [
+          {
+            "bit": 0,
+            "name": "mode_follow",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 1,
+            "name": "force_switch",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 2,
+            "name": "lv_switch",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 3,
+            "name": "dl_switch",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 4,
+            "name": "hybrid_liveview",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 5,
+            "name": "wifi_liveview",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 6,
+            "name": "wifi_download",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 7,
+            "name": "tunnel_forward",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 8,
+            "name": "v3_route",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 9,
+            "name": "ability_nego",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 10,
+            "name": "bind_dev_5134",
+            "support": 0,
+            "mask": 0
+          }
+        ]
+      }
+    },
+    {
+      "tag": 10,
+      "bit": 4,
+      "name": "hybrid_liveview",
+      "input_bank": "mask",
+      "input_hex": "2010000000000000000000000000000000",
+      "decoded": {
+        "tag": 10,
+        "format_literal": "tag %s, len %d, hdr_ver %d, item_num %d; mode follow %d,%d, force switch %d,%d, lv_switch %d,%d, dl_switch %d,%d, hybrid_liveview %d,%d, wifi_liveview %d,%d, wifi_download %d,%d, tunnel forward %d,%d, v3 route %d,%d, ability_nego %d,%d, bind_dev_5134 %d %d; ",
+        "tag_name": "WLM_MODULE",
+        "length": 17,
+        "header_version": 0,
+        "words_per_bank": 2,
+        "fields": [
+          {
+            "bit": 0,
+            "name": "mode_follow",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 1,
+            "name": "force_switch",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 2,
+            "name": "lv_switch",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 3,
+            "name": "dl_switch",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 4,
+            "name": "hybrid_liveview",
+            "support": 0,
+            "mask": 1
+          },
+          {
+            "bit": 5,
+            "name": "wifi_liveview",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 6,
+            "name": "wifi_download",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 7,
+            "name": "tunnel_forward",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 8,
+            "name": "v3_route",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 9,
+            "name": "ability_nego",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 10,
+            "name": "bind_dev_5134",
+            "support": 0,
+            "mask": 0
+          }
+        ]
+      }
+    },
+    {
+      "tag": 10,
+      "bit": 5,
+      "name": "wifi_liveview",
+      "input_bank": "support",
+      "input_hex": "2000000000000000002000000000000000",
+      "decoded": {
+        "tag": 10,
+        "format_literal": "tag %s, len %d, hdr_ver %d, item_num %d; mode follow %d,%d, force switch %d,%d, lv_switch %d,%d, dl_switch %d,%d, hybrid_liveview %d,%d, wifi_liveview %d,%d, wifi_download %d,%d, tunnel forward %d,%d, v3 route %d,%d, ability_nego %d,%d, bind_dev_5134 %d %d; ",
+        "tag_name": "WLM_MODULE",
+        "length": 17,
+        "header_version": 0,
+        "words_per_bank": 2,
+        "fields": [
+          {
+            "bit": 0,
+            "name": "mode_follow",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 1,
+            "name": "force_switch",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 2,
+            "name": "lv_switch",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 3,
+            "name": "dl_switch",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 4,
+            "name": "hybrid_liveview",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 5,
+            "name": "wifi_liveview",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 6,
+            "name": "wifi_download",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 7,
+            "name": "tunnel_forward",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 8,
+            "name": "v3_route",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 9,
+            "name": "ability_nego",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 10,
+            "name": "bind_dev_5134",
+            "support": 0,
+            "mask": 0
+          }
+        ]
+      }
+    },
+    {
+      "tag": 10,
+      "bit": 5,
+      "name": "wifi_liveview",
+      "input_bank": "mask",
+      "input_hex": "2020000000000000000000000000000000",
+      "decoded": {
+        "tag": 10,
+        "format_literal": "tag %s, len %d, hdr_ver %d, item_num %d; mode follow %d,%d, force switch %d,%d, lv_switch %d,%d, dl_switch %d,%d, hybrid_liveview %d,%d, wifi_liveview %d,%d, wifi_download %d,%d, tunnel forward %d,%d, v3 route %d,%d, ability_nego %d,%d, bind_dev_5134 %d %d; ",
+        "tag_name": "WLM_MODULE",
+        "length": 17,
+        "header_version": 0,
+        "words_per_bank": 2,
+        "fields": [
+          {
+            "bit": 0,
+            "name": "mode_follow",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 1,
+            "name": "force_switch",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 2,
+            "name": "lv_switch",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 3,
+            "name": "dl_switch",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 4,
+            "name": "hybrid_liveview",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 5,
+            "name": "wifi_liveview",
+            "support": 0,
+            "mask": 1
+          },
+          {
+            "bit": 6,
+            "name": "wifi_download",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 7,
+            "name": "tunnel_forward",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 8,
+            "name": "v3_route",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 9,
+            "name": "ability_nego",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 10,
+            "name": "bind_dev_5134",
+            "support": 0,
+            "mask": 0
+          }
+        ]
+      }
+    },
+    {
+      "tag": 10,
+      "bit": 6,
+      "name": "wifi_download",
+      "input_bank": "support",
+      "input_hex": "2000000000000000004000000000000000",
+      "decoded": {
+        "tag": 10,
+        "format_literal": "tag %s, len %d, hdr_ver %d, item_num %d; mode follow %d,%d, force switch %d,%d, lv_switch %d,%d, dl_switch %d,%d, hybrid_liveview %d,%d, wifi_liveview %d,%d, wifi_download %d,%d, tunnel forward %d,%d, v3 route %d,%d, ability_nego %d,%d, bind_dev_5134 %d %d; ",
+        "tag_name": "WLM_MODULE",
+        "length": 17,
+        "header_version": 0,
+        "words_per_bank": 2,
+        "fields": [
+          {
+            "bit": 0,
+            "name": "mode_follow",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 1,
+            "name": "force_switch",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 2,
+            "name": "lv_switch",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 3,
+            "name": "dl_switch",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 4,
+            "name": "hybrid_liveview",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 5,
+            "name": "wifi_liveview",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 6,
+            "name": "wifi_download",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 7,
+            "name": "tunnel_forward",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 8,
+            "name": "v3_route",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 9,
+            "name": "ability_nego",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 10,
+            "name": "bind_dev_5134",
+            "support": 0,
+            "mask": 0
+          }
+        ]
+      }
+    },
+    {
+      "tag": 10,
+      "bit": 6,
+      "name": "wifi_download",
+      "input_bank": "mask",
+      "input_hex": "2040000000000000000000000000000000",
+      "decoded": {
+        "tag": 10,
+        "format_literal": "tag %s, len %d, hdr_ver %d, item_num %d; mode follow %d,%d, force switch %d,%d, lv_switch %d,%d, dl_switch %d,%d, hybrid_liveview %d,%d, wifi_liveview %d,%d, wifi_download %d,%d, tunnel forward %d,%d, v3 route %d,%d, ability_nego %d,%d, bind_dev_5134 %d %d; ",
+        "tag_name": "WLM_MODULE",
+        "length": 17,
+        "header_version": 0,
+        "words_per_bank": 2,
+        "fields": [
+          {
+            "bit": 0,
+            "name": "mode_follow",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 1,
+            "name": "force_switch",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 2,
+            "name": "lv_switch",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 3,
+            "name": "dl_switch",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 4,
+            "name": "hybrid_liveview",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 5,
+            "name": "wifi_liveview",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 6,
+            "name": "wifi_download",
+            "support": 0,
+            "mask": 1
+          },
+          {
+            "bit": 7,
+            "name": "tunnel_forward",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 8,
+            "name": "v3_route",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 9,
+            "name": "ability_nego",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 10,
+            "name": "bind_dev_5134",
+            "support": 0,
+            "mask": 0
+          }
+        ]
+      }
+    },
+    {
+      "tag": 10,
+      "bit": 7,
+      "name": "tunnel_forward",
+      "input_bank": "support",
+      "input_hex": "2000000000000000008000000000000000",
+      "decoded": {
+        "tag": 10,
+        "format_literal": "tag %s, len %d, hdr_ver %d, item_num %d; mode follow %d,%d, force switch %d,%d, lv_switch %d,%d, dl_switch %d,%d, hybrid_liveview %d,%d, wifi_liveview %d,%d, wifi_download %d,%d, tunnel forward %d,%d, v3 route %d,%d, ability_nego %d,%d, bind_dev_5134 %d %d; ",
+        "tag_name": "WLM_MODULE",
+        "length": 17,
+        "header_version": 0,
+        "words_per_bank": 2,
+        "fields": [
+          {
+            "bit": 0,
+            "name": "mode_follow",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 1,
+            "name": "force_switch",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 2,
+            "name": "lv_switch",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 3,
+            "name": "dl_switch",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 4,
+            "name": "hybrid_liveview",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 5,
+            "name": "wifi_liveview",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 6,
+            "name": "wifi_download",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 7,
+            "name": "tunnel_forward",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 8,
+            "name": "v3_route",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 9,
+            "name": "ability_nego",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 10,
+            "name": "bind_dev_5134",
+            "support": 0,
+            "mask": 0
+          }
+        ]
+      }
+    },
+    {
+      "tag": 10,
+      "bit": 7,
+      "name": "tunnel_forward",
+      "input_bank": "mask",
+      "input_hex": "2080000000000000000000000000000000",
+      "decoded": {
+        "tag": 10,
+        "format_literal": "tag %s, len %d, hdr_ver %d, item_num %d; mode follow %d,%d, force switch %d,%d, lv_switch %d,%d, dl_switch %d,%d, hybrid_liveview %d,%d, wifi_liveview %d,%d, wifi_download %d,%d, tunnel forward %d,%d, v3 route %d,%d, ability_nego %d,%d, bind_dev_5134 %d %d; ",
+        "tag_name": "WLM_MODULE",
+        "length": 17,
+        "header_version": 0,
+        "words_per_bank": 2,
+        "fields": [
+          {
+            "bit": 0,
+            "name": "mode_follow",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 1,
+            "name": "force_switch",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 2,
+            "name": "lv_switch",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 3,
+            "name": "dl_switch",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 4,
+            "name": "hybrid_liveview",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 5,
+            "name": "wifi_liveview",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 6,
+            "name": "wifi_download",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 7,
+            "name": "tunnel_forward",
+            "support": 0,
+            "mask": 1
+          },
+          {
+            "bit": 8,
+            "name": "v3_route",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 9,
+            "name": "ability_nego",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 10,
+            "name": "bind_dev_5134",
+            "support": 0,
+            "mask": 0
+          }
+        ]
+      }
+    },
+    {
+      "tag": 10,
+      "bit": 8,
+      "name": "v3_route",
+      "input_bank": "support",
+      "input_hex": "2000000000000000000001000000000000",
+      "decoded": {
+        "tag": 10,
+        "format_literal": "tag %s, len %d, hdr_ver %d, item_num %d; mode follow %d,%d, force switch %d,%d, lv_switch %d,%d, dl_switch %d,%d, hybrid_liveview %d,%d, wifi_liveview %d,%d, wifi_download %d,%d, tunnel forward %d,%d, v3 route %d,%d, ability_nego %d,%d, bind_dev_5134 %d %d; ",
+        "tag_name": "WLM_MODULE",
+        "length": 17,
+        "header_version": 0,
+        "words_per_bank": 2,
+        "fields": [
+          {
+            "bit": 0,
+            "name": "mode_follow",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 1,
+            "name": "force_switch",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 2,
+            "name": "lv_switch",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 3,
+            "name": "dl_switch",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 4,
+            "name": "hybrid_liveview",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 5,
+            "name": "wifi_liveview",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 6,
+            "name": "wifi_download",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 7,
+            "name": "tunnel_forward",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 8,
+            "name": "v3_route",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 9,
+            "name": "ability_nego",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 10,
+            "name": "bind_dev_5134",
+            "support": 0,
+            "mask": 0
+          }
+        ]
+      }
+    },
+    {
+      "tag": 10,
+      "bit": 8,
+      "name": "v3_route",
+      "input_bank": "mask",
+      "input_hex": "2000010000000000000000000000000000",
+      "decoded": {
+        "tag": 10,
+        "format_literal": "tag %s, len %d, hdr_ver %d, item_num %d; mode follow %d,%d, force switch %d,%d, lv_switch %d,%d, dl_switch %d,%d, hybrid_liveview %d,%d, wifi_liveview %d,%d, wifi_download %d,%d, tunnel forward %d,%d, v3 route %d,%d, ability_nego %d,%d, bind_dev_5134 %d %d; ",
+        "tag_name": "WLM_MODULE",
+        "length": 17,
+        "header_version": 0,
+        "words_per_bank": 2,
+        "fields": [
+          {
+            "bit": 0,
+            "name": "mode_follow",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 1,
+            "name": "force_switch",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 2,
+            "name": "lv_switch",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 3,
+            "name": "dl_switch",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 4,
+            "name": "hybrid_liveview",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 5,
+            "name": "wifi_liveview",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 6,
+            "name": "wifi_download",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 7,
+            "name": "tunnel_forward",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 8,
+            "name": "v3_route",
+            "support": 0,
+            "mask": 1
+          },
+          {
+            "bit": 9,
+            "name": "ability_nego",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 10,
+            "name": "bind_dev_5134",
+            "support": 0,
+            "mask": 0
+          }
+        ]
+      }
+    },
+    {
+      "tag": 10,
+      "bit": 9,
+      "name": "ability_nego",
+      "input_bank": "support",
+      "input_hex": "2000000000000000000002000000000000",
+      "decoded": {
+        "tag": 10,
+        "format_literal": "tag %s, len %d, hdr_ver %d, item_num %d; mode follow %d,%d, force switch %d,%d, lv_switch %d,%d, dl_switch %d,%d, hybrid_liveview %d,%d, wifi_liveview %d,%d, wifi_download %d,%d, tunnel forward %d,%d, v3 route %d,%d, ability_nego %d,%d, bind_dev_5134 %d %d; ",
+        "tag_name": "WLM_MODULE",
+        "length": 17,
+        "header_version": 0,
+        "words_per_bank": 2,
+        "fields": [
+          {
+            "bit": 0,
+            "name": "mode_follow",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 1,
+            "name": "force_switch",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 2,
+            "name": "lv_switch",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 3,
+            "name": "dl_switch",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 4,
+            "name": "hybrid_liveview",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 5,
+            "name": "wifi_liveview",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 6,
+            "name": "wifi_download",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 7,
+            "name": "tunnel_forward",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 8,
+            "name": "v3_route",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 9,
+            "name": "ability_nego",
+            "support": 1,
+            "mask": 0
+          },
+          {
+            "bit": 10,
+            "name": "bind_dev_5134",
+            "support": 0,
+            "mask": 0
+          }
+        ]
+      }
+    },
+    {
+      "tag": 10,
+      "bit": 9,
+      "name": "ability_nego",
+      "input_bank": "mask",
+      "input_hex": "2000020000000000000000000000000000",
+      "decoded": {
+        "tag": 10,
+        "format_literal": "tag %s, len %d, hdr_ver %d, item_num %d; mode follow %d,%d, force switch %d,%d, lv_switch %d,%d, dl_switch %d,%d, hybrid_liveview %d,%d, wifi_liveview %d,%d, wifi_download %d,%d, tunnel forward %d,%d, v3 route %d,%d, ability_nego %d,%d, bind_dev_5134 %d %d; ",
+        "tag_name": "WLM_MODULE",
+        "length": 17,
+        "header_version": 0,
+        "words_per_bank": 2,
+        "fields": [
+          {
+            "bit": 0,
+            "name": "mode_follow",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 1,
+            "name": "force_switch",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 2,
+            "name": "lv_switch",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 3,
+            "name": "dl_switch",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 4,
+            "name": "hybrid_liveview",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 5,
+            "name": "wifi_liveview",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 6,
+            "name": "wifi_download",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 7,
+            "name": "tunnel_forward",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 8,
+            "name": "v3_route",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 9,
+            "name": "ability_nego",
+            "support": 0,
+            "mask": 1
+          },
+          {
+            "bit": 10,
+            "name": "bind_dev_5134",
+            "support": 0,
+            "mask": 0
+          }
+        ]
+      }
+    },
+    {
+      "tag": 10,
+      "bit": 10,
+      "name": "bind_dev_5134",
+      "input_bank": "support",
+      "input_hex": "2000000000000000000004000000000000",
+      "decoded": {
+        "tag": 10,
+        "format_literal": "tag %s, len %d, hdr_ver %d, item_num %d; mode follow %d,%d, force switch %d,%d, lv_switch %d,%d, dl_switch %d,%d, hybrid_liveview %d,%d, wifi_liveview %d,%d, wifi_download %d,%d, tunnel forward %d,%d, v3 route %d,%d, ability_nego %d,%d, bind_dev_5134 %d %d; ",
+        "tag_name": "WLM_MODULE",
+        "length": 17,
+        "header_version": 0,
+        "words_per_bank": 2,
+        "fields": [
+          {
+            "bit": 0,
+            "name": "mode_follow",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 1,
+            "name": "force_switch",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 2,
+            "name": "lv_switch",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 3,
+            "name": "dl_switch",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 4,
+            "name": "hybrid_liveview",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 5,
+            "name": "wifi_liveview",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 6,
+            "name": "wifi_download",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 7,
+            "name": "tunnel_forward",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 8,
+            "name": "v3_route",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 9,
+            "name": "ability_nego",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 10,
+            "name": "bind_dev_5134",
+            "support": 1,
+            "mask": 0
+          }
+        ]
+      }
+    },
+    {
+      "tag": 10,
+      "bit": 10,
+      "name": "bind_dev_5134",
+      "input_bank": "mask",
+      "input_hex": "2000040000000000000000000000000000",
+      "decoded": {
+        "tag": 10,
+        "format_literal": "tag %s, len %d, hdr_ver %d, item_num %d; mode follow %d,%d, force switch %d,%d, lv_switch %d,%d, dl_switch %d,%d, hybrid_liveview %d,%d, wifi_liveview %d,%d, wifi_download %d,%d, tunnel forward %d,%d, v3 route %d,%d, ability_nego %d,%d, bind_dev_5134 %d %d; ",
+        "tag_name": "WLM_MODULE",
+        "length": 17,
+        "header_version": 0,
+        "words_per_bank": 2,
+        "fields": [
+          {
+            "bit": 0,
+            "name": "mode_follow",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 1,
+            "name": "force_switch",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 2,
+            "name": "lv_switch",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 3,
+            "name": "dl_switch",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 4,
+            "name": "hybrid_liveview",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 5,
+            "name": "wifi_liveview",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 6,
+            "name": "wifi_download",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 7,
+            "name": "tunnel_forward",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 8,
+            "name": "v3_route",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 9,
+            "name": "ability_nego",
+            "support": 0,
+            "mask": 0
+          },
+          {
+            "bit": 10,
+            "name": "bind_dev_5134",
+            "support": 0,
+            "mask": 1
+          }
+        ]
+      }
+    }
+  ],
+  "common_merge": [
+    {
+      "bit": 0,
+      "name": "dual_video",
+      "left": 0,
+      "right": 0,
+      "left_hex": "2000000000000000000000000000000000",
+      "right_hex": "2000000000000000000000000000000000",
+      "output_before_hex": "20a5a5a5a5a5a5a5a55a5a5a5a5a5a5a5a",
+      "output_hex": "2080a5a4a5a5a5a5a5405a5a5a5a5a5a5a"
+    },
+    {
+      "bit": 0,
+      "name": "dual_video",
+      "left": 0,
+      "right": 1,
+      "left_hex": "2000000000000000000000000000000000",
+      "right_hex": "2001000000000000000100000000000000",
+      "output_before_hex": "20a5a5a5a5a5a5a5a55a5a5a5a5a5a5a5a",
+      "output_hex": "2081a5a4a5a5a5a5a5405a5a5a5a5a5a5a"
+    },
+    {
+      "bit": 0,
+      "name": "dual_video",
+      "left": 1,
+      "right": 0,
+      "left_hex": "2001000000000000000100000000000000",
+      "right_hex": "2000000000000000000000000000000000",
+      "output_before_hex": "20a5a5a5a5a5a5a5a55a5a5a5a5a5a5a5a",
+      "output_hex": "2081a5a4a5a5a5a5a5405a5a5a5a5a5a5a"
+    },
+    {
+      "bit": 0,
+      "name": "dual_video",
+      "left": 1,
+      "right": 1,
+      "left_hex": "2001000000000000000100000000000000",
+      "right_hex": "2001000000000000000100000000000000",
+      "output_before_hex": "20a5a5a5a5a5a5a5a55a5a5a5a5a5a5a5a",
+      "output_hex": "2081a5a4a5a5a5a5a5415a5a5a5a5a5a5a"
+    },
+    {
+      "bit": 1,
+      "name": "slice_hdr_4d",
+      "left": 0,
+      "right": 0,
+      "left_hex": "2000000000000000000000000000000000",
+      "right_hex": "2000000000000000000000000000000000",
+      "output_before_hex": "20a5a5a5a5a5a5a5a55a5a5a5a5a5a5a5a",
+      "output_hex": "2080a5a4a5a5a5a5a5405a5a5a5a5a5a5a"
+    },
+    {
+      "bit": 1,
+      "name": "slice_hdr_4d",
+      "left": 0,
+      "right": 1,
+      "left_hex": "2000000000000000000000000000000000",
+      "right_hex": "2002000000000000000200000000000000",
+      "output_before_hex": "20a5a5a5a5a5a5a5a55a5a5a5a5a5a5a5a",
+      "output_hex": "2082a5a4a5a5a5a5a5405a5a5a5a5a5a5a"
+    },
+    {
+      "bit": 1,
+      "name": "slice_hdr_4d",
+      "left": 1,
+      "right": 0,
+      "left_hex": "2002000000000000000200000000000000",
+      "right_hex": "2000000000000000000000000000000000",
+      "output_before_hex": "20a5a5a5a5a5a5a5a55a5a5a5a5a5a5a5a",
+      "output_hex": "2082a5a4a5a5a5a5a5405a5a5a5a5a5a5a"
+    },
+    {
+      "bit": 1,
+      "name": "slice_hdr_4d",
+      "left": 1,
+      "right": 1,
+      "left_hex": "2002000000000000000200000000000000",
+      "right_hex": "2002000000000000000200000000000000",
+      "output_before_hex": "20a5a5a5a5a5a5a5a55a5a5a5a5a5a5a5a",
+      "output_hex": "2082a5a4a5a5a5a5a5425a5a5a5a5a5a5a"
+    },
+    {
+      "bit": 2,
+      "name": "slice_hdr_5d",
+      "left": 0,
+      "right": 0,
+      "left_hex": "2000000000000000000000000000000000",
+      "right_hex": "2000000000000000000000000000000000",
+      "output_before_hex": "20a5a5a5a5a5a5a5a55a5a5a5a5a5a5a5a",
+      "output_hex": "2080a5a4a5a5a5a5a5405a5a5a5a5a5a5a"
+    },
+    {
+      "bit": 2,
+      "name": "slice_hdr_5d",
+      "left": 0,
+      "right": 1,
+      "left_hex": "2000000000000000000000000000000000",
+      "right_hex": "2004000000000000000400000000000000",
+      "output_before_hex": "20a5a5a5a5a5a5a5a55a5a5a5a5a5a5a5a",
+      "output_hex": "2084a5a4a5a5a5a5a5405a5a5a5a5a5a5a"
+    },
+    {
+      "bit": 2,
+      "name": "slice_hdr_5d",
+      "left": 1,
+      "right": 0,
+      "left_hex": "2004000000000000000400000000000000",
+      "right_hex": "2000000000000000000000000000000000",
+      "output_before_hex": "20a5a5a5a5a5a5a5a55a5a5a5a5a5a5a5a",
+      "output_hex": "2084a5a4a5a5a5a5a5405a5a5a5a5a5a5a"
+    },
+    {
+      "bit": 2,
+      "name": "slice_hdr_5d",
+      "left": 1,
+      "right": 1,
+      "left_hex": "2004000000000000000400000000000000",
+      "right_hex": "2004000000000000000400000000000000",
+      "output_before_hex": "20a5a5a5a5a5a5a5a55a5a5a5a5a5a5a5a",
+      "output_hex": "2084a5a4a5a5a5a5a5445a5a5a5a5a5a5a"
+    },
+    {
+      "bit": 3,
+      "name": "slice_hdr_6d",
+      "left": 0,
+      "right": 0,
+      "left_hex": "2000000000000000000000000000000000",
+      "right_hex": "2000000000000000000000000000000000",
+      "output_before_hex": "20a5a5a5a5a5a5a5a55a5a5a5a5a5a5a5a",
+      "output_hex": "2080a5a4a5a5a5a5a5405a5a5a5a5a5a5a"
+    },
+    {
+      "bit": 3,
+      "name": "slice_hdr_6d",
+      "left": 0,
+      "right": 1,
+      "left_hex": "2000000000000000000000000000000000",
+      "right_hex": "2008000000000000000800000000000000",
+      "output_before_hex": "20a5a5a5a5a5a5a5a55a5a5a5a5a5a5a5a",
+      "output_hex": "2088a5a4a5a5a5a5a5405a5a5a5a5a5a5a"
+    },
+    {
+      "bit": 3,
+      "name": "slice_hdr_6d",
+      "left": 1,
+      "right": 0,
+      "left_hex": "2008000000000000000800000000000000",
+      "right_hex": "2000000000000000000000000000000000",
+      "output_before_hex": "20a5a5a5a5a5a5a5a55a5a5a5a5a5a5a5a",
+      "output_hex": "2088a5a4a5a5a5a5a5405a5a5a5a5a5a5a"
+    },
+    {
+      "bit": 3,
+      "name": "slice_hdr_6d",
+      "left": 1,
+      "right": 1,
+      "left_hex": "2008000000000000000800000000000000",
+      "right_hex": "2008000000000000000800000000000000",
+      "output_before_hex": "20a5a5a5a5a5a5a5a55a5a5a5a5a5a5a5a",
+      "output_hex": "2088a5a4a5a5a5a5a5485a5a5a5a5a5a5a"
+    },
+    {
+      "bit": 4,
+      "name": "slice_hdr_6d_with_ssfn",
+      "left": 0,
+      "right": 0,
+      "left_hex": "2000000000000000000000000000000000",
+      "right_hex": "2000000000000000000000000000000000",
+      "output_before_hex": "20a5a5a5a5a5a5a5a55a5a5a5a5a5a5a5a",
+      "output_hex": "2080a5a4a5a5a5a5a5405a5a5a5a5a5a5a"
+    },
+    {
+      "bit": 4,
+      "name": "slice_hdr_6d_with_ssfn",
+      "left": 0,
+      "right": 1,
+      "left_hex": "2000000000000000000000000000000000",
+      "right_hex": "2010000000000000001000000000000000",
+      "output_before_hex": "20a5a5a5a5a5a5a5a55a5a5a5a5a5a5a5a",
+      "output_hex": "2090a5a4a5a5a5a5a5405a5a5a5a5a5a5a"
+    },
+    {
+      "bit": 4,
+      "name": "slice_hdr_6d_with_ssfn",
+      "left": 1,
+      "right": 0,
+      "left_hex": "2010000000000000001000000000000000",
+      "right_hex": "2000000000000000000000000000000000",
+      "output_before_hex": "20a5a5a5a5a5a5a5a55a5a5a5a5a5a5a5a",
+      "output_hex": "2090a5a4a5a5a5a5a5405a5a5a5a5a5a5a"
+    },
+    {
+      "bit": 4,
+      "name": "slice_hdr_6d_with_ssfn",
+      "left": 1,
+      "right": 1,
+      "left_hex": "2010000000000000001000000000000000",
+      "right_hex": "2010000000000000001000000000000000",
+      "output_before_hex": "20a5a5a5a5a5a5a5a55a5a5a5a5a5a5a5a",
+      "output_hex": "2090a5a4a5a5a5a5a5505a5a5a5a5a5a5a"
+    },
+    {
+      "bit": 5,
+      "name": "whole_frame",
+      "left": 0,
+      "right": 0,
+      "left_hex": "2000000000000000000000000000000000",
+      "right_hex": "2000000000000000000000000000000000",
+      "output_before_hex": "20a5a5a5a5a5a5a5a55a5a5a5a5a5a5a5a",
+      "output_hex": "2080a5a4a5a5a5a5a5405a5a5a5a5a5a5a"
+    },
+    {
+      "bit": 5,
+      "name": "whole_frame",
+      "left": 0,
+      "right": 1,
+      "left_hex": "2000000000000000000000000000000000",
+      "right_hex": "2020000000000000002000000000000000",
+      "output_before_hex": "20a5a5a5a5a5a5a5a55a5a5a5a5a5a5a5a",
+      "output_hex": "20a0a5a4a5a5a5a5a5405a5a5a5a5a5a5a"
+    },
+    {
+      "bit": 5,
+      "name": "whole_frame",
+      "left": 1,
+      "right": 0,
+      "left_hex": "2020000000000000002000000000000000",
+      "right_hex": "2000000000000000000000000000000000",
+      "output_before_hex": "20a5a5a5a5a5a5a5a55a5a5a5a5a5a5a5a",
+      "output_hex": "20a0a5a4a5a5a5a5a5405a5a5a5a5a5a5a"
+    },
+    {
+      "bit": 5,
+      "name": "whole_frame",
+      "left": 1,
+      "right": 1,
+      "left_hex": "2020000000000000002000000000000000",
+      "right_hex": "2020000000000000002000000000000000",
+      "output_before_hex": "20a5a5a5a5a5a5a5a55a5a5a5a5a5a5a5a",
+      "output_hex": "20a0a5a4a5a5a5a5a5605a5a5a5a5a5a5a"
+    },
+    {
+      "bit": 16,
+      "name": "iframe_v3",
+      "left": 0,
+      "right": 0,
+      "left_hex": "2000000000000000000000000000000000",
+      "right_hex": "2000000000000000000000000000000000",
+      "output_before_hex": "20a5a5a5a5a5a5a5a55a5a5a5a5a5a5a5a",
+      "output_hex": "2080a5a4a5a5a5a5a5405a5a5a5a5a5a5a"
+    },
+    {
+      "bit": 16,
+      "name": "iframe_v3",
+      "left": 0,
+      "right": 1,
+      "left_hex": "2000000000000000000000000000000000",
+      "right_hex": "2000000100000000000000010000000000",
+      "output_before_hex": "20a5a5a5a5a5a5a5a55a5a5a5a5a5a5a5a",
+      "output_hex": "2080a5a5a5a5a5a5a5405a5a5a5a5a5a5a"
+    },
+    {
+      "bit": 16,
+      "name": "iframe_v3",
+      "left": 1,
+      "right": 0,
+      "left_hex": "2000000100000000000000010000000000",
+      "right_hex": "2000000000000000000000000000000000",
+      "output_before_hex": "20a5a5a5a5a5a5a5a55a5a5a5a5a5a5a5a",
+      "output_hex": "2080a5a5a5a5a5a5a5405a5a5a5a5a5a5a"
+    },
+    {
+      "bit": 16,
+      "name": "iframe_v3",
+      "left": 1,
+      "right": 1,
+      "left_hex": "2000000100000000000000010000000000",
+      "right_hex": "2000000100000000000000010000000000",
+      "output_before_hex": "20a5a5a5a5a5a5a5a55a5a5a5a5a5a5a5a",
+      "output_hex": "2080a5a5a5a5a5a5a5405a5b5a5a5a5a5a"
+    }
+  ],
+  "service_gating": [
+    {
+      "name": "ability_nego",
+      "source_tag": 10,
+      "source_bit": 9,
+      "output_bit": 0,
+      "support": 0,
+      "local_mask": 0,
+      "peer_mask": 0,
+      "actual": {
+        "service_header": 16,
+        "service_support": 0,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "ability_nego",
+      "source_tag": 10,
+      "source_bit": 9,
+      "output_bit": 0,
+      "support": 0,
+      "local_mask": 0,
+      "peer_mask": 1,
+      "actual": {
+        "service_header": 16,
+        "service_support": 0,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "ability_nego",
+      "source_tag": 10,
+      "source_bit": 9,
+      "output_bit": 0,
+      "support": 0,
+      "local_mask": 1,
+      "peer_mask": 0,
+      "actual": {
+        "service_header": 16,
+        "service_support": 0,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "ability_nego",
+      "source_tag": 10,
+      "source_bit": 9,
+      "output_bit": 0,
+      "support": 0,
+      "local_mask": 1,
+      "peer_mask": 1,
+      "actual": {
+        "service_header": 16,
+        "service_support": 0,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "ability_nego",
+      "source_tag": 10,
+      "source_bit": 9,
+      "output_bit": 0,
+      "support": 1,
+      "local_mask": 0,
+      "peer_mask": 0,
+      "actual": {
+        "service_header": 16,
+        "service_support": 1,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "ability_nego",
+      "source_tag": 10,
+      "source_bit": 9,
+      "output_bit": 0,
+      "support": 1,
+      "local_mask": 0,
+      "peer_mask": 1,
+      "actual": {
+        "service_header": 16,
+        "service_support": 0,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "ability_nego",
+      "source_tag": 10,
+      "source_bit": 9,
+      "output_bit": 0,
+      "support": 1,
+      "local_mask": 1,
+      "peer_mask": 0,
+      "actual": {
+        "service_header": 16,
+        "service_support": 0,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "ability_nego",
+      "source_tag": 10,
+      "source_bit": 9,
+      "output_bit": 0,
+      "support": 1,
+      "local_mask": 1,
+      "peer_mask": 1,
+      "actual": {
+        "service_header": 16,
+        "service_support": 0,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "lv_switch",
+      "source_tag": 10,
+      "source_bit": 2,
+      "output_bit": 1,
+      "support": 0,
+      "local_mask": 0,
+      "peer_mask": 0,
+      "actual": {
+        "service_header": 16,
+        "service_support": 0,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "lv_switch",
+      "source_tag": 10,
+      "source_bit": 2,
+      "output_bit": 1,
+      "support": 0,
+      "local_mask": 0,
+      "peer_mask": 1,
+      "actual": {
+        "service_header": 16,
+        "service_support": 0,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "lv_switch",
+      "source_tag": 10,
+      "source_bit": 2,
+      "output_bit": 1,
+      "support": 0,
+      "local_mask": 1,
+      "peer_mask": 0,
+      "actual": {
+        "service_header": 16,
+        "service_support": 0,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "lv_switch",
+      "source_tag": 10,
+      "source_bit": 2,
+      "output_bit": 1,
+      "support": 0,
+      "local_mask": 1,
+      "peer_mask": 1,
+      "actual": {
+        "service_header": 16,
+        "service_support": 0,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "lv_switch",
+      "source_tag": 10,
+      "source_bit": 2,
+      "output_bit": 1,
+      "support": 1,
+      "local_mask": 0,
+      "peer_mask": 0,
+      "actual": {
+        "service_header": 16,
+        "service_support": 2,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "lv_switch",
+      "source_tag": 10,
+      "source_bit": 2,
+      "output_bit": 1,
+      "support": 1,
+      "local_mask": 0,
+      "peer_mask": 1,
+      "actual": {
+        "service_header": 16,
+        "service_support": 0,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "lv_switch",
+      "source_tag": 10,
+      "source_bit": 2,
+      "output_bit": 1,
+      "support": 1,
+      "local_mask": 1,
+      "peer_mask": 0,
+      "actual": {
+        "service_header": 16,
+        "service_support": 0,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "lv_switch",
+      "source_tag": 10,
+      "source_bit": 2,
+      "output_bit": 1,
+      "support": 1,
+      "local_mask": 1,
+      "peer_mask": 1,
+      "actual": {
+        "service_header": 16,
+        "service_support": 0,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "dl_switch",
+      "source_tag": 10,
+      "source_bit": 3,
+      "output_bit": 2,
+      "support": 0,
+      "local_mask": 0,
+      "peer_mask": 0,
+      "actual": {
+        "service_header": 16,
+        "service_support": 0,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "dl_switch",
+      "source_tag": 10,
+      "source_bit": 3,
+      "output_bit": 2,
+      "support": 0,
+      "local_mask": 0,
+      "peer_mask": 1,
+      "actual": {
+        "service_header": 16,
+        "service_support": 0,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "dl_switch",
+      "source_tag": 10,
+      "source_bit": 3,
+      "output_bit": 2,
+      "support": 0,
+      "local_mask": 1,
+      "peer_mask": 0,
+      "actual": {
+        "service_header": 16,
+        "service_support": 0,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "dl_switch",
+      "source_tag": 10,
+      "source_bit": 3,
+      "output_bit": 2,
+      "support": 0,
+      "local_mask": 1,
+      "peer_mask": 1,
+      "actual": {
+        "service_header": 16,
+        "service_support": 0,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "dl_switch",
+      "source_tag": 10,
+      "source_bit": 3,
+      "output_bit": 2,
+      "support": 1,
+      "local_mask": 0,
+      "peer_mask": 0,
+      "actual": {
+        "service_header": 16,
+        "service_support": 4,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "dl_switch",
+      "source_tag": 10,
+      "source_bit": 3,
+      "output_bit": 2,
+      "support": 1,
+      "local_mask": 0,
+      "peer_mask": 1,
+      "actual": {
+        "service_header": 16,
+        "service_support": 0,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "dl_switch",
+      "source_tag": 10,
+      "source_bit": 3,
+      "output_bit": 2,
+      "support": 1,
+      "local_mask": 1,
+      "peer_mask": 0,
+      "actual": {
+        "service_header": 16,
+        "service_support": 0,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "dl_switch",
+      "source_tag": 10,
+      "source_bit": 3,
+      "output_bit": 2,
+      "support": 1,
+      "local_mask": 1,
+      "peer_mask": 1,
+      "actual": {
+        "service_header": 16,
+        "service_support": 0,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "hybrid_liveview",
+      "source_tag": 10,
+      "source_bit": 4,
+      "output_bit": 3,
+      "support": 0,
+      "local_mask": 0,
+      "peer_mask": 0,
+      "actual": {
+        "service_header": 16,
+        "service_support": 2,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "hybrid_liveview",
+      "source_tag": 10,
+      "source_bit": 4,
+      "output_bit": 3,
+      "support": 0,
+      "local_mask": 0,
+      "peer_mask": 1,
+      "actual": {
+        "service_header": 16,
+        "service_support": 2,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "hybrid_liveview",
+      "source_tag": 10,
+      "source_bit": 4,
+      "output_bit": 3,
+      "support": 0,
+      "local_mask": 1,
+      "peer_mask": 0,
+      "actual": {
+        "service_header": 16,
+        "service_support": 2,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "hybrid_liveview",
+      "source_tag": 10,
+      "source_bit": 4,
+      "output_bit": 3,
+      "support": 0,
+      "local_mask": 1,
+      "peer_mask": 1,
+      "actual": {
+        "service_header": 16,
+        "service_support": 2,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "hybrid_liveview",
+      "source_tag": 10,
+      "source_bit": 4,
+      "output_bit": 3,
+      "support": 1,
+      "local_mask": 0,
+      "peer_mask": 0,
+      "actual": {
+        "service_header": 16,
+        "service_support": 10,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "hybrid_liveview",
+      "source_tag": 10,
+      "source_bit": 4,
+      "output_bit": 3,
+      "support": 1,
+      "local_mask": 0,
+      "peer_mask": 1,
+      "actual": {
+        "service_header": 16,
+        "service_support": 2,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "hybrid_liveview",
+      "source_tag": 10,
+      "source_bit": 4,
+      "output_bit": 3,
+      "support": 1,
+      "local_mask": 1,
+      "peer_mask": 0,
+      "actual": {
+        "service_header": 16,
+        "service_support": 2,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "hybrid_liveview",
+      "source_tag": 10,
+      "source_bit": 4,
+      "output_bit": 3,
+      "support": 1,
+      "local_mask": 1,
+      "peer_mask": 1,
+      "actual": {
+        "service_header": 16,
+        "service_support": 2,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "wifi_liveview",
+      "source_tag": 10,
+      "source_bit": 5,
+      "output_bit": 4,
+      "support": 0,
+      "local_mask": 0,
+      "peer_mask": 0,
+      "actual": {
+        "service_header": 16,
+        "service_support": 0,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "wifi_liveview",
+      "source_tag": 10,
+      "source_bit": 5,
+      "output_bit": 4,
+      "support": 0,
+      "local_mask": 0,
+      "peer_mask": 1,
+      "actual": {
+        "service_header": 16,
+        "service_support": 0,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "wifi_liveview",
+      "source_tag": 10,
+      "source_bit": 5,
+      "output_bit": 4,
+      "support": 0,
+      "local_mask": 1,
+      "peer_mask": 0,
+      "actual": {
+        "service_header": 16,
+        "service_support": 0,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "wifi_liveview",
+      "source_tag": 10,
+      "source_bit": 5,
+      "output_bit": 4,
+      "support": 0,
+      "local_mask": 1,
+      "peer_mask": 1,
+      "actual": {
+        "service_header": 16,
+        "service_support": 0,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "wifi_liveview",
+      "source_tag": 10,
+      "source_bit": 5,
+      "output_bit": 4,
+      "support": 1,
+      "local_mask": 0,
+      "peer_mask": 0,
+      "actual": {
+        "service_header": 16,
+        "service_support": 16,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "wifi_liveview",
+      "source_tag": 10,
+      "source_bit": 5,
+      "output_bit": 4,
+      "support": 1,
+      "local_mask": 0,
+      "peer_mask": 1,
+      "actual": {
+        "service_header": 16,
+        "service_support": 0,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "wifi_liveview",
+      "source_tag": 10,
+      "source_bit": 5,
+      "output_bit": 4,
+      "support": 1,
+      "local_mask": 1,
+      "peer_mask": 0,
+      "actual": {
+        "service_header": 16,
+        "service_support": 0,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "wifi_liveview",
+      "source_tag": 10,
+      "source_bit": 5,
+      "output_bit": 4,
+      "support": 1,
+      "local_mask": 1,
+      "peer_mask": 1,
+      "actual": {
+        "service_header": 16,
+        "service_support": 0,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "wifi_download",
+      "source_tag": 10,
+      "source_bit": 6,
+      "output_bit": 5,
+      "support": 0,
+      "local_mask": 0,
+      "peer_mask": 0,
+      "actual": {
+        "service_header": 16,
+        "service_support": 0,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "wifi_download",
+      "source_tag": 10,
+      "source_bit": 6,
+      "output_bit": 5,
+      "support": 0,
+      "local_mask": 0,
+      "peer_mask": 1,
+      "actual": {
+        "service_header": 16,
+        "service_support": 0,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "wifi_download",
+      "source_tag": 10,
+      "source_bit": 6,
+      "output_bit": 5,
+      "support": 0,
+      "local_mask": 1,
+      "peer_mask": 0,
+      "actual": {
+        "service_header": 16,
+        "service_support": 0,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "wifi_download",
+      "source_tag": 10,
+      "source_bit": 6,
+      "output_bit": 5,
+      "support": 0,
+      "local_mask": 1,
+      "peer_mask": 1,
+      "actual": {
+        "service_header": 16,
+        "service_support": 0,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "wifi_download",
+      "source_tag": 10,
+      "source_bit": 6,
+      "output_bit": 5,
+      "support": 1,
+      "local_mask": 0,
+      "peer_mask": 0,
+      "actual": {
+        "service_header": 16,
+        "service_support": 32,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "wifi_download",
+      "source_tag": 10,
+      "source_bit": 6,
+      "output_bit": 5,
+      "support": 1,
+      "local_mask": 0,
+      "peer_mask": 1,
+      "actual": {
+        "service_header": 16,
+        "service_support": 0,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "wifi_download",
+      "source_tag": 10,
+      "source_bit": 6,
+      "output_bit": 5,
+      "support": 1,
+      "local_mask": 1,
+      "peer_mask": 0,
+      "actual": {
+        "service_header": 16,
+        "service_support": 0,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "wifi_download",
+      "source_tag": 10,
+      "source_bit": 6,
+      "output_bit": 5,
+      "support": 1,
+      "local_mask": 1,
+      "peer_mask": 1,
+      "actual": {
+        "service_header": 16,
+        "service_support": 0,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "dual_control",
+      "source_tag": 11,
+      "source_bit": 3,
+      "output_bit": 6,
+      "support": 0,
+      "local_mask": 0,
+      "peer_mask": 0,
+      "actual": {
+        "service_header": 16,
+        "service_support": 0,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "dual_control",
+      "source_tag": 11,
+      "source_bit": 3,
+      "output_bit": 6,
+      "support": 0,
+      "local_mask": 0,
+      "peer_mask": 1,
+      "actual": {
+        "service_header": 16,
+        "service_support": 0,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "dual_control",
+      "source_tag": 11,
+      "source_bit": 3,
+      "output_bit": 6,
+      "support": 0,
+      "local_mask": 1,
+      "peer_mask": 0,
+      "actual": {
+        "service_header": 16,
+        "service_support": 0,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "dual_control",
+      "source_tag": 11,
+      "source_bit": 3,
+      "output_bit": 6,
+      "support": 0,
+      "local_mask": 1,
+      "peer_mask": 1,
+      "actual": {
+        "service_header": 16,
+        "service_support": 0,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "dual_control",
+      "source_tag": 11,
+      "source_bit": 3,
+      "output_bit": 6,
+      "support": 1,
+      "local_mask": 0,
+      "peer_mask": 0,
+      "actual": {
+        "service_header": 16,
+        "service_support": 64,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "dual_control",
+      "source_tag": 11,
+      "source_bit": 3,
+      "output_bit": 6,
+      "support": 1,
+      "local_mask": 0,
+      "peer_mask": 1,
+      "actual": {
+        "service_header": 16,
+        "service_support": 0,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "dual_control",
+      "source_tag": 11,
+      "source_bit": 3,
+      "output_bit": 6,
+      "support": 1,
+      "local_mask": 1,
+      "peer_mask": 0,
+      "actual": {
+        "service_header": 16,
+        "service_support": 0,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "dual_control",
+      "source_tag": 11,
+      "source_bit": 3,
+      "output_bit": 6,
+      "support": 1,
+      "local_mask": 1,
+      "peer_mask": 1,
+      "actual": {
+        "service_header": 16,
+        "service_support": 0,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "arbitration_centor",
+      "source_tag": 11,
+      "source_bit": 4,
+      "output_bit": 7,
+      "support": 0,
+      "local_mask": 0,
+      "peer_mask": 0,
+      "actual": {
+        "service_header": 16,
+        "service_support": 0,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "arbitration_centor",
+      "source_tag": 11,
+      "source_bit": 4,
+      "output_bit": 7,
+      "support": 0,
+      "local_mask": 0,
+      "peer_mask": 1,
+      "actual": {
+        "service_header": 16,
+        "service_support": 0,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "arbitration_centor",
+      "source_tag": 11,
+      "source_bit": 4,
+      "output_bit": 7,
+      "support": 0,
+      "local_mask": 1,
+      "peer_mask": 0,
+      "actual": {
+        "service_header": 16,
+        "service_support": 0,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "arbitration_centor",
+      "source_tag": 11,
+      "source_bit": 4,
+      "output_bit": 7,
+      "support": 0,
+      "local_mask": 1,
+      "peer_mask": 1,
+      "actual": {
+        "service_header": 16,
+        "service_support": 0,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "arbitration_centor",
+      "source_tag": 11,
+      "source_bit": 4,
+      "output_bit": 7,
+      "support": 1,
+      "local_mask": 0,
+      "peer_mask": 0,
+      "actual": {
+        "service_header": 16,
+        "service_support": 128,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "arbitration_centor",
+      "source_tag": 11,
+      "source_bit": 4,
+      "output_bit": 7,
+      "support": 1,
+      "local_mask": 0,
+      "peer_mask": 1,
+      "actual": {
+        "service_header": 16,
+        "service_support": 0,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "arbitration_centor",
+      "source_tag": 11,
+      "source_bit": 4,
+      "output_bit": 7,
+      "support": 1,
+      "local_mask": 1,
+      "peer_mask": 0,
+      "actual": {
+        "service_header": 16,
+        "service_support": 0,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "arbitration_centor",
+      "source_tag": 11,
+      "source_bit": 4,
+      "output_bit": 7,
+      "support": 1,
+      "local_mask": 1,
+      "peer_mask": 1,
+      "actual": {
+        "service_header": 16,
+        "service_support": 0,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "dual_video",
+      "source_tag": 6,
+      "source_bit": 0,
+      "output_bit": 8,
+      "support": 0,
+      "local_mask": 0,
+      "peer_mask": 0,
+      "actual": {
+        "service_header": 16,
+        "service_support": 0,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "dual_video",
+      "source_tag": 6,
+      "source_bit": 0,
+      "output_bit": 8,
+      "support": 0,
+      "local_mask": 0,
+      "peer_mask": 1,
+      "actual": {
+        "service_header": 16,
+        "service_support": 0,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "dual_video",
+      "source_tag": 6,
+      "source_bit": 0,
+      "output_bit": 8,
+      "support": 0,
+      "local_mask": 1,
+      "peer_mask": 0,
+      "actual": {
+        "service_header": 16,
+        "service_support": 0,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "dual_video",
+      "source_tag": 6,
+      "source_bit": 0,
+      "output_bit": 8,
+      "support": 0,
+      "local_mask": 1,
+      "peer_mask": 1,
+      "actual": {
+        "service_header": 16,
+        "service_support": 0,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "dual_video",
+      "source_tag": 6,
+      "source_bit": 0,
+      "output_bit": 8,
+      "support": 1,
+      "local_mask": 0,
+      "peer_mask": 0,
+      "actual": {
+        "service_header": 16,
+        "service_support": 256,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "dual_video",
+      "source_tag": 6,
+      "source_bit": 0,
+      "output_bit": 8,
+      "support": 1,
+      "local_mask": 0,
+      "peer_mask": 1,
+      "actual": {
+        "service_header": 16,
+        "service_support": 0,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "dual_video",
+      "source_tag": 6,
+      "source_bit": 0,
+      "output_bit": 8,
+      "support": 1,
+      "local_mask": 1,
+      "peer_mask": 0,
+      "actual": {
+        "service_header": 16,
+        "service_support": 0,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "dual_video",
+      "source_tag": 6,
+      "source_bit": 0,
+      "output_bit": 8,
+      "support": 1,
+      "local_mask": 1,
+      "peer_mask": 1,
+      "actual": {
+        "service_header": 16,
+        "service_support": 0,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "iframe_v3",
+      "source_tag": 6,
+      "source_bit": 16,
+      "output_bit": 9,
+      "support": 0,
+      "local_mask": 0,
+      "peer_mask": 0,
+      "actual": {
+        "service_header": 16,
+        "service_support": 0,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "iframe_v3",
+      "source_tag": 6,
+      "source_bit": 16,
+      "output_bit": 9,
+      "support": 0,
+      "local_mask": 0,
+      "peer_mask": 1,
+      "actual": {
+        "service_header": 16,
+        "service_support": 0,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "iframe_v3",
+      "source_tag": 6,
+      "source_bit": 16,
+      "output_bit": 9,
+      "support": 0,
+      "local_mask": 1,
+      "peer_mask": 0,
+      "actual": {
+        "service_header": 16,
+        "service_support": 0,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "iframe_v3",
+      "source_tag": 6,
+      "source_bit": 16,
+      "output_bit": 9,
+      "support": 0,
+      "local_mask": 1,
+      "peer_mask": 1,
+      "actual": {
+        "service_header": 16,
+        "service_support": 0,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "iframe_v3",
+      "source_tag": 6,
+      "source_bit": 16,
+      "output_bit": 9,
+      "support": 1,
+      "local_mask": 0,
+      "peer_mask": 0,
+      "actual": {
+        "service_header": 16,
+        "service_support": 512,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "iframe_v3",
+      "source_tag": 6,
+      "source_bit": 16,
+      "output_bit": 9,
+      "support": 1,
+      "local_mask": 0,
+      "peer_mask": 1,
+      "actual": {
+        "service_header": 16,
+        "service_support": 0,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "iframe_v3",
+      "source_tag": 6,
+      "source_bit": 16,
+      "output_bit": 9,
+      "support": 1,
+      "local_mask": 1,
+      "peer_mask": 0,
+      "actual": {
+        "service_header": 16,
+        "service_support": 0,
+        "dynamic_support": 0,
+        "events": []
+      }
+    },
+    {
+      "name": "iframe_v3",
+      "source_tag": 6,
+      "source_bit": 16,
+      "output_bit": 9,
+      "support": 1,
+      "local_mask": 1,
+      "peer_mask": 1,
+      "actual": {
+        "service_header": 16,
+        "service_support": 0,
+        "dynamic_support": 0,
+        "events": []
+      }
+    }
+  ],
+  "hybrid_without_lv_switch": {
+    "service_header": 16,
+    "service_support": 0,
+    "dynamic_support": 0,
+    "events": []
+  },
+  "bind_5134_overrides": [
+    {
+      "cached_initial_support": 0,
+      "peer_bit1": 0,
+      "before_hex": "2000000000000000000000000000000000",
+      "after_hex": "2000000000000000000000000000000000",
+      "cached_byte": 0
+    },
+    {
+      "cached_initial_support": 0,
+      "peer_bit1": 1,
+      "before_hex": "2000000000000000000000000000000000",
+      "after_hex": "2000000000000000000000000000000000",
+      "cached_byte": 0
+    },
+    {
+      "cached_initial_support": 0,
+      "peer_bit1": 0,
+      "before_hex": "2000000000000000000000000000000000",
+      "after_hex": "2000000000000000000000000000000000",
+      "cached_byte": 0
+    },
+    {
+      "cached_initial_support": 0,
+      "peer_bit1": 1,
+      "before_hex": "2000000000000000000000000000000000",
+      "after_hex": "2000000000000000000000000000000000",
+      "cached_byte": 0
+    },
+    {
+      "cached_initial_support": 1,
+      "peer_bit1": 0,
+      "before_hex": "2000000000000000000004000000000000",
+      "after_hex": "2000000000000000000000000000000000",
+      "cached_byte": 1
+    },
+    {
+      "cached_initial_support": 1,
+      "peer_bit1": 1,
+      "before_hex": "2000000000000000000000000000000000",
+      "after_hex": "2000000000000000000004000000000000",
+      "cached_byte": 1
+    },
+    {
+      "cached_initial_support": 1,
+      "peer_bit1": 0,
+      "before_hex": "2000000000000000000004000000000000",
+      "after_hex": "2000000000000000000000000000000000",
+      "cached_byte": 1
+    },
+    {
+      "cached_initial_support": 1,
+      "peer_bit1": 1,
+      "before_hex": "2000000000000000000000000000000000",
+      "after_hex": "2000000000000000000004000000000000",
+      "cached_byte": 1
+    }
+  ],
+  "bind_5134_triggers": [
+    {
+      "timer_exists": false,
+      "peer_state": 1,
+      "events": [
+        {
+          "boundary": "timer_create"
+        }
+      ]
+    },
+    {
+      "timer_exists": true,
+      "peer_state": 1,
+      "events": [
+        {
+          "boundary": "send_capability_message",
+          "operation": 1,
+          "subtype": 1,
+          "destination_native_host": 2311,
+          "tlv_hex": "06112000000000000000001f000100000000000a112000000000000000000000000000000000"
+        }
+      ]
+    }
+  ],
+  "initial_bind_cache_byte": 255,
+  "capability_set_overrides": [
+    {
+      "peer_type": 0,
+      "subtype": 1,
+      "input_body_hex": "300100785634122600061120000001000000000001000000000000000a112020000000000000000003000000000000",
+      "accepted": true,
+      "return_u32": 0,
+      "cap6_hex": "2000000100000000000100000000000000",
+      "cap10_hex": "2020000000000000000003000000000000",
+      "events": [
+        {
+          "boundary": "send_capability_ack",
+          "status": 0
+        },
+        {
+          "boundary": "send_capability_message",
+          "operation": 1,
+          "subtype": 1,
+          "destination_native_host": 0,
+          "tlv_hex": "061120000001000000000001000000000000000a112020000000000000000003000000000000"
+        }
+      ]
+    },
+    {
+      "peer_type": 1,
+      "subtype": 1,
+      "input_body_hex": "300100785634122600061120000001000000000001000000000000000a112020000000000000000003000000000000",
+      "accepted": false,
+      "return_u32": 4294966285,
+      "cap6_hex": "2000000000000000001f00010000000000",
+      "cap10_hex": "2000000000000000007d07000000000000",
+      "events": []
+    },
+    {
+      "peer_type": 0,
+      "subtype": 2,
+      "input_body_hex": "300200785634122600061120000001000000000001000000000000000a112020000000000000000003000000000000",
+      "accepted": false,
+      "return_u32": 4294966285,
+      "cap6_hex": "2000000000000000001f00010000000000",
+      "cap10_hex": "2000000000000000007d07000000000000",
+      "events": []
+    }
+  ],
+  "guest_imports": [
+    "calloc",
+    "memcpy"
+  ],
+  "guest_boundaries": [
+    "format output captured after native bit extraction",
+    "logging suppressed",
+    "timer creation recorded without a timer thread",
+    "message/ack sends recorded without I/O"
+  ],
+  "limits": [
+    "Compiled initializer is not evidence of Android APP runtime configuration",
+    "Poison cases show unspecified support bits survive initialization",
+    "A named SDK capability does not establish that the PC implements it",
+    "Does not establish delivery, live negotiation, video reception or a PC TX profile"
+  ]
+}

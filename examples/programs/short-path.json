@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "finish": "land",
+  "steps": [
+    {"kind": "hold", "seconds": 0.5},
+    {"kind": "translate", "seconds": 0.4, "right": 0, "forward": 100, "up": 0},
+    {"kind": "rotate", "degrees": 90, "channel": 150, "timeout_seconds": 5},
+    {"kind": "translate", "seconds": 0.4, "right": 100, "forward": 0, "up": 0},
+    {"kind": "hold", "seconds": 0.5}
+  ]
+}

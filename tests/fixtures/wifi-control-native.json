@@ -1,0 +1,1246 @@
+{
+  "schema": "neo2-control/wifi-control-native/v1",
+  "scope": "Saved ARM64 execution with synthetic inputs; no physical target or radio. Framing and callbacks prove no remote-host ownership.",
+  "sdk_sha256": "fb431e44f6a4971b159e7ac811bbd568016a300d959c958df99acb08c9fa9249",
+  "sources": {
+    "private/rea/neo2-flight-product-binding/native-verification.json": "c9eb1edfde73d7651a45410de8b78a602be6841058bc826c3891d58935a08f9c",
+    "private/rea/wifi-device-selection/response-verification.json": "0a0ac5d8f8c2eee43c4d11c7446245961490be79d4ce6945f5c4fdc8d1800ed9",
+    "private/rea/wifi-device-list-identity/native-verification.json": "8e669aa19c511751516fce63a831d0210b47172aab241a997621354d543ffdb1",
+    "tests/fixtures/flight-route-native.json": "9c045f1c7a66c4df6001ad0369623ffadb00eddeae14903ca8cd9db3b7d68479"
+  },
+  "selection_frame": {
+    "native_payload_hex": "00002473796e7468657469632d69640000000000000000",
+    "native_frame_hex": "5524044002ee238140511500002473796e7468657469632d6964000000000000000046f5"
+  },
+  "mode_frame": "552d04f202ee238140511a00000200000000000000000000000000000000000000000000000000000000007bf8",
+  "selection_status_cases": [
+    {
+      "status_byte0": 0,
+      "sdk_result": 0
+    },
+    {
+      "status_byte0": 1,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 2,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 3,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 4,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 5,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 6,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 7,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 8,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 9,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 10,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 11,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 12,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 13,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 14,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 15,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 16,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 17,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 18,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 19,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 20,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 21,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 22,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 23,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 24,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 25,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 26,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 27,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 28,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 29,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 30,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 31,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 32,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 33,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 34,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 35,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 36,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 37,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 38,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 39,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 40,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 41,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 42,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 43,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 44,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 45,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 46,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 47,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 48,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 49,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 50,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 51,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 52,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 53,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 54,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 55,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 56,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 57,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 58,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 59,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 60,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 61,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 62,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 63,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 64,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 65,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 66,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 67,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 68,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 69,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 70,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 71,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 72,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 73,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 74,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 75,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 76,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 77,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 78,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 79,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 80,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 81,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 82,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 83,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 84,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 85,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 86,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 87,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 88,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 89,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 90,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 91,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 92,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 93,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 94,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 95,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 96,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 97,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 98,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 99,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 100,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 101,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 102,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 103,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 104,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 105,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 106,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 107,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 108,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 109,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 110,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 111,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 112,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 113,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 114,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 115,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 116,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 117,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 118,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 119,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 120,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 121,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 122,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 123,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 124,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 125,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 126,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 127,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 128,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 129,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 130,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 131,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 132,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 133,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 134,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 135,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 136,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 137,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 138,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 139,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 140,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 141,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 142,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 143,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 144,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 145,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 146,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 147,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 148,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 149,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 150,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 151,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 152,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 153,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 154,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 155,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 156,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 157,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 158,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 159,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 160,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 161,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 162,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 163,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 164,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 165,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 166,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 167,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 168,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 169,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 170,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 171,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 172,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 173,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 174,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 175,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 176,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 177,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 178,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 179,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 180,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 181,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 182,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 183,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 184,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 185,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 186,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 187,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 188,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 189,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 190,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 191,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 192,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 193,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 194,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 195,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 196,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 197,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 198,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 199,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 200,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 201,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 202,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 203,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 204,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 205,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 206,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 207,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 208,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 209,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 210,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 211,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 212,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 213,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 214,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 215,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 216,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 217,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 218,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 219,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 220,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 221,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 222,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 223,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 224,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 225,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 226,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 227,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 228,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 229,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 230,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 231,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 232,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 233,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 234,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 235,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 236,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 237,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 238,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 239,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 240,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 241,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 242,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 243,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 244,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 245,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 246,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 247,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 248,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 249,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 250,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 251,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 252,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 253,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 254,
+      "sdk_result": -7
+    },
+    {
+      "status_byte0": 255,
+      "sdk_result": -7
+    }
+  ],
+  "mode_status_cases": [
+    {
+      "status_byte1": 0,
+      "body_present": true,
+      "response_present": true,
+      "sdk_result": 0
+    },
+    {
+      "status_byte1": 1,
+      "body_present": true,
+      "response_present": true,
+      "sdk_result": -8705
+    },
+    {
+      "status_byte1": 2,
+      "body_present": true,
+      "response_present": true,
+      "sdk_result": -8706
+    },
+    {
+      "status_byte1": 3,
+      "body_present": true,
+      "response_present": true,
+      "sdk_result": -8707
+    },
+    {
+      "status_byte1": 4,
+      "body_present": true,
+      "response_present": true,
+      "sdk_result": -8708
+    },
+    {
+      "status_byte1": 5,
+      "body_present": true,
+      "response_present": true,
+      "sdk_result": -8709
+    },
+    {
+      "status_byte1": 6,
+      "body_present": true,
+      "response_present": true,
+      "sdk_result": -8710
+    },
+    {
+      "status_byte1": 7,
+      "body_present": true,
+      "response_present": true,
+      "sdk_result": -8711
+    },
+    {
+      "status_byte1": 8,
+      "body_present": true,
+      "response_present": true,
+      "sdk_result": -8712
+    },
+    {
+      "status_byte1": 9,
+      "body_present": true,
+      "response_present": true,
+      "sdk_result": -8713
+    },
+    {
+      "status_byte1": 10,
+      "body_present": true,
+      "response_present": true,
+      "sdk_result": -8714
+    },
+    {
+      "status_byte1": 11,
+      "body_present": true,
+      "response_present": true,
+      "sdk_result": -8715
+    },
+    {
+      "status_byte1": 12,
+      "body_present": true,
+      "response_present": true,
+      "sdk_result": -8959
+    },
+    {
+      "status_byte1": 13,
+      "body_present": true,
+      "response_present": true,
+      "sdk_result": -8959
+    },
+    {
+      "status_byte1": 255,
+      "body_present": true,
+      "response_present": true,
+      "sdk_result": -8959
+    }
+  ],
+  "selection_cases": [
+    {
+      "entries": [],
+      "operation_control_available_byte222": 0,
+      "latest_selected_timestamp": 0
+    },
+    {
+      "entries": [
+        [
+          0,
+          100
+        ]
+      ],
+      "operation_control_available_byte222": 0,
+      "latest_selected_timestamp": 0
+    },
+    {
+      "entries": [
+        [
+          1,
+          100
+        ]
+      ],
+      "operation_control_available_byte222": 1,
+      "latest_selected_timestamp": 100
+    },
+    {
+      "entries": [
+        [
+          1,
+          100
+        ],
+        [
+          1,
+          200
+        ]
+      ],
+      "operation_control_available_byte222": 1,
+      "latest_selected_timestamp": 200
+    },
+    {
+      "entries": [
+        [
+          1,
+          200
+        ],
+        [
+          1,
+          100
+        ]
+      ],
+      "operation_control_available_byte222": 1,
+      "latest_selected_timestamp": 200
+    },
+    {
+      "entries": [
+        [
+          1,
+          -1
+        ]
+      ],
+      "operation_control_available_byte222": 0,
+      "latest_selected_timestamp": 0
+    },
+    {
+      "entries": [
+        [
+          2,
+          50
+        ],
+        [
+          0,
+          500
+        ]
+      ],
+      "operation_control_available_byte222": 1,
+      "latest_selected_timestamp": 50
+    }
+  ],
+  "identity_cases": [
+    {
+      "record_hex": "00002473796e7468657469632d69640000000000000000010203a5a5ab85ffffffffffffffc801000000000000150300000000000002a5a5a5a5a5a5a5",
+      "expected_canonical_id_hex": "00002473796e7468657469632d69640000000000000000",
+      "expected_selection_timestamp": 789,
+      "raw_id_is_canonical": true
+    },
+    {
+      "record_hex": "0103046162636465666768696a6b6c6d6e6f7071727374010203a5a5ab85ffffffffffffffc801000000000000150300000000000002a5a5a5a5a5a5a5",
+      "expected_canonical_id_hex": "0103046162636465666768696a6b6c6d6e6f7071727374",
+      "expected_selection_timestamp": 789,
+      "raw_id_is_canonical": true
+    },
+    {
+      "record_hex": "05ffff6964006e6f6e63616e6f6e6963616c2d7461696c010203a5a5ab85ffffffffffffffc801000000000000150300000000000002a5a5a5a5a5a5a5",
+      "expected_canonical_id_hex": "05ffff6964000000000000000000000000000000000000",
+      "expected_selection_timestamp": 789,
+      "raw_id_is_canonical": false
+    },
+    {
+      "record_hex": "0001240000000000000000000000000000000000000000010203a5a5ab85ffffffffffffffc801000000000000150300000000000002a5a5a5a5a5a5a5",
+      "expected_canonical_id_hex": "0001240000000000000000000000000000000000000000",
+      "expected_selection_timestamp": 789,
+      "raw_id_is_canonical": true
+    }
+  ],
+  "limitations": [
+    "51/14 and51/15 source/host publication ownership and current-generation freshness belong to caller.",
+    "51/15nativepending matcher omits source by default, destination andACKbit; PC requires a reversed route and clearACK.",
+    "Canonical padding requirement is PC policy; native SDK truncates ID atNUL.",
+    "Timestamps have unknown units/domain; selecting their maximum does not establish freshness.",
+    "ACKsuccess does not confirm actualmode2."
+  ]
+}

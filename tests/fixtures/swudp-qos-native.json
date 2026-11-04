@@ -1,0 +1,2466 @@
+{
+  "schema": "neo2-control/swudp-qos-native/v1",
+  "sdk_sha256": "fb431e44f6a4971b159e7ac811bbd568016a300d959c958df99acb08c9fa9249",
+  "provenance": "Synthetic offline ARM64 guest execution of native classifier, packet queues, ACK serializer and QoS encoder; not a drone capture",
+  "encoder": {
+    "address": "0x4079adc",
+    "end": "0x4079d04",
+    "sha256": "8166b2a1b5e25ec2bd307b5964a0f45380b4209d01726ac90e16721b1006bcdb"
+  },
+  "guest_imports": [
+    "clock_gettime",
+    "malloc",
+    "memcpy",
+    "memset",
+    "pthread_cond_init",
+    "pthread_cond_signal",
+    "pthread_mutex_init",
+    "pthread_mutex_lock",
+    "pthread_mutex_unlock",
+    "pthread_mutexattr_destroy",
+    "pthread_mutexattr_init",
+    "pthread_mutexattr_settype"
+  ],
+  "stubbed_boundaries": [
+    "SW_Gnd_V1_Record_Entry: statistics only, return 0",
+    "type1 parser SW_Alg_Recv_Deal_Win: capture 8-byte input, no receiver state mutation",
+    "type1 parser SW_Alg_Send_Deal_Ack: capture decoded ACK arguments, no sender mutation",
+    "type1 receive thread exit: skip connection teardown, execute epilogue"
+  ],
+  "native_calls_observed": [
+    "SW_Alg_Send_Get_Win_Status",
+    "SW_Pkt_Wait_Queue_Read_WholePkt",
+    "SW_Pro_Gnd_Ctrl_Send"
+  ],
+  "classification_profiles": [
+    {
+      "feature_flags": 3,
+      "rows": [
+        {
+          "name": "heartbeat",
+          "duml_hex": "551104920228018000000000020100ee6a",
+          "priority": 6,
+          "tos": 192
+        },
+        {
+          "name": "wlm_push_synthetic",
+          "duml_hex": "5525048402020280400794000102030405060708090a0b0c0d0e0f10111213141516179e34",
+          "priority": 6,
+          "tos": 192
+        },
+        {
+          "name": "wlm_link_report",
+          "duml_hex": "5525048402070180400793012b230073796e7468657469632d69640000000000000000ae3b",
+          "priority": 6,
+          "tos": 192
+        },
+        {
+          "name": "wlm_wifi_report",
+          "duml_hex": "552c0436021b0280400793012b230400000073796e7468657469632d6964000000000000000000000000bde7",
+          "priority": 6,
+          "tos": 192
+        },
+        {
+          "name": "fc_action_synthetic",
+          "duml_hex": "550e04660203038040032a01b442",
+          "priority": 6,
+          "tos": 192
+        },
+        {
+          "name": "wrapper",
+          "duml_hex": "5535046802070480405101000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f20212223242526277b81",
+          "priority": 4,
+          "tos": 128
+        },
+        {
+          "name": "joystick_synthetic",
+          "duml_hex": "551f044e02a9058000010a000000000000000000000000000000000000344f",
+          "priority": 6,
+          "tos": 192
+        }
+      ]
+    },
+    {
+      "feature_flags": 15,
+      "rows": [
+        {
+          "name": "heartbeat",
+          "duml_hex": "551104920228018000000000020100ee6a",
+          "priority": 4,
+          "tos": 128
+        },
+        {
+          "name": "wlm_push_synthetic",
+          "duml_hex": "5525048402020280400794000102030405060708090a0b0c0d0e0f10111213141516179e34",
+          "priority": 4,
+          "tos": 128
+        },
+        {
+          "name": "wlm_link_report",
+          "duml_hex": "5525048402070180400793012b230073796e7468657469632d69640000000000000000ae3b",
+          "priority": 4,
+          "tos": 128
+        },
+        {
+          "name": "wlm_wifi_report",
+          "duml_hex": "552c0436021b0280400793012b230400000073796e7468657469632d6964000000000000000000000000bde7",
+          "priority": 4,
+          "tos": 128
+        },
+        {
+          "name": "fc_action_synthetic",
+          "duml_hex": "550e04660203038040032a01b442",
+          "priority": 4,
+          "tos": 128
+        },
+        {
+          "name": "wrapper",
+          "duml_hex": "5535046802070480405101000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f20212223242526277b81",
+          "priority": 4,
+          "tos": 128
+        },
+        {
+          "name": "joystick_synthetic",
+          "duml_hex": "551f044e02a9058000010a000000000000000000000000000000000000344f",
+          "priority": 6,
+          "tos": 192
+        }
+      ]
+    }
+  ],
+  "priority_tos_table": [
+    32,
+    96,
+    0,
+    64,
+    128,
+    160,
+    192,
+    224,
+    192,
+    224
+  ],
+  "command_priority_table": [
+    {
+      "set": 1,
+      "id": 10,
+      "priority": 6
+    },
+    {
+      "set": 2,
+      "id": 12,
+      "priority": 4
+    },
+    {
+      "set": 2,
+      "id": 128,
+      "priority": 6
+    },
+    {
+      "set": 3,
+      "id": 20,
+      "priority": 4
+    },
+    {
+      "set": 3,
+      "id": 42,
+      "priority": 4
+    },
+    {
+      "set": 3,
+      "id": 50,
+      "priority": 4
+    },
+    {
+      "set": 3,
+      "id": 57,
+      "priority": 4
+    },
+    {
+      "set": 3,
+      "id": 67,
+      "priority": 4
+    },
+    {
+      "set": 3,
+      "id": 68,
+      "priority": 4
+    },
+    {
+      "set": 3,
+      "id": 69,
+      "priority": 4
+    },
+    {
+      "set": 3,
+      "id": 80,
+      "priority": 4
+    },
+    {
+      "set": 3,
+      "id": 81,
+      "priority": 4
+    },
+    {
+      "set": 3,
+      "id": 103,
+      "priority": 4
+    },
+    {
+      "set": 3,
+      "id": 136,
+      "priority": 4
+    },
+    {
+      "set": 3,
+      "id": 193,
+      "priority": 4
+    },
+    {
+      "set": 3,
+      "id": 227,
+      "priority": 4
+    },
+    {
+      "set": 3,
+      "id": 215,
+      "priority": 2
+    },
+    {
+      "set": 3,
+      "id": 248,
+      "priority": 4
+    },
+    {
+      "set": 3,
+      "id": 249,
+      "priority": 4
+    },
+    {
+      "set": 4,
+      "id": 5,
+      "priority": 2
+    },
+    {
+      "set": 4,
+      "id": 76,
+      "priority": 4
+    },
+    {
+      "set": 4,
+      "id": 77,
+      "priority": 4
+    },
+    {
+      "set": 6,
+      "id": 81,
+      "priority": 4
+    },
+    {
+      "set": 9,
+      "id": 47,
+      "priority": 4
+    },
+    {
+      "set": 9,
+      "id": 57,
+      "priority": 4
+    },
+    {
+      "set": 9,
+      "id": 60,
+      "priority": 4
+    },
+    {
+      "set": 9,
+      "id": 68,
+      "priority": 4
+    },
+    {
+      "set": 10,
+      "id": 32,
+      "priority": 4
+    },
+    {
+      "set": 10,
+      "id": 33,
+      "priority": 4
+    },
+    {
+      "set": 10,
+      "id": 34,
+      "priority": 4
+    },
+    {
+      "set": 10,
+      "id": 36,
+      "priority": 4
+    },
+    {
+      "set": 10,
+      "id": 37,
+      "priority": 4
+    },
+    {
+      "set": 10,
+      "id": 39,
+      "priority": 4
+    },
+    {
+      "set": 10,
+      "id": 40,
+      "priority": 4
+    },
+    {
+      "set": 10,
+      "id": 41,
+      "priority": 4
+    },
+    {
+      "set": 10,
+      "id": 48,
+      "priority": 4
+    },
+    {
+      "set": 10,
+      "id": 50,
+      "priority": 4
+    },
+    {
+      "set": 10,
+      "id": 240,
+      "priority": 4
+    },
+    {
+      "set": 15,
+      "id": 33,
+      "priority": 4
+    },
+    {
+      "set": 15,
+      "id": 100,
+      "priority": 4
+    },
+    {
+      "set": 15,
+      "id": 102,
+      "priority": 4
+    },
+    {
+      "set": 21,
+      "id": 2,
+      "priority": 4
+    },
+    {
+      "set": 34,
+      "id": 32,
+      "priority": 2
+    },
+    {
+      "set": 34,
+      "id": 104,
+      "priority": 4
+    },
+    {
+      "set": 35,
+      "id": 176,
+      "priority": 2
+    },
+    {
+      "set": 35,
+      "id": 177,
+      "priority": 2
+    }
+  ],
+  "facts": {
+    "aggregate": "raw concatenated DUML bytes",
+    "header_sequence": 0,
+    "reliable_window_advanced": false,
+    "queued_data_retransmitted_automatically": false,
+    "type_normal": 4,
+    "type_periodic": 6
+  },
+  "examples": [
+    {
+      "periodic": false,
+      "nonempty_ack_state": false,
+      "ack_profile": "empty",
+      "priority": 6,
+      "initial_ack_state": {
+        "video": {
+          "start": 4096,
+          "end": 4096,
+          "native_status_words": [],
+          "missing": [],
+          "unreported_missing_delta": [],
+          "already_reported": []
+        },
+        "protocol": {
+          "start": 8192,
+          "end": 8192,
+          "native_status_words": [],
+          "missing": [],
+          "unreported_missing_delta": [],
+          "already_reported": []
+        }
+      },
+      "ack_state_before_first": {
+        "video": {
+          "start": 4096,
+          "end": 4096,
+          "native_status_words": [],
+          "missing": [],
+          "unreported_missing_delta": [],
+          "already_reported": []
+        },
+        "protocol": {
+          "start": 8192,
+          "end": 8192,
+          "native_status_words": [],
+          "missing": [],
+          "unreported_missing_delta": [],
+          "already_reported": []
+        }
+      },
+      "ack_state_after_first": {
+        "video": {
+          "start": 4096,
+          "end": 4096,
+          "native_status_words": [],
+          "missing": [],
+          "unreported_missing_delta": [],
+          "already_reported": []
+        },
+        "protocol": {
+          "start": 8192,
+          "end": 8192,
+          "native_status_words": [],
+          "missing": [],
+          "unreported_missing_delta": [],
+          "already_reported": []
+        }
+      },
+      "ack_state_after_second": {
+        "video": {
+          "start": 4096,
+          "end": 4096,
+          "native_status_words": [],
+          "missing": [],
+          "unreported_missing_delta": [],
+          "already_reported": []
+        },
+        "protocol": {
+          "start": 8192,
+          "end": 8192,
+          "native_status_words": [],
+          "missing": [],
+          "unreported_missing_delta": [],
+          "already_reported": []
+        }
+      },
+      "legacy_window_hex": "2030283011223344",
+      "queued": [
+        {
+          "name": "joystick_synthetic",
+          "priority": 6,
+          "duml_hex": "551f044e02a9058000010a000000000000000000000000000000000000344f"
+        }
+      ],
+      "first": {
+        "raw_hex": "4180c5af000004af0010001000000000002000200000000020302830112233441f00551f044e02a9058000010a000000000000000000000000000000000000344f",
+        "tos": 192
+      },
+      "second_without_requeue": {
+        "raw_hex": "2280c5af000004cc0010001000000000002000200000000020302830112233440000",
+        "tos": 192
+      }
+    },
+    {
+      "periodic": false,
+      "nonempty_ack_state": false,
+      "ack_profile": "empty",
+      "priority": 4,
+      "initial_ack_state": {
+        "video": {
+          "start": 4096,
+          "end": 4096,
+          "native_status_words": [],
+          "missing": [],
+          "unreported_missing_delta": [],
+          "already_reported": []
+        },
+        "protocol": {
+          "start": 8192,
+          "end": 8192,
+          "native_status_words": [],
+          "missing": [],
+          "unreported_missing_delta": [],
+          "already_reported": []
+        }
+      },
+      "ack_state_before_first": {
+        "video": {
+          "start": 4096,
+          "end": 4096,
+          "native_status_words": [],
+          "missing": [],
+          "unreported_missing_delta": [],
+          "already_reported": []
+        },
+        "protocol": {
+          "start": 8192,
+          "end": 8192,
+          "native_status_words": [],
+          "missing": [],
+          "unreported_missing_delta": [],
+          "already_reported": []
+        }
+      },
+      "ack_state_after_first": {
+        "video": {
+          "start": 4096,
+          "end": 4096,
+          "native_status_words": [],
+          "missing": [],
+          "unreported_missing_delta": [],
+          "already_reported": []
+        },
+        "protocol": {
+          "start": 8192,
+          "end": 8192,
+          "native_status_words": [],
+          "missing": [],
+          "unreported_missing_delta": [],
+          "already_reported": []
+        }
+      },
+      "ack_state_after_second": {
+        "video": {
+          "start": 4096,
+          "end": 4096,
+          "native_status_words": [],
+          "missing": [],
+          "unreported_missing_delta": [],
+          "already_reported": []
+        },
+        "protocol": {
+          "start": 8192,
+          "end": 8192,
+          "native_status_words": [],
+          "missing": [],
+          "unreported_missing_delta": [],
+          "already_reported": []
+        }
+      },
+      "legacy_window_hex": "2030283011223344",
+      "queued": [
+        {
+          "name": "heartbeat",
+          "priority": 4,
+          "duml_hex": "551104920228018000000000020100ee6a"
+        },
+        {
+          "name": "wlm_push_synthetic",
+          "priority": 4,
+          "duml_hex": "5525048402020280400794000102030405060708090a0b0c0d0e0f10111213141516179e34"
+        },
+        {
+          "name": "wlm_link_report",
+          "priority": 4,
+          "duml_hex": "5525048402070180400793012b230073796e7468657469632d69640000000000000000ae3b"
+        },
+        {
+          "name": "wlm_wifi_report",
+          "priority": 4,
+          "duml_hex": "552c0436021b0280400793012b230400000073796e7468657469632d6964000000000000000000000000bde7"
+        },
+        {
+          "name": "fc_action_synthetic",
+          "priority": 4,
+          "duml_hex": "550e04660203038040032a01b442"
+        },
+        {
+          "name": "wrapper",
+          "priority": 4,
+          "duml_hex": "5535046802070480405101000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f20212223242526277b81"
+        }
+      ],
+      "first": {
+        "raw_hex": "ec80c5af00000402001000100000000000200020000000002030283011223344ca00551104920228018000000000020100ee6a5525048402020280400794000102030405060708090a0b0c0d0e0f10111213141516179e345525048402070180400793012b230073796e7468657469632d69640000000000000000ae3b552c0436021b0280400793012b230400000073796e7468657469632d6964000000000000000000000000bde7550e04660203038040032a01b4425535046802070480405101000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f20212223242526277b81",
+        "tos": 128
+      },
+      "second_without_requeue": {
+        "raw_hex": "2280c5af000004cc0010001000000000002000200000000020302830112233440000",
+        "tos": 128
+      }
+    },
+    {
+      "periodic": false,
+      "nonempty_ack_state": true,
+      "ack_profile": "missing",
+      "priority": 6,
+      "initial_ack_state": {
+        "video": {
+          "start": 4096,
+          "end": 4128,
+          "native_status_words": [
+            4104,
+            4112,
+            4128
+          ],
+          "missing": [
+            4104,
+            4112,
+            4128
+          ],
+          "unreported_missing_delta": [
+            4104,
+            4112,
+            4128
+          ],
+          "already_reported": []
+        },
+        "protocol": {
+          "start": 8192,
+          "end": 8224,
+          "native_status_words": [
+            8200,
+            8208,
+            8224
+          ],
+          "missing": [
+            8200,
+            8208,
+            8224
+          ],
+          "unreported_missing_delta": [
+            8200,
+            8208,
+            8224
+          ],
+          "already_reported": []
+        }
+      },
+      "ack_state_before_first": {
+        "video": {
+          "start": 4096,
+          "end": 4128,
+          "native_status_words": [
+            4104,
+            4112,
+            4128
+          ],
+          "missing": [
+            4104,
+            4112,
+            4128
+          ],
+          "unreported_missing_delta": [
+            4104,
+            4112,
+            4128
+          ],
+          "already_reported": []
+        },
+        "protocol": {
+          "start": 8192,
+          "end": 8224,
+          "native_status_words": [
+            8200,
+            8208,
+            8224
+          ],
+          "missing": [
+            8200,
+            8208,
+            8224
+          ],
+          "unreported_missing_delta": [
+            8200,
+            8208,
+            8224
+          ],
+          "already_reported": []
+        }
+      },
+      "ack_state_after_first": {
+        "video": {
+          "start": 4096,
+          "end": 4128,
+          "native_status_words": [
+            4104,
+            4112,
+            4128
+          ],
+          "missing": [
+            4104,
+            4112,
+            4128
+          ],
+          "unreported_missing_delta": [],
+          "already_reported": [
+            4104,
+            4112,
+            4128
+          ]
+        },
+        "protocol": {
+          "start": 8192,
+          "end": 8224,
+          "native_status_words": [
+            8200,
+            8208,
+            8224
+          ],
+          "missing": [
+            8200,
+            8208,
+            8224
+          ],
+          "unreported_missing_delta": [],
+          "already_reported": [
+            8200,
+            8208,
+            8224
+          ]
+        }
+      },
+      "ack_state_after_second": {
+        "video": {
+          "start": 4096,
+          "end": 4128,
+          "native_status_words": [
+            4104,
+            4112,
+            4128
+          ],
+          "missing": [
+            4104,
+            4112,
+            4128
+          ],
+          "unreported_missing_delta": [],
+          "already_reported": [
+            4104,
+            4112,
+            4128
+          ]
+        },
+        "protocol": {
+          "start": 8192,
+          "end": 8224,
+          "native_status_words": [
+            8200,
+            8208,
+            8224
+          ],
+          "missing": [
+            8200,
+            8208,
+            8224
+          ],
+          "unreported_missing_delta": [],
+          "already_reported": [
+            8200,
+            8208,
+            8224
+          ]
+        }
+      },
+      "legacy_window_hex": "2030283011223344",
+      "queued": [
+        {
+          "name": "joystick_synthetic",
+          "priority": 6,
+          "duml_hex": "551f044e02a9058000010a000000000000000000000000000000000000344f"
+        }
+      ],
+      "first": {
+        "raw_hex": "4380c5af000004ad00102010040001003000202020040001003020302830112233441f00551f044e02a9058000010a000000000000000000000000000000000000344f",
+        "tos": 192
+      },
+      "second_without_requeue": {
+        "raw_hex": "2480c5af000004ca00102010040001003000202020040001003020302830112233440000",
+        "tos": 192
+      }
+    },
+    {
+      "periodic": false,
+      "nonempty_ack_state": true,
+      "ack_profile": "missing",
+      "priority": 4,
+      "initial_ack_state": {
+        "video": {
+          "start": 4096,
+          "end": 4128,
+          "native_status_words": [
+            4104,
+            4112,
+            4128
+          ],
+          "missing": [
+            4104,
+            4112,
+            4128
+          ],
+          "unreported_missing_delta": [
+            4104,
+            4112,
+            4128
+          ],
+          "already_reported": []
+        },
+        "protocol": {
+          "start": 8192,
+          "end": 8224,
+          "native_status_words": [
+            8200,
+            8208,
+            8224
+          ],
+          "missing": [
+            8200,
+            8208,
+            8224
+          ],
+          "unreported_missing_delta": [
+            8200,
+            8208,
+            8224
+          ],
+          "already_reported": []
+        }
+      },
+      "ack_state_before_first": {
+        "video": {
+          "start": 4096,
+          "end": 4128,
+          "native_status_words": [
+            4104,
+            4112,
+            4128
+          ],
+          "missing": [
+            4104,
+            4112,
+            4128
+          ],
+          "unreported_missing_delta": [],
+          "already_reported": [
+            4104,
+            4112,
+            4128
+          ]
+        },
+        "protocol": {
+          "start": 8192,
+          "end": 8224,
+          "native_status_words": [
+            8200,
+            8208,
+            8224
+          ],
+          "missing": [
+            8200,
+            8208,
+            8224
+          ],
+          "unreported_missing_delta": [],
+          "already_reported": [
+            8200,
+            8208,
+            8224
+          ]
+        }
+      },
+      "ack_state_after_first": {
+        "video": {
+          "start": 4096,
+          "end": 4128,
+          "native_status_words": [
+            4104,
+            4112,
+            4128
+          ],
+          "missing": [
+            4104,
+            4112,
+            4128
+          ],
+          "unreported_missing_delta": [],
+          "already_reported": [
+            4104,
+            4112,
+            4128
+          ]
+        },
+        "protocol": {
+          "start": 8192,
+          "end": 8224,
+          "native_status_words": [
+            8200,
+            8208,
+            8224
+          ],
+          "missing": [
+            8200,
+            8208,
+            8224
+          ],
+          "unreported_missing_delta": [],
+          "already_reported": [
+            8200,
+            8208,
+            8224
+          ]
+        }
+      },
+      "ack_state_after_second": {
+        "video": {
+          "start": 4096,
+          "end": 4128,
+          "native_status_words": [
+            4104,
+            4112,
+            4128
+          ],
+          "missing": [
+            4104,
+            4112,
+            4128
+          ],
+          "unreported_missing_delta": [],
+          "already_reported": [
+            4104,
+            4112,
+            4128
+          ]
+        },
+        "protocol": {
+          "start": 8192,
+          "end": 8224,
+          "native_status_words": [
+            8200,
+            8208,
+            8224
+          ],
+          "missing": [
+            8200,
+            8208,
+            8224
+          ],
+          "unreported_missing_delta": [],
+          "already_reported": [
+            8200,
+            8208,
+            8224
+          ]
+        }
+      },
+      "legacy_window_hex": "2030283011223344",
+      "queued": [
+        {
+          "name": "heartbeat",
+          "priority": 4,
+          "duml_hex": "551104920228018000000000020100ee6a"
+        },
+        {
+          "name": "wlm_push_synthetic",
+          "priority": 4,
+          "duml_hex": "5525048402020280400794000102030405060708090a0b0c0d0e0f10111213141516179e34"
+        },
+        {
+          "name": "wlm_link_report",
+          "priority": 4,
+          "duml_hex": "5525048402070180400793012b230073796e7468657469632d69640000000000000000ae3b"
+        },
+        {
+          "name": "wlm_wifi_report",
+          "priority": 4,
+          "duml_hex": "552c0436021b0280400793012b230400000073796e7468657469632d6964000000000000000000000000bde7"
+        },
+        {
+          "name": "fc_action_synthetic",
+          "priority": 4,
+          "duml_hex": "550e04660203038040032a01b442"
+        },
+        {
+          "name": "wrapper",
+          "priority": 4,
+          "duml_hex": "5535046802070480405101000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f20212223242526277b81"
+        }
+      ],
+      "first": {
+        "raw_hex": "ee80c5af000004000010201004000100300020202004000100302030283011223344ca00551104920228018000000000020100ee6a5525048402020280400794000102030405060708090a0b0c0d0e0f10111213141516179e345525048402070180400793012b230073796e7468657469632d69640000000000000000ae3b552c0436021b0280400793012b230400000073796e7468657469632d6964000000000000000000000000bde7550e04660203038040032a01b4425535046802070480405101000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f20212223242526277b81",
+        "tos": 128
+      },
+      "second_without_requeue": {
+        "raw_hex": "2480c5af000004ca00102010040001003000202020040001003020302830112233440000",
+        "tos": 128
+      }
+    },
+    {
+      "periodic": false,
+      "nonempty_ack_state": true,
+      "ack_profile": "mixed",
+      "priority": 6,
+      "initial_ack_state": {
+        "video": {
+          "start": 4096,
+          "end": 4128,
+          "native_status_words": [
+            4104,
+            4114,
+            4134
+          ],
+          "missing": [
+            4104
+          ],
+          "unreported_missing_delta": [
+            4104,
+            4112,
+            4128
+          ],
+          "already_reported": []
+        },
+        "protocol": {
+          "start": 8192,
+          "end": 8224,
+          "native_status_words": [
+            8200,
+            8210,
+            8230
+          ],
+          "missing": [
+            8200
+          ],
+          "unreported_missing_delta": [
+            8200,
+            8208,
+            8224
+          ],
+          "already_reported": []
+        }
+      },
+      "ack_state_before_first": {
+        "video": {
+          "start": 4096,
+          "end": 4128,
+          "native_status_words": [
+            4104,
+            4114,
+            4134
+          ],
+          "missing": [
+            4104
+          ],
+          "unreported_missing_delta": [
+            4104,
+            4112,
+            4128
+          ],
+          "already_reported": []
+        },
+        "protocol": {
+          "start": 8192,
+          "end": 8224,
+          "native_status_words": [
+            8200,
+            8210,
+            8230
+          ],
+          "missing": [
+            8200
+          ],
+          "unreported_missing_delta": [
+            8200,
+            8208,
+            8224
+          ],
+          "already_reported": []
+        }
+      },
+      "ack_state_after_first": {
+        "video": {
+          "start": 4096,
+          "end": 4128,
+          "native_status_words": [
+            4104,
+            4114,
+            4134
+          ],
+          "missing": [
+            4104
+          ],
+          "unreported_missing_delta": [],
+          "already_reported": [
+            4104,
+            4112,
+            4128
+          ]
+        },
+        "protocol": {
+          "start": 8192,
+          "end": 8224,
+          "native_status_words": [
+            8200,
+            8210,
+            8230
+          ],
+          "missing": [
+            8200
+          ],
+          "unreported_missing_delta": [],
+          "already_reported": [
+            8200,
+            8208,
+            8224
+          ]
+        }
+      },
+      "ack_state_after_second": {
+        "video": {
+          "start": 4096,
+          "end": 4128,
+          "native_status_words": [
+            4104,
+            4114,
+            4134
+          ],
+          "missing": [
+            4104
+          ],
+          "unreported_missing_delta": [],
+          "already_reported": [
+            4104,
+            4112,
+            4128
+          ]
+        },
+        "protocol": {
+          "start": 8192,
+          "end": 8224,
+          "native_status_words": [
+            8200,
+            8210,
+            8230
+          ],
+          "missing": [
+            8200
+          ],
+          "unreported_missing_delta": [],
+          "already_reported": [
+            8200,
+            8208,
+            8224
+          ]
+        }
+      },
+      "legacy_window_hex": "2030283011223344",
+      "queued": [
+        {
+          "name": "joystick_synthetic",
+          "priority": 6,
+          "duml_hex": "551f044e02a9058000010a000000000000000000000000000000000000344f"
+        }
+      ],
+      "first": {
+        "raw_hex": "4380c5af000004ad0010201004000100b40020202004000100b420302830112233441f00551f044e02a9058000010a000000000000000000000000000000000000344f",
+        "tos": 192
+      },
+      "second_without_requeue": {
+        "raw_hex": "2480c5af000004ca0010201004000100b40020202004000100b420302830112233440000",
+        "tos": 192
+      }
+    },
+    {
+      "periodic": false,
+      "nonempty_ack_state": true,
+      "ack_profile": "mixed",
+      "priority": 4,
+      "initial_ack_state": {
+        "video": {
+          "start": 4096,
+          "end": 4128,
+          "native_status_words": [
+            4104,
+            4114,
+            4134
+          ],
+          "missing": [
+            4104
+          ],
+          "unreported_missing_delta": [
+            4104,
+            4112,
+            4128
+          ],
+          "already_reported": []
+        },
+        "protocol": {
+          "start": 8192,
+          "end": 8224,
+          "native_status_words": [
+            8200,
+            8210,
+            8230
+          ],
+          "missing": [
+            8200
+          ],
+          "unreported_missing_delta": [
+            8200,
+            8208,
+            8224
+          ],
+          "already_reported": []
+        }
+      },
+      "ack_state_before_first": {
+        "video": {
+          "start": 4096,
+          "end": 4128,
+          "native_status_words": [
+            4104,
+            4114,
+            4134
+          ],
+          "missing": [
+            4104
+          ],
+          "unreported_missing_delta": [],
+          "already_reported": [
+            4104,
+            4112,
+            4128
+          ]
+        },
+        "protocol": {
+          "start": 8192,
+          "end": 8224,
+          "native_status_words": [
+            8200,
+            8210,
+            8230
+          ],
+          "missing": [
+            8200
+          ],
+          "unreported_missing_delta": [],
+          "already_reported": [
+            8200,
+            8208,
+            8224
+          ]
+        }
+      },
+      "ack_state_after_first": {
+        "video": {
+          "start": 4096,
+          "end": 4128,
+          "native_status_words": [
+            4104,
+            4114,
+            4134
+          ],
+          "missing": [
+            4104
+          ],
+          "unreported_missing_delta": [],
+          "already_reported": [
+            4104,
+            4112,
+            4128
+          ]
+        },
+        "protocol": {
+          "start": 8192,
+          "end": 8224,
+          "native_status_words": [
+            8200,
+            8210,
+            8230
+          ],
+          "missing": [
+            8200
+          ],
+          "unreported_missing_delta": [],
+          "already_reported": [
+            8200,
+            8208,
+            8224
+          ]
+        }
+      },
+      "ack_state_after_second": {
+        "video": {
+          "start": 4096,
+          "end": 4128,
+          "native_status_words": [
+            4104,
+            4114,
+            4134
+          ],
+          "missing": [
+            4104
+          ],
+          "unreported_missing_delta": [],
+          "already_reported": [
+            4104,
+            4112,
+            4128
+          ]
+        },
+        "protocol": {
+          "start": 8192,
+          "end": 8224,
+          "native_status_words": [
+            8200,
+            8210,
+            8230
+          ],
+          "missing": [
+            8200
+          ],
+          "unreported_missing_delta": [],
+          "already_reported": [
+            8200,
+            8208,
+            8224
+          ]
+        }
+      },
+      "legacy_window_hex": "2030283011223344",
+      "queued": [
+        {
+          "name": "heartbeat",
+          "priority": 4,
+          "duml_hex": "551104920228018000000000020100ee6a"
+        },
+        {
+          "name": "wlm_push_synthetic",
+          "priority": 4,
+          "duml_hex": "5525048402020280400794000102030405060708090a0b0c0d0e0f10111213141516179e34"
+        },
+        {
+          "name": "wlm_link_report",
+          "priority": 4,
+          "duml_hex": "5525048402070180400793012b230073796e7468657469632d69640000000000000000ae3b"
+        },
+        {
+          "name": "wlm_wifi_report",
+          "priority": 4,
+          "duml_hex": "552c0436021b0280400793012b230400000073796e7468657469632d6964000000000000000000000000bde7"
+        },
+        {
+          "name": "fc_action_synthetic",
+          "priority": 4,
+          "duml_hex": "550e04660203038040032a01b442"
+        },
+        {
+          "name": "wrapper",
+          "priority": 4,
+          "duml_hex": "5535046802070480405101000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f20212223242526277b81"
+        }
+      ],
+      "first": {
+        "raw_hex": "ee80c5af000004000010201004000100b40020202004000100b42030283011223344ca00551104920228018000000000020100ee6a5525048402020280400794000102030405060708090a0b0c0d0e0f10111213141516179e345525048402070180400793012b230073796e7468657469632d69640000000000000000ae3b552c0436021b0280400793012b230400000073796e7468657469632d6964000000000000000000000000bde7550e04660203038040032a01b4425535046802070480405101000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f20212223242526277b81",
+        "tos": 128
+      },
+      "second_without_requeue": {
+        "raw_hex": "2480c5af000004ca0010201004000100b40020202004000100b420302830112233440000",
+        "tos": 128
+      }
+    },
+    {
+      "periodic": true,
+      "nonempty_ack_state": false,
+      "ack_profile": "empty",
+      "priority": 6,
+      "initial_ack_state": {
+        "video": {
+          "start": 4096,
+          "end": 4096,
+          "native_status_words": [],
+          "missing": [],
+          "unreported_missing_delta": [],
+          "already_reported": []
+        },
+        "protocol": {
+          "start": 8192,
+          "end": 8192,
+          "native_status_words": [],
+          "missing": [],
+          "unreported_missing_delta": [],
+          "already_reported": []
+        }
+      },
+      "ack_state_before_first": {
+        "video": {
+          "start": 4096,
+          "end": 4096,
+          "native_status_words": [],
+          "missing": [],
+          "unreported_missing_delta": [],
+          "already_reported": []
+        },
+        "protocol": {
+          "start": 8192,
+          "end": 8192,
+          "native_status_words": [],
+          "missing": [],
+          "unreported_missing_delta": [],
+          "already_reported": []
+        }
+      },
+      "ack_state_after_first": {
+        "video": {
+          "start": 4096,
+          "end": 4096,
+          "native_status_words": [],
+          "missing": [],
+          "unreported_missing_delta": [],
+          "already_reported": []
+        },
+        "protocol": {
+          "start": 8192,
+          "end": 8192,
+          "native_status_words": [],
+          "missing": [],
+          "unreported_missing_delta": [],
+          "already_reported": []
+        }
+      },
+      "ack_state_after_second": {
+        "video": {
+          "start": 4096,
+          "end": 4096,
+          "native_status_words": [],
+          "missing": [],
+          "unreported_missing_delta": [],
+          "already_reported": []
+        },
+        "protocol": {
+          "start": 8192,
+          "end": 8192,
+          "native_status_words": [],
+          "missing": [],
+          "unreported_missing_delta": [],
+          "already_reported": []
+        }
+      },
+      "legacy_window_hex": "2030283011223344",
+      "queued": [
+        {
+          "name": "joystick_synthetic",
+          "priority": 6,
+          "duml_hex": "551f044e02a9058000010a000000000000000000000000000000000000344f"
+        }
+      ],
+      "first": {
+        "raw_hex": "3d80c5af000006d100100010000000200020000020302830112233441f00551f044e02a9058000010a000000000000000000000000000000000000344f",
+        "tos": 192
+      },
+      "second_without_requeue": {
+        "raw_hex": "1e80c5af000006f200100010000000200020000020302830112233440000",
+        "tos": 192
+      }
+    },
+    {
+      "periodic": true,
+      "nonempty_ack_state": false,
+      "ack_profile": "empty",
+      "priority": 4,
+      "initial_ack_state": {
+        "video": {
+          "start": 4096,
+          "end": 4096,
+          "native_status_words": [],
+          "missing": [],
+          "unreported_missing_delta": [],
+          "already_reported": []
+        },
+        "protocol": {
+          "start": 8192,
+          "end": 8192,
+          "native_status_words": [],
+          "missing": [],
+          "unreported_missing_delta": [],
+          "already_reported": []
+        }
+      },
+      "ack_state_before_first": {
+        "video": {
+          "start": 4096,
+          "end": 4096,
+          "native_status_words": [],
+          "missing": [],
+          "unreported_missing_delta": [],
+          "already_reported": []
+        },
+        "protocol": {
+          "start": 8192,
+          "end": 8192,
+          "native_status_words": [],
+          "missing": [],
+          "unreported_missing_delta": [],
+          "already_reported": []
+        }
+      },
+      "ack_state_after_first": {
+        "video": {
+          "start": 4096,
+          "end": 4096,
+          "native_status_words": [],
+          "missing": [],
+          "unreported_missing_delta": [],
+          "already_reported": []
+        },
+        "protocol": {
+          "start": 8192,
+          "end": 8192,
+          "native_status_words": [],
+          "missing": [],
+          "unreported_missing_delta": [],
+          "already_reported": []
+        }
+      },
+      "ack_state_after_second": {
+        "video": {
+          "start": 4096,
+          "end": 4096,
+          "native_status_words": [],
+          "missing": [],
+          "unreported_missing_delta": [],
+          "already_reported": []
+        },
+        "protocol": {
+          "start": 8192,
+          "end": 8192,
+          "native_status_words": [],
+          "missing": [],
+          "unreported_missing_delta": [],
+          "already_reported": []
+        }
+      },
+      "legacy_window_hex": "2030283011223344",
+      "queued": [
+        {
+          "name": "heartbeat",
+          "priority": 4,
+          "duml_hex": "551104920228018000000000020100ee6a"
+        },
+        {
+          "name": "wlm_push_synthetic",
+          "priority": 4,
+          "duml_hex": "5525048402020280400794000102030405060708090a0b0c0d0e0f10111213141516179e34"
+        },
+        {
+          "name": "wlm_link_report",
+          "priority": 4,
+          "duml_hex": "5525048402070180400793012b230073796e7468657469632d69640000000000000000ae3b"
+        },
+        {
+          "name": "wlm_wifi_report",
+          "priority": 4,
+          "duml_hex": "552c0436021b0280400793012b230400000073796e7468657469632d6964000000000000000000000000bde7"
+        },
+        {
+          "name": "fc_action_synthetic",
+          "priority": 4,
+          "duml_hex": "550e04660203038040032a01b442"
+        },
+        {
+          "name": "wrapper",
+          "priority": 4,
+          "duml_hex": "5535046802070480405101000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f20212223242526277b81"
+        }
+      ],
+      "first": {
+        "raw_hex": "e880c5af000006040010001000000020002000002030283011223344ca00551104920228018000000000020100ee6a5525048402020280400794000102030405060708090a0b0c0d0e0f10111213141516179e345525048402070180400793012b230073796e7468657469632d69640000000000000000ae3b552c0436021b0280400793012b230400000073796e7468657469632d6964000000000000000000000000bde7550e04660203038040032a01b4425535046802070480405101000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f20212223242526277b81",
+        "tos": 128
+      },
+      "second_without_requeue": {
+        "raw_hex": "1e80c5af000006f200100010000000200020000020302830112233440000",
+        "tos": 128
+      }
+    },
+    {
+      "periodic": true,
+      "nonempty_ack_state": true,
+      "ack_profile": "missing",
+      "priority": 6,
+      "initial_ack_state": {
+        "video": {
+          "start": 4096,
+          "end": 4128,
+          "native_status_words": [
+            4104,
+            4112,
+            4128
+          ],
+          "missing": [
+            4104,
+            4112,
+            4128
+          ],
+          "unreported_missing_delta": [
+            4104,
+            4112,
+            4128
+          ],
+          "already_reported": []
+        },
+        "protocol": {
+          "start": 8192,
+          "end": 8224,
+          "native_status_words": [
+            8200,
+            8208,
+            8224
+          ],
+          "missing": [
+            8200,
+            8208,
+            8224
+          ],
+          "unreported_missing_delta": [
+            8200,
+            8208,
+            8224
+          ],
+          "already_reported": []
+        }
+      },
+      "ack_state_before_first": {
+        "video": {
+          "start": 4096,
+          "end": 4128,
+          "native_status_words": [
+            4104,
+            4112,
+            4128
+          ],
+          "missing": [
+            4104,
+            4112,
+            4128
+          ],
+          "unreported_missing_delta": [
+            4104,
+            4112,
+            4128
+          ],
+          "already_reported": []
+        },
+        "protocol": {
+          "start": 8192,
+          "end": 8224,
+          "native_status_words": [
+            8200,
+            8208,
+            8224
+          ],
+          "missing": [
+            8200,
+            8208,
+            8224
+          ],
+          "unreported_missing_delta": [
+            8200,
+            8208,
+            8224
+          ],
+          "already_reported": []
+        }
+      },
+      "ack_state_after_first": {
+        "video": {
+          "start": 4096,
+          "end": 4128,
+          "native_status_words": [
+            4104,
+            4112,
+            4128
+          ],
+          "missing": [
+            4104,
+            4112,
+            4128
+          ],
+          "unreported_missing_delta": [],
+          "already_reported": [
+            4104,
+            4112,
+            4128
+          ]
+        },
+        "protocol": {
+          "start": 8192,
+          "end": 8224,
+          "native_status_words": [
+            8200,
+            8208,
+            8224
+          ],
+          "missing": [
+            8200,
+            8208,
+            8224
+          ],
+          "unreported_missing_delta": [],
+          "already_reported": [
+            8200,
+            8208,
+            8224
+          ]
+        }
+      },
+      "ack_state_after_second": {
+        "video": {
+          "start": 4096,
+          "end": 4128,
+          "native_status_words": [
+            4104,
+            4112,
+            4128
+          ],
+          "missing": [
+            4104,
+            4112,
+            4128
+          ],
+          "unreported_missing_delta": [],
+          "already_reported": [
+            4104,
+            4112,
+            4128
+          ]
+        },
+        "protocol": {
+          "start": 8192,
+          "end": 8224,
+          "native_status_words": [
+            8200,
+            8208,
+            8224
+          ],
+          "missing": [
+            8200,
+            8208,
+            8224
+          ],
+          "unreported_missing_delta": [],
+          "already_reported": [
+            8200,
+            8208,
+            8224
+          ]
+        }
+      },
+      "legacy_window_hex": "2030283011223344",
+      "queued": [
+        {
+          "name": "joystick_synthetic",
+          "priority": 6,
+          "duml_hex": "551f044e02a9058000010a000000000000000000000000000000000000344f"
+        }
+      ],
+      "first": {
+        "raw_hex": "4980c5af000006a500102010030008101010201000202020030008201020202020302830112233441f00551f044e02a9058000010a000000000000000000000000000000000000344f",
+        "tos": 192
+      },
+      "second_without_requeue": {
+        "raw_hex": "1e80c5af000006f200102010000000202020000020302830112233440000",
+        "tos": 192
+      }
+    },
+    {
+      "periodic": true,
+      "nonempty_ack_state": true,
+      "ack_profile": "missing",
+      "priority": 4,
+      "initial_ack_state": {
+        "video": {
+          "start": 4096,
+          "end": 4128,
+          "native_status_words": [
+            4104,
+            4112,
+            4128
+          ],
+          "missing": [
+            4104,
+            4112,
+            4128
+          ],
+          "unreported_missing_delta": [
+            4104,
+            4112,
+            4128
+          ],
+          "already_reported": []
+        },
+        "protocol": {
+          "start": 8192,
+          "end": 8224,
+          "native_status_words": [
+            8200,
+            8208,
+            8224
+          ],
+          "missing": [
+            8200,
+            8208,
+            8224
+          ],
+          "unreported_missing_delta": [
+            8200,
+            8208,
+            8224
+          ],
+          "already_reported": []
+        }
+      },
+      "ack_state_before_first": {
+        "video": {
+          "start": 4096,
+          "end": 4128,
+          "native_status_words": [
+            4104,
+            4112,
+            4128
+          ],
+          "missing": [
+            4104,
+            4112,
+            4128
+          ],
+          "unreported_missing_delta": [],
+          "already_reported": [
+            4104,
+            4112,
+            4128
+          ]
+        },
+        "protocol": {
+          "start": 8192,
+          "end": 8224,
+          "native_status_words": [
+            8200,
+            8208,
+            8224
+          ],
+          "missing": [
+            8200,
+            8208,
+            8224
+          ],
+          "unreported_missing_delta": [],
+          "already_reported": [
+            8200,
+            8208,
+            8224
+          ]
+        }
+      },
+      "ack_state_after_first": {
+        "video": {
+          "start": 4096,
+          "end": 4128,
+          "native_status_words": [
+            4104,
+            4112,
+            4128
+          ],
+          "missing": [
+            4104,
+            4112,
+            4128
+          ],
+          "unreported_missing_delta": [],
+          "already_reported": [
+            4104,
+            4112,
+            4128
+          ]
+        },
+        "protocol": {
+          "start": 8192,
+          "end": 8224,
+          "native_status_words": [
+            8200,
+            8208,
+            8224
+          ],
+          "missing": [
+            8200,
+            8208,
+            8224
+          ],
+          "unreported_missing_delta": [],
+          "already_reported": [
+            8200,
+            8208,
+            8224
+          ]
+        }
+      },
+      "ack_state_after_second": {
+        "video": {
+          "start": 4096,
+          "end": 4128,
+          "native_status_words": [
+            4104,
+            4112,
+            4128
+          ],
+          "missing": [
+            4104,
+            4112,
+            4128
+          ],
+          "unreported_missing_delta": [],
+          "already_reported": [
+            4104,
+            4112,
+            4128
+          ]
+        },
+        "protocol": {
+          "start": 8192,
+          "end": 8224,
+          "native_status_words": [
+            8200,
+            8208,
+            8224
+          ],
+          "missing": [
+            8200,
+            8208,
+            8224
+          ],
+          "unreported_missing_delta": [],
+          "already_reported": [
+            8200,
+            8208,
+            8224
+          ]
+        }
+      },
+      "legacy_window_hex": "2030283011223344",
+      "queued": [
+        {
+          "name": "heartbeat",
+          "priority": 4,
+          "duml_hex": "551104920228018000000000020100ee6a"
+        },
+        {
+          "name": "wlm_push_synthetic",
+          "priority": 4,
+          "duml_hex": "5525048402020280400794000102030405060708090a0b0c0d0e0f10111213141516179e34"
+        },
+        {
+          "name": "wlm_link_report",
+          "priority": 4,
+          "duml_hex": "5525048402070180400793012b230073796e7468657469632d69640000000000000000ae3b"
+        },
+        {
+          "name": "wlm_wifi_report",
+          "priority": 4,
+          "duml_hex": "552c0436021b0280400793012b230400000073796e7468657469632d6964000000000000000000000000bde7"
+        },
+        {
+          "name": "fc_action_synthetic",
+          "priority": 4,
+          "duml_hex": "550e04660203038040032a01b442"
+        },
+        {
+          "name": "wrapper",
+          "priority": 4,
+          "duml_hex": "5535046802070480405101000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f20212223242526277b81"
+        }
+      ],
+      "first": {
+        "raw_hex": "e880c5af000006040010201000000020202000002030283011223344ca00551104920228018000000000020100ee6a5525048402020280400794000102030405060708090a0b0c0d0e0f10111213141516179e345525048402070180400793012b230073796e7468657469632d69640000000000000000ae3b552c0436021b0280400793012b230400000073796e7468657469632d6964000000000000000000000000bde7550e04660203038040032a01b4425535046802070480405101000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f20212223242526277b81",
+        "tos": 128
+      },
+      "second_without_requeue": {
+        "raw_hex": "1e80c5af000006f200102010000000202020000020302830112233440000",
+        "tos": 128
+      }
+    },
+    {
+      "periodic": true,
+      "nonempty_ack_state": true,
+      "ack_profile": "mixed",
+      "priority": 6,
+      "initial_ack_state": {
+        "video": {
+          "start": 4096,
+          "end": 4128,
+          "native_status_words": [
+            4104,
+            4114,
+            4134
+          ],
+          "missing": [
+            4104
+          ],
+          "unreported_missing_delta": [
+            4104,
+            4112,
+            4128
+          ],
+          "already_reported": []
+        },
+        "protocol": {
+          "start": 8192,
+          "end": 8224,
+          "native_status_words": [
+            8200,
+            8210,
+            8230
+          ],
+          "missing": [
+            8200
+          ],
+          "unreported_missing_delta": [
+            8200,
+            8208,
+            8224
+          ],
+          "already_reported": []
+        }
+      },
+      "ack_state_before_first": {
+        "video": {
+          "start": 4096,
+          "end": 4128,
+          "native_status_words": [
+            4104,
+            4114,
+            4134
+          ],
+          "missing": [
+            4104
+          ],
+          "unreported_missing_delta": [
+            4104,
+            4112,
+            4128
+          ],
+          "already_reported": []
+        },
+        "protocol": {
+          "start": 8192,
+          "end": 8224,
+          "native_status_words": [
+            8200,
+            8210,
+            8230
+          ],
+          "missing": [
+            8200
+          ],
+          "unreported_missing_delta": [
+            8200,
+            8208,
+            8224
+          ],
+          "already_reported": []
+        }
+      },
+      "ack_state_after_first": {
+        "video": {
+          "start": 4096,
+          "end": 4128,
+          "native_status_words": [
+            4104,
+            4114,
+            4134
+          ],
+          "missing": [
+            4104
+          ],
+          "unreported_missing_delta": [],
+          "already_reported": [
+            4104,
+            4112,
+            4128
+          ]
+        },
+        "protocol": {
+          "start": 8192,
+          "end": 8224,
+          "native_status_words": [
+            8200,
+            8210,
+            8230
+          ],
+          "missing": [
+            8200
+          ],
+          "unreported_missing_delta": [],
+          "already_reported": [
+            8200,
+            8208,
+            8224
+          ]
+        }
+      },
+      "ack_state_after_second": {
+        "video": {
+          "start": 4096,
+          "end": 4128,
+          "native_status_words": [
+            4104,
+            4114,
+            4134
+          ],
+          "missing": [
+            4104
+          ],
+          "unreported_missing_delta": [],
+          "already_reported": [
+            4104,
+            4112,
+            4128
+          ]
+        },
+        "protocol": {
+          "start": 8192,
+          "end": 8224,
+          "native_status_words": [
+            8200,
+            8210,
+            8230
+          ],
+          "missing": [
+            8200
+          ],
+          "unreported_missing_delta": [],
+          "already_reported": [
+            8200,
+            8208,
+            8224
+          ]
+        }
+      },
+      "legacy_window_hex": "2030283011223344",
+      "queued": [
+        {
+          "name": "joystick_synthetic",
+          "priority": 6,
+          "duml_hex": "551f044e02a9058000010a000000000000000000000000000000000000344f"
+        }
+      ],
+      "first": {
+        "raw_hex": "4980c5af000006a500102010030008101010201000202020030008201020202020302830112233441f00551f044e02a9058000010a000000000000000000000000000000000000344f",
+        "tos": 192
+      },
+      "second_without_requeue": {
+        "raw_hex": "1e80c5af000006f200102010000000202020000020302830112233440000",
+        "tos": 192
+      }
+    },
+    {
+      "periodic": true,
+      "nonempty_ack_state": true,
+      "ack_profile": "mixed",
+      "priority": 4,
+      "initial_ack_state": {
+        "video": {
+          "start": 4096,
+          "end": 4128,
+          "native_status_words": [
+            4104,
+            4114,
+            4134
+          ],
+          "missing": [
+            4104
+          ],
+          "unreported_missing_delta": [
+            4104,
+            4112,
+            4128
+          ],
+          "already_reported": []
+        },
+        "protocol": {
+          "start": 8192,
+          "end": 8224,
+          "native_status_words": [
+            8200,
+            8210,
+            8230
+          ],
+          "missing": [
+            8200
+          ],
+          "unreported_missing_delta": [
+            8200,
+            8208,
+            8224
+          ],
+          "already_reported": []
+        }
+      },
+      "ack_state_before_first": {
+        "video": {
+          "start": 4096,
+          "end": 4128,
+          "native_status_words": [
+            4104,
+            4114,
+            4134
+          ],
+          "missing": [
+            4104
+          ],
+          "unreported_missing_delta": [],
+          "already_reported": [
+            4104,
+            4112,
+            4128
+          ]
+        },
+        "protocol": {
+          "start": 8192,
+          "end": 8224,
+          "native_status_words": [
+            8200,
+            8210,
+            8230
+          ],
+          "missing": [
+            8200
+          ],
+          "unreported_missing_delta": [],
+          "already_reported": [
+            8200,
+            8208,
+            8224
+          ]
+        }
+      },
+      "ack_state_after_first": {
+        "video": {
+          "start": 4096,
+          "end": 4128,
+          "native_status_words": [
+            4104,
+            4114,
+            4134
+          ],
+          "missing": [
+            4104
+          ],
+          "unreported_missing_delta": [],
+          "already_reported": [
+            4104,
+            4112,
+            4128
+          ]
+        },
+        "protocol": {
+          "start": 8192,
+          "end": 8224,
+          "native_status_words": [
+            8200,
+            8210,
+            8230
+          ],
+          "missing": [
+            8200
+          ],
+          "unreported_missing_delta": [],
+          "already_reported": [
+            8200,
+            8208,
+            8224
+          ]
+        }
+      },
+      "ack_state_after_second": {
+        "video": {
+          "start": 4096,
+          "end": 4128,
+          "native_status_words": [
+            4104,
+            4114,
+            4134
+          ],
+          "missing": [
+            4104
+          ],
+          "unreported_missing_delta": [],
+          "already_reported": [
+            4104,
+            4112,
+            4128
+          ]
+        },
+        "protocol": {
+          "start": 8192,
+          "end": 8224,
+          "native_status_words": [
+            8200,
+            8210,
+            8230
+          ],
+          "missing": [
+            8200
+          ],
+          "unreported_missing_delta": [],
+          "already_reported": [
+            8200,
+            8208,
+            8224
+          ]
+        }
+      },
+      "legacy_window_hex": "2030283011223344",
+      "queued": [
+        {
+          "name": "heartbeat",
+          "priority": 4,
+          "duml_hex": "551104920228018000000000020100ee6a"
+        },
+        {
+          "name": "wlm_push_synthetic",
+          "priority": 4,
+          "duml_hex": "5525048402020280400794000102030405060708090a0b0c0d0e0f10111213141516179e34"
+        },
+        {
+          "name": "wlm_link_report",
+          "priority": 4,
+          "duml_hex": "5525048402070180400793012b230073796e7468657469632d69640000000000000000ae3b"
+        },
+        {
+          "name": "wlm_wifi_report",
+          "priority": 4,
+          "duml_hex": "552c0436021b0280400793012b230400000073796e7468657469632d6964000000000000000000000000bde7"
+        },
+        {
+          "name": "fc_action_synthetic",
+          "priority": 4,
+          "duml_hex": "550e04660203038040032a01b442"
+        },
+        {
+          "name": "wrapper",
+          "priority": 4,
+          "duml_hex": "5535046802070480405101000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f20212223242526277b81"
+        }
+      ],
+      "first": {
+        "raw_hex": "e880c5af000006040010201000000020202000002030283011223344ca00551104920228018000000000020100ee6a5525048402020280400794000102030405060708090a0b0c0d0e0f10111213141516179e345525048402070180400793012b230073796e7468657469632d69640000000000000000ae3b552c0436021b0280400793012b230400000073796e7468657469632d6964000000000000000000000000bde7550e04660203038040032a01b4425535046802070480405101000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f20212223242526277b81",
+        "tos": 128
+      },
+      "second_without_requeue": {
+        "raw_hex": "1e80c5af000006f200102010000000202020000020302830112233440000",
+        "tos": 128
+      }
+    }
+  ],
+  "type1_parser_examples": [
+    {
+      "mode": 1,
+      "syn_fec": false,
+      "nonempty_uplink_ack": false,
+      "raw_hex": "3380c5af000001d8001020101122334400202020556677882030283000000000110055110492022810800000000002010087d8",
+      "expected": {
+        "stream_windows_hex": [
+          "0010201011223344",
+          "0020202055667788"
+        ],
+        "duml_hex": "55110492022810800000000002010087d8",
+        "legacy_uplink_window_hex": "20302830",
+        "uplink_ack_words": [],
+        "ack_mode": 0
+      }
+    },
+    {
+      "mode": 1,
+      "syn_fec": false,
+      "nonempty_uplink_ack": true,
+      "raw_hex": "3480c5af000001df001020101122334400202020556677882030283004000100b4110055110492022810800000000002010087d8",
+      "expected": {
+        "stream_windows_hex": [
+          "0010201011223344",
+          "0020202055667788"
+        ],
+        "duml_hex": "55110492022810800000000002010087d8",
+        "legacy_uplink_window_hex": "20302830",
+        "uplink_ack_words": [
+          12328,
+          12338,
+          12356
+        ],
+        "ack_mode": 0
+      }
+    },
+    {
+      "mode": 1,
+      "syn_fec": true,
+      "nonempty_uplink_ack": false,
+      "raw_hex": "3380c5af000001d8001020101122334400202020556677882030283000000000110055110492022810800000000002010087d8",
+      "expected": {
+        "stream_windows_hex": [
+          "0010201011223344",
+          "0020202055667788"
+        ],
+        "duml_hex": "55110492022810800000000002010087d8",
+        "legacy_uplink_window_hex": "20302830",
+        "uplink_ack_words": [],
+        "ack_mode": 0
+      }
+    },
+    {
+      "mode": 1,
+      "syn_fec": true,
+      "nonempty_uplink_ack": true,
+      "raw_hex": "3480c5af000001df001020101122334400202020556677882030283004000100b4110055110492022810800000000002010087d8",
+      "expected": {
+        "stream_windows_hex": [
+          "0010201011223344",
+          "0020202055667788"
+        ],
+        "duml_hex": "55110492022810800000000002010087d8",
+        "legacy_uplink_window_hex": "20302830",
+        "uplink_ack_words": [
+          12328,
+          12338,
+          12356
+        ],
+        "ack_mode": 0
+      }
+    }
+  ],
+  "type1_parser": {
+    "address": "0x4078b18",
+    "end": "0x40793f0",
+    "sha256": "b95a1ed9c81249f2ead6e1d879ab1f3b5397019f155ea99db7c81f95ad3d31fd",
+    "ack_parser": "0x4078704",
+    "mode": 1,
+    "limits": [
+      "Receiver-window update and legacy sender ACK callbacks capture arguments without mutation",
+      "Thread shutdown skips connection teardown; encoding, field offsets and DUML callback execute natively",
+      "SYN-derived FEC configuration is seeded at both values; these probes validate parsing, not FEC recovery"
+    ]
+  },
+  "ack_state_notes": [
+    "start/end and status words are read back from guest receiver memory",
+    "missing lists status0 packet bases; mixed profile injects partial FEC status words separately from pending delta",
+    "unreported_missing_delta is the native one-shot pending list at receiver+0xd0",
+    "already_reported lists initial pending delta entries consumed by earlier ACK serialization; both compressed and list serialization consume this native delta",
+    "priority6 precedes priority4 within each shared context, so priority4 starts after priority6 and its second emission"
+  ],
+  "limits": [
+    "Does not prove live drone acceptance, telemetry or flight readiness",
+    "Session and receiver state are synthetic guest memory, not full SDK connection lifecycle",
+    "Mutex calls are single-thread no-ops; no scheduler thread is created",
+    "Encoder called directly; thread scheduling order is a separate static observation"
+  ]
+}

@@ -1,0 +1,486 @@
+{
+  "schema": "neo2-control/ble-pending-native/v1",
+  "sdk_sha256": "fb431e44f6a4971b159e7ac811bbd568016a300d959c958df99acb08c9fa9249",
+  "sdk_base_sha256": "54f77d990d5d1d09cab9ccd0cb3499edd03e47e18d75be5b449aa149bbd4233a",
+  "verified_instruction_windows": [
+    "registration",
+    "weak_owner_guard",
+    "ack_fields_and_sequence",
+    "result_length_and_timeout",
+    "result_direct_byte",
+    "optional_area_flag",
+    "clear_callback",
+    "stop_timer",
+    "pending_timer_interval",
+    "pending_timeout_result",
+    "full_command_id",
+    "sequence_selection",
+    "area_callback_original_result"
+  ],
+  "provenance": "Synthetic inputs through native permanent observer and ACK producer; no radio/device access",
+  "vectors": [
+    {
+      "synthetic_payload_hex": "00",
+      "incoming_sequence_fixture": 17767,
+      "profile_fixture": 1,
+      "callback_present_fixture": true,
+      "timer_handle_fixture": 7,
+      "owner_fixture": "alive",
+      "events": [
+        {
+          "kind": "ack_send_before_transport"
+        },
+        {
+          "kind": "callback",
+          "error": 0,
+          "value": 0
+        },
+        {
+          "kind": "stop_timer",
+          "handle": 7
+        }
+      ],
+      "native_ack_frame_hex": "550e046602076745c00746008f44",
+      "callback_cleared": true,
+      "timer_handle_after": 0
+    },
+    {
+      "synthetic_payload_hex": "01",
+      "incoming_sequence_fixture": 17767,
+      "profile_fixture": 1,
+      "callback_present_fixture": true,
+      "timer_handle_fixture": 7,
+      "owner_fixture": "alive",
+      "events": [
+        {
+          "kind": "ack_send_before_transport"
+        },
+        {
+          "kind": "callback",
+          "error": 0,
+          "value": 1
+        },
+        {
+          "kind": "stop_timer",
+          "handle": 7
+        }
+      ],
+      "native_ack_frame_hex": "550e046602076745c00746008f44",
+      "callback_cleared": true,
+      "timer_handle_after": 0
+    },
+    {
+      "synthetic_payload_hex": "02",
+      "incoming_sequence_fixture": 17767,
+      "profile_fixture": 1,
+      "callback_present_fixture": true,
+      "timer_handle_fixture": 7,
+      "owner_fixture": "alive",
+      "events": [
+        {
+          "kind": "ack_send_before_transport"
+        },
+        {
+          "kind": "callback",
+          "error": 0,
+          "value": 2
+        },
+        {
+          "kind": "stop_timer",
+          "handle": 7
+        }
+      ],
+      "native_ack_frame_hex": "550e046602076745c00746008f44",
+      "callback_cleared": true,
+      "timer_handle_after": 0
+    },
+    {
+      "synthetic_payload_hex": "03",
+      "incoming_sequence_fixture": 17767,
+      "profile_fixture": 1,
+      "callback_present_fixture": true,
+      "timer_handle_fixture": 7,
+      "owner_fixture": "alive",
+      "events": [
+        {
+          "kind": "ack_send_before_transport"
+        },
+        {
+          "kind": "callback",
+          "error": 0,
+          "value": 3
+        },
+        {
+          "kind": "stop_timer",
+          "handle": 7
+        }
+      ],
+      "native_ack_frame_hex": "550e046602076745c00746008f44",
+      "callback_cleared": true,
+      "timer_handle_after": 0
+    },
+    {
+      "synthetic_payload_hex": "04",
+      "incoming_sequence_fixture": 17767,
+      "profile_fixture": 1,
+      "callback_present_fixture": true,
+      "timer_handle_fixture": 7,
+      "owner_fixture": "alive",
+      "events": [
+        {
+          "kind": "ack_send_before_transport"
+        },
+        {
+          "kind": "callback",
+          "error": 0,
+          "value": 4
+        },
+        {
+          "kind": "stop_timer",
+          "handle": 7
+        }
+      ],
+      "native_ack_frame_hex": "550e046602076745c00746008f44",
+      "callback_cleared": true,
+      "timer_handle_after": 0
+    },
+    {
+      "synthetic_payload_hex": "05",
+      "incoming_sequence_fixture": 17767,
+      "profile_fixture": 1,
+      "callback_present_fixture": true,
+      "timer_handle_fixture": 7,
+      "owner_fixture": "alive",
+      "events": [
+        {
+          "kind": "ack_send_before_transport"
+        },
+        {
+          "kind": "callback",
+          "error": 0,
+          "value": 5
+        },
+        {
+          "kind": "stop_timer",
+          "handle": 7
+        }
+      ],
+      "native_ack_frame_hex": "550e046602076745c00746008f44",
+      "callback_cleared": true,
+      "timer_handle_after": 0
+    },
+    {
+      "synthetic_payload_hex": "ff",
+      "incoming_sequence_fixture": 17767,
+      "profile_fixture": 1,
+      "callback_present_fixture": true,
+      "timer_handle_fixture": 7,
+      "owner_fixture": "alive",
+      "events": [
+        {
+          "kind": "ack_send_before_transport"
+        },
+        {
+          "kind": "callback",
+          "error": 0,
+          "value": 255
+        },
+        {
+          "kind": "stop_timer",
+          "handle": 7
+        }
+      ],
+      "native_ack_frame_hex": "550e046602076745c00746008f44",
+      "callback_cleared": true,
+      "timer_handle_after": 0
+    },
+    {
+      "synthetic_payload_hex": "01",
+      "incoming_sequence_fixture": 0,
+      "profile_fixture": 1,
+      "callback_present_fixture": true,
+      "timer_handle_fixture": 7,
+      "owner_fixture": "alive",
+      "events": [
+        {
+          "kind": "ack_send_before_transport"
+        },
+        {
+          "kind": "callback",
+          "error": 0,
+          "value": 1
+        },
+        {
+          "kind": "stop_timer",
+          "handle": 7
+        }
+      ],
+      "native_ack_frame_hex": "550e046602070000c00746009938",
+      "callback_cleared": true,
+      "timer_handle_after": 0
+    },
+    {
+      "synthetic_payload_hex": "01",
+      "incoming_sequence_fixture": 65535,
+      "profile_fixture": 1,
+      "callback_present_fixture": true,
+      "timer_handle_fixture": 7,
+      "owner_fixture": "alive",
+      "events": [
+        {
+          "kind": "ack_send_before_transport"
+        },
+        {
+          "kind": "callback",
+          "error": 0,
+          "value": 1
+        },
+        {
+          "kind": "stop_timer",
+          "handle": 7
+        }
+      ],
+      "native_ack_frame_hex": "550e04660207ffffc0074600e930",
+      "callback_cleared": true,
+      "timer_handle_after": 0
+    },
+    {
+      "synthetic_payload_hex": "01",
+      "incoming_sequence_fixture": 33059,
+      "profile_fixture": 2,
+      "callback_present_fixture": true,
+      "timer_handle_fixture": 7,
+      "owner_fixture": "alive",
+      "events": [
+        {
+          "kind": "ack_send_before_transport"
+        },
+        {
+          "kind": "callback",
+          "error": 0,
+          "value": 1
+        },
+        {
+          "kind": "stop_timer",
+          "handle": 7
+        }
+      ],
+      "native_ack_frame_hex": "550e0466021b2381c0074600c634",
+      "callback_cleared": true,
+      "timer_handle_after": 0
+    },
+    {
+      "synthetic_payload_hex": "01",
+      "incoming_sequence_fixture": 33059,
+      "profile_fixture": 5,
+      "callback_present_fixture": true,
+      "timer_handle_fixture": 7,
+      "owner_fixture": "alive",
+      "events": [
+        {
+          "kind": "ack_send_before_transport"
+        },
+        {
+          "kind": "callback",
+          "error": 0,
+          "value": 1
+        },
+        {
+          "kind": "stop_timer",
+          "handle": 7
+        }
+      ],
+      "native_ack_frame_hex": "550e046602072381c00746009530",
+      "callback_cleared": true,
+      "timer_handle_after": 0
+    },
+    {
+      "synthetic_payload_hex": "01",
+      "incoming_sequence_fixture": 17767,
+      "profile_fixture": 1,
+      "callback_present_fixture": false,
+      "timer_handle_fixture": 0,
+      "owner_fixture": "alive",
+      "events": [
+        {
+          "kind": "ack_send_before_transport"
+        }
+      ],
+      "native_ack_frame_hex": "550e046602076745c00746008f44",
+      "callback_cleared": true,
+      "timer_handle_after": 0
+    },
+    {
+      "synthetic_payload_hex": "01",
+      "incoming_sequence_fixture": 17767,
+      "profile_fixture": 1,
+      "callback_present_fixture": true,
+      "timer_handle_fixture": 7,
+      "owner_fixture": "expired",
+      "events": [],
+      "native_ack_frame_hex": null,
+      "callback_cleared": false,
+      "timer_handle_after": 7
+    },
+    {
+      "synthetic_payload_hex": "01",
+      "incoming_sequence_fixture": 17767,
+      "profile_fixture": 1,
+      "callback_present_fixture": true,
+      "timer_handle_fixture": 7,
+      "owner_fixture": "missing",
+      "events": [],
+      "native_ack_frame_hex": null,
+      "callback_cleared": false,
+      "timer_handle_after": 7
+    },
+    {
+      "synthetic_payload_hex": "",
+      "incoming_sequence_fixture": 17767,
+      "profile_fixture": 1,
+      "callback_present_fixture": true,
+      "timer_handle_fixture": 7,
+      "owner_fixture": "alive",
+      "events": [
+        {
+          "kind": "ack_send_before_transport"
+        },
+        {
+          "kind": "stop_timer",
+          "handle": 7
+        }
+      ],
+      "native_ack_frame_hex": "550e046602076745c00746008f44",
+      "callback_cleared": true,
+      "timer_handle_after": 0
+    },
+    {
+      "synthetic_payload_hex": null,
+      "incoming_sequence_fixture": 17767,
+      "profile_fixture": 1,
+      "callback_present_fixture": true,
+      "timer_handle_fixture": 7,
+      "owner_fixture": "alive",
+      "events": [
+        {
+          "kind": "ack_send_before_transport"
+        },
+        {
+          "kind": "stop_timer",
+          "handle": 7
+        }
+      ],
+      "native_ack_frame_hex": "550e046602076745c00746008f44",
+      "callback_cleared": true,
+      "timer_handle_after": 0
+    },
+    {
+      "synthetic_payload_hex": "0101",
+      "incoming_sequence_fixture": 17767,
+      "profile_fixture": 1,
+      "callback_present_fixture": true,
+      "timer_handle_fixture": 7,
+      "owner_fixture": "alive",
+      "events": [
+        {
+          "kind": "ack_send_before_transport"
+        },
+        {
+          "kind": "area_lookup",
+          "synthetic_area_code": ""
+        },
+        {
+          "kind": "callback",
+          "error": 0,
+          "value": 1
+        },
+        {
+          "kind": "stop_timer",
+          "handle": 7
+        }
+      ],
+      "native_ack_frame_hex": "550e046602076745c00746008f44",
+      "callback_cleared": true,
+      "timer_handle_after": 0
+    },
+    {
+      "synthetic_payload_hex": "0101",
+      "incoming_sequence_fixture": 17767,
+      "profile_fixture": 1,
+      "callback_present_fixture": true,
+      "timer_handle_fixture": 7,
+      "owner_fixture": "alive",
+      "events": [
+        {
+          "kind": "ack_send_before_transport"
+        },
+        {
+          "kind": "area_lookup",
+          "synthetic_area_code": "FR"
+        },
+        {
+          "kind": "set_area_code_before_execution",
+          "synthetic_area_code": "FR"
+        }
+      ],
+      "native_ack_frame_hex": "550e046602076745c00746008f44",
+      "callback_cleared": false,
+      "timer_handle_after": 7
+    }
+  ],
+  "timeout": {
+    "events": [
+      {
+        "kind": "callback",
+        "error": 0,
+        "value": 2
+      }
+    ],
+    "ack_captured": false
+  },
+  "area_callbacks": [
+    {
+      "synthetic_area_error": 0,
+      "events": [
+        {
+          "kind": "callback",
+          "error": 0,
+          "value": 1
+        }
+      ]
+    },
+    {
+      "synthetic_area_error": -3,
+      "events": [
+        {
+          "kind": "callback",
+          "error": 0,
+          "value": 1
+        }
+      ]
+    },
+    {
+      "synthetic_area_error": -7,
+      "events": [
+        {
+          "kind": "callback",
+          "error": 0,
+          "value": 1
+        }
+      ]
+    }
+  ],
+  "guest_imports": [
+    "_ZN3uav3sdk6IntMsgC1Ei",
+    "malloc",
+    "memcpy",
+    "memset"
+  ],
+  "limits": [
+    "Native observer does not locally filter incoming sender or wire command type",
+    "No live firmware 07/46 route/type or timing observed",
+    "Available worker, user callbacks, timer and area lookup are explicit fixtures",
+    "Stops before external IntMsg destruction, or before SetAreaCode execution",
+    "Synthetic callback arguments omit application UI work and post-callback destruction"
+  ]
+}

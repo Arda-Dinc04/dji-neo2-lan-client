@@ -1,0 +1,19 @@
+{
+  "scope": "Sanitized actual Neo2 capability reply; captured after owned PC presence, firmware01.00.0500, DJI Fly not running",
+  "source_capture_sha256": "a55b05cb611174110008494c427f40eea56a6318a04d6026dc505f275496b515",
+  "sanitization": "Replaced serial-derived hashes and request sequence; retained ACK type, routing, response header structure, status and all capability vector bytes",
+  "carrier_hex": "5561042427ee0300005101553e044be9ee23818051410020000100e0076c552600061120000000000000000018000100000000000a112000000000000000006d0200000000000004f5e0076c5502030000000000000001a2000000000000006f49",
+  "query_sequence": 33059,
+  "expected_capabilities": {
+    "6": {
+      "word_count": 2,
+      "mask": 0,
+      "support": 65560
+    },
+    "10": {
+      "word_count": 2,
+      "mask": 0,
+      "support": 621
+    }
+  }
+}

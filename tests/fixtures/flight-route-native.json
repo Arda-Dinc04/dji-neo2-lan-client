@@ -1,0 +1,108 @@
+{
+  "schema": "neo2-control/flight-route-native/v1",
+  "source": "Synthetic inputs through saved DJI Fly 1.19.0 SDK constructors, assembly, Buffer, receiver setter and V1 encoder; no device/radio execution",
+  "sdk_sha256": "fb431e44f6a4971b159e7ac811bbd568016a300d959c958df99acb08c9fa9249",
+  "sdk_base_sha256": "54f77d990d5d1d09cab9ccd0cb3499edd03e47e18d75be5b449aa149bbd4233a",
+  "sequence": 33059,
+  "neo2_runtime_product_selected": false,
+  "vectors": [
+    {
+      "kind": "service_mode",
+      "mode": 0,
+      "frame_hex": "552d04f202ee238140511a00000000000000000000000000000000000000000000000000000000000000009db9",
+      "payload_hex": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "kind": "service_mode",
+      "mode": 2,
+      "frame_hex": "552d04f202ee238140511a00000200000000000000000000000000000000000000000000000000000000007bf8",
+      "payload_hex": "0000020000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "kind": "joystick_authority",
+      "value": 0,
+      "frame_hex": "550e046602b22381404980001835",
+      "payload_hex": "00"
+    },
+    {
+      "kind": "joystick_authority",
+      "value": 1,
+      "frame_hex": "550e046602b22381404980019124",
+      "payload_hex": "01"
+    }
+  ],
+  "support_cases": [
+    {
+      "device": 0,
+      "mode": 0,
+      "bool_constructor_input": 0
+    },
+    {
+      "device": 1,
+      "mode": 2,
+      "bool_constructor_input": 1
+    },
+    {
+      "device": 1,
+      "mode": 1,
+      "bool_constructor_input": 0
+    },
+    {
+      "device": 2,
+      "mode": 2,
+      "bool_constructor_input": 0
+    },
+    {
+      "device": 1,
+      "mode": 3,
+      "bool_constructor_input": 0
+    },
+    {
+      "device": -1,
+      "mode": 2,
+      "bool_constructor_input": 0
+    },
+    {
+      "device": 1,
+      "mode": -1,
+      "bool_constructor_input": 0
+    },
+    {
+      "device": 2147483647,
+      "mode": 2,
+      "bool_constructor_input": 0
+    },
+    {
+      "device": 1,
+      "mode": 2147483647,
+      "bool_constructor_input": 0
+    }
+  ],
+  "weak_checker_cases": [
+    {
+      "present": false,
+      "count": 0,
+      "value": false
+    },
+    {
+      "present": true,
+      "count": -1,
+      "value": false
+    },
+    {
+      "present": true,
+      "count": 0,
+      "value": true
+    },
+    {
+      "present": true,
+      "count": 1,
+      "value": true
+    },
+    {
+      "present": true,
+      "count": -2,
+      "value": true
+    }
+  ]
+}

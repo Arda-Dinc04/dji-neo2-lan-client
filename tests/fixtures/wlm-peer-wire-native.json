@@ -1,0 +1,761 @@
+{
+  "schema": "neo2-control/wlm-peer-wire-native/v1",
+  "sdk_sha256": "fb431e44f6a4971b159e7ac811bbd568016a300d959c958df99acb08c9fa9249",
+  "provenance": "Pinned ARM64 guests; synthetic identities and remote/agent successes only",
+  "source_frames": {
+    "sdk_sha256": "fb431e44f6a4971b159e7ac811bbd568016a300d959c958df99acb08c9fa9249",
+    "all_identities_synthetic": true,
+    "own_identity_hex": "04020070632d73746174652d73796e7468657469630000",
+    "peer_identity_hex": "000024706565722d73796e7468657469632d3030310000",
+    "own_hash": 1433143264,
+    "peer_hash": 910304650,
+    "frames": [
+      {
+        "name": "trigger51_02_request",
+        "frame_hex": "55180420eee90000405102050404000000020002000037f9",
+        "sender": 238,
+        "receiver": 233,
+        "sequence": 0,
+        "command_type": 64,
+        "command_set": 81,
+        "command_id": 2,
+        "payload_hex": "0504040000000200020000",
+        "attribute_hex": "e0076c558a2542360e000000"
+      },
+      {
+        "name": "negotiation51_08_ack",
+        "frame_hex": "55250484eee92381c05108000024706565722d73796e7468657469632d303031000000eb3d",
+        "sender": 238,
+        "receiver": 233,
+        "sequence": 33059,
+        "command_type": 192,
+        "command_set": 81,
+        "command_id": 8,
+        "payload_hex": "000024706565722d73796e7468657469632d303031000000",
+        "attribute_hex": "e0076c558a2542360e000000"
+      },
+      {
+        "name": "completion51_06_request",
+        "frame_hex": "55400421eee9000040510604020070632d73746174652d73796e7468657469630000000024706565722d73796e7468657469632d30303100000000000000772a",
+        "sender": 238,
+        "receiver": 233,
+        "sequence": 0,
+        "command_type": 64,
+        "command_set": 81,
+        "command_id": 6,
+        "payload_hex": "04020070632d73746174652d73796e7468657469630000000024706565722d73796e7468657469632d30303100000000000000",
+        "attribute_hex": "e0076c558a2542360e000000"
+      },
+      {
+        "name": "completion51_06_ack",
+        "frame_hex": "55250484eee92381c05106000024706565722d73796e7468657469632d3030310000002907",
+        "sender": 238,
+        "receiver": 233,
+        "sequence": 33059,
+        "command_type": 192,
+        "command_set": 81,
+        "command_id": 6,
+        "payload_hex": "000024706565722d73796e7468657469632d303031000000",
+        "attribute_hex": "e0076c558a2542360e000000"
+      }
+    ],
+    "capture_boundary": "0x41de630, before enqueue/dispatch and forwarding51/01",
+    "synthetic_physical_successes": true
+  },
+  "canonical_enqueue": [
+    {
+      "name": "trigger51_02_request",
+      "selected_inner_sequence": 0,
+      "frame_hex": "55180420eee90000405102050404000000020002000037f9",
+      "queue_record_hex": "341278561800000000e0076c558a2542360e000000000000000000000000000000000000000000000000000055180420eee90000405102050404000000020002000037f9"
+    },
+    {
+      "name": "negotiation51_08_ack",
+      "selected_inner_sequence": 33059,
+      "frame_hex": "55250484eee92381c05108000024706565722d73796e7468657469632d303031000000eb3d",
+      "queue_record_hex": "341278562500000000e0076c558a2542360e000000000000000000000000000000000000000000000000000055250484eee92381c05108000024706565722d73796e7468657469632d303031000000eb3d"
+    },
+    {
+      "name": "completion51_06_request",
+      "selected_inner_sequence": 0,
+      "frame_hex": "55400421eee9000040510604020070632d73746174652d73796e7468657469630000000024706565722d73796e7468657469632d30303100000000000000772a",
+      "queue_record_hex": "341278564000000000e0076c558a2542360e000000000000000000000000000000000000000000000000000055400421eee9000040510604020070632d73746174652d73796e7468657469630000000024706565722d73796e7468657469632d30303100000000000000772a"
+    },
+    {
+      "name": "completion51_06_ack",
+      "selected_inner_sequence": 33059,
+      "frame_hex": "55250484eee92381c05106000024706565722d73796e7468657469632d3030310000002907",
+      "queue_record_hex": "341278562500000000e0076c558a2542360e000000000000000000000000000000000000000000000000000055250484eee92381c05106000024706565722d73796e7468657469632d3030310000002907"
+    }
+  ],
+  "native_flags0e_routes": [
+    {
+      "name": "trigger51_02_request",
+      "transfer_flags": 14,
+      "counter_before": 4660,
+      "counter_after": 4661,
+      "per_link_calls": [
+        {
+          "category": 0,
+          "attributes22_hex": "e0076c5500341200008a25423601e200000000000000",
+          "inner_hex": "55180420eee90000405102050404000000020002000037f9"
+        },
+        {
+          "category": 1,
+          "attributes22_hex": "e0076c5501341200008a25423601e200000000000000",
+          "inner_hex": "55180420eee90000405102050404000000020002000037f9"
+        },
+        {
+          "category": 2,
+          "attributes22_hex": "e0076c5502341200008a25423601e200000000000000",
+          "inner_hex": "55180420eee90000405102050404000000020002000037f9"
+        }
+      ],
+      "wifi_wire_hex": "553b04b43be9341200510155180420eee90000405102050404000000020002000037f9e0076c5502341200008a25423601e200000000000000a927",
+      "outer": {
+        "sender": 59,
+        "receiver": 233,
+        "type": 0,
+        "sequence": 4660
+      },
+      "inner": {
+        "sender": 238,
+        "receiver": 233,
+        "type": 64,
+        "sequence": 0,
+        "payload_length": 11,
+        "payload_hex": "0504040000000200020000"
+      }
+    },
+    {
+      "name": "negotiation51_08_ack",
+      "transfer_flags": 14,
+      "counter_before": 4660,
+      "counter_after": 4661,
+      "per_link_calls": [
+        {
+          "category": 0,
+          "attributes22_hex": "e0076c5500341200008a25423601e200000000000000",
+          "inner_hex": "55250484eee92381c05108000024706565722d73796e7468657469632d303031000000eb3d"
+        },
+        {
+          "category": 1,
+          "attributes22_hex": "e0076c5501341200008a25423601e200000000000000",
+          "inner_hex": "55250484eee92381c05108000024706565722d73796e7468657469632d303031000000eb3d"
+        },
+        {
+          "category": 2,
+          "attributes22_hex": "e0076c5502341200008a25423601e200000000000000",
+          "inner_hex": "55250484eee92381c05108000024706565722d73796e7468657469632d303031000000eb3d"
+        }
+      ],
+      "wifi_wire_hex": "554804573be9341200510155250484eee92381c05108000024706565722d73796e7468657469632d303031000000eb3de0076c5502341200008a25423601e200000000000000d3ef",
+      "outer": {
+        "sender": 59,
+        "receiver": 233,
+        "type": 0,
+        "sequence": 4660
+      },
+      "inner": {
+        "sender": 238,
+        "receiver": 233,
+        "type": 192,
+        "sequence": 33059,
+        "payload_length": 24,
+        "payload_hex": "000024706565722d73796e7468657469632d303031000000"
+      }
+    },
+    {
+      "name": "completion51_06_request",
+      "transfer_flags": 14,
+      "counter_before": 4660,
+      "counter_after": 4661,
+      "per_link_calls": [
+        {
+          "category": 0,
+          "attributes22_hex": "e0076c5500341200008a25423601e200000000000000",
+          "inner_hex": "55400421eee9000040510604020070632d73746174652d73796e7468657469630000000024706565722d73796e7468657469632d30303100000000000000772a"
+        },
+        {
+          "category": 1,
+          "attributes22_hex": "e0076c5501341200008a25423601e200000000000000",
+          "inner_hex": "55400421eee9000040510604020070632d73746174652d73796e7468657469630000000024706565722d73796e7468657469632d30303100000000000000772a"
+        },
+        {
+          "category": 2,
+          "attributes22_hex": "e0076c5502341200008a25423601e200000000000000",
+          "inner_hex": "55400421eee9000040510604020070632d73746174652d73796e7468657469630000000024706565722d73796e7468657469632d30303100000000000000772a"
+        }
+      ],
+      "wifi_wire_hex": "556304b53be9341200510155400421eee9000040510604020070632d73746174652d73796e7468657469630000000024706565722d73796e7468657469632d30303100000000000000772ae0076c5502341200008a25423601e200000000000000f74a",
+      "outer": {
+        "sender": 59,
+        "receiver": 233,
+        "type": 0,
+        "sequence": 4660
+      },
+      "inner": {
+        "sender": 238,
+        "receiver": 233,
+        "type": 64,
+        "sequence": 0,
+        "payload_length": 51,
+        "payload_hex": "04020070632d73746174652d73796e7468657469630000000024706565722d73796e7468657469632d30303100000000000000"
+      }
+    },
+    {
+      "name": "completion51_06_ack",
+      "transfer_flags": 14,
+      "counter_before": 4660,
+      "counter_after": 4661,
+      "per_link_calls": [
+        {
+          "category": 0,
+          "attributes22_hex": "e0076c5500341200008a25423601e200000000000000",
+          "inner_hex": "55250484eee92381c05106000024706565722d73796e7468657469632d3030310000002907"
+        },
+        {
+          "category": 1,
+          "attributes22_hex": "e0076c5501341200008a25423601e200000000000000",
+          "inner_hex": "55250484eee92381c05106000024706565722d73796e7468657469632d3030310000002907"
+        },
+        {
+          "category": 2,
+          "attributes22_hex": "e0076c5502341200008a25423601e200000000000000",
+          "inner_hex": "55250484eee92381c05106000024706565722d73796e7468657469632d3030310000002907"
+        }
+      ],
+      "wifi_wire_hex": "554804573be9341200510155250484eee92381c05106000024706565722d73796e7468657469632d3030310000002907e0076c5502341200008a25423601e200000000000000d3ef",
+      "outer": {
+        "sender": 59,
+        "receiver": 233,
+        "type": 0,
+        "sequence": 4660
+      },
+      "inner": {
+        "sender": 238,
+        "receiver": 233,
+        "type": 192,
+        "sequence": 33059,
+        "payload_length": 24,
+        "payload_hex": "000024706565722d73796e7468657469632d303031000000"
+      }
+    }
+  ],
+  "wifi_only_flags08_controls": [
+    {
+      "name": "trigger51_02_request",
+      "transfer_flags": 8,
+      "counter_before": 4660,
+      "counter_after": 4661,
+      "per_link_calls": [
+        {
+          "category": 2,
+          "attributes22_hex": "e0076c5502341200008a254236018200000000000000",
+          "inner_hex": "55180420eee90000405102050404000000020002000037f9"
+        }
+      ],
+      "wifi_wire_hex": "553b04b43be9341200510155180420eee90000405102050404000000020002000037f9e0076c5502341200008a254236018200000000000000a8f4",
+      "outer": {
+        "sender": 59,
+        "receiver": 233,
+        "type": 0,
+        "sequence": 4660
+      },
+      "inner": {
+        "sender": 238,
+        "receiver": 233,
+        "type": 64,
+        "sequence": 0,
+        "payload_length": 11,
+        "payload_hex": "0504040000000200020000"
+      }
+    },
+    {
+      "name": "trigger51_02_request",
+      "transfer_flags": 8,
+      "counter_before": 65535,
+      "counter_after": 65536,
+      "per_link_calls": [
+        {
+          "category": 2,
+          "attributes22_hex": "e0076c5502ffff00008a254236018200000000000000",
+          "inner_hex": "55180420eee90000405102050404000000020002000037f9"
+        }
+      ],
+      "wifi_wire_hex": "553b04b43be9ffff00510155180420eee90000405102050404000000020002000037f9e0076c5502ffff00008a254236018200000000000000cbb0",
+      "outer": {
+        "sender": 59,
+        "receiver": 233,
+        "type": 0,
+        "sequence": 65535
+      },
+      "inner": {
+        "sender": 238,
+        "receiver": 233,
+        "type": 64,
+        "sequence": 0,
+        "payload_length": 11,
+        "payload_hex": "0504040000000200020000"
+      }
+    },
+    {
+      "name": "trigger51_02_request",
+      "transfer_flags": 8,
+      "counter_before": 4294967295,
+      "counter_after": 0,
+      "per_link_calls": [
+        {
+          "category": 2,
+          "attributes22_hex": "e0076c5502ffffffff8a254236018200000000000000",
+          "inner_hex": "55180420eee90000405102050404000000020002000037f9"
+        }
+      ],
+      "wifi_wire_hex": "553b04b43be9ffff00510155180420eee90000405102050404000000020002000037f9e0076c5502ffffffff8a254236018200000000000000b973",
+      "outer": {
+        "sender": 59,
+        "receiver": 233,
+        "type": 0,
+        "sequence": 65535
+      },
+      "inner": {
+        "sender": 238,
+        "receiver": 233,
+        "type": 64,
+        "sequence": 0,
+        "payload_length": 11,
+        "payload_hex": "0504040000000200020000"
+      }
+    },
+    {
+      "name": "negotiation51_08_ack",
+      "transfer_flags": 8,
+      "counter_before": 4660,
+      "counter_after": 4661,
+      "per_link_calls": [
+        {
+          "category": 2,
+          "attributes22_hex": "e0076c5502341200008a254236018200000000000000",
+          "inner_hex": "55250484eee92381c05108000024706565722d73796e7468657469632d303031000000eb3d"
+        }
+      ],
+      "wifi_wire_hex": "554804573be9341200510155250484eee92381c05108000024706565722d73796e7468657469632d303031000000eb3de0076c5502341200008a254236018200000000000000d23c",
+      "outer": {
+        "sender": 59,
+        "receiver": 233,
+        "type": 0,
+        "sequence": 4660
+      },
+      "inner": {
+        "sender": 238,
+        "receiver": 233,
+        "type": 192,
+        "sequence": 33059,
+        "payload_length": 24,
+        "payload_hex": "000024706565722d73796e7468657469632d303031000000"
+      }
+    },
+    {
+      "name": "negotiation51_08_ack",
+      "transfer_flags": 8,
+      "counter_before": 65535,
+      "counter_after": 65536,
+      "per_link_calls": [
+        {
+          "category": 2,
+          "attributes22_hex": "e0076c5502ffff00008a254236018200000000000000",
+          "inner_hex": "55250484eee92381c05108000024706565722d73796e7468657469632d303031000000eb3d"
+        }
+      ],
+      "wifi_wire_hex": "554804573be9ffff00510155250484eee92381c05108000024706565722d73796e7468657469632d303031000000eb3de0076c5502ffff00008a254236018200000000000000b57c",
+      "outer": {
+        "sender": 59,
+        "receiver": 233,
+        "type": 0,
+        "sequence": 65535
+      },
+      "inner": {
+        "sender": 238,
+        "receiver": 233,
+        "type": 192,
+        "sequence": 33059,
+        "payload_length": 24,
+        "payload_hex": "000024706565722d73796e7468657469632d303031000000"
+      }
+    },
+    {
+      "name": "negotiation51_08_ack",
+      "transfer_flags": 8,
+      "counter_before": 4294967295,
+      "counter_after": 0,
+      "per_link_calls": [
+        {
+          "category": 2,
+          "attributes22_hex": "e0076c5502ffffffff8a254236018200000000000000",
+          "inner_hex": "55250484eee92381c05108000024706565722d73796e7468657469632d303031000000eb3d"
+        }
+      ],
+      "wifi_wire_hex": "554804573be9ffff00510155250484eee92381c05108000024706565722d73796e7468657469632d303031000000eb3de0076c5502ffffffff8a254236018200000000000000c7bf",
+      "outer": {
+        "sender": 59,
+        "receiver": 233,
+        "type": 0,
+        "sequence": 65535
+      },
+      "inner": {
+        "sender": 238,
+        "receiver": 233,
+        "type": 192,
+        "sequence": 33059,
+        "payload_length": 24,
+        "payload_hex": "000024706565722d73796e7468657469632d303031000000"
+      }
+    },
+    {
+      "name": "completion51_06_request",
+      "transfer_flags": 8,
+      "counter_before": 4660,
+      "counter_after": 4661,
+      "per_link_calls": [
+        {
+          "category": 2,
+          "attributes22_hex": "e0076c5502341200008a254236018200000000000000",
+          "inner_hex": "55400421eee9000040510604020070632d73746174652d73796e7468657469630000000024706565722d73796e7468657469632d30303100000000000000772a"
+        }
+      ],
+      "wifi_wire_hex": "556304b53be9341200510155400421eee9000040510604020070632d73746174652d73796e7468657469630000000024706565722d73796e7468657469632d30303100000000000000772ae0076c5502341200008a254236018200000000000000f699",
+      "outer": {
+        "sender": 59,
+        "receiver": 233,
+        "type": 0,
+        "sequence": 4660
+      },
+      "inner": {
+        "sender": 238,
+        "receiver": 233,
+        "type": 64,
+        "sequence": 0,
+        "payload_length": 51,
+        "payload_hex": "04020070632d73746174652d73796e7468657469630000000024706565722d73796e7468657469632d30303100000000000000"
+      }
+    },
+    {
+      "name": "completion51_06_request",
+      "transfer_flags": 8,
+      "counter_before": 65535,
+      "counter_after": 65536,
+      "per_link_calls": [
+        {
+          "category": 2,
+          "attributes22_hex": "e0076c5502ffff00008a254236018200000000000000",
+          "inner_hex": "55400421eee9000040510604020070632d73746174652d73796e7468657469630000000024706565722d73796e7468657469632d30303100000000000000772a"
+        }
+      ],
+      "wifi_wire_hex": "556304b53be9ffff00510155400421eee9000040510604020070632d73746174652d73796e7468657469630000000024706565722d73796e7468657469632d30303100000000000000772ae0076c5502ffff00008a25423601820000000000000077c9",
+      "outer": {
+        "sender": 59,
+        "receiver": 233,
+        "type": 0,
+        "sequence": 65535
+      },
+      "inner": {
+        "sender": 238,
+        "receiver": 233,
+        "type": 64,
+        "sequence": 0,
+        "payload_length": 51,
+        "payload_hex": "04020070632d73746174652d73796e7468657469630000000024706565722d73796e7468657469632d30303100000000000000"
+      }
+    },
+    {
+      "name": "completion51_06_request",
+      "transfer_flags": 8,
+      "counter_before": 4294967295,
+      "counter_after": 0,
+      "per_link_calls": [
+        {
+          "category": 2,
+          "attributes22_hex": "e0076c5502ffffffff8a254236018200000000000000",
+          "inner_hex": "55400421eee9000040510604020070632d73746174652d73796e7468657469630000000024706565722d73796e7468657469632d30303100000000000000772a"
+        }
+      ],
+      "wifi_wire_hex": "556304b53be9ffff00510155400421eee9000040510604020070632d73746174652d73796e7468657469630000000024706565722d73796e7468657469632d30303100000000000000772ae0076c5502ffffffff8a254236018200000000000000050a",
+      "outer": {
+        "sender": 59,
+        "receiver": 233,
+        "type": 0,
+        "sequence": 65535
+      },
+      "inner": {
+        "sender": 238,
+        "receiver": 233,
+        "type": 64,
+        "sequence": 0,
+        "payload_length": 51,
+        "payload_hex": "04020070632d73746174652d73796e7468657469630000000024706565722d73796e7468657469632d30303100000000000000"
+      }
+    },
+    {
+      "name": "completion51_06_ack",
+      "transfer_flags": 8,
+      "counter_before": 4660,
+      "counter_after": 4661,
+      "per_link_calls": [
+        {
+          "category": 2,
+          "attributes22_hex": "e0076c5502341200008a254236018200000000000000",
+          "inner_hex": "55250484eee92381c05106000024706565722d73796e7468657469632d3030310000002907"
+        }
+      ],
+      "wifi_wire_hex": "554804573be9341200510155250484eee92381c05106000024706565722d73796e7468657469632d3030310000002907e0076c5502341200008a254236018200000000000000d23c",
+      "outer": {
+        "sender": 59,
+        "receiver": 233,
+        "type": 0,
+        "sequence": 4660
+      },
+      "inner": {
+        "sender": 238,
+        "receiver": 233,
+        "type": 192,
+        "sequence": 33059,
+        "payload_length": 24,
+        "payload_hex": "000024706565722d73796e7468657469632d303031000000"
+      }
+    },
+    {
+      "name": "completion51_06_ack",
+      "transfer_flags": 8,
+      "counter_before": 65535,
+      "counter_after": 65536,
+      "per_link_calls": [
+        {
+          "category": 2,
+          "attributes22_hex": "e0076c5502ffff00008a254236018200000000000000",
+          "inner_hex": "55250484eee92381c05106000024706565722d73796e7468657469632d3030310000002907"
+        }
+      ],
+      "wifi_wire_hex": "554804573be9ffff00510155250484eee92381c05106000024706565722d73796e7468657469632d3030310000002907e0076c5502ffff00008a254236018200000000000000b57c",
+      "outer": {
+        "sender": 59,
+        "receiver": 233,
+        "type": 0,
+        "sequence": 65535
+      },
+      "inner": {
+        "sender": 238,
+        "receiver": 233,
+        "type": 192,
+        "sequence": 33059,
+        "payload_length": 24,
+        "payload_hex": "000024706565722d73796e7468657469632d303031000000"
+      }
+    },
+    {
+      "name": "completion51_06_ack",
+      "transfer_flags": 8,
+      "counter_before": 4294967295,
+      "counter_after": 0,
+      "per_link_calls": [
+        {
+          "category": 2,
+          "attributes22_hex": "e0076c5502ffffffff8a254236018200000000000000",
+          "inner_hex": "55250484eee92381c05106000024706565722d73796e7468657469632d3030310000002907"
+        }
+      ],
+      "wifi_wire_hex": "554804573be9ffff00510155250484eee92381c05106000024706565722d73796e7468657469632d3030310000002907e0076c5502ffffffff8a254236018200000000000000c7bf",
+      "outer": {
+        "sender": 59,
+        "receiver": 233,
+        "type": 0,
+        "sequence": 65535
+      },
+      "inner": {
+        "sender": 238,
+        "receiver": 233,
+        "type": 192,
+        "sequence": 33059,
+        "payload_length": 24,
+        "payload_hex": "000024706565722d73796e7468657469632d303031000000"
+      }
+    }
+  ],
+  "explicit_sequence_controls": [
+    {
+      "name": "trigger51_02_request",
+      "explicit_changed_inner_sequence": 65535,
+      "transfer_flags": 8,
+      "counter_before": 305419896,
+      "counter_after": 305419897,
+      "per_link_calls": [
+        {
+          "category": 2,
+          "attributes22_hex": "e0076c5502785634128a254236018200000000000000",
+          "inner_hex": "55180420eee9ffff405102050404000000020002000061a9"
+        }
+      ],
+      "wifi_wire_hex": "553b04b43be9785600510155180420eee9ffff405102050404000000020002000061a9e0076c5502785634128a254236018200000000000000dc6f",
+      "outer": {
+        "sender": 59,
+        "receiver": 233,
+        "type": 0,
+        "sequence": 22136
+      },
+      "inner": {
+        "sender": 238,
+        "receiver": 233,
+        "type": 64,
+        "sequence": 65535,
+        "payload_length": 11,
+        "payload_hex": "0504040000000200020000"
+      }
+    },
+    {
+      "name": "completion51_06_request",
+      "explicit_changed_inner_sequence": 0,
+      "transfer_flags": 8,
+      "counter_before": 4294967295,
+      "counter_after": 0,
+      "per_link_calls": [
+        {
+          "category": 2,
+          "attributes22_hex": "e0076c5502ffffffff8a254236018200000000000000",
+          "inner_hex": "55400421eee9000040510604020070632d73746174652d73796e7468657469630000000024706565722d73796e7468657469632d30303100000000000000772a"
+        }
+      ],
+      "wifi_wire_hex": "556304b53be9ffff00510155400421eee9000040510604020070632d73746174652d73796e7468657469630000000024706565722d73796e7468657469632d30303100000000000000772ae0076c5502ffffffff8a254236018200000000000000050a",
+      "outer": {
+        "sender": 59,
+        "receiver": 233,
+        "type": 0,
+        "sequence": 65535
+      },
+      "inner": {
+        "sender": 238,
+        "receiver": 233,
+        "type": 64,
+        "sequence": 0,
+        "payload_length": 51,
+        "payload_hex": "04020070632d73746174652d73796e7468657469630000000024706565722d73796e7468657469632d30303100000000000000"
+      }
+    }
+  ],
+  "completion_producer_controls": {
+    "cases": [
+      {
+        "stack_fill": 0,
+        "result": 0,
+        "detail": 305419896,
+        "frame": {
+          "frame_hex": "55400421eee9000040510604020070632d73746174652d73796e7468657469630000000024706565722d73796e7468657469632d303031000000785634128122",
+          "sender": 238,
+          "receiver": 233,
+          "sequence": 0,
+          "command_type": 64,
+          "command_set": 81,
+          "command_id": 6,
+          "payload_hex": "04020070632d73746174652d73796e7468657469630000000024706565722d73796e7468657469632d30303100000078563412",
+          "attribute_hex": "e0076c558a2542360e000000"
+        },
+        "fmsg_arguments": {
+          "header_hex": "0000000000000709070e000000004000060051003300",
+          "payload_hex": "04020070632d73746174652d73796e7468657469630000000024706565722d73796e7468657469632d30303100000078563412",
+          "attribute_hex": "e0076c558a2542360e000000"
+        }
+      },
+      {
+        "stack_fill": 165,
+        "result": 0,
+        "detail": 305419896,
+        "frame": {
+          "frame_hex": "55400421eee9a5a540510604020070632d73746174652d73796e7468657469630000000024706565722d73796e7468657469632d303031000000785634126a41",
+          "sender": 238,
+          "receiver": 233,
+          "sequence": 42405,
+          "command_type": 64,
+          "command_set": 81,
+          "command_id": 6,
+          "payload_hex": "04020070632d73746174652d73796e7468657469630000000024706565722d73796e7468657469632d30303100000078563412",
+          "attribute_hex": "e0076c558a2542360e000000"
+        },
+        "fmsg_arguments": {
+          "header_hex": "a5a5a5a500000709070e0000a5a54000060051003300",
+          "payload_hex": "04020070632d73746174652d73796e7468657469630000000024706565722d73796e7468657469632d30303100000078563412",
+          "attribute_hex": "e0076c558a2542360e000000"
+        }
+      }
+    ],
+    "own_identity_hex": "04020070632d73746174652d73796e7468657469630000",
+    "peer_identity_hex": "000024706565722d73796e7468657469632d3030310000",
+    "guest_imports": [
+      "__memcpy_chk",
+      "__strcat_chk",
+      "__strlen_chk",
+      "calloc",
+      "malloc",
+      "memcpy",
+      "memset",
+      "strcmp",
+      "strlen",
+      "strncpy"
+    ]
+  },
+  "native_windows": {
+    "encoder": {
+      "address": "0x40cb10c",
+      "length": 280,
+      "sha256": "bf4fd7089bf05cd83f6945dc095b9c5c824731017430faf522a58f1582fc8925"
+    },
+    "enqueue": {
+      "address": "0x40cafbc",
+      "length": 336,
+      "sha256": "c5d942639e3f8c4a4f43acad7eed39f37b697b2dc7ac9e9c6b1278908ef477a8"
+    },
+    "dispatcher": {
+      "address": "0x40cb300",
+      "length": 1016,
+      "sha256": "6143a33b01ba58b4acf079fb803f184633ee8a2a434da37e73b6cb922ad1fdb9"
+    },
+    "transfer_decision": {
+      "address": "0x40cbc50",
+      "length": 344,
+      "sha256": "32e6baf34aac40b57b646368cb14c602ac56838c62da59c5a7caafb819f71ea9"
+    },
+    "completion_producer": {
+      "address": "0x40c8d38",
+      "length": 380,
+      "sha256": "9d5a3bb062831178cf576692508477c9bb6eb71a39c7ad72622ada3d0fd8bc11"
+    },
+    "wifi_agent": {
+      "address": "0x40f24a0",
+      "length": 92,
+      "sha256": "3d402ce34d82324098d3b3a48116a43b46eb9cdda42c184a3d927c3e1ee3498c"
+    }
+  },
+  "forwarding_guest_imports": [
+    "__memcpy_chk",
+    "__strcat_chk",
+    "__strlen_chk",
+    "calloc",
+    "malloc",
+    "memcpy",
+    "memset",
+    "strcmp",
+    "strlen",
+    "strncpy"
+  ],
+  "boundaries": [
+    "Public service-switch source_frames regenerates four actual SDK frames at its pre-enqueue boundary.",
+    "Their body/attributes then enter native formatter, enqueue, dispatcher, per-link send and WiFi relay unchanged.",
+    "Both guests use matching synthetic own/peer identities; the11-byte51/02 body derives from requester0200.",
+    "Native default0e selects all three categories; changed08 selects only WiFi and preserves the peer destination hash.",
+    "Counters are explicit inputs; caller stack/register controls and platform/queue/agent boundaries are memory-only.",
+    "Changed inner sequences are deliberate input controls; native request header sequences remain uninitialized."
+  ],
+  "limits": [
+    "No physical agent, native scheduler, UAV firmware, radio, motor or update operation executes.",
+    "Native peer/agent success inputs and valid wire encoding do not establish remote acceptance or video readiness.",
+    "Zero trailing seven attribute bytes and intentional PC request sequences are explicit client policies.",
+    "Only complete51/06 bodies are generated here; truncated detail behavior remains excluded from a PC response template."
+  ]
+}

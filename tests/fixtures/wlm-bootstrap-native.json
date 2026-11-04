@@ -1,0 +1,279 @@
+{
+  "schema": "neo2-control/wlm-bootstrap-native/v1",
+  "sdk_sha256": "fb431e44f6a4971b159e7ac811bbd568016a300d959c958df99acb08c9fa9249",
+  "sdk_base_sha256": "54f77d990d5d1d09cab9ccd0cb3499edd03e47e18d75be5b449aa149bbd4233a",
+  "static": {
+    "windows": {
+      "wlm_connect_stores_primary_listens_then_reports": "0x02004660",
+      "wifi_connect_listens_reports_then_clears_device_cache": "0x020046ac",
+      "wifi_producer_requires_known_device": "0x02003378",
+      "observer_tag_07_94": "0x02001acc",
+      "push_device_count": "0x02009690",
+      "push_device_type_and_unknown_state": "0x020096bc",
+      "push_sets_state_three_and_repeats_report": "0x020096e0",
+      "wifi_report_selects_primary_link": "0x0200393c",
+      "identity_change_posts_report_task": "0x020091f4"
+    },
+    "callback_bindings": {
+      "0x04221678": "0x0200951c",
+      "0x042215e8": "0x020093bc",
+      "0x042216f8": "0x02009914",
+      "0x042217f8": "0x02009f54"
+    }
+  },
+  "scheduling": [
+    {
+      "identity_present": false,
+      "primary_present": true,
+      "assistants": [
+        "wifi_9003"
+      ],
+      "calls": []
+    },
+    {
+      "identity_present": true,
+      "primary_present": false,
+      "assistants": [
+        "ble_1"
+      ],
+      "calls": []
+    },
+    {
+      "identity_present": true,
+      "primary_present": true,
+      "assistants": [],
+      "calls": []
+    },
+    {
+      "identity_present": true,
+      "primary_present": true,
+      "assistants": [
+        "ble_1",
+        "wifi_9003"
+      ],
+      "calls": [
+        {
+          "producer": "link24",
+          "identity": "synthetic-id",
+          "assistant_link": "ble_1",
+          "raw": true
+        },
+        {
+          "producer": "link24",
+          "identity": "synthetic-id",
+          "assistant_link": "wifi_9003",
+          "raw": false
+        },
+        {
+          "producer": "wifi31",
+          "identity": "synthetic-id",
+          "assistant_link": "wifi_9003",
+          "raw": null
+        }
+      ]
+    },
+    {
+      "identity_present": true,
+      "primary_present": true,
+      "assistants": [
+        "wifi_9003"
+      ],
+      "calls": [
+        {
+          "producer": "link24",
+          "identity": "synthetic-id",
+          "assistant_link": "wifi_9003",
+          "raw": false
+        },
+        {
+          "producer": "wifi31",
+          "identity": "synthetic-id",
+          "assistant_link": "wifi_9003",
+          "raw": null
+        }
+      ]
+    },
+    {
+      "identity_present": true,
+      "primary_present": true,
+      "assistants": [
+        "usb_1"
+      ],
+      "calls": []
+    }
+  ],
+  "producers": [
+    {
+      "state": 0,
+      "result": null
+    },
+    {
+      "state": 65535,
+      "result": null
+    },
+    {
+      "state": 1,
+      "result": {
+        "selected_link": "wlm_1",
+        "payload_hex": "012b230400000073796e7468657469632d6964000000000000000000000000",
+        "receiver_type": 27,
+        "receiver_index": 0,
+        "command_type": 64,
+        "native_frame_hex": "552c0436021b2381400793012b230400000073796e7468657469632d69640000000000000000000000006e66"
+      }
+    },
+    {
+      "state": 3,
+      "result": {
+        "selected_link": "wlm_1",
+        "payload_hex": "012b230400000073796e7468657469632d6964000000000000000000000000",
+        "receiver_type": 27,
+        "receiver_index": 0,
+        "command_type": 64,
+        "native_frame_hex": "552c0436021b2381400793012b230400000073796e7468657469632d69640000000000000000000000006e66"
+      }
+    },
+    {
+      "kind": "link",
+      "assistant": "wifi_9003",
+      "raw": false,
+      "result": {
+        "selected_link": "wlm_1",
+        "payload_hex": "012b230073796e7468657469632d69640000000000000000",
+        "receiver_type": 7,
+        "receiver_index": 0,
+        "command_type": 64,
+        "native_frame_hex": "5525048402072381400793012b230073796e7468657469632d696400000000000000000cd0"
+      }
+    },
+    {
+      "kind": "link",
+      "assistant": "ble_1",
+      "raw": true,
+      "result": {
+        "selected_link": "ble_1",
+        "payload_hex": "012b230073796e7468657469632d69640000000000000000",
+        "receiver_type": 7,
+        "receiver_index": 0,
+        "command_type": 64,
+        "native_frame_hex": "5525048402072381400793012b230073796e7468657469632d696400000000000000000cd0"
+      }
+    },
+    {
+      "kind": "link",
+      "assistant": "ble_1",
+      "raw": false,
+      "result": {
+        "selected_link": "wlm_1",
+        "payload_hex": "012b230073796e7468657469632d69640000000000000000",
+        "receiver_type": 7,
+        "receiver_index": 0,
+        "command_type": 64,
+        "native_frame_hex": "5525048402072381400793012b230073796e7468657469632d696400000000000000000cd0"
+      }
+    }
+  ],
+  "device_push": [
+    {
+      "state_before": 0,
+      "count_byte": 1,
+      "device_type": 2,
+      "synthetic_body_hex": "011829024b5c6d7e8fa0b1c2d3e4f5061728394a5b6c7d8e9fb0c1d2e3f405",
+      "cached_device_hex": "024b5c6d7e8fa0b1c2d3e4f5061728394a5b6c7d8e9fb0c1d2e3f405",
+      "state_after": 3,
+      "calls": [
+        {
+          "producer": "report",
+          "device_state": 3
+        },
+        {
+          "producer": "cache_wifi_product_info"
+        }
+      ]
+    },
+    {
+      "state_before": 65535,
+      "count_byte": 1,
+      "device_type": 2,
+      "synthetic_body_hex": "011829024b5c6d7e8fa0b1c2d3e4f5061728394a5b6c7d8e9fb0c1d2e3f405",
+      "cached_device_hex": "024b5c6d7e8fa0b1c2d3e4f5061728394a5b6c7d8e9fb0c1d2e3f405",
+      "state_after": 3,
+      "calls": [
+        {
+          "producer": "report",
+          "device_state": 3
+        },
+        {
+          "producer": "cache_wifi_product_info"
+        }
+      ]
+    },
+    {
+      "state_before": 3,
+      "count_byte": 1,
+      "device_type": 2,
+      "synthetic_body_hex": "011829024b5c6d7e8fa0b1c2d3e4f5061728394a5b6c7d8e9fb0c1d2e3f405",
+      "cached_device_hex": "00000000000000000000000000000000000000000000000000000000",
+      "state_after": 3,
+      "calls": [
+        {
+          "producer": "cache_wifi_product_info"
+        }
+      ]
+    },
+    {
+      "state_before": 0,
+      "count_byte": 0,
+      "device_type": 2,
+      "synthetic_body_hex": "001829024b5c6d7e8fa0b1c2d3e4f5061728394a5b6c7d8e9fb0c1d2e3f405",
+      "cached_device_hex": "00000000000000000000000000000000000000000000000000000000",
+      "state_after": 0,
+      "calls": []
+    },
+    {
+      "state_before": 0,
+      "count_byte": 32,
+      "device_type": 2,
+      "synthetic_body_hex": "201829024b5c6d7e8fa0b1c2d3e4f5061728394a5b6c7d8e9fb0c1d2e3f405",
+      "cached_device_hex": "00000000000000000000000000000000000000000000000000000000",
+      "state_after": 0,
+      "calls": []
+    },
+    {
+      "state_before": 0,
+      "count_byte": 1,
+      "device_type": 1,
+      "synthetic_body_hex": "011829014b5c6d7e8fa0b1c2d3e4f5061728394a5b6c7d8e9fb0c1d2e3f405",
+      "cached_device_hex": "00000000000000000000000000000000000000000000000000000000",
+      "state_after": 0,
+      "calls": [
+        {
+          "producer": "cache_wifi_product_info"
+        }
+      ]
+    },
+    {
+      "state_before": 0,
+      "count_byte": 1,
+      "device_type": 3,
+      "synthetic_body_hex": "011829034b5c6d7e8fa0b1c2d3e4f5061728394a5b6c7d8e9fb0c1d2e3f405",
+      "cached_device_hex": "00000000000000000000000000000000000000000000000000000000",
+      "state_after": 0,
+      "calls": [
+        {
+          "producer": "cache_wifi_product_info"
+        }
+      ]
+    }
+  ],
+  "rule": "Report on identity/primary-WLM/Wi-Fi connect; raw BLE24 and primary WLM24. Wifi31 is suppressed until connected-device state is neither 0 nor 65535; first type2 device in07/94 can set state3 and repeat reports.",
+  "limits": [
+    "No radio delivery, live timing or video activation proven",
+    "StartWith, datalink registry lookup/RTTI, config port9003 and logging are explicit guest abstractions",
+    "Captured SendData is an application framework boundary, not a network send",
+    "07/94 callback reads31bytes without a body-length check; a PC receiver must validate length",
+    "Per-assistant call order follows std::set lexical order; BLE24/wifi24/wifi31 is not a synchronization barrier",
+    "Existing identity report encoder separately proves receiver index0; no07/93 ACK establishes video readiness",
+    "Device-state semantics above refer to SDK cache; physical readiness is unproven"
+  ]
+}

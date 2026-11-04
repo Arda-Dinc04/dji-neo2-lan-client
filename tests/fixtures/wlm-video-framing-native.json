@@ -1,0 +1,483 @@
+{
+  "scope": "Synthetic bounded guest observations; no drone, host SDK, codec decode or CAP6 selection claim.",
+  "sdk_sha256": "fb431e44f6a4971b159e7ac811bbd568016a300d959c958df99acb08c9fa9249",
+  "base_sha256": "54f77d990d5d1d09cab9ccd0cb3499edd03e47e18d75be5b449aa149bbd4233a",
+  "functions": {
+    "Decode22346": {
+      "address": "0x40661c0",
+      "size": 996,
+      "sha256": "2dd7d86712f358f5ebf896ef48abd4be4327edf25fd0fe283746e693dca3cb59"
+    },
+    "ProcessVideo": {
+      "address": "0x405e7fc",
+      "size": 1464,
+      "sha256": "0f512efebdcfe16e77ab30b0749bc05c7a817e84f331730f28387720af4117a7"
+    },
+    "wlm_check_valid_video_segment": {
+      "address": "0x40f69f4",
+      "size": 480,
+      "sha256": "a3806b05d3ed14567eaa210b6137c6e67524c028b7666abc5ef52837651a148a"
+    },
+    "libwlm_crc_verify": {
+      "address": "0x40f39f4",
+      "size": 188,
+      "sha256": "b2cf813690685af229837c2510ebee2575a7bbcb60adf07e7c9c5183b7027bee"
+    },
+    "fusion_node_metadata": {
+      "address": "0x40f7b90",
+      "size": 768,
+      "sha256": "2dab32c6a0c3413014ac375cd35438bf07cf360ceeeef3947ded843af71a5c39"
+    },
+    "fusion_recv_payload": {
+      "address": "0x40f6ff4",
+      "size": 800,
+      "sha256": "3773c64165086931f3b39e9e0686197b16bc3859ac4591c37d4705c390a57741"
+    }
+  },
+  "magic": {
+    "address": "0x4368140",
+    "native_hex": "000001ff"
+  },
+  "examples": [
+    {
+      "name": "basic_video",
+      "alternate_length": false,
+      "input_hex": "000001ff0c000000001100e3000001091000000165112233",
+      "native": {
+        "return": 1,
+        "kind": 17,
+        "aux": 0,
+        "payload_hex": "000001091000000165112233",
+        "payload_pointer_present": true,
+        "payload_length": 12,
+        "consumed": 24,
+        "remaining_hex": ""
+      }
+    },
+    {
+      "name": "extended_16",
+      "alternate_length": false,
+      "input_hex": "000001ff0c0000009011007378563412000001091000000165112233",
+      "native": {
+        "return": 1,
+        "kind": 17,
+        "aux": 305419896,
+        "payload_hex": "000001091000000165112233",
+        "payload_pointer_present": true,
+        "payload_length": 12,
+        "consumed": 28,
+        "remaining_hex": ""
+      }
+    },
+    {
+      "name": "extended_20",
+      "alternate_length": false,
+      "input_hex": "000001ff0c00000094110077efcdab8941424344000001091000000165112233",
+      "native": {
+        "return": 1,
+        "kind": 17,
+        "aux": 2309737967,
+        "payload_hex": "000001091000000165112233",
+        "payload_pointer_present": true,
+        "payload_length": 12,
+        "consumed": 32,
+        "remaining_hex": ""
+      }
+    },
+    {
+      "name": "alternate_ignores_byte6",
+      "alternate_length": true,
+      "input_hex": "000001ff0c00a50000110046000001091000000165112233",
+      "native": {
+        "return": 1,
+        "kind": 17,
+        "aux": 0,
+        "payload_hex": "000001091000000165112233",
+        "payload_pointer_present": true,
+        "payload_length": 12,
+        "consumed": 24,
+        "remaining_hex": ""
+      }
+    },
+    {
+      "name": "same_bytes_regular_wait",
+      "alternate_length": false,
+      "input_hex": "000001ff0c00a50000110046000001091000000165112233",
+      "native": {
+        "return": 0,
+        "kind": 4294967295,
+        "aux": 0,
+        "payload_hex": "",
+        "payload_pointer_present": false,
+        "payload_length": 0,
+        "consumed": 0,
+        "remaining_hex": "000001ff0c00a50000110046000001091000000165112233"
+      }
+    },
+    {
+      "name": "short_header",
+      "alternate_length": false,
+      "input_hex": "000001ff0c000000001100",
+      "native": {
+        "return": 0,
+        "kind": 4294967295,
+        "aux": 2779096485,
+        "payload_hex": "",
+        "payload_pointer_present": false,
+        "payload_length": 0,
+        "consumed": 0,
+        "remaining_hex": "000001ff0c000000001100"
+      }
+    },
+    {
+      "name": "short_payload",
+      "alternate_length": false,
+      "input_hex": "000001ff0c000000001100e30000010910000001651122",
+      "native": {
+        "return": 0,
+        "kind": 4294967295,
+        "aux": 0,
+        "payload_hex": "",
+        "payload_pointer_present": false,
+        "payload_length": 0,
+        "consumed": 0,
+        "remaining_hex": "000001ff0c000000001100e30000010910000001651122"
+      }
+    },
+    {
+      "name": "garbage_retains_last11",
+      "alternate_length": false,
+      "input_hex": "7878787878787878787878787878787878787878",
+      "native": {
+        "return": 0,
+        "kind": 4294967295,
+        "aux": 2779096485,
+        "payload_hex": "",
+        "payload_pointer_present": false,
+        "payload_length": 0,
+        "consumed": 9,
+        "remaining_hex": "7878787878787878787878"
+      }
+    },
+    {
+      "name": "resynchronizes_garbage",
+      "alternate_length": false,
+      "input_hex": "6a756e6b000001ff0c000000001100e3000001091000000165112233",
+      "native": {
+        "return": 1,
+        "kind": 17,
+        "aux": 0,
+        "payload_hex": "000001091000000165112233",
+        "payload_pointer_present": true,
+        "payload_length": 12,
+        "consumed": 28,
+        "remaining_hex": ""
+      }
+    },
+    {
+      "name": "bad_xor_then_valid",
+      "alternate_length": false,
+      "input_hex": "000001ff0c000000001100e2000001091000000165112233000001ff0c000000001100e3000001091000000165112233",
+      "native": {
+        "return": 1,
+        "kind": 17,
+        "aux": 0,
+        "payload_hex": "000001091000000165112233",
+        "payload_pointer_present": true,
+        "payload_length": 12,
+        "consumed": 48,
+        "remaining_hex": ""
+      }
+    },
+    {
+      "name": "invalid_extended_length12_stalls",
+      "alternate_length": false,
+      "input_hex": "000001ff0c0000008c11006f000001091000000165112233",
+      "native": {
+        "return": 0,
+        "kind": 4294967295,
+        "aux": 0,
+        "payload_hex": "",
+        "payload_pointer_present": false,
+        "payload_length": 0,
+        "consumed": 0,
+        "remaining_hex": "000001ff0c0000008c11006f000001091000000165112233"
+      }
+    },
+    {
+      "name": "extended_requires16_available",
+      "alternate_length": false,
+      "input_hex": "000001ff000000009011007f",
+      "native": {
+        "return": 0,
+        "kind": 4294967295,
+        "aux": 0,
+        "payload_hex": "",
+        "payload_pointer_present": false,
+        "payload_length": 0,
+        "consumed": 0,
+        "remaining_hex": "000001ff000000009011007f"
+      }
+    },
+    {
+      "name": "extended13_aux_overlaps_payload",
+      "alternate_length": false,
+      "input_hex": "000001ff030000008d1100615158595a",
+      "native": {
+        "return": 1,
+        "kind": 17,
+        "aux": 1515804753,
+        "payload_hex": "58595a",
+        "payload_pointer_present": true,
+        "payload_length": 3,
+        "consumed": 16,
+        "remaining_hex": ""
+      }
+    },
+    {
+      "name": "zero_payload",
+      "alternate_length": false,
+      "input_hex": "000001ff00000000001100ef",
+      "native": {
+        "return": 1,
+        "kind": 17,
+        "aux": 0,
+        "payload_hex": "",
+        "payload_pointer_present": true,
+        "payload_length": 0,
+        "consumed": 12,
+        "remaining_hex": ""
+      }
+    },
+    {
+      "name": "oversized_incomplete",
+      "alternate_length": false,
+      "input_hex": "000001ff00002000001100cf",
+      "native": {
+        "return": 0,
+        "kind": 4294967295,
+        "aux": 0,
+        "payload_hex": "",
+        "payload_pointer_present": false,
+        "payload_length": 0,
+        "consumed": 0,
+        "remaining_hex": "000001ff00002000001100cf"
+      }
+    },
+    {
+      "name": "oversized_complete_drops",
+      "input_length": 2097164,
+      "input_sha256": "4a63ff4967319b772404f01c6f0a521ecf4e462d1fa3e94f80f416b84d52f73c",
+      "native": {
+        "return": 1,
+        "kind": 4294967295,
+        "aux": 0,
+        "payload_hex": "",
+        "payload_pointer_present": false,
+        "payload_length": 0,
+        "consumed": 2097164,
+        "remaining_hex": ""
+      }
+    }
+  ],
+  "split_input": [
+    {
+      "append_hex": "000001ff0c0000",
+      "native": {
+        "return": 0,
+        "kind": 4294967295,
+        "aux": 2779096485,
+        "payload_hex": "",
+        "payload_pointer_present": false,
+        "payload_length": 0,
+        "consumed": 0,
+        "remaining_hex": "000001ff0c0000"
+      }
+    },
+    {
+      "append_hex": "00001100e3000001",
+      "native": {
+        "return": 0,
+        "kind": 4294967295,
+        "aux": 0,
+        "payload_hex": "",
+        "payload_pointer_present": false,
+        "payload_length": 0,
+        "consumed": 0,
+        "remaining_hex": "000001ff0c000000001100e3000001"
+      }
+    },
+    {
+      "append_hex": "091000000165112233",
+      "native": {
+        "return": 1,
+        "kind": 17,
+        "aux": 0,
+        "payload_hex": "000001091000000165112233",
+        "payload_pointer_present": true,
+        "payload_length": 12,
+        "consumed": 24,
+        "remaining_hex": ""
+      }
+    }
+  ],
+  "dispatch": {
+    "input_hex": "000001ff020000009011007d7856341211aa000001ff020000009012007e7856341212aa000001ff02000000902400487856341224aa000001ff02000000909900f57856341299aa",
+    "native": {
+      "deliveries": [
+        {
+          "target": "video",
+          "channel": 35,
+          "aux": 305419896,
+          "payload_hex": "11aa"
+        },
+        {
+          "target": "command",
+          "channel": 1,
+          "aux": null,
+          "payload_hex": "12aa"
+        },
+        {
+          "target": "audio",
+          "channel": 291,
+          "aux": 305419896,
+          "payload_hex": "24aa"
+        }
+      ],
+      "remaining_hex": ""
+    }
+  },
+  "raw_process": {
+    "deliveries": [
+      {
+        "target": "video",
+        "channel": 35,
+        "aux": 0,
+        "payload_hex": "000001ff0c000000001100e3000001091000000165112233"
+      }
+    ],
+    "remaining_hex": ""
+  },
+  "segments": {
+    "examples": [
+      {
+        "name": "5d_complete",
+        "input_hex": "5dc1140034120b86000001091000000165112233",
+        "validation": {
+          "return": 1,
+          "key": 305398533,
+          "declared_total_length": 20,
+          "last": 1
+        },
+        "strip": {
+          "return": 0,
+          "node_metadata_hex": "010101010100000008",
+          "removed_header_length": 8,
+          "payload_length": 12,
+          "payload_hex": "000001091000000165112233"
+        }
+      },
+      {
+        "name": "6d_complete",
+        "input_hex": "6dc1341200001c000000a5860b0000de000001091000000165112233",
+        "validation": {
+          "return": 1,
+          "key": 305398533,
+          "declared_total_length": 28,
+          "last": 1
+        },
+        "strip": {
+          "return": 0,
+          "node_metadata_hex": "010101010100000010",
+          "removed_header_length": 16,
+          "payload_length": 12,
+          "payload_hex": "000001091000000165112233"
+        }
+      },
+      {
+        "name": "6d_key_uses_low16_frame",
+        "input_hex": "6dc13412cdab1c000000a5860b0000f5000001091000000165112233",
+        "validation": {
+          "return": 1,
+          "key": 305398533,
+          "declared_total_length": 28,
+          "last": 1
+        }
+      }
+    ],
+    "invalid_or_weak_validation": [
+      {
+        "name": "4d_not_accepted_by_this_validator",
+        "input_hex": "4d00000000000000000000000000000000000000",
+        "validation": {
+          "return": 0,
+          "key": 11936128518282651045,
+          "declared_total_length": 2779096485,
+          "last": 42405
+        }
+      },
+      {
+        "name": "5d_invalid_low_flags",
+        "input_hex": "5d03140001000100000001091000000165112233",
+        "validation": {
+          "return": 0,
+          "key": 11936128518282651045,
+          "declared_total_length": 2779096485,
+          "last": 42405
+        }
+      },
+      {
+        "name": "5d_zero_length",
+        "input_hex": "5d01000000000000000001091000000165112233",
+        "validation": {
+          "return": 0,
+          "key": 11936128518282651045,
+          "declared_total_length": 2779096485,
+          "last": 42405
+        }
+      },
+      {
+        "name": "5d_length8193",
+        "input_hex": "5d01012001000100000001091000000165112233",
+        "validation": {
+          "return": 0,
+          "key": 11936128518282651045,
+          "declared_total_length": 2779096485,
+          "last": 42405
+        }
+      },
+      {
+        "name": "6d_bad_crc",
+        "input_hex": "6dc1341200001c000000a5860b0000df000001091000000165112233",
+        "validation": {
+          "return": 0,
+          "key": 11936128518282651045,
+          "declared_total_length": 2779096485,
+          "last": 42405
+        }
+      },
+      {
+        "name": "6d_zero_length_passes_header_only",
+        "input_hex": "6dc13412000000000000a5860b00009b000001091000000165112233",
+        "validation": {
+          "return": 1,
+          "key": 305398533,
+          "declared_total_length": 0,
+          "last": 1
+        }
+      }
+    ],
+    "native_trace_formats": {
+      "0x122579f": "sdr recv video [%d, %d, %d] %d, I [%d]",
+      "0x1239e0c": "libwlm: sdr recv pkt [%d, %d(%d), %d] %d, I [%d], use [%d, %d]",
+      "0x12ad520": "libwlm: lte recv pkt [%d, %d(%d), %d] %d, I [%d], use [%d, %d]"
+    },
+    "boundary": "Header validation, node metadata extraction and payload memcpy run native; available-node selection/release, clocks, logs, mutex and statistics are explicit synthetic boundaries."
+  },
+  "boundaries": [
+    "CircularBuffer and parser/dispatch execute native instructions.",
+    "Clock fixed at zero, weak references injected available, three observer entries intercepted.",
+    "CAP6 slice4d/5d/6d/6d_with_ssfn/whole_frame/iframe_v3 mapping is not established by these observations.",
+    "32-bit header+payload length overflow behavior is not exercised."
+  ]
+}

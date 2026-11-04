@@ -1,0 +1,205 @@
+{
+  "sdk_sha256": "fb431e44f6a4971b159e7ac811bbd568016a300d959c958df99acb08c9fa9249",
+  "provenance": "Synthetic input driven through native SW_Alg_Recv and native ACK builder in bounded ARM64 emulation",
+  "cases": [
+    {
+      "name": "checkpoint",
+      "anchor": 16384,
+      "fec": false,
+      "records": [
+        {
+          "kind": "packet",
+          "input_hex": "15803412184002e900401840000000000101000063",
+          "window": null,
+          "compressed_ack_hex": "0040184002000100f0",
+          "explicit_ack_hex": "00401840020008401040",
+          "delivered_hex": []
+        },
+        {
+          "kind": "window",
+          "input_hex": null,
+          "window": [
+            16384,
+            16408,
+            16401,
+            0
+          ],
+          "compressed_ack_hex": "0040184002000100f5",
+          "explicit_ack_hex": "0040184002000a401240",
+          "delivered_hex": []
+        },
+        {
+          "kind": "window",
+          "input_hex": null,
+          "window": [
+            16384,
+            16408,
+            16401,
+            16401
+          ],
+          "compressed_ack_hex": "0040184002000100fa",
+          "explicit_ack_hex": "0040184002000c401440",
+          "delivered_hex": []
+        },
+        {
+          "kind": "packet",
+          "input_hex": "15803412084002f900401840000000000101000061",
+          "window": null,
+          "compressed_ack_hex": "0840184001000100fe",
+          "explicit_ack_hex": "0840184001001440",
+          "delivered_hex": [
+            "61"
+          ]
+        },
+        {
+          "kind": "packet",
+          "input_hex": "15803412104002e100401840000000000101000062",
+          "window": null,
+          "compressed_ack_hex": "1840184000000000",
+          "explicit_ack_hex": "184018400000",
+          "delivered_hex": [
+            "61",
+            "62",
+            "63"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "wrap",
+      "anchor": 65520,
+      "fec": false,
+      "records": [
+        {
+          "kind": "packet",
+          "input_hex": "15803412080002b9f0ff0800000000000101000000",
+          "window": null,
+          "compressed_ack_hex": "f0ff080002000100f0",
+          "explicit_ack_hex": "f0ff08000200f8ff0000",
+          "delivered_hex": []
+        },
+        {
+          "kind": "packet",
+          "input_hex": "15803412000002b1f0ff0800000000000101000001",
+          "window": null,
+          "compressed_ack_hex": "f0ff080001000100fc",
+          "explicit_ack_hex": "f0ff08000100f8ff",
+          "delivered_hex": []
+        },
+        {
+          "kind": "packet",
+          "input_hex": "15803412f8ff02b6f0ff0800000000000101000002",
+          "window": null,
+          "compressed_ack_hex": "0800080000000000",
+          "explicit_ack_hex": "080008000000",
+          "delivered_hex": [
+            "02",
+            "01",
+            "00"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "tail",
+      "anchor": 16384,
+      "fec": false,
+      "records": [
+        {
+          "kind": "packet",
+          "input_hex": "18803412104002ec004020400000000007c2600001010101",
+          "window": null,
+          "compressed_ack_hex": "00402040040001000c",
+          "explicit_ack_hex": "004020400300084018402040",
+          "delivered_hex": []
+        },
+        {
+          "kind": "packet",
+          "input_hex": "18803412084002f400402040000000000742600000000000",
+          "window": null,
+          "compressed_ack_hex": "1040204002000100f0",
+          "explicit_ack_hex": "10402040020018402040",
+          "delivered_hex": [
+            "00000000",
+            "010101"
+          ]
+        },
+        {
+          "kind": "packet",
+          "input_hex": "18803412204002dc004020400000000007c2610003030303",
+          "window": null,
+          "compressed_ack_hex": "1040204001000100fc",
+          "explicit_ack_hex": "1040204001001840",
+          "delivered_hex": [
+            "00000000",
+            "010101"
+          ]
+        },
+        {
+          "kind": "packet",
+          "input_hex": "18803412184002e400402040000000000742610002020202",
+          "window": null,
+          "compressed_ack_hex": "2040204000000000",
+          "explicit_ack_hex": "204020400000",
+          "delivered_hex": [
+            "00000000",
+            "010101"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "fec",
+      "anchor": 16384,
+      "fec": true,
+      "records": [
+        {
+          "kind": "packet",
+          "input_hex": "548034123840028800403840000000001f45a3018dc0230402089c88218b16a8a1df1b0f620888ded8a438bf5b6ffe2e38ff4236bc96d56f1b1b749805da2c6f3b0e390c191c72ac753ceca6ef42f958bf3a7602",
+          "window": null,
+          "compressed_ack_hex": "004038400600010000f0",
+          "explicit_ack_hex": "004038400600084010401840204028403040",
+          "delivered_hex": []
+        },
+        {
+          "kind": "packet",
+          "input_hex": "548034123040028000403840000000001fc5a201b133e8d06d3c19f085c0c8d00d8314ad1d604063b280e790530d9cced89c099e83e2350aefd5f4219fa7f8dd0303fbe73296ecfa985d4464d721b2b1eb9d13d3",
+          "window": null,
+          "compressed_ack_hex": "004038400500010000fc",
+          "explicit_ack_hex": "00403840050008401040184020402840",
+          "delivered_hex": []
+        },
+        {
+          "kind": "packet",
+          "input_hex": "548034122840029800403840000000001f45a201db11fa2c6d879cdb063975ee4caf6ec69835d107ee5532727680e004dfff2b6874c9ccf12d9bf496f8d60f696e173ba1925f9fec9c14fadc3e60804fd0c54e66",
+          "window": null,
+          "compressed_ack_hex": "004038400400010000",
+          "explicit_ack_hex": "0040384004000840104018402040",
+          "delivered_hex": []
+        },
+        {
+          "kind": "packet",
+          "input_hex": "54803412184002a800403840000000001f45a101654fde95679370a0aa3debfc4e020e195cc09e5e2361c729e36a90a31623d86e2f5f806cc1b114269d972e787bef9512c2026676cc24ec7e7fc66b93f166f26d",
+          "window": null,
+          "compressed_ack_hex": "004038400400010030",
+          "explicit_ack_hex": "004038400300084010402040",
+          "delivered_hex": []
+        },
+        {
+          "kind": "packet",
+          "input_hex": "54803412084002b800403840000000001f45a001a2850fb39812496f8b9378294d04a1de7e6e727570010591e7bcdbaf3ccdfd4a322d276d15a9274cc82fef26dd6628a1fb5331a320d80e1a78bfa1b8770fa1c0",
+          "window": null,
+          "compressed_ack_hex": "3840384000000000",
+          "explicit_ack_hex": "384038400000",
+          "delivered_hex": [
+            "a2850fb39812496f8b9378294d04a1de7e6e727570010591e7bcdbaf3ccdfd4a322d276d15a9274cc82fef26dd6628a1fb5331a320d80e1a78bfa1b8770fa1c0",
+            "5a853bccfc18134cdccadab4fb8d0ac73465f3c83bb78673a14522584a047637d43cded976f2a29e90144d713cde16762f0c818062bd1d24b0fa2799e78cff37",
+            "654fde95679370a0aa3debfc4e020e195cc09e5e2361c729e36a90a31623d86e2f5f806cc1b114269d972e787bef9512c2026676cc24ec7e7fc66b93f166f26d",
+            "f76df8160322afa87e9df45fb9a7df6b939e8e8734029129801e159e678971e53e65802360a49143a2dd7b9bf7436b83b694a5438a0841f85ec2df4c5abdf12f",
+            "db11fa2c6d879cdb063975ee4c"
+          ]
+        }
+      ]
+    }
+  ]
+}

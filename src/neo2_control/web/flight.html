@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="neo2-token" content="__NEO2_TOKEN__">
+  <meta name="neo2-api-prefix" content="/api/flight"><meta name="neo2-auth" content="local">
+  <meta name="neo2-command-mode" content="native">
+  <title>Neo 2 · Contrôle PC</title><link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/camera.css"><link rel="stylesheet" href="/flight.css">
+  <script type="module" src="/flight.js"></script>
+</head>
+<body><main class="console">
+  <header class="topbar"><div class="brand"><span class="brand-mark">N<span>2</span></span><div><p class="eyebrow">DJI NEO 2</p><h1>Contrôle PC</h1></div></div><div class="connection"><span id="link-state" class="status">Déconnecté</span><button id="connect" class="primary">Connecter le drone</button><button id="recover-owner" aria-describedby="recovery-state" disabled hidden>Reprendre la connexion</button><button id="retry-connection" aria-describedby="recovery-state" disabled hidden>Réessayer la connexion</button><button id="disconnect" hidden>Déconnecter</button></div></header>
+  <p id="recovery-state" role="status" hidden></p>
+  <section class="workspace" aria-label="Caméra et pilotage">
+    <div class="viewer-column">
+      <div class="viewer"><img id="preview" alt="Image de la caméra du Neo 2" hidden><div id="empty-preview"><span class="camera-icon">◉</span><h2>Le regard du Neo 2</h2><p>Connecte le drone pour recevoir son image.</p></div><div class="viewer-top"><span id="image-state" class="image-badge">En attente</span><span id="record-state" hidden>● Enregistrement</span></div><div class="viewer-bottom"><span id="flight-state">Au repos</span><span id="battery">Batterie —</span></div></div>
+      <div class="viewer-caption"><span class="dot"></span><span id="caption">Aucune connexion active</span></div>
+      <div class="metrics"><div><span>Altitude relative</span><strong id="altitude">—</strong></div><div><span>Distance au point initial</span><strong id="distance">—</strong></div><div><span>Au sol</span><strong id="ground-state">À confirmer</strong></div></div>
+      <section class="capture-bar"><div><h2>Capture</h2><p>Sur la mémoire du drone</p></div><div class="capture-actions"><button id="photo" disabled>◎ Photo</button><button id="record" disabled>● Enregistrer</button><button id="stop-record" disabled>■ Arrêter</button></div></section>
+      <section class="pilot-card"><div><p class="eyebrow">PILOTAGE AU CLAVIER</p><h2>Garder la main</h2><p id="pilot-help">Maintiens Espace pendant le vol. Relâcher, quitter l’onglet ou perdre la liaison demande un atterrissage.</p></div><div class="key-guide"><span id="movement-guide"><kbd>↑ ↓ ← →</kbd> Déplacement</span><span id="vertical-guide"><kbd>R / F</kbd> Monter / descendre</span><span id="yaw-guide"><kbd>A / E</kbd> Tourner</span><span><kbd>Échap</kbd> Atterrir</span></div><p id="deadman" class="hold-state">Espace relâchée</p><p id="trial-limits" class="muted">Limites de l’essai : 30 s · altitude relative 3 m · distance 5 m.</p></section>
+      <section id="program-card" class="pilot-card" aria-labelledby="program-title" hidden>
+        <p class="eyebrow">PARCOURS PROGRAMMÉ</p><h2 id="program-title">Préparer les mouvements</h2>
+        <p>Charge le programme avant le vol, puis démarre-le une fois le drone en vol. Maintiens Espace pendant le parcours. Les touches de déplacement reprennent la main ; Échap demande l’atterrissage.</p>
+        <label for="program-file">Charger un programme JSON</label><input id="program-file" type="file" accept=".json,application/json">
+        <label for="program-json">Programme</label><textarea id="program-json" rows="7" spellcheck="false" placeholder='{"version":1,"finish":"land","steps":[{"kind":"hold","seconds":1}]}' aria-describedby="program-summary"></textarea>
+        <p id="program-summary" class="muted">Translations en consignes et durées ; distances non étalonnées. Le parcours se termine par une demande d’atterrissage.</p>
+        <div class="program-actions"><button id="program-start" class="primary" disabled>Démarrer le parcours en vol</button><button id="program-stop" class="land" disabled>Arrêter et atterrir</button></div>
+        <progress id="program-progress" value="0" max="1" aria-label="Étapes terminées" hidden></progress><p id="program-state" role="status">Aucun programme chargé.</p>
+      </section>
+    </div>
+    <aside class="controls">
+      <section class="control-card"><div class="card-heading"><p class="eyebrow">CAMÉRA</p><h2>Inclinaison</h2></div><output id="pitch-label">—</output><input id="pitch" type="range" min="-30" max="0" step="1" value="0" aria-label="Angle demandé de la caméra" disabled><div class="range-labels"><span>−30°</span><span>0° · Avant</span></div><button id="recenter" disabled>Revenir vers l’avant</button><p id="camera-command" class="muted">Commande disponible après connexion.</p></section>
+      <section class="control-card flight-actions"><p class="eyebrow">PRÉPARATION DU VOL</p><p id="readiness">Connecte le drone, puis confirme visuellement qu’il est posé, moteurs arrêtés.</p><button id="ground" disabled>Je confirme : posé, moteurs arrêtés</button><button id="arm" disabled>Autoriser cet essai</button><button id="disarm" hidden>Annuler l’autorisation</button><button id="takeoff" class="primary" disabled>Préparer le décollage</button><button id="land" class="land" disabled>↓ Atterrir</button><p id="landing-confirmation-state" class="muted" hidden></p><button id="confirm-landing" class="land" aria-describedby="landing-confirmation-state" disabled hidden>Confirmer l’atterrissage</button><button id="reset" hidden>Réinitialiser après vérification au sol</button></section>
+    </aside>
+  </section>
+  <p id="message" role="status" aria-live="polite"></p><footer>Session locale · PC <span id="clock"></span></footer>
+</main>
+<dialog id="takeoff-dialog" aria-labelledby="takeoff-title"><h2 id="takeoff-title">Confirmer le décollage</h2><p>Vérifie que l’espace est dégagé. Maintiens Espace, puis confirme sous 5 secondes.</p><div><button id="cancel-takeoff">Annuler</button><button id="confirm-takeoff" class="primary" disabled>Décoller maintenant</button></div></dialog>
+</body></html>

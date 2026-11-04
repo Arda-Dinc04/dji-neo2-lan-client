@@ -1,0 +1,161 @@
+{
+  "format": "neo2-control/fc-osd-native/v1",
+  "sdk_sha256": "fb431e44f6a4971b159e7ac811bbd568016a300d959c958df99acb08c9fa9249",
+  "sdk_base_sha256": "54f77d990d5d1d09cab9ccd0cb3499edd03e47e18d75be5b449aa149bbd4233a",
+  "getters": {
+    "altitude": [
+      43090020,
+      "DoubleMsg",
+      1
+    ],
+    "attitude": [
+      43090336,
+      "Attitude",
+      3
+    ],
+    "velocity": [
+      43091004,
+      "Velocity3D",
+      3
+    ],
+    "is_flying": [
+      43090692,
+      "BoolMsg",
+      0
+    ],
+    "motors_on": [
+      43157764,
+      "BoolMsg",
+      0
+    ],
+    "flight_mode": [
+      43145104,
+      "FCFlightModeMsg",
+      0
+    ],
+    "gps_valid": [
+      43145712,
+      "BoolMsg",
+      0
+    ],
+    "satellite_count": [
+      43194760,
+      "IntMsg",
+      0
+    ],
+    "location": [
+      43089480,
+      "LocationCoordinate2D",
+      2
+    ]
+  },
+  "vectors": [
+    {
+      "body_hex": "333333333333d33f9a9999999999d9bf0000000000000000000000000000ff00000000000f000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "native": {
+        "altitude": [
+          0.0
+        ],
+        "attitude": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "velocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "is_flying": 0,
+        "motors_on": 0,
+        "flight_mode": 127,
+        "gps_valid": 0,
+        "satellite_count": 15,
+        "location": null
+      }
+    },
+    {
+      "body_hex": "333333333333d33f9a9999999999d9bf7b007b007b007b007b007b007b00ff000c8000000f000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "native": {
+        "altitude": [
+          12.3
+        ],
+        "attitude": [
+          12.3,
+          12.3,
+          12.3
+        ],
+        "velocity": [
+          12.3,
+          12.3,
+          12.3
+        ],
+        "is_flying": 1,
+        "motors_on": 1,
+        "flight_mode": 127,
+        "gps_valid": 1,
+        "satellite_count": 15,
+        "location": null
+      }
+    },
+    {
+      "body_hex": "333333333333d33f9a9999999999d9bf0080008000800080008000800080ff00ffffffff0f000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "native": {
+        "altitude": [
+          -3276.8
+        ],
+        "attitude": [
+          -3276.8,
+          -3276.8,
+          -3276.8
+        ],
+        "velocity": [
+          -3276.8,
+          -3276.8,
+          -3276.8
+        ],
+        "is_flying": 0,
+        "motors_on": 1,
+        "flight_mode": 127,
+        "gps_valid": 1,
+        "satellite_count": 15,
+        "location": [
+          -22.91831180523293,
+          17.188733853924695
+        ]
+      }
+    },
+    {
+      "body_hex": "333333333333d33f9a9999999999d9bfff7fff7fff7fff7fff7fff7fff7fff00000000000f000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000",
+      "native": {
+        "altitude": [
+          3276.7000000000003
+        ],
+        "attitude": [
+          3276.7000000000003,
+          3276.7000000000003,
+          3276.7000000000003
+        ],
+        "velocity": [
+          3276.7000000000003,
+          3276.7000000000003,
+          3276.7000000000003
+        ],
+        "is_flying": 0,
+        "motors_on": 0,
+        "flight_mode": 127,
+        "gps_valid": 0,
+        "satellite_count": 15,
+        "location": [
+          -22.91831180523293,
+          17.188733853924695
+        ]
+      }
+    }
+  ],
+  "limits": [
+    "Synthetic payloads only, no live Neo2 telemetry validation",
+    "Stops at typed value constructor arguments or null update, before caller/cache logic",
+    "Unit names, coordinate axes and physical readiness require additional semantic evidence"
+  ]
+}
