@@ -184,10 +184,12 @@ def _networksetup(ssid, *, password=None, runner=subprocess.run):
 
 
 def capture_once(api, *, duration=60, observer=wifi_identity, runner=subprocess.run,
-                 clock=time.monotonic, sleep=time.sleep, event=lambda *a, **k: None):
+                 clock=time.monotonic, sleep=time.sleep, event=lambda *a, **k: None,
+                 attach_current=False):
     """Own one clean camera session and restore Wi-Fi even after partial joins."""
     if type(duration) not in (int, float) or not math.isfinite(duration) or not 0 < duration <= 60:
         raise CaptureFailure('capture_duration_invalid')
+    if type(attach_current) is not bool:raise CaptureFailure('invalid_attach_option')
     result = {'preview_seen': False, 'frames_encoded': 0, 'target_network_verified': False,
               'camera_cleanup_verified': None, 'restore_attempted': False,
               'restored_original_ssid': None, 'success': False, 'reason': None}
@@ -205,15 +207,31 @@ def capture_once(api, *, duration=60, observer=wifi_identity, runner=subprocess.
         event('preflight')
         initial = api.status()
         _authorized(initial)
-        if initial.get('state') not in ('disconnected','failed') or initial.get('cleanup_verified') is not True:
+        if attach_current:
+            if (initial.get('state') not in ('connecting','connected') or initial.get('error')
+                    or initial.get('verification_pending') is not False):
+                raise CaptureFailure('approved_current_session_required')
+            generation=initial.get('session_generation')
+            _credentials(api.network(),generation)
+        elif initial.get('state') not in ('disconnected','failed') or initial.get('cleanup_verified') is not True:
             raise CaptureFailure('camera_must_be_clean_and_disconnected')
         original_ssid, original_bssid = observer(INTERFACE)
         _ssid_text(original_ssid)
         if not isinstance(original_bssid, bytes) or len(original_bssid) != 6:
             raise CaptureFailure('original_wifi_identity_unavailable')
-        event('camera_connecting')
-        owns_session = True  # A timed-out POST may still have started the session.
-        api.connect()
+        if attach_current:
+            current=api.status()
+            _authorized(current)
+            if current.get('session_generation')!=generation:
+                raise CaptureFailure('camera_session_generation_changed')
+            if current.get('state') not in ('connecting','connected') or current.get('error'):
+                raise CaptureFailure('camera_setup_ended')
+            owns_session=True
+            event('continuing_approved_camera_session')
+        else:
+            event('camera_connecting')
+            owns_session = True  # A timed-out POST may still have started the session.
+            api.connect()
         deadline = clock() + 65
         next_notice = clock()
         pending_notice = False
@@ -349,6 +367,8 @@ def capture_once(api, *, duration=60, observer=wifi_identity, runner=subprocess.
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--execute', action='store_true', help='Authorize one local camera/Wi-Fi capture and restoration attempt')
+    parser.add_argument('--attach-current',action='store_true',
+                        help='Continue the current approved preview generation without another BLE request')
     parser.add_argument('--port', type=int, default=8793)
     parser.add_argument('--duration', type=float, default=60)
     args = parser.parse_args(argv)
@@ -370,7 +390,8 @@ def main(argv=None):
     try:
         journal.event('local_capture_starting', local_page=f'http://127.0.0.1:{args.port}/')
         try:
-            result = capture_once(LocalCamera(args.port), duration=args.duration, event=journal.event)
+            result = capture_once(LocalCamera(args.port), duration=args.duration, event=journal.event,
+                                  attach_current=args.attach_current)
         except (Exception, KeyboardInterrupt):
             result = {'success': False, 'reason': 'local_camera_unavailable', 'restore_attempted': False}
         journal.finish(result)

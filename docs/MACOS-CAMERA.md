@@ -66,9 +66,16 @@ restrictions remain active; no special-control fallback is sent. The default
 keeps the original first-video-byte prerequisite.
 
 The first authorized attempt with this option stopped at `verification_denied`
-when the aircraft's confirmation window expired. No Wi-Fi join or startup
-refresh occurred in that attempt. A synchronized physical confirmation is still
-needed to evaluate the hypothesis on this aircraft.
+when the aircraft's confirmation window expired. A subsequent physically
+approved session completed a real 60.05-second transport test. The service
+switch completed; three SSFN-zero refresh requests were sent at 1.910, 2.933
+and 3.940 seconds. The session received 2,397 datagrams and 1,186,494 protocol
+bytes, but **zero video bytes and zero decoded frames**. All cleanup checks
+passed. This demonstrates that removing the first-byte prerequisite and sending
+the bounded encoder refresh is insufficient to activate this aircraft's stream.
+It does not establish a command rejection, since this producer expects no ACK.
+The Mac was subsequently verified off the aircraft SSID. The next comparison is
+a known-working DJI Fly phone preview under the same USB/transceiver conditions.
 
 The combined focused suite passed **280 tests** on the Apple Silicon Mac,
 covering BLE/configuration portability, exclusive ownership, strict preview
@@ -169,6 +176,10 @@ coordinator can join using credentials from the current authenticated session:
 ```
 
 Without `--execute` it prints a plan and performs no connection or network change.
+If the operator has already clicked Connect and completed physical confirmation,
+`--execute --attach-current` can continue that exact approved generation without
+another BLE request. It requires current credentials, no pending verification
+and an active preview-only session; mismatched or replaced sessions are rejected.
 It passes the aircraft password to `networksetup` through stdin, checks exact
 SSID/BSSID, captures for at most 60 seconds, disconnects the camera session and
 attempts to restore the original SSID using macOS saved settings. It verifies

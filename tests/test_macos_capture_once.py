@@ -42,6 +42,7 @@ class Camera:
             'session_generation': 'different-generation' if self.generation_changed else self.generation,
             'state': ('connected' if self.joined else 'connecting') if self.connected else 'disconnected',
             'cleanup_verified': not self.connected,
+            'verification_pending':False,
             'video': {'live': self.joined, 'frames_encoded': 4 if self.joined else 0}}
 
     def network(self): return self.network_value
@@ -103,6 +104,23 @@ def test_join_password_is_stdin_only_and_restore_uses_saved_settings():
     public = json.dumps([result, bench.events])
     for secret in (PASSWORD, ORIGINAL[0].decode(), TARGET[0].decode(), TARGET[1].hex(), 'generation-test'):
         assert secret not in public
+
+
+def test_attach_continues_only_current_approved_generation_without_connect_request():
+    bench=Bench();bench.api.connected=True;bench.api.generation='generation-test'
+    result=bench.capture(attach_current=True)
+    assert result['success'] and bench.api.connects==0 and bench.api.disconnects==1
+
+
+@pytest.mark.parametrize('change',[{'verification_pending':True},{'error':'verification_denied'},
+                                  {'state':'failed'},{'session_generation':'other'}])
+def test_attach_refuses_unapproved_or_mismatched_session_without_effects(change):
+    bench=Bench();bench.api.connected=True;bench.api.generation='generation-test'
+    status=bench.api.status
+    bench.api.status=lambda:{**status(),**change}
+    result=bench.capture(attach_current=True)
+    assert not result['success'] and not bench.calls
+    assert bench.api.connects==bench.api.disconnects==0
 
 
 def test_join_timeout_still_disconnects_and_restores_partial_association():
