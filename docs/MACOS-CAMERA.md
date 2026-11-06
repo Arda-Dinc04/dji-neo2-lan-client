@@ -20,9 +20,43 @@ checkout and USB orientation viewer are separate worktrees/processes.
 - The disconnected preview page has connection disabled by default and hides
   gimbal/photo/onboard-recording controls. The backend rejects those actions.
 
-**No actual aircraft image has been received yet.** The first live frame,
-ten-minute reliability, reconnect behavior and production recording remain
-separate validation milestones.
+**Actual Mac camera preview verified on 6 November 2026.** With the external
+USB cable disconnected at the Mac end and the transceiver still installed,
+the approved live session delivered 22,764,198 video bytes and encoded 1,329
+preview frames. The retained actual JPEG is 960 × 540; the operator's screenshot
+shows the local page displaying a live aircraft image. Raw media, identifiers,
+packet receipt timestamps and the retained preview stay in the private session.
+
+The session ended after 47.672 seconds with `network_error`, rather than
+completing the intended 60 seconds. There were 376 rejected datagrams and 144
+receive-window rejections labeled stale sequence/window overrun; the decoder
+reported no error. BLE, Wi-Fi observer and video cleanup all passed, and the Mac
+was verified off the aircraft SSID afterward. This establishes the first-frame
+milestone, not ten-minute reliability, reconnect behavior or production recording.
+
+The working bench condition is **no USB host connection**. The cable can remain
+in the transceiver with its far end unplugged. The operator also confirmed phone
+preview in this condition. Earlier USB-connected trials produced no video even
+after three startup refreshes. The precise device-side suppression mechanism and
+concurrent USB orientation plus Wi-Fi video remain unverified. The old battery
+was replaced before the phone comparison. A reported warning code `180059` is
+retained as an operator observation; its exact meaning was not verified from
+an official Neo 2 code reference.
+
+Video was delivered at 0.0262 seconds, before service commit at 1.9214 seconds
+and the single encoder-refresh send at 2.4260 seconds. Thus refresh is not
+established as the stream-activation step. Because DJI Fly preview preceded
+this attempt, an existing encoder/session state from the phone is not excluded:
+independent cold activation without Fly remains unverified. All 194 transmitted
+application messages passed the strict preview validator; the audit found no
+flight, firmware, gimbal, photo, recording or work-mode command.
+
+For repeat tests, release the phone's aircraft connection, keep the Mac USB end
+unplugged, and use the existing local power-button confirmation flow. Keep
+independent internet available if continuous chat is needed; on a Wi-Fi-only Mac
+the local preview continues while the chat loses internet.
+
+## Earlier no-video trials and startup experiment
 
 An explicitly approved camera setup attempt subsequently exchanged BLE
 identification `07/45`. The aircraft requested verification, then reported
@@ -42,8 +76,7 @@ then restored the original Wi-Fi successfully. The actual UDP session ran for
 switch completed, but **zero video bytes and zero decoded frames** arrived.
 All three camera cleanup checks passed. This verifies transport and service
 setup; it does not verify camera imagery or long-running preview reliability.
-The next investigation uses that private capture to locate the missing video
-session condition before any further physical attempt.
+That capture prompted the offline startup investigation below.
 
 Offline replay of that capture accounts for all aggregate bytes as 13,806
 CRC-valid DUML frames, with no discarded or pending bytes. An independent
@@ -74,16 +107,20 @@ bytes, but **zero video bytes and zero decoded frames**. All cleanup checks
 passed. This demonstrates that removing the first-byte prerequisite and sending
 the bounded encoder refresh is insufficient to activate this aircraft's stream.
 It does not establish a command rejection, since this producer expects no ACK.
-The Mac was subsequently verified off the aircraft SSID. The next comparison is
-a known-working DJI Fly phone preview under the same USB/transceiver conditions.
+The Mac was subsequently verified off the aircraft SSID. A later phone comparison
+and USB-host-disconnected Mac trial produced the first-frame result above.
 
-The combined focused suite passed **280 tests** on the Apple Silicon Mac,
+The original combined focused suite passed **280 tests** on the Apple Silicon Mac,
 covering BLE/configuration portability, exclusive ownership, strict preview
 wire policy, manual network identity, local HTTP, session transport and generated
 HEVC/HLS/JPEG fixtures. A browser inspection found no console errors and verified
 hidden action controls. A direct HTTP connect request in default mode returned
 409 before BLE setup. The independent USB viewer remained streaming with zero
-DJI application-command bytes sent. No full optional vision/SfM suite is claimed.
+DJI application-command bytes sent. It was stopped for the cable comparison.
+The startup/preview/network/HTTP regression selection subsequently passed 203
+tests; approved-session continuation passed 29 focused orchestration tests.
+These are offline/loopback checks, separate from the actual camera trial above.
+No full optional vision/SfM suite is claimed.
 
 ## Prepare
 
