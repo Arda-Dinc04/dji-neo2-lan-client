@@ -13,6 +13,7 @@ from urllib.parse import urlsplit
 
 CAMERA_ACTIONS=frozenset(('pitch','recenter','photo','record','stop_record'))
 MAX_FRAME_BYTES=4*1024*1024
+MAX_SDP_BYTES=65536
 
 
 def build_camera_handler(console, token):
@@ -34,12 +35,12 @@ def build_camera_handler(console, token):
                 return False
             return True
 
-        def _reply(self,status,body,content_type):
+        def _reply(self,status,body,content_type,extra_headers=None):
             self.send_response(status)
             for name,value in {'Content-Type':content_type,'Content-Length':str(len(body)),
                     'Cache-Control':'no-store','X-Content-Type-Options':'nosniff',
                     'Referrer-Policy':'no-referrer','X-Frame-Options':'DENY',
-                    'Content-Security-Policy':"default-src 'self'; img-src 'self' blob:; style-src 'self'; script-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'"}.items():
+                    'Content-Security-Policy':"default-src 'self'; img-src 'self' blob:; media-src 'self' blob:; style-src 'self'; script-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'",**(extra_headers or {})}.items():
                 self.send_header(name,value)
             self.end_headers()
             self.wfile.write(body)
@@ -60,9 +61,9 @@ def build_camera_handler(console, token):
                 body=assets.joinpath('camera.html').read_text().replace('__NEO2_TOKEN__',token)
                 self._reply(HTTPStatus.OK,body.encode(),'text/html; charset=utf-8')
                 return
-            if path in ('/camera.css','/camera.js','/favicon.svg'):
+            if path in ('/camera.css','/camera.js','/webrtc.js','/favicon.svg'):
                 name=path[1:]
-                kind={'camera.css':'text/css','camera.js':'text/javascript','favicon.svg':'image/svg+xml'}[name]
+                kind={'camera.css':'text/css','camera.js':'text/javascript','webrtc.js':'text/javascript','favicon.svg':'image/svg+xml'}[name]
                 self._reply(HTTPStatus.OK,assets.joinpath(name).read_bytes(),kind+'; charset=utf-8')
                 return
             if not self._authorized():return
@@ -95,6 +96,34 @@ def build_camera_handler(console, token):
         def do_POST(self):
             if not self._local() or not self._authorized():return
             path=urlsplit(self.path).path
+            if path=='/api/camera/webrtc':
+                try:
+                    if self.headers.get('Content-Type','').split(';',1)[0]!='application/sdp':
+                        raise ValueError('sdp_content_type_required')
+                    size=int(self.headers.get('Content-Length','0'))
+                    if not 0<size<=MAX_SDP_BYTES:raise ValueError('invalid_sdp_size')
+                    offer=getattr(console,'webrtc_offer',None)
+                    if not callable(offer):raise RuntimeError('webrtc_not_enabled')
+                    self.connection.settimeout(5)
+                    body=self.rfile.read(size)
+                    if len(body)!=size:raise ValueError('incomplete_sdp_offer')
+                    result=offer(body)
+                    identifier=result['session_id'];answer=result['sdp']
+                    if (not isinstance(identifier,str) or not re.fullmatch('[0-9a-f]{48}',identifier)
+                            or not isinstance(answer,bytes) or not 0<len(answer)<=MAX_SDP_BYTES):
+                        raise RuntimeError('webrtc_response_invalid')
+                except ValueError as error:self._json(HTTPStatus.BAD_REQUEST,{'error':str(error)})
+                except RuntimeError as error:self._json(HTTPStatus.CONFLICT,{'error':str(error)})
+                except OSError:self._json(HTTPStatus.BAD_REQUEST,{'error':'sdp_request_interrupted'})
+                else:
+                    try:self._reply(HTTPStatus.CREATED,answer,'application/sdp',
+                        {'Location':'/api/camera/webrtc/'+identifier})
+                    except OSError:
+                        # A browser can leave during negotiation. Its newly
+                        # created peer must not consume a session slot forever.
+                        try:console.webrtc_delete(identifier)
+                        except (ValueError,RuntimeError,OSError):pass
+                return
             if path not in ('/api/camera/connect','/api/camera/disconnect','/api/camera/command'):
                 self._json(HTTPStatus.NOT_FOUND,{'error':'not_found'})
                 return
@@ -123,6 +152,18 @@ def build_camera_handler(console, token):
             else:self._json(HTTPStatus.ACCEPTED,result)
 
         def log_message(self,*args):pass
+
+        def do_DELETE(self):
+            if not self._local() or not self._authorized():return
+            match=re.fullmatch('/api/camera/webrtc/([0-9a-f]{48})',urlsplit(self.path).path)
+            if match is None:
+                self._json(HTTPStatus.NOT_FOUND,{'error':'not_found'});return
+            try:
+                delete=getattr(console,'webrtc_delete',None)
+                if callable(delete):delete(match[1])
+            except (ValueError,RuntimeError):
+                self._json(HTTPStatus.CONFLICT,{'error':'webrtc_cleanup_failed'})
+            else:self._reply(HTTPStatus.NO_CONTENT,b'','application/octet-stream')
     return Handler
 
 

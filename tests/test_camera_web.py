@@ -47,7 +47,8 @@ def request(base,path,*,payload=None,headers=None,auth=True):
 def test_page_and_packaged_assets_serve_with_real_offline_status_and_no_secret_in_logs(tmp_path):
     with server(tmp_path) as (base,console):
         status,headers,body=request(base,'/',auth=False)
-        assert status==200 and TOKEN.encode() in body and b'Cam\xc3\xa9ra frontale' in body
+        assert status==200 and TOKEN.encode() in body and b'Camera preview' in body
+        assert b'lang="en"' in body
         assert '__NEO2_TOKEN__' not in body.decode()
         assert headers['Cache-Control']=='no-store' and "frame-ancestors 'none'" in headers['Content-Security-Policy']
         for path,kind in (('/camera.css','text/css'),('/camera.js','text/javascript')):

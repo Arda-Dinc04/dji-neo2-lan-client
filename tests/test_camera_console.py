@@ -314,7 +314,7 @@ def test_failed_camera_preparation_is_visible_while_udp_transport_remains_open(h
     harness.console._publish(snapshot)
     status=harness.console.status()
     assert status['connected'] and not status['camera_ready']
-    assert status['state_label']=='Préparation caméra…'
+    assert status['state_label']=='Preparing camera…'
     assert status['error']==expected and not status['video']['live']
     with pytest.raises(RuntimeError,match='camera_not_ready'):
         harness.console.command('photo',{})

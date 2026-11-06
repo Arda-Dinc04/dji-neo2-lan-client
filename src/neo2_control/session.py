@@ -846,6 +846,7 @@ def run_session(
     preview_only: bool = False,
     network_guard: Callable[[], bool] | None = None,
     startup_keyframe_refresh: bool = False,
+    rtsp_preview_url: str | None = None,
 ) -> SessionResult:
     """Run the transport on a PC/Pi Linux socket and journal its decisions.
 
@@ -888,6 +889,8 @@ def run_session(
         raise ValueError('flight commands require the owned Wi-Fi service session')
     if type(preview_jpeg) is not bool or (preview_jpeg and hls_directory is None):
         raise ValueError('JPEG preview requires local HLS activation')
+    if rtsp_preview_url is not None and (not preview_only or hls_directory is None):
+        raise ValueError('RTSP output requires the owned preview-only video consumer')
     if type(port) is not int or not 0 < port <= 65535:
         raise ValueError("UDP port must be between 1 and 65535")
     if not math.isfinite(duration) or not 0 < duration <= 86400:
@@ -918,6 +921,7 @@ def run_session(
         if publication_config is not None else None)
     consumer = (HlsVideo(hls_directory, nominal_fps=video_nominal_fps, input_codec=video_codec,
                         **({'preview_jpeg':True} if preview_jpeg else {}),
+                        **({'rtsp_output':rtsp_preview_url} if rtsp_preview_url is not None else {}),
         protected_paths=[path, journal_path] + ([video] if video is not None else [])
             + ([wlm_identity_file] if wlm_identity_file is not None else []))
         if hls_directory is not None else None)

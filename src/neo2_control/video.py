@@ -8,6 +8,7 @@ from __future__ import annotations
 from collections import deque
 import math
 import os
+import re
 from pathlib import Path
 import selectors
 import shutil
@@ -18,7 +19,7 @@ import time
 
 from .hevc import HevcAnnexBFilter
 from .process_limits import (LimitPolicyError, VideoProcessLimits,
-                             MEMORY_CHECK_SECONDS)
+                             MEMORY_CHECK_SECONDS, signal_owned_child)
 
 MAX_INPUT_BYTES = 4 * 1024 * 1024
 MAX_QUEUED_CHUNKS = 4096
@@ -42,7 +43,7 @@ class HlsVideo:
     """
     def __init__(self, directory: str | Path, *, nominal_fps=30.0,
                  input_codec='h264', protected_paths=(), clock=time.monotonic,
-                 preview_jpeg=False):
+                 preview_jpeg=False, rtsp_output=None):
         if (type(nominal_fps) not in (int, float) or not math.isfinite(nominal_fps)
                 or not 1 <= nominal_fps <= 60):
             raise ValueError('nominal video FPS must be in [1,60]')
@@ -51,6 +52,11 @@ class HlsVideo:
             raise ValueError('video codec must be h264 or hevc')
         if type(preview_jpeg) is not bool:
             raise ValueError('JPEG preview option must be boolean')
+        if rtsp_output is not None:
+            match=re.fullmatch(r'rtsp://127\.0\.0\.1:([1-9][0-9]{0,4})/preview',rtsp_output) if isinstance(rtsp_output,str) else None
+            if match is None or int(match[1])>65535:
+                raise ValueError('RTSP preview must use the owned loopback path')
+        self.rtsp_output=rtsp_output
         for path in protected_paths:
             other, directory = Path(path).resolve(), self.directory.resolve()
             if other.is_relative_to(directory) or directory.is_relative_to(other):
@@ -108,6 +114,19 @@ class HlsVideo:
             '-hls_segment_filename', 'segment-%08d.ts',
             '-progress', 'pipe:2', '-stats_period', '0.1', 'index.m3u8',
         ]
+        if self.rtsp_output is not None:
+            # One bounded H264 encoder feeds both local outputs. A stopped
+            # WebRTC bridge cannot remove the HLS/JPEG fallback.
+            cut=command.index('-f',command.index('-force_key_frames'))
+            command=command[:cut]+[
+                '-bf','0','-profile:v','baseline','-flags','+global_header',
+                '-f','tee','-use_fifo','1',
+                '-fifo_options','queue_size=60:drop_pkts_on_overflow=1:attempt_recovery=0',
+                '-progress','pipe:2','-stats_period','0.1',
+                '[f=hls:hls_time=1:hls_list_size=6:hls_delete_threshold=1:'
+                'hls_flags=delete_segments+temp_file+independent_segments:'
+                'hls_segment_filename=segment-%08d.ts]index.m3u8|'
+                '[f=rtsp:rtsp_transport=tcp:onfail=ignore]'+self.rtsp_output]
         if self.preview_jpeg:
             command.extend([
                 '-map', '0:v:0', '-an', '-sn', '-dn',
@@ -445,17 +464,11 @@ class HlsVideo:
                 continue
             try:
                 if process.poll() is None:
-                    try:
-                        os.killpg(process.pid, signal.SIGTERM)
-                    except ProcessLookupError:
-                        pass
+                    signal_owned_child(process, signal.SIGTERM)
                     try:
                         process.wait(timeout=.5)
                     except subprocess.TimeoutExpired:
-                        try:
-                            os.killpg(process.pid, signal.SIGKILL)
-                        except ProcessLookupError:
-                            pass
+                        signal_owned_child(process, signal.SIGKILL)
                         process.wait(timeout=1)
                 else:
                     process.wait(timeout=1)
@@ -556,6 +569,9 @@ class HlsVideo:
                 'preprocessing_buffered_bytes': 0 if self.hevc_filter is None else self.hevc_filter.buffered_bytes,
                 'maximum_preprocessing_nal_bytes': None if self.hevc_filter is None else self.hevc_filter.max_nal_bytes,
                 'preview_enabled': self.preview_jpeg,
+                'rtsp_preview': {'enabled':self.rtsp_output is not None,
+                    'codec':'h264_baseline' if self.rtsp_output is not None else None,
+                    'maximum_fifo_packets':60 if self.rtsp_output is not None else None},
                 'preview_path': str(preview_path) if self.preview_jpeg else None,
                 'preview_available': preview_available, 'preview_age_seconds': preview_age,
                 'preview_timestamp_source': 'local_file_mtime' if self.preview_jpeg else None,

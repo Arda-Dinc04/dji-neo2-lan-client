@@ -2,6 +2,7 @@
 """Mac camera preview, disconnected by default; active setup requires an explicit flag."""
 import argparse
 import json
+import os
 from pathlib import Path
 import platform
 import re
@@ -41,6 +42,8 @@ def main():
     parser.add_argument('--port',type=int,default=8793)
     parser.add_argument('--duration',type=float,default=60)
     parser.add_argument('--ble-id',help='CoreBluetooth peripheral UUID discovered on this Mac')
+    parser.add_argument('--webrtc',action='store_true',help='Enable the managed local MediaMTX/WebRTC bridge with JPEG fallback')
+    parser.add_argument('--mediamtx-binary',type=Path,default=ROOT/'build/mediamtx/mediamtx')
     args=parser.parse_args()
     if platform.system()!='Darwin':parser.error('This entry point uses macOS CoreBluetooth/CoreWLAN')
     reasons=[]
@@ -53,6 +56,8 @@ def main():
         if len(devices)==1:address=devices[0]['address']
         else:reasons.append('unique_local_neo2_advertisement_required')
     if shutil.which('ffmpeg') is None:reasons.append('ffmpeg_missing')
+    if args.webrtc and (not args.mediamtx_binary.is_file() or not os.access(args.mediamtx_binary,os.X_OK)):
+        reasons.append('install_local_mediamtx_first')
     # The disconnected web page can be reviewed without requesting OS permission.
     if args.preflight or args.allow_camera_session_setup:
         try:wifi_identity(args.interface)
@@ -67,10 +72,12 @@ def main():
     config=CameraConfig(args.interface,private/'wlm-identity.json',private/'ble-identity.json',
                         ble_address=address,duration=args.duration,capture_directory=private/'camera-sessions',
                         preview_only=True,manual_macos_wifi=True,
-                        startup_keyframe_refresh=args.startup_keyframe_refresh)
+                        startup_keyframe_refresh=args.startup_keyframe_refresh,webrtc=args.webrtc,
+                        mediamtx_binary=args.mediamtx_binary if args.webrtc else None)
     console=MacPreviewConsole(config,setup_authorized=args.allow_camera_session_setup)
     print(json.dumps({'preview_only':True,'camera_setup_enabled':args.allow_camera_session_setup,
                       'startup_keyframe_refresh':args.startup_keyframe_refresh,
+                      'webrtc_enabled':args.webrtc,
                       'automatic_mac_wifi_changes':False,'camera_actions_available':False}),flush=True)
     serve_camera_web(console,port=args.port)
     return 0

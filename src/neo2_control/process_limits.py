@@ -24,6 +24,25 @@ class LimitPolicyError(RuntimeError):
     pass
 
 
+def signal_owned_child(process, sig):
+    """Signal an owned Popen child, including its new process group if possible.
+
+    Darwin can deny group signaling while the child is exiting. The fallback
+    stays on that exact Popen instance; send_signal rechecks its exit state and
+    protects against PID reuse. A genuine denial of the PID signal propagates.
+    Callers still own bounded wait, escalation, and cleanup verification.
+    """
+    if process.poll() is not None:
+        return
+    try:
+        try:
+            os.killpg(process.pid, sig)
+        except PermissionError:
+            process.send_signal(sig)
+    except ProcessLookupError:
+        pass
+
+
 class _DarwinTaskInfo(ctypes.Structure):
     # Public Darwin sys/proc_info.h, PROC_PIDTASKINFO (flavor 4).
     _fields_ = [

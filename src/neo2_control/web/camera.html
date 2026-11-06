@@ -1,26 +1,27 @@
 <!doctype html>
-<html lang="fr">
+<html lang="en">
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="neo2-token" content="__NEO2_TOKEN__">
-  <title>Neo 2 · Caméra</title><link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/camera.css">
+  <title>Neo 2 camera preview</title><link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/camera.css">
   <script type="module" src="/camera.js"></script>
 </head>
 <body>
   <main class="console">
-    <header class="topbar"><div class="brand"><span class="brand-mark">N<span>2</span></span><div><p class="eyebrow">DJI NEO 2</p><h1>Caméra frontale</h1></div></div><div class="connection"><span id="link-state" class="status"><i></i>Déconnecté</span><button id="connect" class="primary">Connecter le drone</button><button id="disconnect" hidden>Déconnecter</button></div></header>
-    <section class="workspace" aria-label="Commande caméra">
+    <header class="topbar"><div class="brand"><span class="brand-mark">N<span>2</span></span><div><p class="eyebrow">DJI NEO 2</p><h1>Camera preview</h1></div></div><div class="connection"><span id="link-state" class="status"><i></i>Disconnected</span><button id="connect" class="primary">Connect camera</button><button id="disconnect" hidden>Disconnect</button></div></header>
+    <section class="workspace" aria-label="Camera controls">
       <div class="viewer-column">
-        <div class="viewer"><img id="preview" alt="Image de la caméra du Neo 2" hidden><div id="empty-preview"><span class="camera-icon">◉</span><h2>Le regard du Neo 2</h2><p>Connecte le drone pour recevoir son image.</p></div><div class="viewer-top"><span id="image-state" class="image-badge">En attente</span><span id="record-state" hidden>● Enregistrement</span></div><div class="viewer-bottom"><span id="image-detail">Caméra</span><span id="battery">Batterie —</span></div></div>
-        <div class="viewer-caption"><span class="dot"></span><span id="caption">Aucune connexion active</span></div>
-        <div class="capture-bar"><div><h2>Capture</h2><p>Photos et vidéos sur le drone</p></div><div class="capture-actions"><button id="photo" disabled>◎ Prendre une photo</button><button id="record" class="record" disabled><span></span> Enregistrer</button><button id="stop-record" hidden disabled>■ Arrêter</button></div></div>
+        <div class="viewer"><video id="webrtc-preview" muted autoplay playsinline aria-label="Live camera video" hidden></video><img id="preview" alt="Neo 2 camera image" hidden><div id="empty-preview"><span class="camera-icon">◉</span><h2>Neo 2 camera</h2><p>Connect the aircraft to receive camera video.</p></div><div class="viewer-top"><span id="image-state" class="image-badge">Waiting</span><span id="source-state" class="image-badge synthetic" hidden>SYNTHETIC VIDEO TEST</span><span id="record-state" hidden>● Recording</span></div><div class="viewer-bottom"><span id="image-detail">Camera</span><span id="battery">Battery —</span></div></div>
+        <div class="viewer-caption"><span class="dot"></span><span id="caption">No active connection</span></div>
+        <div class="playback-bar"><label for="playback-mode">Playback</label><select id="playback-mode" aria-describedby="playback-status"><option value="auto">Auto (WebRTC)</option><option value="jpeg">JPEG</option></select><span id="playback-status" role="status" aria-live="polite">Waiting for video</span></div>
+        <div class="capture-bar"><div><h2>Capture</h2><p>Photos and videos saved on the aircraft</p></div><div class="capture-actions"><button id="photo" disabled>◎ Take photo</button><button id="record" class="record" disabled><span></span> Record</button><button id="stop-record" hidden disabled>■ Stop</button></div></div>
       </div>
       <aside class="controls">
-        <section class="control-card"><div class="card-heading"><p class="eyebrow">CADRAGE</p><h2>Inclinaison</h2><p>Oriente la caméra vers l'avant ou le bas.</p></div><div class="tilt-visual" aria-hidden="true"><div class="horizon"></div><div id="camera-direction">▰<span></span></div><span class="front-label">AVANT</span><span class="down-label">BAS</span></div><output id="pitch-label">—</output><input id="pitch" type="range" min="-30" max="0" step="1" value="0" aria-label="Angle d'inclinaison demandé" disabled><div class="range-labels"><span id="pitch-min">−30°</span><span id="pitch-max">0°</span></div><div class="tilt-buttons"><button id="tilt-up" aria-label="Incliner vers le haut" disabled>↑</button><button id="tilt-down" aria-label="Incliner vers le bas" disabled>↓</button><button id="recenter" disabled>Recentrer</button></div><p id="pitch-note" class="muted">Commande disponible après connexion.</p></section>
-        <section class="session-card"><p class="eyebrow">SESSION LOCALE</p><dl><div><dt>Connexion</dt><dd id="session-state">Au repos</dd></div><div><dt>Vidéo</dt><dd id="video-state">—</dd></div><div><dt>Dernière commande</dt><dd id="last-command">—</dd></div></dl></section>
+        <section class="control-card"><div class="card-heading"><p class="eyebrow">FRAMING</p><h2>Tilt</h2><p>Point the camera forward or down.</p></div><div class="tilt-visual" aria-hidden="true"><div class="horizon"></div><div id="camera-direction">▰<span></span></div><span class="front-label">FRONT</span><span class="down-label">DOWN</span></div><output id="pitch-label">—</output><input id="pitch" type="range" min="-30" max="0" step="1" value="0" aria-label="Requested tilt angle" disabled><div class="range-labels"><span id="pitch-min">−30°</span><span id="pitch-max">0°</span></div><div class="tilt-buttons"><button id="tilt-up" aria-label="Tilt up" disabled>↑</button><button id="tilt-down" aria-label="Tilt down" disabled>↓</button><button id="recenter" disabled>Recenter</button></div><p id="pitch-note" class="muted">Control available after connection.</p></section>
+        <section class="session-card"><p class="eyebrow">LOCAL SESSION</p><dl><div><dt>Connection</dt><dd id="session-state">Idle</dd></div><div><dt>Video</dt><dd id="video-state">—</dd></div><div><dt>Last command</dt><dd id="last-command">—</dd></div><div><dt>Transport</dt><dd id="transport-state">—</dd></div></dl></section>
       </aside>
     </section>
-    <p id="message" role="status" aria-live="polite"></p><footer>Caméra · PC local <span id="clock"></span></footer>
+    <p id="message" role="status" aria-live="polite"></p><footer>Camera · Local computer <span id="clock"></span></footer>
   </main>
 </body>
 </html>

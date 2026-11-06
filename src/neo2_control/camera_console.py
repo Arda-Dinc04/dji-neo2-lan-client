@@ -32,12 +32,17 @@ class CameraConfig:
     preview_only:bool=False
     manual_macos_wifi:bool=False
     startup_keyframe_refresh:bool=False
+    webrtc:bool=False
+    mediamtx_binary:str|Path|None=None
 
     def __post_init__(self):
         if type(self.preview_only) is not bool or type(self.manual_macos_wifi) is not bool:
             raise ValueError('camera_platform_flags_must_be_boolean')
         if type(self.startup_keyframe_refresh) is not bool or (self.startup_keyframe_refresh and not self.preview_only):
             raise ValueError('startup_refresh_requires_preview_only')
+        if type(self.webrtc) is not bool or (self.webrtc and (not self.preview_only
+                or not isinstance(self.mediamtx_binary,(str,Path)) or not str(self.mediamtx_binary))):
+            raise ValueError('webrtc_requires_preview_only_and_local_binary')
         if not isinstance(self.interface,str) or not re.fullmatch(r'[A-Za-z0-9_.-]{1,15}',self.interface):
             raise ValueError('invalid_camera_interface')
         try:normalize_ble_identifier(self.ble_address)
@@ -55,7 +60,7 @@ class CameraConfig:
 
 
 class CameraConsole:
-    def __init__(self,config,*,session_runner=None,ble_runner=None,wifi_factory=None,route_guard=None,clock=time.monotonic,lease_factory=DeviceLease):
+    def __init__(self,config,*,session_runner=None,ble_runner=None,wifi_factory=None,route_guard=None,clock=time.monotonic,lease_factory=DeviceLease,webrtc_factory=None):
         if not isinstance(config,CameraConfig):raise ValueError('camera_config_required')
         self.config,self.clock=config,clock
         self.session_runner=session_runner or run_session
@@ -73,6 +78,9 @@ class CameraConsole:
         self.state='disconnected'
         self.error=self.latest=self.result=None
         self.wifi_cleanup_verified=self.ble_cleanup_verified=self.video_cleanup_verified=True
+        self.webrtc_cleanup_verified=True
+        self.webrtc_bridge=self.webrtc_error=None
+        self.webrtc_factory=webrtc_factory
         self.paths={}
         self.closing=False
         self.generation=None
@@ -82,7 +90,7 @@ class CameraConsole:
         with self.lock:
             if self.closing:raise RuntimeError('camera_console_stopping')
             if self.thread is not None and self.thread.is_alive():raise RuntimeError('camera_session_already_running')
-            if not all(x is True for x in (self.wifi_cleanup_verified,self.ble_cleanup_verified,self.video_cleanup_verified)):
+            if not all(x is True for x in (self.wifi_cleanup_verified,self.ble_cleanup_verified,self.video_cleanup_verified,self.webrtc_cleanup_verified)):
                 raise RuntimeError('camera_cleanup_unconfirmed')
             identifier=secrets.token_hex(12)
             self.generation=identifier
@@ -94,6 +102,8 @@ class CameraConsole:
             self.state,self.error,self.latest,self.result='connecting',None,None,None
             self.verification_pending=False
             self.wifi_cleanup_verified=self.ble_cleanup_verified=self.video_cleanup_verified=True
+            self.webrtc_bridge=self.webrtc_error=None
+            self.webrtc_cleanup_verified=True
             self.thread=threading.Thread(target=self._run,name='neo2-camera-session',daemon=False)
             self.thread.start()
         return {'accepted':True,'state':'connecting'}
@@ -134,6 +144,55 @@ class CameraConsole:
         fd=os.open(target,os.O_CREAT|os.O_EXCL|os.O_WRONLY|os.O_NOFOLLOW|os.O_CLOEXEC,0o600)
         with os.fdopen(fd,'w') as stream:json.dump(value,stream,indent=2);stream.write('\n')
 
+    def _start_webrtc(self,generation):
+        if not self.config.webrtc:return None
+        bridge=None
+        try:
+            factory=self.webrtc_factory
+            if factory is None:
+                from .webrtc_bridge import WebRtcBridge
+                factory=WebRtcBridge
+            bridge=factory(self.paths['directory']/'webrtc',binary=self.config.mediamtx_binary)
+            with self.lock:
+                if generation!=self.generation:raise RuntimeError('camera_session_changed')
+                self.webrtc_bridge=bridge
+                self.webrtc_cleanup_verified=False
+            bridge.start()
+            if not bridge.ready:raise RuntimeError('webrtc_bridge_not_ready')
+            return bridge.rtsp_url
+        except Exception:
+            with self.lock:self.webrtc_error='webrtc_start_failed'
+            if bridge is not None:
+                try:clean=bridge.close().get('cleanup_verified') is True
+                except Exception:clean=False
+                with self.lock:self.webrtc_cleanup_verified=clean
+                if not clean:raise RuntimeError('webrtc_cleanup_unconfirmed') from None
+            return None
+
+    def _stop_webrtc(self):
+        bridge=self.webrtc_bridge
+        if bridge is None:return
+        try:metadata=bridge.close()
+        except Exception:metadata={'cleanup_verified':False,'error':'webrtc_cleanup_unconfirmed'}
+        with self.lock:self.webrtc_cleanup_verified=metadata.get('cleanup_verified') is True
+        self._save('webrtc-result.json',metadata)
+
+    def webrtc_offer(self,sdp):
+        with self.lock:
+            bridge=self.webrtc_bridge;generation=self.generation
+            if not self.config.webrtc or bridge is None:raise RuntimeError('webrtc_not_enabled')
+            if not self.status()['video']['live'] or not bridge.ready:raise RuntimeError('webrtc_not_ready')
+        reply=bridge.offer(sdp)
+        with self.lock:current=bridge is self.webrtc_bridge and generation==self.generation and bridge.ready
+        if not current:
+            bridge.delete(reply['session_id'])
+            raise RuntimeError('camera_session_changed')
+        return reply
+
+    def webrtc_delete(self,session_id):
+        with self.lock:bridge=self.webrtc_bridge
+        if bridge is not None:bridge.delete(session_id)
+
     def _run(self):
         try:
             self.paths['directory'].mkdir(mode=0o700,parents=True,exist_ok=False)
@@ -148,12 +207,12 @@ class CameraConsole:
         finally:
             self.channel.cancel(self.clock(),'session_closed')
             with self.lock:
-                clean=all(x is True for x in (self.wifi_cleanup_verified,self.ble_cleanup_verified,self.video_cleanup_verified))
+                clean=all(x is True for x in (self.wifi_cleanup_verified,self.ble_cleanup_verified,self.video_cleanup_verified,self.webrtc_cleanup_verified))
                 if not clean and self.error is None:self.error='camera_cleanup_unconfirmed'
                 self.state='failed' if self.error else 'disconnected'
             try:self._save('console-result.json',{'state':self.state,'error':self.error,
                 'wifi_cleanup_verified':self.wifi_cleanup_verified,'ble_cleanup_verified':self.ble_cleanup_verified,
-                'video_cleanup_verified':self.video_cleanup_verified,'session':self.result})
+                'video_cleanup_verified':self.video_cleanup_verified,'webrtc_cleanup_verified':self.webrtc_cleanup_verified,'session':self.result})
             except OSError:
                 with self.lock:self.error='camera_audit_unavailable';self.state='failed'
 
@@ -183,6 +242,7 @@ class CameraConsole:
                     entered_wifi=True
                     with self.lock:self.wifi_cleanup_verified=False
                     with self.lock:self.video_cleanup_verified=None
+                    rtsp_url=await asyncio.to_thread(self._start_webrtc,generation)
                     session_invoked=True
                     result=await asyncio.to_thread(self.session_runner,capture_path=self.paths['capture'],
                         interface=self.config.interface,duration=self.config.duration,heartbeat=True,
@@ -190,6 +250,7 @@ class CameraConsole:
                         **({'preview_only':True} if self.config.preview_only else {}),
                         **({'startup_keyframe_refresh':True} if self.config.startup_keyframe_refresh else {}),
                         **({'network_guard':link.ready} if self.config.manual_macos_wifi else {}),
+                        **({'rtsp_preview_url':rtsp_url} if rtsp_url is not None else {}),
                         **({'wlm_forwarding_sequence':self.config.wlm_forwarding_sequence}
                            if self.config.wlm_forwarding_sequence!=1 else {}),
                         camera_channel=self.channel,preview_jpeg=True,
@@ -201,6 +262,7 @@ class CameraConsole:
                         self.state='stopping'
                         if result.state=='failed':self.error=result.reason
             finally:
+                await asyncio.to_thread(self._stop_webrtc)
                 metadata=link.snapshot()
                 with self.lock:self.wifi_cleanup_verified=metadata.get('cleanup_verified') is True
                 self._save('wifi-result.json',metadata)
@@ -257,7 +319,9 @@ class CameraConsole:
             worker_alive=self.thread is not None and self.thread.is_alive()
             state,error=self.state,self.error
             session_preview=self.paths['hls']/'preview.jpg' if 'hls' in self.paths else None
-            cleanup=all(x is True for x in (self.wifi_cleanup_verified,self.ble_cleanup_verified,self.video_cleanup_verified))
+            cleanup=all(x is True for x in (self.wifi_cleanup_verified,self.ble_cleanup_verified,self.video_cleanup_verified,self.webrtc_cleanup_verified))
+            bridge=self.webrtc_bridge
+            bridge_error=self.webrtc_error
         elapsed=max(0,now-latest.get('console_observed_at',now))
         connected=worker_alive and state=='connected' and latest.get('state')=='open'
         received_age=latest.get('last_received_age_seconds')
@@ -282,9 +346,9 @@ class CameraConsole:
             field=observation.get('fields',{}).get('percent',{})
             if observation.get('age_seconds',float('inf'))+elapsed<=1 and field.get('valid'):
                 battery=field.get('value')
-        labels={'disconnected':'Au repos','connecting':'Connexion…','connected':'Connecté','stopping':'Fermeture…','failed':'Connexion interrompue'}
+        labels={'disconnected':'Disconnected','connecting':'Connecting…','connected':'Connected','stopping':'Closing…','failed':'Connection interrupted'}
         label=labels.get(state,state)
-        if connected and not camera['ready']:label='Préparation caméra…'
+        if connected and not camera['ready']:label='Preparing camera…'
         warnings=[]
         if error is None:
             if video.get('state')=='failed':error='camera_video_unavailable'
@@ -303,11 +367,15 @@ class CameraConsole:
                 error='camera_setup_incomplete'
         command=camera['last_command']
         if command is not None:
-            command['label']={'queued':'En attente','scheduled':'Prête à envoyer','sent':'Envoyée · attente de réponse',
-                'waiting_mode':'Préparation du mode caméra','acknowledged':'Acceptée par la caméra',
-                'sent_unconfirmed':'Envoyée · mouvement à vérifier sur l’image','rejected':'Refusée par la caméra',
-                'timed_out':'Délai de réponse dépassé','cancelled':'Annulée','expired':'Expirée'}.get(command['state'],command['state'])
+            command['label']={'queued':'Queued','scheduled':'Ready to send','sent':'Sent · waiting for response',
+                'waiting_mode':'Preparing camera mode','acknowledged':'Accepted by camera',
+                'sent_unconfirmed':'Sent · verify movement in preview','rejected':'Rejected by camera',
+                'timed_out':'Response timed out','cancelled':'Cancelled','expired':'Expired'}.get(command['state'],command['state'])
+        webrtc=(bridge.snapshot() if bridge is not None else {'ready':False,'generation':None,'error':None})
+        webrtc.update(enabled=self.config.webrtc,ready=bool(live and webrtc.get('ready')),
+                      error=bridge_error or webrtc.get('error'))
         return {'state':state,'state_label':label,'connected':bool(connected),
+                'source_mode':'live_aircraft','webrtc':webrtc,
                 'session_generation':self.generation,
                 'verification_pending':self.verification_pending,
                 'preview_only':self.config.preview_only,

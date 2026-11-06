@@ -6,7 +6,22 @@ checkout and USB orientation viewer are separate worktrees/processes.
 
 ## What has been verified
 
-**Latest result: startup without DJI Fly and a 7-minute-59-second Mac-only
+**Latest result: live aircraft WebRTC verified on 6 November 2026.** The
+preview was observed for 100.563 seconds and encoded 2,999 frames. The browser
+displayed 1280 x 720 video at about 30 fps; 31 live samples span 95.24294 seconds,
+with 2,892 frames and 16 dropped frames reported at the last live sample. The
+page's labels and controls are fully English. See
+[WebRTC setup and validation](MEDIAMTX.md).
+
+The requested window was 120 seconds. The operator confirmed stopping the
+session or changing Wi-Fi early; the diagnostic `camera_session_failed` /
+`network_error` labels are not evidence of a spontaneous dropout. Target Wi-Fi
+identity verification, original SSID restoration and camera cleanup passed.
+Synthetic bridge-shutdown testing independently verified fresh JPEG fallback.
+No glass-to-glass latency measurement, long-soak certification or reconnect
+certification is claimed.
+
+**Earlier result: startup without DJI Fly and a 7-minute-59-second Mac-only
 follow-up verified.** The operator power-cycled the aircraft, closed Fly and
 kept the USB host disconnected. The first Mac-only attempt decoded 407 frames
 in 27.229 seconds; a subsequent Mac-only session decoded 13,855 frames and
@@ -26,9 +41,9 @@ beacons expired while video remained fresh, and the status layer reported
 preview with fresh video now reports this particular discovery expiry as a
 warning. The WLM send gates stay closed; other errors and stale video remain
 fatal. The exact regression, non-preview behavior and stale-video behavior
-are covered by tests. The fixed server has been loaded; no further radio trial
-of the fix is claimed. The selected preview/transport/decoder regression suite
-passed **266 tests**.
+are covered by tests. The fixed server has been loaded; the later WebRTC run
+does not isolate that discovery-expiry condition. The selected preview,
+transport and decoder regression suite passed **266 tests**.
 
 - CoreBluetooth advertisement discovery found a uniquely named Neo 2 candidate.
 - A metadata-only GATT connection verified service FFF0, notifications on FFF4
@@ -271,12 +286,15 @@ disconnected. Verify the independent internet route before the aircraft join.
 See Apple's [Ethernet guide](https://support.apple.com/en-ie/101589) and
 [USB hotspot guide](https://support.apple.com/en-by/guide/iphone/iph45447ca6/27/ios/27).
 
-The existing JPEG preview producer runs at five frames per second and the page
-polls every 250 ms. A browser-native WebRTC path, for example through a local
-[MediaMTX bridge](https://mediamtx.org/docs/features/publish-and-read), is a future
-option for smoother live video. It changes the host-to-browser transport, not
-the aircraft Wi-Fi requirement. No WebRTC implementation or performance result
-is claimed by the current JPEG preview tests.
+The JPEG fallback producer runs at five frames per second and the page polls
+every 250 ms. The optional `--webrtc` path now publishes the same bounded H264
+encoder through a local MediaMTX bridge to browser WebRTC, with JPEG fallback.
+It changes the host-to-browser transport, not the aircraft Wi-Fi requirement.
+The generated-video browser test advanced 90 WebRTC frames in 3.0019 seconds
+with zero browser-reported dropped frames. Stopping MediaMTX produced fresh
+JPEG fallback, and the 120-second fixture encoded 3,600 frames with cleanup
+verified. These are synthetic local results, not an aircraft WebRTC trial.
+See [MediaMTX installation, playback and verification](MEDIAMTX.md).
 
 ## Decoder resource policy
 
