@@ -16,6 +16,7 @@ from .camera import CameraChannel
 from .session import run_session
 from .wifi_link import _require_idle_wifi_interface
 from .device_lease import DeviceLease
+from .platform_transport import normalize_ble_identifier
 
 
 @dataclass(frozen=True)
@@ -28,12 +29,16 @@ class CameraConfig:
     capture_directory:str|Path='private/camera-sessions'
     last_frame:str|Path|None=None
     wlm_forwarding_sequence:int=1
+    preview_only:bool=False
+    manual_macos_wifi:bool=False
 
     def __post_init__(self):
+        if type(self.preview_only) is not bool or type(self.manual_macos_wifi) is not bool:
+            raise ValueError('camera_platform_flags_must_be_boolean')
         if not isinstance(self.interface,str) or not re.fullmatch(r'[A-Za-z0-9_.-]{1,15}',self.interface):
             raise ValueError('invalid_camera_interface')
-        if not re.fullmatch(r'(?:[0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}',self.ble_address):
-            raise ValueError('invalid_camera_ble_address')
+        try:normalize_ble_identifier(self.ble_address)
+        except ValueError:raise ValueError('invalid_camera_ble_address') from None
         if type(self.duration) not in (int,float) or not math.isfinite(self.duration) or not 0<self.duration<=600:
             raise ValueError('camera_duration_must_be_in_0_600')
         if type(self.wlm_forwarding_sequence) is not int or not 0<=self.wlm_forwarding_sequence<=0xffffffff:
@@ -53,7 +58,10 @@ class CameraConsole:
         self.session_runner=session_runner or run_session
         self.ble_runner=ble_runner or run_ble_wifi_setup
         self.wifi_factory=wifi_factory
-        self.route_guard=route_guard or _require_idle_wifi_interface
+        if config.manual_macos_wifi:
+            from .macos_wifi import require_wifi_interface
+            self.route_guard=route_guard or require_wifi_interface
+        else:self.route_guard=route_guard or _require_idle_wifi_interface
         self.lease_factory=lease_factory
         self.lock=threading.RLock()
         self.channel=CameraChannel(clock=clock)
@@ -143,14 +151,23 @@ class CameraConsole:
     async def _connect_and_run(self):
         generation=self.generation
         if self.wifi_factory is None:
-            from .wifi_memory import MemoryWifiLink
-            factory=MemoryWifiLink
+            if self.config.manual_macos_wifi:
+                from .macos_wifi import ManualMacWifiLink
+                factory=ManualMacWifiLink
+            else:
+                from .wifi_memory import MemoryWifiLink
+                factory=MemoryWifiLink
         else:factory=self.wifi_factory
         entered_wifi=False
         session_invoked=False
         async def connected():
             nonlocal entered_wifi,session_invoked
             credentials=load_wifi_credentials(self.paths['credentials'])
+            if self.config.manual_macos_wifi:
+                self._save('join-network.json', {'ssid':credentials.ssid.decode('utf-8'),
+                                                'password':credentials.passphrase.decode('utf-8')})
+                print(json.dumps({'event':'manual_wifi_join_required',
+                                  'private_instructions_file':str(self.paths['directory']/'join-network.json')}),flush=True)
             link=factory(credentials,self.config.interface,stop_event=self.stop_event)
             try:
                 async with link:
@@ -161,6 +178,8 @@ class CameraConsole:
                     result=await asyncio.to_thread(self.session_runner,capture_path=self.paths['capture'],
                         interface=self.config.interface,duration=self.config.duration,heartbeat=True,
                         wlm_identity_file=self.config.wlm_identity_file,wlm_wifi_liveview=True,
+                        **({'preview_only':True} if self.config.preview_only else {}),
+                        **({'network_guard':link.ready} if self.config.manual_macos_wifi else {}),
                         **({'wlm_forwarding_sequence':self.config.wlm_forwarding_sequence}
                            if self.config.wlm_forwarding_sequence!=1 else {}),
                         camera_channel=self.channel,preview_jpeg=True,
@@ -178,6 +197,7 @@ class CameraConsole:
         try:
             with self.lock:self.ble_cleanup_verified=None
             result=await self.ble_runner(address=self.config.ble_address,
+                **({'preview_only':True} if self.config.preview_only else {}),
                 identity_file=self.config.ble_identity_file,wlm_identity_file=self.config.wlm_identity_file,
                 credentials_path=self.paths['credentials'],capture_path=self.paths['ble'],timeout=45,
                 stop_event=self.stop_event,while_connected=connected,hold_timeout=self.config.duration+60,
@@ -192,6 +212,7 @@ class CameraConsole:
                 if not session_invoked and self.video_cleanup_verified is None:self.video_cleanup_verified=True
 
     def command(self,action,parameters):
+        if self.config.preview_only:raise RuntimeError('preview_only_camera_actions_disabled')
         with self.lock:
             generation,channel=self.generation,self.channel
             status=self.status()
@@ -257,11 +278,12 @@ class CameraConsole:
                 'sent_unconfirmed':'Envoyée · mouvement à vérifier sur l’image','rejected':'Refusée par la caméra',
                 'timed_out':'Délai de réponse dépassé','cancelled':'Annulée','expired':'Expirée'}.get(command['state'],command['state'])
         return {'state':state,'state_label':label,'connected':bool(connected),
+                'preview_only':self.config.preview_only,
                 'camera_ready':bool(connected and camera['ready']),
                 'frame':frame,'video':{'live':live,'state':video.get('state'),
                     'frames_encoded':video.get('frames_encoded',0)},
                 'battery_percent':battery if connected else None,'error':error,
-                'capabilities':camera['capabilities'],'pitch_limits':camera['pitch_limits'],
+                'capabilities':({key:False for key in camera['capabilities']} if self.config.preview_only else camera['capabilities']),'pitch_limits':camera['pitch_limits'],
                 'commanded_pitch':camera['commanded_pitch'],'recording':camera['recording'],
                 'last_command':command,'cleanup_verified':cleanup,
                 'flight_commands_available':False}

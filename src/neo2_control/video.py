@@ -17,6 +17,8 @@ import threading
 import time
 
 from .hevc import HevcAnnexBFilter
+from .process_limits import (LimitPolicyError, VideoProcessLimits,
+                             MEMORY_CHECK_SECONDS)
 
 MAX_INPUT_BYTES = 4 * 1024 * 1024
 MAX_QUEUED_CHUNKS = 4096
@@ -56,8 +58,12 @@ class HlsVideo:
         if self.directory.exists() or self.directory.is_symlink():
             raise ValueError('video directory must be new')
         self.ffmpeg, self.limiter = shutil.which('ffmpeg'), shutil.which('prlimit')
-        if self.ffmpeg is None or self.limiter is None:
+        if self.ffmpeg is None:
             raise VideoError('video_requires_ffmpeg_and_prlimit')
+        try:
+            self.process_limits = VideoProcessLimits(linux_limiter=self.limiter)
+        except LimitPolicyError as error:
+            raise VideoError(str(error)) from error
         self.nominal_fps, self.input_codec, self.clock = nominal_fps, input_codec, clock
         self.preview_jpeg = preview_jpeg
         self.lock = threading.RLock()
@@ -83,10 +89,10 @@ class HlsVideo:
         self._stderr = bytearray()
         self._line = bytearray()
         self._normalizer_stderr = bytearray()
+        self._next_memory_check = 0.0
 
     def _command(self):
         command = [
-            self.limiter, '--as=1610612736', '--nofile=64', '--fsize=4194304', '--',
             self.ffmpeg, '-hide_banner', '-loglevel', 'error', '-nostdin',
             '-max_alloc', '67108864', '-threads', '2',
             '-fflags', '+genpts', '-probesize', '32768', '-analyzeduration', '100000',
@@ -109,11 +115,10 @@ class HlsVideo:
                 '-c:v', 'mjpeg', '-threads', '1', '-f', 'image2',
                 '-update', '1', '-atomic_writing', '1', 'preview.jpg',
             ])
-        return command
+        return self.process_limits.wrap(command)
 
     def _normalizer_command(self):
-        return [
-            self.limiter, '--as=1610612736', '--nofile=64', '--fsize=4194304', '--',
+        return self.process_limits.wrap([
             self.ffmpeg, '-hide_banner', '-loglevel', 'error', '-nostdin',
             '-max_alloc', '67108864', '-threads', '1',
             '-probesize', '32768', '-analyzeduration', '100000',
@@ -121,7 +126,7 @@ class HlsVideo:
             '-map', '0:v:0', '-an', '-sn', '-dn', '-c:v', 'copy',
             '-bsf:v', f'hevc_metadata=tick_rate={self.nominal_fps}:num_ticks_poc_diff_one=1',
             '-f', 'hevc', 'pipe:1',
-        ]
+        ])
 
     def __enter__(self):
         if self.process is not None or self.closed:
@@ -214,6 +219,18 @@ class HlsVideo:
         if len(files) > 16 or size > MAX_DISK_BYTES:
             self._fail('video_output_limit_exceeded')
 
+    def _check_memory(self):
+        # Use the real monotonic clock even when callers inject a capture/
+        # replay clock. Resource enforcement must not pause with display time.
+        now = time.monotonic()
+        if now < self._next_memory_check:
+            return
+        self._next_memory_check = now + MEMORY_CHECK_SECONDS
+        try:
+            self.process_limits.check_memory((self.process, self.normalizer))
+        except LimitPolicyError as error:
+            self._fail(str(error))
+
     def _run(self):
         process = self.process
         current, offset = None, 0
@@ -261,6 +278,7 @@ class HlsVideo:
                     if self.clock() >= next_disk_check:
                         self._check_disk()
                         next_disk_check = self.clock() + .25
+                    self._check_memory()
                     if process.poll() is not None:
                         # Drain the last progress block before classifying exit.
                         while True:
@@ -369,6 +387,7 @@ class HlsVideo:
                     if self.clock() >= next_disk_check:
                         self._check_disk()
                         next_disk_check = self.clock() + .25
+                    self._check_memory()
                     if normalizer.poll() is not None:
                         self._drain_stderr(normalizer, normalizer=True)
                         if normalizer.returncode != 0 and self.input_bytes:
@@ -506,6 +525,7 @@ class HlsVideo:
             else:
                 state = ('live' if age <= 2 else 'stale') if (self.directory / 'index.m3u8').is_file() else 'connecting'
             return {'enabled': True, 'state': state, 'error': self.error,
+                'process_limits': self.process_limits.snapshot(),
                 'observed_at': now,
                 'codec': 'h264', 'input_codec': self.input_codec, 'input_format': 'annex_b',
                 'input_codec_source': 'local_configuration',

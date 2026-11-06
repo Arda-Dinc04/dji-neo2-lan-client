@@ -4,6 +4,11 @@ Experimental MIT-licensed Python client for communicating with a **DJI Neo 2**
 from Linux over its local BLE and Wi-Fi interfaces, using the stock firmware.
 The Python package and CLI retain their names: `neo2_control` and `neo2ctl`.
 
+This local branch also contains a [Mac camera-preview port](docs/MACOS-CAMERA.md).
+Bluetooth/GATT discovery and local decoding fixtures have been verified; an
+actual Mac camera frame has not yet been demonstrated. The Mac entry point
+defaults to a disconnected preview with active setup disabled.
+
 The implementation includes BLE setup, SWUDP/DUML session transport, video
 reception, selected telemetry, a local operator interface, simulation and
 bounded flight programs. Hardware trials documented during development

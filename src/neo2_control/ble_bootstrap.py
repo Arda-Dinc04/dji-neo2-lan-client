@@ -23,6 +23,7 @@ import time
 from typing import Any, Awaitable, Callable
 
 from .ble import _load_bleak_client, temporary_connection_intervals
+from .platform_transport import normalize_ble_identifier
 from .capture import CaptureRecorder
 from .duml import DumlPacket, DumlSequence
 from .duml_stream import DumlStreamDecoder
@@ -156,7 +157,8 @@ class BleSetupResult:
 
 
 class _Exchange:
-    def __init__(self, recorder, event, request_timeout):
+    def __init__(self, recorder, event, request_timeout, packet_guard=None):
+        self.packet_guard = packet_guard
         self.recorder, self.event, self.request_timeout = recorder, event, request_timeout
         self.decoder = DumlStreamDecoder()
         self.pending = None
@@ -263,6 +265,7 @@ class _Exchange:
             self.fail('notification_capture_or_framing_error')
 
     async def _write(self, client, writer, packet, *, kind='request'):
+        if self.packet_guard is not None:self.packet_guard(packet)
         raw = packet.encode()
         self.recorder.record(interface='ble-duml', direction='prepared', peer=WRITE_UUID,
                              raw=raw, note=f'assembled {kind}; GATT writes follow')
@@ -479,9 +482,10 @@ async def run_ble_wifi_setup(
     hold_timeout: float | None = None,
     stop_event: threading.Event | None = None,
     event_sink: Callable[..., None] | None = None,
+    preview_only: bool = False,
 ) -> BleSetupResult:
-    if not re.fullmatch(r'(?:[0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}', address):
-        raise ValueError('a Linux BLE address must contain six hexadecimal octets')
+    if type(preview_only) is not bool:raise ValueError('preview_only_must_be_boolean')
+    address = normalize_ble_identifier(address)
     if not math.isfinite(timeout) or not 0 < timeout <= 120:
         raise ValueError('setup timeout must be finite and between 0 and 120 seconds')
     if not math.isfinite(request_timeout) or not 0 < request_timeout <= timeout:
@@ -521,7 +525,11 @@ async def run_ble_wifi_setup(
                                       **detail}, separators=(',', ':')) + '\n')
             journal.flush()
 
-        exchange = _Exchange(CaptureRecorder(path), event, request_timeout)
+        guard = None
+        if preview_only:
+            from .preview_policy import validate_preview_ble
+            guard = lambda packet: validate_preview_ble(packet, identity, wlm_identity)
+        exchange = _Exchange(CaptureRecorder(path), event, request_timeout, packet_guard=guard)
         intervals = (temporary_connection_intervals(minimum_units=interval_min_units,
                                                     maximum_units=interval_max_units)
                      if interval_min_units is not None else nullcontext())

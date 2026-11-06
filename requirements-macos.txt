@@ -1,0 +1,3 @@
+# Tested isolated Mac preview dependencies; FFmpeg and Apple SDK are external.
+bleak==1.1.1
+pyobjc-framework-CoreWLAN==12.2.2

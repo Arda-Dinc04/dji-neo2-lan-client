@@ -10,14 +10,15 @@ from pathlib import Path
 import re
 import stat
 import tempfile
+from .platform_transport import normalize_ble_identifier
 
 
 class DeviceLease:
     def __init__(self, interface, address, *, directory=None):
         if not isinstance(interface,str) or not re.fullmatch(r'[A-Za-z0-9_.-]{1,15}',interface):
             raise ValueError('invalid_owned_wifi_interface')
-        if not isinstance(address,str) or not re.fullmatch(r'(?:[0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}',address):
-            raise ValueError('invalid_owned_drone_address')
+        try:address=normalize_ble_identifier(address)
+        except ValueError:raise ValueError('invalid_owned_drone_address') from None
         self.directory=Path(directory) if directory is not None else Path(tempfile.gettempdir())/f'neo2-control-{os.getuid()}'
         self.keys=sorted(hashlib.sha256(value.encode()).hexdigest() for value in
                          ('wifi:'+interface,'drone:'+address.upper()))

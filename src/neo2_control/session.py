@@ -20,6 +20,7 @@ import time
 from typing import Any, Callable
 
 from .capture import CaptureRecorder
+from .platform_transport import bind_ipv4_socket, validate_interface_binding
 from .udp_observation import OwnerCosts, UdpReceiptObserver
 from .duml import DumlSequence, neo2_heartbeat
 from .receiver import ReliableReceiveState
@@ -103,7 +104,12 @@ class SwudpSession:
         flight_channel: FlightChannel | None = None,
         video_keyframe_needed: Callable[[], bool] | None = None,
         decoded_video: ManagedHevcDecoder | None = None,
+        preview_only: bool = False,
     ) -> None:
+        if type(preview_only) is not bool or (preview_only and (wlm_identity is None or flight_channel is not None)):
+            raise ValueError('preview_requires_owned_identity_and_no_flight_channel')
+        self.preview_only = preview_only
+        self.preview_physical_port = physical_wifi_port
         if type(wlm_capability_query) is not bool or (wlm_capability_query and wlm_identity is None):
             raise ValueError('WLM capability query requires a boolean option and an owned WLM identity')
         if (type(wlm_mode_follow) is not bool or (wlm_mode_follow and wlm_identity is None)
@@ -522,6 +528,11 @@ class SwudpSession:
             self._deliver(3, raw[payload_offset:], now)
 
     def _application_datagram(self, payload: bytes, kind: str, sequence: int, now: float) -> bytes:
+        if self.preview_only:
+            from .preview_policy import validate_preview_udp
+            validate_preview_udp(payload, self.wlm.identity,
+                                 peer_id=self.wlm_link.peer_id if self.wlm_link is not None else None,
+                                 physical_port=self.preview_physical_port)
         if self.qos:
             raw = self.transport.qos_data(
                 payload, video_receive=self.receivers[2].status,
@@ -600,6 +611,8 @@ class SwudpSession:
                                 packet.seq,self.application_tos)
 
     def datagram_send_allowed(self,datagram,now):
+        if self.preview_only and datagram.application_kind in ('wlm_link_camera', 'wlm_link_flight'):
+            return False
         if datagram.application_kind=='wlm_link_camera':
             return self.wlm_link is not None and self.wlm_link.camera_send_allowed(datagram.duml_sequence,now)
         if datagram.application_kind=='wlm_link_flight':
@@ -787,6 +800,8 @@ def run_session(
     socket_cleanup_sink: Callable[[dict[str, Any]], None] | None = None,
     decoded_video: ManagedHevcDecoder | None = None,
     decoded_video_cleanup_sink: Callable[[dict[str, Any]], None] | None = None,
+    preview_only: bool = False,
+    network_guard: Callable[[], bool] | None = None,
 ) -> SessionResult:
     """Run the transport on a PC/Pi Linux socket and journal its decisions.
 
@@ -795,6 +810,9 @@ def run_session(
     """
 
     IPv4Address(host)
+    if network_guard is not None and not callable(network_guard):raise ValueError('network_guard_must_be_callable')
+    if type(preview_only) is not bool or (preview_only and (wlm_identity_file is None or flight_channel is not None)):
+        raise ValueError('preview_requires_owned_identity_and_no_flight_channel')
     if socket_cleanup_sink is not None and not callable(socket_cleanup_sink):
         raise ValueError('socket cleanup sink must be callable')
     if decoded_video is not None and (not isinstance(decoded_video,ManagedHevcDecoder)
@@ -828,8 +846,8 @@ def run_session(
         raise ValueError("session duration must be finite, positive and at most 86400 seconds")
     if interface and not re.fullmatch(r"[A-Za-z0-9_.-]{1,32}", interface):
         raise ValueError("invalid network interface name")
-    if interface and not hasattr(socket, "SO_BINDTODEVICE"):
-        raise RuntimeError("interface binding requires Linux SO_BINDTODEVICE")
+    if interface:
+        validate_interface_binding(interface)
     path = Path(capture_path)
     journal_path = path.with_name(path.name + ".session.jsonl")
     video = Path(video_path) if video_path is not None else None
@@ -954,6 +972,7 @@ def run_session(
             except OSError:return False
 
         client = SwudpSession(heartbeat=heartbeat, event_sink=record_event, payload_sink=record_payload,
+                              **({'preview_only':True} if preview_only else {}),
                               **({'decoded_video':decoded_video} if decoded_video is not None else {}),
                               wlm_identity=identity, physical_wifi_port=port,
                               **({'wlm_capability_query':True} if wlm_capability_query else {}),
@@ -1007,11 +1026,13 @@ def run_session(
             if socket_cleanup_sink is not None:
                 stack.callback(lambda:socket_cleanup_sink({'cleanup_verified':sock.fileno()<0}))
             if interface and not (stop_event is not None and stop_event.is_set()):
-                sock.setsockopt(socket.SOL_SOCKET, socket.SO_BINDTODEVICE,
-                                interface.encode() + b"\x00")
+                bind_ipv4_socket(sock, interface)
 
             def send(datagram: OutboundDatagram) -> bool:
                 nonlocal transmitted, heartbeats_transmitted
+                if network_guard is not None and network_guard() is not True:
+                    client.fail(time.monotonic(), 'camera_network_identity_changed_or_stale')
+                    return False
                 if stop_event is not None and stop_event.is_set():
                     client.close(time.monotonic(), 'requested')
                     return False
