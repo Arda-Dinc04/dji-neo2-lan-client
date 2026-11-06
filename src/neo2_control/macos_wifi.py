@@ -41,7 +41,7 @@ def require_wifi_interface(interface, **kwargs):
 
 
 class ManualMacWifiLink:
-    def __init__(self, credentials, interface, *, stop_event=None, timeout=45,
+    def __init__(self, credentials, interface, *, stop_event=None, timeout=120,
                  observer=wifi_identity, clock=time.monotonic):
         if not isinstance(credentials, WifiCredentials):
             raise ValueError('wifi_credentials_required')

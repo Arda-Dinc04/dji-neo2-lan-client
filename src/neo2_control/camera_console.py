@@ -200,7 +200,8 @@ class CameraConsole:
                 **({'preview_only':True} if self.config.preview_only else {}),
                 identity_file=self.config.ble_identity_file,wlm_identity_file=self.config.wlm_identity_file,
                 credentials_path=self.paths['credentials'],capture_path=self.paths['ble'],timeout=45,
-                stop_event=self.stop_event,while_connected=connected,hold_timeout=self.config.duration+60,
+                stop_event=self.stop_event,while_connected=connected,
+                hold_timeout=self.config.duration+(180 if self.config.manual_macos_wifi else 60),
                 event_sink=lambda name,**detail:self._ble_event(name,generation=generation,**detail))
             self._save('ble-result.json',result.as_dict())
             with self.lock:

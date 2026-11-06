@@ -24,6 +24,15 @@ checkout and USB orientation viewer are separate worktrees/processes.
 ten-minute reliability, reconnect behavior and production recording remain
 separate validation milestones.
 
+An explicitly approved camera setup attempt subsequently exchanged BLE
+identification `07/45`. The aircraft requested verification, then reported
+permission result 0 about 13 seconds later. The client acknowledged the
+permission notification and closed cleanly as `verification_denied` after
+14.44 seconds. Exactly one setup request and two GATT write chunks were sent;
+no credentials were saved and no Wi-Fi/WLM session began. Physical first-link
+confirmation must be coordinated before the next attempt. This is a real BLE
+observation, not a live-video result.
+
 The combined focused suite passed **280 tests** on the Apple Silicon Mac,
 covering BLE/configuration portability, exclusive ownership, strict preview
 wire policy, manual network identity, local HTTP, session transport and generated
@@ -83,7 +92,7 @@ Open the page and connect. When BLE credentials are received, the process writes
 a mode-0600 `join-network.json` inside the new private camera-session directory
 and prints its **path**, without printing the password. Open that local file
 to obtain the network details, then manually join the aircraft Wi-Fi. The client
-waits up to 45 seconds while retaining BLE. No Wi-Fi profile or association is
+waits up to 120 seconds while retaining BLE. No Wi-Fi profile or association is
 changed automatically. Do not post the credential file or raw session captures.
 
 The Mac verifier requires exact SSID and BSSID, then monitors identity. The UDP
