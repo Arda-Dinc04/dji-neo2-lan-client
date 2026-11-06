@@ -4,9 +4,33 @@ import time
 import subprocess
 import json
 import threading
+import ipaddress
 from pathlib import Path
 
 from .ble_bootstrap import WifiCredentials
+from .wifi_link import DRONE_HOST
+
+
+def aircraft_ipv4_ready(interface, *, runner=subprocess.run):
+    """Read local DHCP state; never probe an address or change routing."""
+    try:
+        values = []
+        for arguments in (['getifaddr', interface], ['getoption', interface, 'subnet_mask'],
+                          ['getoption', interface, 'router']):
+            result = runner(['/usr/sbin/ipconfig', *arguments], capture_output=True,
+                            text=True, timeout=1, check=False)
+            if result.returncode:return False
+            values.append(result.stdout.strip())
+        address, mask, router = values
+        host = ipaddress.IPv4Address(DRONE_HOST)
+        local = ipaddress.IPv4Address(address)
+        network = ipaddress.IPv4Network(f'{address}/{mask}', strict=False)
+        return (ipaddress.IPv4Address(router) == host and host in network
+                and local not in (host, network.network_address, network.broadcast_address)
+                and not local.is_link_local and not local.is_loopback
+                and not local.is_multicast and not local.is_unspecified)
+    except (OSError, subprocess.SubprocessError, ValueError):
+        return False
 
 
 def wifi_identity(interface):
@@ -41,12 +65,13 @@ def require_wifi_interface(interface, **kwargs):
 
 
 class ManualMacWifiLink:
-    def __init__(self, credentials, interface, *, stop_event=None, timeout=120,
-                 observer=wifi_identity, clock=time.monotonic):
+    def __init__(self, credentials, interface, *, stop_event=None, timeout=600,
+                 observer=wifi_identity, clock=time.monotonic, ipv4_checker=aircraft_ipv4_ready):
         if not isinstance(credentials, WifiCredentials):
             raise ValueError('wifi_credentials_required')
         self.credentials, self.interface, self.stop_event = credentials, interface, stop_event
         self.timeout, self.observer, self.clock = timeout, observer, clock
+        self.ipv4_checker = ipv4_checker
         self.matched = False
         self._last_verified = None
         self._stop = threading.Event()
@@ -59,7 +84,8 @@ class ManualMacWifiLink:
                 raise asyncio.CancelledError
             started = self.clock()
             ssid, bssid = self.observer(self.interface)
-            if ssid == self.credentials.ssid and bssid == self.credentials.bssid:
+            if (ssid == self.credentials.ssid and bssid == self.credentials.bssid
+                    and self.ipv4_checker(self.interface)):
                 self.matched = True
                 self._last_verified = started
                 self._monitor = threading.Thread(target=self._watch, daemon=True, name='neo2-mac-wifi-identity')
@@ -79,7 +105,8 @@ class ManualMacWifiLink:
             started = self.clock()
             try:
                 ssid, bssid = self.observer(self.interface)
-                matched = ssid == self.credentials.ssid and bssid == self.credentials.bssid
+                matched = (ssid == self.credentials.ssid and bssid == self.credentials.bssid
+                           and self.ipv4_checker(self.interface))
             except Exception:matched = False
             self.matched = matched
             if not matched:return
@@ -93,4 +120,5 @@ class ManualMacWifiLink:
         return {'backend': 'macos_manual_association', 'matched_aircraft_network': self.matched,
                 'network_changed_by_client': False,
                 'cleanup_verified': self._monitor is None or not self._monitor.is_alive(),
+                'ipv4_gate': 'dhcp_subnet_and_aircraft_gateway',
                 'identity_check_interval_seconds': .5, 'maximum_identity_age_seconds': 1.5}

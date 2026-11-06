@@ -12,8 +12,11 @@ attribution and keep original Linux behavior where compatible.
 - No flight, firmware, gimbal, photo, onboard recording or camera work-mode
   commands. Do not enable the general flight/operator CLI as a camera shortcut.
 - The Mac Wi-Fi backend verifies manual association. It must not change the
-  default route, join networks automatically, obtain unrelated keychain secrets,
-  bypass OS privacy permissions or guess network identity from IP alone.
+  default route or join networks automatically by default. The separate
+  `tools/macos_capture_once.py --execute` coordinator requires explicit operator
+  authorization to join the aircraft and restore the saved original network.
+  Never obtain unrelated keychain secrets, bypass OS privacy permissions or
+  guess network identity from IP alone.
 - Private credentials, Bluetooth identifiers, media and raw captures stay under
   `private/`, never Git. The helper app and Python environment stay in ignored
   build/.venv paths. It requests Wi-Fi identity authorization without location fixes.

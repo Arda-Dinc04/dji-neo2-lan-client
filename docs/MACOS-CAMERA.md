@@ -33,6 +33,18 @@ no credentials were saved and no Wi-Fi/WLM session began. Physical first-link
 confirmation must be coordinated before the next attempt. This is a real BLE
 observation, not a live-video result.
 
+A later local power-button confirmation succeeded and the BLE credential reads
+completed. With explicit authorization to join the aircraft Wi-Fi, the bounded
+Mac coordinator verified the exact network, passed the IPv4 readiness gate,
+then restored the original Wi-Fi successfully. The actual UDP session ran for
+57.73 seconds: 1,211 datagrams transmitted, 2,306 received, zero rejected, and
+1,136,612 protocol bytes delivered. Capability reading and the live-view service
+switch completed, but **zero video bytes and zero decoded frames** arrived.
+All three camera cleanup checks passed. This verifies transport and service
+setup; it does not verify camera imagery or long-running preview reliability.
+The next investigation uses that private capture to locate the missing video
+session condition before any further physical attempt.
+
 The combined focused suite passed **280 tests** on the Apple Silicon Mac,
 covering BLE/configuration portability, exclusive ownership, strict preview
 wire policy, manual network identity, local HTTP, session transport and generated
@@ -88,7 +100,6 @@ After that approval, stop the disconnected camera server and run:
 .venv/bin/python tools/macos_camera.py --allow-camera-session-setup --duration 60 --port 8793
 ```
 
-Open the page and connect. When BLE credentials are received, the process writes
 For first-link verification, click **Connect camera** with a finger ready at
 the aircraft's power button. The local page shows **CONFIRM NOW** as soon as
 the aircraft requests approval. Confirm on the aircraft immediately; a chat
@@ -100,10 +111,18 @@ When BLE credentials are received, the process writes
 a mode-0600 `join-network.json` inside the new private camera-session directory
 and prints its **path**, without printing the password. Open that local file
 to obtain the network details, then manually join the aircraft Wi-Fi. The client
-waits up to 120 seconds while retaining BLE. No Wi-Fi profile or association is
+shows the network details on the authenticated local page and waits up to ten
+minutes while retaining BLE. The password is masked until the operator chooses
+to reveal it. Details are never sent through chat or stored in browser local
+storage; the credential endpoint requires the local page token and disables
+caching. No Wi-Fi profile or association is
 changed automatically. Do not post the credential file or raw session captures.
 
-The Mac verifier requires exact SSID and BSSID, then monitors identity. The UDP
+The Mac verifier requires exact SSID and BSSID plus a local IPv4 lease whose
+subnet contains the source-defined aircraft address and whose gateway is that
+address (`192.168.2.1`). It reads local DHCP state without probing the network.
+This prevents starting UDP with a stale lease from the previous network.
+It then monitors identity and DHCP readiness. The UDP
 owner checks the cached identity before sends, with a 1.5-second freshness bound;
 identity mismatch, monitoring failure or stale checks stop the session. This is
 sampled host evidence, not an atomic guarantee against an instantaneous switch.
@@ -112,6 +131,22 @@ With Wi-Fi as the Mac's only internet path, joining the aircraft interrupts the
 online chat. The local page and processes keep running. Let the bounded capture
 finish before returning to the normal network; its result/media remain local
 for inspection afterward. A complete SYN or protocol ACK is not a live frame.
+
+With separate operator authorization to change the Mac's network, the bounded
+coordinator can join using credentials from the current authenticated session:
+
+```sh
+.venv/bin/python tools/macos_capture_once.py --execute
+```
+
+Without `--execute` it prints a plan and performs no connection or network change.
+It passes the aircraft password to `networksetup` through stdin, checks exact
+SSID/BSSID, captures for at most 60 seconds, disconnects the camera session and
+attempts to restore the original SSID using macOS saved settings. It verifies
+restoration and reports failure explicitly; saved-network restoration is not
+guaranteed. It reads no unrelated keychain passwords. If restoration fails,
+choose the usual network from macOS Wi-Fi settings. Results stay under
+`private/macos/auto-capture/`; no credentials are printed in those results.
 
 ## Decoder resource policy
 

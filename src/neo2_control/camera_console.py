@@ -207,7 +207,7 @@ class CameraConsole:
                 identity_file=self.config.ble_identity_file,wlm_identity_file=self.config.wlm_identity_file,
                 credentials_path=self.paths['credentials'],capture_path=self.paths['ble'],timeout=45,
                 stop_event=self.stop_event,while_connected=connected,
-                hold_timeout=self.config.duration+(180 if self.config.manual_macos_wifi else 60),
+                hold_timeout=self.config.duration+(660 if self.config.manual_macos_wifi else 60),
                 event_sink=lambda name,**detail:self._ble_event(name,generation=generation,**detail))
             self._save('ble-result.json',result.as_dict())
             with self.lock:
@@ -235,6 +235,16 @@ class CameraConsole:
         if preview is not None and preview.is_file():return preview
         reference=Path(self.config.last_frame) if self.config.last_frame is not None else None
         return reference if reference is not None and reference.is_file() else None
+
+    def network_instructions(self):
+        if not self.config.manual_macos_wifi:return None
+        with self.lock:
+            path=self.paths.get('credentials')
+            generation=self.generation
+        if path is None or not path.is_file():return None
+        credentials=load_wifi_credentials(path)
+        return {'session_generation':generation,'ssid':credentials.ssid.decode('utf-8'),
+                'password':credentials.passphrase.decode('utf-8'), 'bssid_hex':credentials.bssid.hex()}
 
     def status(self):
         now=self.clock()
@@ -285,6 +295,7 @@ class CameraConsole:
                 'sent_unconfirmed':'Envoyée · mouvement à vérifier sur l’image','rejected':'Refusée par la caméra',
                 'timed_out':'Délai de réponse dépassé','cancelled':'Annulée','expired':'Expirée'}.get(command['state'],command['state'])
         return {'state':state,'state_label':label,'connected':bool(connected),
+                'session_generation':self.generation,
                 'verification_pending':self.verification_pending,
                 'preview_only':self.config.preview_only,
                 'camera_ready':bool(connected and camera['ready']),

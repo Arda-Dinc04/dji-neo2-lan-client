@@ -68,6 +68,10 @@ def build_camera_handler(console, token):
             if not self._authorized():return
             if path=='/api/camera/status':
                 self._json(HTTPStatus.OK,console.status())
+            elif path=='/api/camera/network':
+                instructions=console.network_instructions()
+                if instructions is None:self._json(HTTPStatus.NOT_FOUND,{'error':'network_details_unavailable'})
+                else:self._json(HTTPStatus.OK,instructions)
             elif path=='/api/camera/frame':
                 target=console.frame_path()
                 if target is None:

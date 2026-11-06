@@ -590,6 +590,7 @@ async def run_ble_wifi_setup(
                             stage = 'wifi_session'
                             setup_deadline.reschedule(None)
                             await exchange.retain(client, writer, while_connected, stop_event, hold_timeout)
+                            stage = 'ble_cleanup'
                         exchange.finished = True
                 state, reason, stage = 'complete', 'credentials_saved', 'complete'
         except BleSetupError as error:
@@ -601,10 +602,16 @@ async def run_ble_wifi_setup(
         except asyncio.CancelledError:
             event('setup_cancelled', stage=stage)
             raise
-        except Exception:
+        except Exception as error:
             # Backend error strings can contain peer/private data. Keep a
             # reason code; the raw callbacks remain in the private capture.
-            reason = 'bluetooth_error'
+            wifi_reasons={'manually_join_aircraft_wifi_before_session',
+                          'macos_wifi_identity_requires_location_permission',
+                          'macos_wifi_identity_unavailable','macos_wifi_interface_unavailable'}
+            if stage=='wifi_session':
+                reason=str(error) if isinstance(error,RuntimeError) and str(error) in wifi_reasons else 'wifi_session_failed'
+                event('wifi_session_failed',reason=reason,error_type=type(error).__name__)
+            else:reason = 'bluetooth_error'
         finally:
             if watcher is not None:
                 watcher.cancel()

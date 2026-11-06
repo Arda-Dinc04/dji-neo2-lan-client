@@ -69,6 +69,20 @@ def test_frames_are_served_only_after_local_authentication_and_never_by_requeste
         assert request(base,'/api/camera/frame')[0]==404
 
 
+def test_network_instructions_are_local_authenticated_and_never_cached(tmp_path):
+    with server(tmp_path) as (base,console):
+        console.network_instructions=lambda:{'session_generation':'synthetic','ssid':'synthetic-aircraft',
+                                             'password':'synthetic-test-key'}
+        assert request(base,'/api/camera/network',auth=False)[0]==401
+        assert request(base,'/api/camera/network',headers={'Origin':'https://foreign.invalid'})[0]==403
+        status,headers,body=request(base,'/api/camera/network')
+        assert status==200 and json.loads(body)['password']=='synthetic-test-key'
+        assert headers['Cache-Control']=='no-store'
+        assert not console.calls
+        console.network_instructions=lambda:None
+        assert request(base,'/api/camera/network')[0]==404
+
+
 @pytest.mark.parametrize('headers',[{'Host':'foreign.invalid'},{'Origin':'https://foreign.invalid'},
                                       {'X-Neo2-Token':'incorrect'}])
 def test_foreign_host_origin_and_invalid_token_cannot_trigger_effects(tmp_path,headers):
