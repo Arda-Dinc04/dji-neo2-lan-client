@@ -35,4 +35,6 @@ function applyPreviewOnly(s){
   const rows=document.querySelectorAll('.session-card dl>div');
   rows[0].querySelector('dt').textContent='Connection';rows[1].querySelector('dt').textContent='Video';rows[2].style.display='none';
   if(s.session_setup_authorized===false)message('Camera session setup awaits your approval.');
+  else if(s.verification_pending===true)message('CONFIRM NOW: press and hold the aircraft power button, then release when it acknowledges.');
+  else if($('message').textContent.startsWith('CONFIRM NOW:'))message(s.error?'The aircraft did not approve this request.':'Connection confirmation received; preparing camera network.');
 }

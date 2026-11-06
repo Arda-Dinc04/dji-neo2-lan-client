@@ -73,6 +73,7 @@ class CameraConsole:
         self.paths={}
         self.closing=False
         self.generation=None
+        self.verification_pending=False
 
     def connect(self):
         with self.lock:
@@ -88,6 +89,7 @@ class CameraConsole:
             self.stop_event=threading.Event()
             self.channel=CameraChannel(clock=self.clock)
             self.state,self.error,self.latest,self.result='connecting',None,None,None
+            self.verification_pending=False
             self.wifi_cleanup_verified=self.ble_cleanup_verified=self.video_cleanup_verified=True
             self.thread=threading.Thread(target=self._run,name='neo2-camera-session',daemon=False)
             self.thread.start()
@@ -110,6 +112,10 @@ class CameraConsole:
             if self.state!='stopping' and snapshot.get('state')=='open':self.state='connected'
 
     def _ble_event(self,name,*,generation=None,**detail):
+        with self.lock:
+            if generation is not None and generation!=self.generation:return
+            if name=='verification_requested':self.verification_pending=True
+            elif name in ('verification_push','ble_cleanup_result','setup_result'):self.verification_pending=False
         if name=='ble_cleanup_result':
             with self.lock:
                 if generation is not None and generation!=self.generation:return
@@ -279,6 +285,7 @@ class CameraConsole:
                 'sent_unconfirmed':'Envoyée · mouvement à vérifier sur l’image','rejected':'Refusée par la caméra',
                 'timed_out':'Délai de réponse dépassé','cancelled':'Annulée','expired':'Expirée'}.get(command['state'],command['state'])
         return {'state':state,'state_label':label,'connected':bool(connected),
+                'verification_pending':self.verification_pending,
                 'preview_only':self.config.preview_only,
                 'camera_ready':bool(connected and camera['ready']),
                 'frame':frame,'video':{'live':live,'state':video.get('state'),

@@ -89,6 +89,14 @@ After that approval, stop the disconnected camera server and run:
 ```
 
 Open the page and connect. When BLE credentials are received, the process writes
+For first-link verification, click **Connect camera** with a finger ready at
+the aircraft's power button. The local page shows **CONFIRM NOW** as soon as
+the aircraft requests approval. Confirm on the aircraft immediately; a chat
+round trip can exceed its observed short permission window. This indication is
+bound to the current connection generation and clears on a permission result
+or BLE cleanup. No automatic request retry or alternate identity is generated.
+
+When BLE credentials are received, the process writes
 a mode-0600 `join-network.json` inside the new private camera-session directory
 and prints its **path**, without printing the password. Open that local file
 to obtain the network details, then manually join the aircraft Wi-Fi. The client

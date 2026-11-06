@@ -50,3 +50,14 @@ def test_network_identity_failure_blocks_initial_socket_send(tmp_path):
     assert result.state=='failed'
     assert result.reason=='camera_network_identity_changed_or_stale'
     assert not any(json.loads(line).get('direction')=='tx' for line in (tmp_path/'capture.jsonl').read_text().splitlines())
+
+
+def test_physical_verification_prompt_is_live_and_generation_bound(tmp_path):
+    console=CameraConsole(CameraConfig('en0',tmp_path/'wlm',tmp_path/'ble',preview_only=True))
+    console.generation='current'
+    console._ble_event('verification_requested',generation='old')
+    assert not console.status()['verification_pending']
+    console._ble_event('verification_requested',generation='current')
+    assert console.status()['verification_pending']
+    console._ble_event('verification_push',generation='current',result=1)
+    assert not console.status()['verification_pending']
