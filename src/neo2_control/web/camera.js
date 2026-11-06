@@ -37,6 +37,8 @@ function applyPreviewOnly(s){
   rows[0].querySelector('dt').textContent='Connection';rows[1].querySelector('dt').textContent='Video';rows[2].style.display='none';
   if(s.session_setup_authorized===false)message('Camera session setup awaits your approval.');
   else if(s.verification_pending===true)message('CONFIRM NOW: press and hold the aircraft power button, then release when it acknowledges.');
+  else if(s.warnings?.includes('peer_beacon_expired_while_video_live'))message('Live video. Device status updates are delayed.');
+  else if(s.video?.live===true&&!s.error)message('Live camera preview.');
   else if($('message').textContent.startsWith('CONFIRM NOW:'))message(s.error?'The aircraft did not approve this request.':'Connection confirmation received; preparing camera network.');
 }
 
@@ -46,7 +48,7 @@ async function updateNetworkInstructions(s){
   if(!card){
     card=document.createElement('section');card.id='wifi-join';card.className='session-card';card.style.display='none';
     const title=document.createElement('h2');title.textContent='Join aircraft Wi-Fi';
-    const note=document.createElement('p');note.textContent='Join this network in macOS Wi-Fi settings. Keep this page open; the 60-second capture starts after the network is verified. Return to your normal Wi-Fi afterward.';
+    const note=document.createElement('p');note.textContent='Keep this page open during the preview. The local coordinator can join this network and restore your usual Wi-Fi afterward. An independent internet connection lets the chat stay online.';
     const label=document.createElement('p');label.textContent='Network';
     const name=document.createElement('strong');name.id='join-ssid';
     const keyLabel=document.createElement('p');keyLabel.textContent='Wi-Fi password';

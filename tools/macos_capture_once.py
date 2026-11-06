@@ -21,6 +21,11 @@ from neo2_control.macos_wifi import wifi_identity
 
 NETWORKSETUP = '/usr/sbin/networksetup'
 INTERFACE = 'en0'
+MAX_CAPTURE_SECONDS = 600
+CAMERA_ERROR_CODES = frozenset(('network_error','camera_link_interrupted','camera_setup_incomplete',
+    'camera_video_unavailable','camera_cleanup_unconfirmed','camera_session_changed',
+    'camera_network_identity_changed_or_stale','bluetooth_disconnected','peer_beacon_expired',
+    'setup_timeout','manually_join_aircraft_wifi_before_session'))
 
 
 class CaptureFailure(RuntimeError):
@@ -187,15 +192,23 @@ def capture_once(api, *, duration=60, observer=wifi_identity, runner=subprocess.
                  clock=time.monotonic, sleep=time.sleep, event=lambda *a, **k: None,
                  attach_current=False):
     """Own one clean camera session and restore Wi-Fi even after partial joins."""
-    if type(duration) not in (int, float) or not math.isfinite(duration) or not 0 < duration <= 60:
+    if type(duration) not in (int, float) or not math.isfinite(duration) or not 0 < duration <= MAX_CAPTURE_SECONDS:
         raise CaptureFailure('capture_duration_invalid')
     if type(attach_current) is not bool:raise CaptureFailure('invalid_attach_option')
     result = {'preview_seen': False, 'frames_encoded': 0, 'target_network_verified': False,
               'camera_cleanup_verified': None, 'restore_attempted': False,
-              'restored_original_ssid': None, 'success': False, 'reason': None}
+              'restored_original_ssid': None, 'success': False, 'reason': None,
+              'requested_duration_seconds':duration,'observed_duration_seconds':0,
+              'first_preview_after_seconds':None,'preview_observed_seconds':0,
+              'last_camera_error':None,
+              'capture_window_completed':False,'live_observed_samples':0,
+              'maximum_frame_counter_stall_seconds':0,'maximum_not_live_seconds':0,
+              'maximum_observation_gap_seconds':0,
+              'continuity_within_3_seconds':False}
     owns_session = network_attempted = False
     original_ssid = None
     generation = None
+    capture_started=first_preview_at=None
     sink = event
     def event(stage, **details):
         # Disk/Terminal failure must never prevent the restoration finally block.
@@ -286,10 +299,21 @@ def capture_once(api, *, duration=60, observer=wifi_identity, runner=subprocess.
         if not result['target_network_verified']:
             raise CaptureFailure('aircraft_wifi_identity_not_verified')
         event('aircraft_wifi_verified')
-        deadline = clock() + duration
+        capture_started=clock()
+        deadline = capture_started + duration
         next_notice = clock()
+        last_advance=None
+        not_live_since=None
+        last_observed=capture_started
+        first_preview_at=None
         while clock() < deadline:
+            sampled_at=clock()
+            result['observed_duration_seconds']=sampled_at-capture_started
             status = api.status()
+            sampled_at=clock()
+            result['maximum_observation_gap_seconds']=max(result['maximum_observation_gap_seconds'],
+                sampled_at-last_observed)
+            last_observed=sampled_at
             _authorized(status)
             if status.get('session_generation') != generation:
                 raise CaptureFailure('camera_session_generation_changed')
@@ -297,19 +321,45 @@ def capture_once(api, *, duration=60, observer=wifi_identity, runner=subprocess.
             if isinstance(video, dict):
                 count = video.get('frames_encoded', 0)
                 if type(count) is int and count >= 0:
+                    if count>result['frames_encoded']:last_advance=sampled_at
                     result['frames_encoded'] = max(result['frames_encoded'], count)
+                if last_advance is not None:
+                    result['maximum_frame_counter_stall_seconds']=max(
+                        result['maximum_frame_counter_stall_seconds'],sampled_at-last_advance)
+                if video.get('live') is True:
+                    result['live_observed_samples']+=1
+                    not_live_since=None
+                elif result['preview_seen']:
+                    if not_live_since is None:not_live_since=sampled_at
+                    result['maximum_not_live_seconds']=max(
+                        result['maximum_not_live_seconds'],sampled_at-not_live_since)
                 if video.get('live') is True and not result['preview_seen']:
                     result['preview_seen'] = True
+                    first_preview_at=sampled_at
+                    result['first_preview_after_seconds']=sampled_at-capture_started
+                    deadline=sampled_at+duration
                     event('preview_received')
             if status.get('state') == 'failed' or status.get('error'):
+                error=status.get('error')
+                result['last_camera_error']=error if isinstance(error,str) and error in CAMERA_ERROR_CODES else 'other_camera_error'
                 raise CaptureFailure('camera_session_failed')
             if status.get('state') == 'disconnected':
                 break
+            if not result['preview_seen'] and sampled_at-capture_started>=60:
+                raise CaptureFailure('first_camera_frame_timeout')
             if clock() >= next_notice:
                 event('capturing', preview_seen=result['preview_seen'], frames_encoded=result['frames_encoded'])
                 next_notice = clock() + 5
             sleep(.5)
-        result['reason'] = 'capture_complete' if result['preview_seen'] else 'preview_unavailable'
+        result['observed_duration_seconds']=clock()-capture_started
+        if first_preview_at is not None:result['preview_observed_seconds']=clock()-first_preview_at
+        result['capture_window_completed']=clock()>=deadline
+        result['continuity_within_3_seconds']=bool(result['capture_window_completed'] and result['preview_seen']
+            and result['maximum_frame_counter_stall_seconds']<=3 and result['maximum_not_live_seconds']<=3
+            and result['maximum_observation_gap_seconds']<=2.5)
+        result['reason']=('camera_session_ended_early' if not result['capture_window_completed'] else
+            'preview_unavailable' if not result['preview_seen'] else
+            'preview_stalled' if not result['continuity_within_3_seconds'] else 'capture_complete')
     except CaptureFailure as error:
         result['reason'] = str(error)
     except KeyboardInterrupt:
@@ -317,6 +367,10 @@ def capture_once(api, *, duration=60, observer=wifi_identity, runner=subprocess.
     except Exception:
         result['reason'] = 'local_capture_failed'
     finally:
+        if capture_started is not None:
+            ended_at=clock()
+            result['observed_duration_seconds']=ended_at-capture_started
+            if first_preview_at is not None:result['preview_observed_seconds']=ended_at-first_preview_at
         if owns_session:
             event('disconnecting_camera')
             result['camera_cleanup_verified'] = False
@@ -374,14 +428,14 @@ def main(argv=None):
     args = parser.parse_args(argv)
     if not args.execute:
         print(json.dumps({'execute': False, 'plan': ['verify_preview_only_server', 'remember_original_wifi',
-            'connect_camera', 'join_aircraft_using_password_stdin', 'capture_up_to_60_seconds',
+            'connect_camera', 'join_aircraft_using_password_stdin', 'capture_for_requested_duration',
             'disconnect_camera', 'restore_saved_original_wifi', 'verify_restoration'],
             'local_page': f'http://127.0.0.1:{args.port}/', 'writes': 0}), flush=True)
         return 0
     if sys.platform != 'darwin':
         parser.error('automatic Wi-Fi capture requires macOS')
-    if not 0 < args.duration <= 60 or not math.isfinite(args.duration):
-        parser.error('duration must be finite and at most60seconds')
+    if not 0 < args.duration <= MAX_CAPTURE_SECONDS or not math.isfinite(args.duration):
+        parser.error('duration must be finite and at most600seconds')
     journal = Journal(ROOT / 'private/macos/auto-capture')
     previous = signal.getsignal(signal.SIGTERM)
     def stop(*_):

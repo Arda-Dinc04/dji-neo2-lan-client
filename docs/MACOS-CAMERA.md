@@ -6,6 +6,30 @@ checkout and USB orientation viewer are separate worktrees/processes.
 
 ## What has been verified
 
+**Latest result: startup without DJI Fly and a 7-minute-59-second Mac-only
+follow-up verified.** The operator power-cycled the aircraft, closed Fly and
+kept the USB host disconnected. The first Mac-only attempt decoded 407 frames
+in 27.229 seconds; a subsequent Mac-only session decoded 13,855 frames and
+received 359,206,127 video bytes in 478.925 seconds. The operator intentionally
+stopped the later run and relaxed the exact ten-minute test target. No
+spontaneous 47-second dropout has been established.
+
+After the first ten seconds of the longer run, the largest video-delivery gap
+was 257 ms, with none above 500 ms. Decoder and normalizer exited successfully;
+all cleanup checks passed. All 1,915 transmitted application messages passed
+the preview policy. This is host reception/decoding evidence, not camera
+exposure latency or a browser-rendered frame counter. Media remains private.
+
+The earlier automated attempt exposed a real coordinator bug: discovery
+beacons expired while video remained fresh, and the status layer reported
+`camera_link_interrupted`; the coordinator then stopped the preview. A committed
+preview with fresh video now reports this particular discovery expiry as a
+warning. The WLM send gates stay closed; other errors and stale video remain
+fatal. The exact regression, non-preview behavior and stale-video behavior
+are covered by tests. The fixed server has been loaded; no further radio trial
+of the fix is claimed. The selected preview/transport/decoder regression suite
+passed **266 tests**.
+
 - CoreBluetooth advertisement discovery found a uniquely named Neo 2 candidate.
 - A metadata-only GATT connection verified service FFF0, notifications on FFF4
   and write-without-response support on FFF5. No DJI application write was sent.
@@ -27,12 +51,14 @@ preview frames. The retained actual JPEG is 960 × 540; the operator's screensho
 shows the local page displaying a live aircraft image. Raw media, identifiers,
 packet receipt timestamps and the retained preview stay in the private session.
 
-The session ended after 47.672 seconds with `network_error`, rather than
-completing the intended 60 seconds. There were 376 rejected datagrams and 144
-receive-window rejections labeled stale sequence/window overrun; the decoder
-reported no error. BLE, Wi-Fi observer and video cleanup all passed, and the Mac
-was verified off the aircraft SSID afterward. This establishes the first-frame
-milestone, not ten-minute reliability, reconnect behavior or production recording.
+The operator stopped the stream after 47.672 seconds. The app recorded
+`network_error`, so its termination label does not reflect the operator-reported
+stop; this is not evidence of a spontaneous 47-second dropout. There were 376
+rejected datagrams and 144 receive-window rejections labeled stale
+sequence/window overrun; the decoder reported no error. BLE, Wi-Fi observer and
+video cleanup all passed, and the Mac was verified off the aircraft SSID
+afterward. This establishes the first-frame milestone, not ten-minute
+reliability, reconnect behavior or production recording.
 
 The working bench condition is **no USB host connection**. The cable can remain
 in the transceiver with its far end unplugged. The operator also confirmed phone
@@ -46,15 +72,17 @@ an official Neo 2 code reference.
 Video was delivered at 0.0262 seconds, before service commit at 1.9214 seconds
 and the single encoder-refresh send at 2.4260 seconds. Thus refresh is not
 established as the stream-activation step. Because DJI Fly preview preceded
-this attempt, an existing encoder/session state from the phone is not excluded:
-independent cold activation without Fly remains unverified. All 194 transmitted
+this first attempt, an existing encoder/session state from the phone was not
+excluded. The later Mac-only startup result above supplies the separate cold
+test. All 194 transmitted
 application messages passed the strict preview validator; the audit found no
 flight, firmware, gimbal, photo, recording or work-mode command.
 
-For repeat tests, release the phone's aircraft connection, keep the Mac USB end
-unplugged, and use the existing local power-button confirmation flow. Keep
-independent internet available if continuous chat is needed; on a Wi-Fi-only Mac
-the local preview continues while the chat loses internet.
+The operator attributed the slow connection to DJI Fly remaining connected on
+the phone. For repeat tests, release the phone's aircraft connection, keep the
+Mac USB end unplugged, and use the existing local power-button confirmation
+flow. Keep independent internet available if continuous chat is needed; on a
+Wi-Fi-only Mac the local preview continues while the chat loses internet.
 
 ## Earlier no-video trials and startup experiment
 
@@ -218,12 +246,37 @@ If the operator has already clicked Connect and completed physical confirmation,
 another BLE request. It requires current credentials, no pending verification
 and an active preview-only session; mismatched or replaced sessions are rejected.
 It passes the aircraft password to `networksetup` through stdin, checks exact
-SSID/BSSID, captures for at most 60 seconds, disconnects the camera session and
+SSID/BSSID, observes 60 seconds of preview by default (up to 600 with explicit
+`--duration`), disconnects the camera session and
 attempts to restore the original SSID using macOS saved settings. It verifies
 restoration and reports failure explicitly; saved-network restoration is not
 guaranteed. It reads no unrelated keychain passwords. If restoration fails,
 choose the usual network from macOS Wi-Fi settings. Results stay under
 `private/macos/auto-capture/`; no credentials are printed in those results.
+
+For a ten-minute observation, use a server session of 660 seconds to allow
+startup, then `tools/macos_capture_once.py --execute --attach-current --duration 600`.
+The observation timer starts at the first live preview. No first frame within
+60 seconds ends the attempt. Early stop, frozen frame counts and observation
+gaps do not pass as continuous preview. Results include requested/observed
+duration, first-preview delay, sampled live counts and longest observed stalls.
+This is sampled host evidence, not exposure-time or browser-render latency.
+
+## Internet and browser transport
+
+The Mac's camera Wi-Fi interface must associate with the aircraft AP. The local
+page does not remove that requirement. Prefer Ethernet for internet or an iPhone
+USB Personal Hotspot while Wi-Fi serves the camera; the aircraft's USB remains
+disconnected. Verify the independent internet route before the aircraft join.
+See Apple's [Ethernet guide](https://support.apple.com/en-ie/101589) and
+[USB hotspot guide](https://support.apple.com/en-by/guide/iphone/iph45447ca6/27/ios/27).
+
+The existing JPEG preview producer runs at five frames per second and the page
+polls every 250 ms. A browser-native WebRTC path, for example through a local
+[MediaMTX bridge](https://mediamtx.org/docs/features/publish-and-read), is a future
+option for smoother live video. It changes the host-to-browser transport, not
+the aircraft Wi-Fi requirement. No WebRTC implementation or performance result
+is claimed by the current JPEG preview tests.
 
 ## Decoder resource policy
 

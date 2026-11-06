@@ -81,8 +81,8 @@ class Bench:
             self.wifi = ORIGINAL
         return SimpleNamespace(returncode=0)
 
-    def capture(self, **kwargs):
-        return capture.capture_once(self.api, duration=1, observer=self.observe,
+    def capture(self, *, duration=1, **kwargs):
+        return capture.capture_once(self.api, duration=duration, observer=self.observe,
             runner=self.run, clock=self.clock, sleep=self.clock.sleep,
             event=lambda stage, **details: self.events.append({'stage': stage, **details}), **kwargs)
 
@@ -104,6 +104,105 @@ def test_join_password_is_stdin_only_and_restore_uses_saved_settings():
     public = json.dumps([result, bench.events])
     for secret in (PASSWORD, ORIGINAL[0].decode(), TARGET[0].decode(), TARGET[1].hex(), 'generation-test'):
         assert secret not in public
+
+
+def test_explicit_ten_minute_capture_observes_the_whole_window_and_restores():
+    bench=Bench()
+    status=bench.api.status
+    def advancing_frames():
+        value=status()
+        if bench.api.joined:value['video']['frames_encoded']=4+int(30*bench.clock.now)
+        return value
+    bench.api.status=advancing_frames
+    result=bench.capture(duration=600)
+    assert result['success'] and result['capture_window_completed']
+    assert result['observed_duration_seconds']>=600
+    assert result['requested_duration_seconds']==600
+    assert result['live_observed_samples']>1000
+    assert result['restored_original_ssid']
+
+
+def test_stale_frame_counter_cannot_pass_a_long_reliability_capture():
+    bench=Bench()
+    result=bench.capture(duration=5)
+    assert not result['success'] and result['capture_window_completed']
+    assert result['maximum_frame_counter_stall_seconds']>3
+    assert not result['continuity_within_3_seconds'] and result['reason']=='preview_stalled'
+    assert result['restored_original_ssid']
+
+
+def test_long_observation_gaps_cannot_pass_as_continuous_video():
+    bench=Bench();status=bench.api.status
+    def slow_observer():
+        if bench.api.joined:bench.clock.now+=3
+        return status()
+    bench.api.status=slow_observer
+    result=bench.capture(duration=5)
+    assert not result['success'] and result['maximum_observation_gap_seconds']>=3
+    assert not result['continuity_within_3_seconds']
+    assert result['restored_original_ssid']
+
+
+def test_no_first_frame_stops_a_long_session_after_the_startup_deadline():
+    bench=Bench();status=bench.api.status
+    def no_video():
+        value=status();value['video']={'live':False,'frames_encoded':0};return value
+    bench.api.status=no_video
+    result=bench.capture(duration=600)
+    assert not result['success'] and result['reason']=='first_camera_frame_timeout'
+    assert result['observed_duration_seconds']==60
+    assert result['restored_original_ssid'] and not result['capture_window_completed']
+
+
+def test_preview_window_starts_at_first_live_frame_after_startup():
+    bench=Bench();status=bench.api.status
+    def delayed_preview():
+        value=status()
+        if bench.api.joined:
+            value['video']={'live':bench.clock.now>=2,
+                'frames_encoded':4+int(30*(bench.clock.now-2)) if bench.clock.now>=2 else 0}
+        return value
+    bench.api.status=delayed_preview
+    result=bench.capture(duration=5)
+    assert result['success'] and result['first_preview_after_seconds']==2
+    assert result['preview_observed_seconds']==5 and result['observed_duration_seconds']==7
+
+
+def test_failed_session_keeps_partial_observation_times_and_error_code():
+    bench=Bench();status=bench.api.status
+    def failed_after_preview():
+        value=status()
+        if bench.api.joined and bench.clock.now>=2:
+            value.update(state='failed',error='network_error')
+        return value
+    bench.api.status=failed_after_preview
+    result=bench.capture(duration=5)
+    assert not result['success'] and result['reason']=='camera_session_failed'
+    assert result['observed_duration_seconds']==2 and result['preview_observed_seconds']==2
+    assert result['last_camera_error']=='network_error'
+    assert result['restored_original_ssid']
+
+
+def test_early_session_end_is_not_reported_as_a_completed_reliability_run():
+    bench=Bench()
+    status=bench.api.status
+    def early_end():
+        if bench.clock.now>=2:bench.api.connected=False
+        return status()
+    bench.api.status=early_end
+    result=bench.capture(duration=5)
+    assert not result['success'] and not result['capture_window_completed']
+    assert result['reason']=='camera_session_ended_early'
+    assert result['observed_duration_seconds']<5
+    assert result['restored_original_ssid']
+
+
+@pytest.mark.parametrize('duration',[0,601,float('nan'),float('inf'),True])
+def test_capture_duration_limit_still_rejects_before_any_effect(duration):
+    bench=Bench()
+    with pytest.raises(capture.CaptureFailure,match='capture_duration_invalid'):
+        bench.capture(duration=duration)
+    assert not bench.calls and bench.api.connects==bench.api.disconnects==0
 
 
 def test_attach_continues_only_current_approved_generation_without_connect_request():

@@ -24,6 +24,39 @@ from neo2_control.device_lease import DeviceLease
 CREDS = WifiCredentials(bytes.fromhex('020000000002'), b'private-camera-test', b'private-camera-password')
 
 
+def test_camera_duration_allows_startup_grace_for_ten_minute_observation(tmp_path):
+    config=CameraConfig('en0',tmp_path/'wlm',tmp_path/'ble',preview_only=True,duration=660)
+    assert config.duration==660
+    with pytest.raises(ValueError,match='camera_duration'):
+        replace(config,duration=661)
+
+
+@pytest.mark.parametrize('preview_only,reason,committed,warning',[
+    (True,'peer_beacon_expired',True,True),(False,'peer_beacon_expired',True,False),
+    (True,'other_failure',True,False),(True,'peer_beacon_expired',False,False)])
+def test_discovery_expiry_does_not_abort_fresh_committed_preview(harness,preview_only,reason,committed,warning):
+    h,console=harness,harness.console
+    console.config=replace(h.config,preview_only=preview_only)
+    call=h.connect()
+    preview=Path(call.kwargs['hls_directory'])/'preview.jpg'
+    preview.parent.mkdir(mode=0o700);preview.write_bytes(b'current-jpeg-fixture')
+    snapshot=call.snapshot(video={'last_encoded_age_seconds':0,'preview_age_seconds':0,'frames_encoded':5})
+    snapshot['wlm_mode_follow']={'state':'failed','reason':reason,'wifi_service_configured':committed,
+        'service_switch':{'state':'complete' if committed else 'failed','committed':committed}}
+    console._publish(snapshot,generation=console.generation)
+    state=console.status()
+    assert state['video']['live']
+    if warning:
+        assert state['error'] is None
+        assert state['warnings']==['peer_beacon_expired_while_video_live']
+        assert not any(state['capabilities'].values())
+    else:assert state['error']=='camera_link_interrupted'
+    h.clock.advance(4)
+    assert not console.status()['video']['live']
+    assert console.status()['error']=='camera_link_interrupted'
+    h.stop()
+
+
 @pytest.mark.parametrize('value', [1, 'yes', None])
 def test_startup_refresh_requires_explicit_boolean_preview_policy(tmp_path,value):
     with pytest.raises(ValueError,match='startup_refresh_requires_preview_only'):

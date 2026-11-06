@@ -42,8 +42,8 @@ class CameraConfig:
             raise ValueError('invalid_camera_interface')
         try:normalize_ble_identifier(self.ble_address)
         except ValueError:raise ValueError('invalid_camera_ble_address') from None
-        if type(self.duration) not in (int,float) or not math.isfinite(self.duration) or not 0<self.duration<=600:
-            raise ValueError('camera_duration_must_be_in_0_600')
+        if type(self.duration) not in (int,float) or not math.isfinite(self.duration) or not 0<self.duration<=660:
+            raise ValueError('camera_duration_must_be_in_0_660')
         if type(self.wlm_forwarding_sequence) is not int or not 0<=self.wlm_forwarding_sequence<=0xffffffff:
             raise ValueError('initial WLM forwarding sequence must fit uint32')
         if not all(isinstance(p,(str,Path)) and str(p) for p in (self.wlm_identity_file,self.ble_identity_file,self.capture_directory)):
@@ -285,9 +285,18 @@ class CameraConsole:
         labels={'disconnected':'Au repos','connecting':'Connexion…','connected':'Connecté','stopping':'Fermeture…','failed':'Connexion interrompue'}
         label=labels.get(state,state)
         if connected and not camera['ready']:label='Préparation caméra…'
+        warnings=[]
         if error is None:
             if video.get('state')=='failed':error='camera_video_unavailable'
-            elif wlm.get('state')=='failed':error='camera_link_interrupted'
+            elif wlm.get('state')=='failed':
+                # Preview reception can remain healthy after discovery beacons
+                # stop. The WLM owner stays failed and its send gates stay shut.
+                # Only a fresh, already committed preview can remain visible.
+                if (self.config.preview_only and live and wlm.get('reason')=='peer_beacon_expired'
+                        and wlm.get('wifi_service_configured') is True
+                        and wlm.get('service_switch',{}).get('committed') is True):
+                    warnings.append('peer_beacon_expired_while_video_live')
+                else:error='camera_link_interrupted'
             elif wlm.get('service_switch',{}).get('state')=='failed':error='camera_setup_incomplete'
             elif (wlm.get('capability_read',{}).get('state') in ('timed_out','response_error')
                     and wlm.get('capability_query_retry_in_seconds') is None):
@@ -303,10 +312,11 @@ class CameraConsole:
                 'verification_pending':self.verification_pending,
                 'preview_only':self.config.preview_only,
                 'startup_keyframe_refresh':self.config.startup_keyframe_refresh,
+                'configured_duration_seconds':self.config.duration,
                 'camera_ready':bool(connected and camera['ready']),
                 'frame':frame,'video':{'live':live,'state':video.get('state'),
                     'frames_encoded':video.get('frames_encoded',0)},
-                'battery_percent':battery if connected else None,'error':error,
+                'battery_percent':battery if connected else None,'error':error,'warnings':warnings,
                 'capabilities':({key:False for key in camera['capabilities']} if self.config.preview_only else camera['capabilities']),'pitch_limits':camera['pitch_limits'],
                 'commanded_pitch':camera['commanded_pitch'],'recording':camera['recording'],
                 'last_command':command,'cleanup_verified':cleanup,
