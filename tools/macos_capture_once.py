@@ -205,7 +205,7 @@ def capture_once(api, *, duration=60, observer=wifi_identity, runner=subprocess.
         event('preflight')
         initial = api.status()
         _authorized(initial)
-        if initial.get('state') != 'disconnected' or initial.get('cleanup_verified') is not True:
+        if initial.get('state') not in ('disconnected','failed') or initial.get('cleanup_verified') is not True:
             raise CaptureFailure('camera_must_be_clean_and_disconnected')
         original_ssid, original_bssid = observer(INTERFACE)
         _ssid_text(original_ssid)

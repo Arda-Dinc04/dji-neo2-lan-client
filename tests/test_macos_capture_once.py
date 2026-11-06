@@ -170,6 +170,15 @@ def test_refuses_unapproved_or_existing_sessions_before_mutation(field, value):
     assert not result['success'] and not bench.calls and bench.api.connects == bench.api.disconnects == 0
 
 
+def test_clean_failed_session_can_start_one_new_operator_requested_attempt():
+    bench=Bench()
+    original_status=bench.api.status
+    bench.api.status=lambda: {**original_status(), **({} if bench.api.connected else
+        {'state':'failed','error':'verification_denied'})}
+    result=bench.capture()
+    assert result['success'] and bench.api.connects==bench.api.disconnects==1
+
+
 @pytest.mark.parametrize('changes', [{'session_generation': 'old'}, {'bssid_hex': ''},
     {'bssid_hex': 'ff' * 6}, {'password': 'short'}, {'password': 'secret\npassword'}])
 def test_rejects_stale_or_malformed_credentials_before_wifi_change(changes):

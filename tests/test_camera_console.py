@@ -24,6 +24,14 @@ from neo2_control.device_lease import DeviceLease
 CREDS = WifiCredentials(bytes.fromhex('020000000002'), b'private-camera-test', b'private-camera-password')
 
 
+@pytest.mark.parametrize('value', [1, 'yes', None])
+def test_startup_refresh_requires_explicit_boolean_preview_policy(tmp_path,value):
+    with pytest.raises(ValueError,match='startup_refresh_requires_preview_only'):
+        CameraConfig('en0',tmp_path/'wlm',tmp_path/'ble',preview_only=True,startup_keyframe_refresh=value)
+    with pytest.raises(ValueError,match='startup_refresh_requires_preview_only'):
+        CameraConfig('en0',tmp_path/'wlm',tmp_path/'ble',startup_keyframe_refresh=True)
+
+
 class Clock:
     def __init__(self):
         self.value = 100.
@@ -544,3 +552,14 @@ def test_close_is_final_and_keeps_completed_resources_closed(harness):
     assert console.status()['cleanup_verified'] and not console.thread.is_alive()
     with pytest.raises(RuntimeError, match='console_stopping'):
         console.connect()
+
+
+def test_startup_refresh_is_forwarded_only_by_explicit_preview_configuration(harness):
+    h,console=harness,harness.console
+    console.config=replace(h.config,preview_only=True,startup_keyframe_refresh=True)
+    call=h.connect()
+    assert call.kwargs['preview_only'] is True
+    assert call.kwargs['startup_keyframe_refresh'] is True
+    assert console.status()['startup_keyframe_refresh'] is True
+    assert not any(console.status()['capabilities'].values())
+    h.stop()

@@ -35,6 +35,8 @@ def main():
     parser.add_argument('--preflight',action='store_true',help='Read local readiness only; no DJI application writes')
     parser.add_argument('--allow-camera-session-setup',action='store_true',
                         help='Authorize BLE registration, credential reads and WLM live-view service selection')
+    parser.add_argument('--startup-keyframe-refresh',action='store_true',
+                        help='After a committed live-view switch, allow up to three native encoder refresh requests before first video')
     parser.add_argument('--interface',default='en0')
     parser.add_argument('--port',type=int,default=8793)
     parser.add_argument('--duration',type=float,default=60)
@@ -64,9 +66,11 @@ def main():
     private.mkdir(mode=0o700,parents=True,exist_ok=True)
     config=CameraConfig(args.interface,private/'wlm-identity.json',private/'ble-identity.json',
                         ble_address=address,duration=args.duration,capture_directory=private/'camera-sessions',
-                        preview_only=True,manual_macos_wifi=True)
+                        preview_only=True,manual_macos_wifi=True,
+                        startup_keyframe_refresh=args.startup_keyframe_refresh)
     console=MacPreviewConsole(config,setup_authorized=args.allow_camera_session_setup)
     print(json.dumps({'preview_only':True,'camera_setup_enabled':args.allow_camera_session_setup,
+                      'startup_keyframe_refresh':args.startup_keyframe_refresh,
                       'automatic_mac_wifi_changes':False,'camera_actions_available':False}),flush=True)
     serve_camera_web(console,port=args.port)
     return 0

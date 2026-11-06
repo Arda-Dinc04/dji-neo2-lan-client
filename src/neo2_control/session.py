@@ -105,11 +105,18 @@ class SwudpSession:
         video_keyframe_needed: Callable[[], bool] | None = None,
         decoded_video: ManagedHevcDecoder | None = None,
         preview_only: bool = False,
+        startup_keyframe_refresh: bool = False,
     ) -> None:
         if type(preview_only) is not bool or (preview_only and (wlm_identity is None or flight_channel is not None)):
             raise ValueError('preview_requires_owned_identity_and_no_flight_channel')
         self.preview_only = preview_only
         self.preview_physical_port = physical_wifi_port
+        if (type(startup_keyframe_refresh) is not bool or (startup_keyframe_refresh and (
+                not preview_only or not wlm_wifi_liveview or wlm_identity is None
+                or camera_channel is None or not callable(video_keyframe_needed)))):
+            raise ValueError('startup_refresh_requires_owned_preview_liveview_and_consumer')
+        self.startup_keyframe_refresh = startup_keyframe_refresh
+        self._startup_keyframe_context = None
         if type(wlm_capability_query) is not bool or (wlm_capability_query and wlm_identity is None):
             raise ValueError('WLM capability query requires a boolean option and an owned WLM identity')
         if (type(wlm_mode_follow) is not bool or (wlm_mode_follow and wlm_identity is None)
@@ -574,6 +581,36 @@ class SwudpSession:
     def _video_keyframe_snapshot(self,now):
         return {'enabled':False} if self.video_keyframes is None else self.video_keyframes.snapshot(now)
 
+    def _startup_keyframe_blocked(self,link,now):
+        """Startup experiment requires a current post-commit aircraft route.
+
+        The pinned native producer accepts SSFN zero. Starting before any
+        video arrives is an explicit PC experiment, disabled by default.
+        Freshness is also checked immediately before the actual socket send.
+        """
+        switch=link.service_switch
+        if (switch is None or not switch.committed or switch.completed_at is None
+                or link.modes!=switch.target_modes):
+            return 'awaiting_committed_video_service'
+        if (link.peer_seen_at is None or link.peer_seen_at<=switch.completed_at
+                or link.peer_seen_at>now):
+            return 'awaiting_postcommit_beacon'
+        beacon=link.peer_beacon
+        read=link.read
+        if read is None or read.state!='complete':return 'peer_generation_unverified'
+        metadata=beacon.metadata()
+        generation=(metadata['device_id_sha256'],read.peer_hash,
+                    link.identity.wlm_device_hash,metadata['native_word_49'])
+        if (link.service_generation!=generation
+                or read.peer_fingerprint!=metadata['device_id_sha256']
+                or beacon.forwarding_source_hash!=read.peer_hash
+                or beacon.forwarding_destination_hash not in (link.identity.wlm_device_hash,0xffffffff)):
+            return 'peer_generation_unverified'
+        context=(switch,link.service_generation,switch.completed_at,metadata['native_ssfn'])
+        if self.video_keyframes.pending is not None and self._startup_keyframe_context!=context:
+            return 'startup_request_context_changed'
+        return None
+
     def _next_video_keyframe(self,now):
         requests=self.video_keyframes
         if requests is None or requests.closed:return None
@@ -588,13 +625,15 @@ class SwudpSession:
         ssfn=None
         if not self.qos:reason='unsupported_transport'
         elif not backend_ready:reason='backend_not_ready'
-        elif not self.video_bytes_delivered:reason='awaiting_video_bytes'
+        elif not self.video_bytes_delivered and not self.startup_keyframe_refresh:reason='awaiting_video_bytes'
         elif link is None or link.state in ('closed','failed'):reason='peer_unavailable'
         elif link.camera_channel is None or link.camera_channel.revoked:reason='camera_revoked'
         elif (link.peer_seen_at is None or now-link.peer_seen_at>=link.maximum_age
                 or link.peer_beacon is None or link.peer_beacon.device_id!=link.peer_id):reason='peer_not_current'
         elif link.peer_beacon.device_id[0]!=0:reason='unsupported_peer'
         elif link.peer_modes is None or link.peer_modes.liveview!=4:reason='peer_not_wifi_liveview'
+        elif self.startup_keyframe_refresh and (blocked:=self._startup_keyframe_blocked(link,now)):
+            reason=blocked
         else:
             reason=None
             ssfn=int.from_bytes(link.peer_beacon.payload[43:47],'little')
@@ -604,6 +643,9 @@ class SwudpSession:
             self._event(now,'video_keyframe_request_cancelled',duml_sequence=previous['sequence'],
                         keyframe_requests=requests.snapshot(now))
         if packet is None:return None
+        if self.startup_keyframe_refresh:
+            self._startup_keyframe_context=(link.service_switch,link.service_generation,
+                link.service_switch.completed_at,ssfn)
         raw=self._application_datagram(packet.encode(),'video_keyframe_request',packet.seq,now)
         self._event(now,'video_keyframe_request_scheduled',duml_sequence=packet.seq,ssfn=ssfn,
                     keyframe_requests=requests.snapshot(now))
@@ -721,6 +763,7 @@ class SwudpSession:
             'rejected_datagrams': self.rejected_datagrams,
             'video_bytes_delivered': self.video_bytes_delivered,
             'video_keyframe_requests': self._video_keyframe_snapshot(now),
+            'startup_keyframe_refresh': self.startup_keyframe_refresh,
             'decoded_video':self._decoded_video_snapshot(),
             'protocol_bytes_delivered': self.protocol_bytes_delivered,
             'receive_windows': {str(channel): asdict(receiver.status) for channel, receiver in self.receivers.items()},
@@ -802,6 +845,7 @@ def run_session(
     decoded_video_cleanup_sink: Callable[[dict[str, Any]], None] | None = None,
     preview_only: bool = False,
     network_guard: Callable[[], bool] | None = None,
+    startup_keyframe_refresh: bool = False,
 ) -> SessionResult:
     """Run the transport on a PC/Pi Linux socket and journal its decisions.
 
@@ -813,6 +857,10 @@ def run_session(
     if network_guard is not None and not callable(network_guard):raise ValueError('network_guard_must_be_callable')
     if type(preview_only) is not bool or (preview_only and (wlm_identity_file is None or flight_channel is not None)):
         raise ValueError('preview_requires_owned_identity_and_no_flight_channel')
+    if (type(startup_keyframe_refresh) is not bool or (startup_keyframe_refresh and (
+            not preview_only or not wlm_wifi_liveview or wlm_identity_file is None
+            or camera_channel is None or hls_directory is None or video_codec!='hevc'))):
+        raise ValueError('startup_refresh_requires_owned_preview_liveview_and_consumer')
     if socket_cleanup_sink is not None and not callable(socket_cleanup_sink):
         raise ValueError('socket cleanup sink must be callable')
     if decoded_video is not None and (not isinstance(decoded_video,ManagedHevcDecoder)
@@ -973,6 +1021,7 @@ def run_session(
 
         client = SwudpSession(heartbeat=heartbeat, event_sink=record_event, payload_sink=record_payload,
                               **({'preview_only':True} if preview_only else {}),
+                              **({'startup_keyframe_refresh':True} if startup_keyframe_refresh else {}),
                               **({'decoded_video':decoded_video} if decoded_video is not None else {}),
                               wlm_identity=identity, physical_wifi_port=port,
                               **({'wlm_capability_query':True} if wlm_capability_query else {}),

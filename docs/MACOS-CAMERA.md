@@ -45,6 +45,31 @@ setup; it does not verify camera imagery or long-running preview reliability.
 The next investigation uses that private capture to locate the missing video
 session condition before any further physical attempt.
 
+Offline replay of that capture accounts for all aggregate bytes as 13,806
+CRC-valid DUML frames, with no discarded or pending bytes. An independent
+bounded codec probe found no HEVC stream. This rules out the apparent Annex-B
+prefixes in protocol fields as evidence of hidden camera video.
+
+The pinned `iframe-request-native.json` includes a synthetic SSFN-zero vector
+for the direct `18/47` encoder-refresh producer. Its documented boundaries do
+not establish firmware acceptance or camera readiness. The existing first-byte
+prerequisite is explicitly a PC policy; removing it for startup is an experiment,
+not an established missing activation command.
+
+The separate `--startup-keyframe-refresh` option enables that experiment only in
+preview mode. It requires committed live-view service, matching peer generation
+and routing hashes, a fresh post-commit beacon, a live backend and the current
+beacon's SSFN. Queued requests bind to the switch instance, generation,
+completion time and SSFN; changes cancel the send. The existing maximum of
+three requests, spaced at least one second apart, remains. All other command
+restrictions remain active; no special-control fallback is sent. The default
+keeps the original first-video-byte prerequisite.
+
+The first authorized attempt with this option stopped at `verification_denied`
+when the aircraft's confirmation window expired. No Wi-Fi join or startup
+refresh occurred in that attempt. A synchronized physical confirmation is still
+needed to evaluate the hypothesis on this aircraft.
+
 The combined focused suite passed **280 tests** on the Apple Silicon Mac,
 covering BLE/configuration portability, exclusive ownership, strict preview
 wire policy, manual network identity, local HTTP, session transport and generated
@@ -99,6 +124,10 @@ After that approval, stop the disconnected camera server and run:
 ```sh
 .venv/bin/python tools/macos_camera.py --allow-camera-session-setup --duration 60 --port 8793
 ```
+
+For the source-backed startup experiment, additionally pass
+`--startup-keyframe-refresh` to that server command. Launching the server alone
+does not connect or send an encoder request.
 
 For first-link verification, click **Connect camera** with a finger ready at
 the aircraft's power button. The local page shows **CONFIRM NOW** as soon as

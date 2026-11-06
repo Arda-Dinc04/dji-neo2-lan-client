@@ -31,10 +31,13 @@ class CameraConfig:
     wlm_forwarding_sequence:int=1
     preview_only:bool=False
     manual_macos_wifi:bool=False
+    startup_keyframe_refresh:bool=False
 
     def __post_init__(self):
         if type(self.preview_only) is not bool or type(self.manual_macos_wifi) is not bool:
             raise ValueError('camera_platform_flags_must_be_boolean')
+        if type(self.startup_keyframe_refresh) is not bool or (self.startup_keyframe_refresh and not self.preview_only):
+            raise ValueError('startup_refresh_requires_preview_only')
         if not isinstance(self.interface,str) or not re.fullmatch(r'[A-Za-z0-9_.-]{1,15}',self.interface):
             raise ValueError('invalid_camera_interface')
         try:normalize_ble_identifier(self.ble_address)
@@ -185,6 +188,7 @@ class CameraConsole:
                         interface=self.config.interface,duration=self.config.duration,heartbeat=True,
                         wlm_identity_file=self.config.wlm_identity_file,wlm_wifi_liveview=True,
                         **({'preview_only':True} if self.config.preview_only else {}),
+                        **({'startup_keyframe_refresh':True} if self.config.startup_keyframe_refresh else {}),
                         **({'network_guard':link.ready} if self.config.manual_macos_wifi else {}),
                         **({'wlm_forwarding_sequence':self.config.wlm_forwarding_sequence}
                            if self.config.wlm_forwarding_sequence!=1 else {}),
@@ -298,6 +302,7 @@ class CameraConsole:
                 'session_generation':self.generation,
                 'verification_pending':self.verification_pending,
                 'preview_only':self.config.preview_only,
+                'startup_keyframe_refresh':self.config.startup_keyframe_refresh,
                 'camera_ready':bool(connected and camera['ready']),
                 'frame':frame,'video':{'live':live,'state':video.get('state'),
                     'frames_encoded':video.get('frames_encoded',0)},
