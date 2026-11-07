@@ -112,6 +112,53 @@ verified cleanup. These results validate the local browser/bridge path and its
 fallback; they are separate from aircraft reception and do not measure camera
 exposure-to-display latency.
 
+## Playback diagnostics and the next bench test
+
+Expand **Playback diagnostics** below the video. It samples the browser's
+WebRTC receiver at most once per second, with at most one pending statistics
+request. The panel shows decoded frame rate, average browser-buffer residence
+time, average browser decode time per frame, and the browser's cumulative
+dropped-frame counter. Unavailable measurements stay blank; inactive or stale
+measurements are not shown as current. Browser support varies.
+
+Buffer and decode averages use differences between successive cumulative
+counters, following the [WebRTC statistics definitions](https://www.w3.org/TR/webrtc-stats/).
+Counter resets, receiver changes and sample gaps over ten seconds invalidate
+that interval. These measurements cover the local MediaMTX-to-browser receiver.
+They do not measure the aircraft radio, Mac transcoding time, camera exposure
+time or total camera-to-screen delay. A low buffer number is not a low total
+camera delay result.
+
+**Save diagnostics** downloads `neo2-playback-diagnostics.json` in the browser.
+It retains at most 120 numeric samples and labels synthetic versus aircraft
+sources. No raw RTCStats, SDP, session IDs, network addresses, credentials or
+media are included. A new camera/bridge generation clears the previous history.
+The export explicitly leaves total camera-to-screen delay unmeasured.
+
+On 7 November 2026, generated video verified numeric receiver measurements,
+an inactive panel after selecting JPEG, and fresh WebRTC measurements after
+returning to Auto. This offline fixture does not establish aircraft reconnect
+behavior or measure the real camera delay. No aircraft or Wi-Fi association
+was used for this check.
+
+When the aircraft is available again:
+
+1. Keep its USB host end unplugged and DJI Fly closed. Use the existing approved
+   camera-only connection routine, with the aircraft stationary on the bench.
+2. Put a millisecond stopwatch within the camera view. Film the physical
+   stopwatch and the Mac preview together in the same external recording.
+   Keep the original file and its frame rate. A timer visible only inside
+   the received image lacks the simultaneous reference needed for total delay.
+3. Compare the direct stopwatch reading with its delayed image in several
+   frames after startup and later in the run. Report the distribution and the
+   recording/display precision rather than claiming millisecond accuracy.
+4. Save diagnostics before stopping. Compare one host-side change at a time
+   against the same bench conditions; retain the original preview path until
+   the comparison establishes an improvement.
+5. Test disconnect and reconnect separately, recording stale-image labeling,
+   recovery time and cleanup. Local fixture recovery is separate evidence from
+   radio recovery with the real aircraft.
+
 ## Local signaling boundary
 
 The same-origin WHEP proxy checks `Host`, `Origin` and `X-Neo2-Token`. It accepts

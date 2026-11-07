@@ -49,6 +49,14 @@ function updatePresentation(){
   else if(jpegLive)detail=s?.webrtc?.enabled?'JPEG live · waiting for WebRTC':'JPEG · live frames';
   else detail=frameObjectUrl?'JPEG · last image':'Waiting for video';
   if($('playback-status').textContent!==detail)$('playback-status').textContent=detail;
+  const diagnostics=playback.diagnostics;
+  const measured=(value,unit)=>Number.isFinite(value)?`${value.toFixed(1)} ${unit}`:'—';
+  $('diagnostics-fps').textContent=measured(diagnostics.decoded_fps,'fps');
+  $('diagnostics-buffer').textContent=measured(diagnostics.browser_buffer_ms,'ms');
+  $('diagnostics-decode').textContent=measured(diagnostics.browser_decode_ms,'ms');
+  $('diagnostics-dropped').textContent=diagnostics.available&&Number.isFinite(diagnostics.browser_dropped_frames)?String(diagnostics.browser_dropped_frames):'—';
+  $('diagnostics-state').textContent=diagnostics.available?'WebRTC receiver':diagnostics.sample_count?'Last run · inactive':'Waiting for WebRTC';
+  $('download-diagnostics').disabled=diagnostics.sample_count===0;
 }
 async function frame(s){
   if(playback.snapshot.fresh||!s.frame?.available||s.frame.version===frameVersion)return;
@@ -82,6 +90,13 @@ async function refresh(){
   finally{refreshing=false;$('clock').textContent=new Date().toLocaleTimeString('en-US');}
 }
 $('playback-mode').addEventListener('change',event=>{playback.setMode(event.target.value);updatePresentation();void refresh();});
+$('download-diagnostics').addEventListener('click',()=>{
+  const report=playback.exportDiagnostics(current?.source_mode);
+  if(!report.samples.length)return;
+  const url=URL.createObjectURL(new Blob([JSON.stringify(report,null,2)+'\n'],{type:'application/json'}));
+  const link=document.createElement('a');link.href=url;link.download='neo2-playback-diagnostics.json';
+  document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+});
 $('connect').addEventListener('click',async()=>{message('Connecting to aircraft…');try{await api('/api/camera/connect',{});}catch(error){message(error.message,true);}await refresh();});
 $('disconnect').addEventListener('click',async()=>{try{await api('/api/camera/disconnect',{});message('Closing the connection…');}catch(error){message(error.message,true);}await refresh();});
 $('pitch').addEventListener('input',()=>drawPitch(Number($('pitch').value)));

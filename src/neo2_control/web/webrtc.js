@@ -5,6 +5,60 @@ const RETRY_MS = 2500;
 const MAX_ATTEMPTS = 3;
 const now = () => performance.now();
 
+const numeric = value => typeof value === 'number' && Number.isFinite(value) && value >= 0 && value <= Number.MAX_SAFE_INTEGER ? value : null;
+const difference = (value, previous) => value != null && previous != null && value >= previous ? value - previous : null;
+
+// Deliberately retain numeric receiver measurements only. Raw RTCStats contain
+// addresses, track IDs and other identifiers that do not belong in an export.
+export class ReceiverDiagnostics {
+  constructor() { this.reset(0); }
+  reset(at) {
+    this.origin = at; this.attempt = 0; this.active = false;
+    this.previous = this.latest = null; this.history = [];
+  }
+  begin(at) { this.attempt += 1; this.active = true; this.previous = this.latest = null; }
+  end() { this.active = false; }
+  sample(report, quality, at) {
+    const rows = [...report.values()].filter(row => row.type === 'inbound-rtp' && (row.kind || row.mediaType) === 'video');
+    if (rows.length !== 1) return;
+    const row = rows[0];
+    const current = {at, id: row.id, decoded: numeric(row.framesDecoded),
+      buffer: numeric(row.jitterBufferDelay), emitted: numeric(row.jitterBufferEmittedCount),
+      decode: numeric(row.totalDecodeTime)};
+    const before = this.previous?.id === current.id ? this.previous : null;
+    const seconds = before ? (at - before.at) / 1000 : 0;
+    const interval = seconds > 0 && seconds <= 10;
+    const frames = before ? difference(current.decoded, before.decoded) : null;
+    const emitted = before ? difference(current.emitted, before.emitted) : null;
+    const buffer = before ? difference(current.buffer, before.buffer) : null;
+    const decode = before ? difference(current.decode, before.decode) : null;
+    const mean = (total, count) => interval && total != null && count > 0 ? numeric(total * 1000 / count) : null;
+    const sample = {elapsed_seconds: Math.max(0, (at - this.origin) / 1000), attempt: this.attempt,
+      decoded_fps: interval && frames != null ? numeric(frames / seconds) : null,
+      browser_buffer_ms: mean(buffer, emitted), browser_decode_ms: mean(decode, frames),
+      frames_decoded: current.decoded, browser_total_frames: numeric(quality?.totalVideoFrames),
+      browser_dropped_frames: numeric(quality?.droppedVideoFrames),
+      width: numeric(row.frameWidth), height: numeric(row.frameHeight)};
+    this.previous = current; this.latest = {at, sample}; this.history.push(sample);
+    if (this.history.length > 120) this.history.shift();
+  }
+  snapshot(at) {
+    const age = this.latest ? Math.max(0, (at - this.latest.at) / 1000) : null;
+    const fresh = this.active && age != null && age <= 3;
+    const value = this.latest?.sample || {};
+    return {...value, available: fresh, sample_age_seconds: age, sample_count: this.history.length,
+      decoded_fps: fresh ? value.decoded_fps ?? null : null,
+      browser_buffer_ms: fresh ? value.browser_buffer_ms ?? null : null,
+      browser_decode_ms: fresh ? value.browser_decode_ms ?? null : null};
+  }
+  export(at, sourceMode) {
+    return {schema: 'neo2.playback-diagnostics.v1',
+      source_mode: ['live_aircraft', 'synthetic'].includes(sourceMode) ? sourceMode : 'unavailable',
+      scope: 'local_webrtc_receiver', camera_to_screen_delay_ms: null,
+      maximum_samples: 120, current: this.snapshot(at), samples: this.history.map(sample => ({...sample}))};
+  }
+}
+
 async function boundedSdp(response) {
   if (Number(response.headers.get('Content-Length')) > MAX_SDP_BYTES) throw new Error('answer_too_large');
   if (!response.body?.getReader) {
@@ -48,6 +102,7 @@ export class WhepPreview {
     this.attempts = 0;
     this.retryAt = 0;
     this.closed = false;
+    this.receiver = new ReceiverDiagnostics();
     this.value = {state: 'waiting', fresh: false, reason: null, attempts: 0};
     video.muted = true;
     video.autoplay = true;
@@ -56,6 +111,8 @@ export class WhepPreview {
   }
 
   get snapshot() { return {...this.value}; }
+  get diagnostics() { return this.receiver.snapshot(this.clock()); }
+  exportDiagnostics(sourceMode) { return this.receiver.export(this.clock(), sourceMode); }
 
   _publish(state, reason = null) {
     const value = {state, fresh: state === 'live', reason, attempts: this.attempts};
@@ -70,6 +127,7 @@ export class WhepPreview {
     const binding = [context.token, context.sessionGeneration, context.generation];
     if (!this.binding || binding.some((value, i) => value !== this.binding[i])) {
       this._stopActive();
+      this.receiver.reset(this.clock());
       this.binding = binding;
       this.attempts = 0;
       this.retryAt = 0;
@@ -108,6 +166,7 @@ export class WhepPreview {
       }
       if (s.frameAt != null && time - s.frameAt > STALE_MS) this._fail(s, 'stalled');
       else if (s.frameAt == null && time - s.started > 12000) this._fail(s, 'no_frame');
+      if (this._active(s)) void this._sampleStats(s);
       return;
     }
     if (this.attempts >= MAX_ATTEMPTS) return;
@@ -115,6 +174,19 @@ export class WhepPreview {
   }
 
   _active(s) { return !this.closed && this.session === s && s.serial === this.serial; }
+
+  async _sampleStats(s) {
+    if (typeof s.pc?.getStats !== 'function' || s.statsPending || this.clock() < s.nextStatsAt) return;
+    s.statsPending = true; s.nextStatsAt = this.clock() + 1000;
+    try {
+      const report = await s.pc.getStats();
+      if (!this._active(s)) return;
+      let quality;
+      try { quality = this.video.getVideoPlaybackQuality?.(); } catch { /* Optional browser API. */ }
+      this.receiver.sample(report, quality, this.clock());
+    } catch { /* Missing receiver stats must never stop camera playback. */ }
+    finally { s.statsPending = false; }
+  }
 
   _frame(s) {
     if (!this._active(s)) return;
@@ -157,8 +229,9 @@ export class WhepPreview {
     if (this.session || !this._eligible() || this.mode !== 'auto' || this.closed) return;
     this.attempts += 1;
     const s = {serial: ++this.serial, token: this.context.token, controller: new AbortController(), location: null,
-      pc: null, frameAt: null, started: this.clock(), lastTime: null, frameRequest: null};
+      pc: null, frameAt: null, started: this.clock(), lastTime: null, frameRequest: null, nextStatsAt: 0, statsPending: false};
     this.session = s;
+    this.receiver.begin(this.clock());
     this._publish('connecting');
     try {
       const pc = s.pc = new this.PeerConnection({iceServers: [], bundlePolicy: 'max-bundle'});
@@ -213,6 +286,7 @@ export class WhepPreview {
     const s = this.session;
     if (!s) return;
     this.session = null;
+    this.receiver.end();
     this.serial += 1;
     s.controller.abort();
     if (s.frameRequest != null && this.video.cancelVideoFrameCallback) this.video.cancelVideoFrameCallback(s.frameRequest);
