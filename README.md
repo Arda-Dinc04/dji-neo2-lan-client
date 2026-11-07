@@ -1,13 +1,34 @@
-# DJI Neo 2 LAN client
+# DJI Neo 2 LAN client — Mac camera research
+
+Mac camera-preview research fork of
+[smichea/dji-neo2-lan-client](https://github.com/smichea/dji-neo2-lan-client/tree/014e3ad0d3ee98fecba94dfa48fe512a217a155f),
+part of [Neo 2 open research](https://github.com/Arda-Dinc04/neo2-open-research).
+The Mac entry point starts disconnected with active setup disabled by default.
+Opt-in preview setup performs BLE registration, credential reads and Wi-Fi
+live-view service selection. It blocks flight, firmware, gimbal, photo, onboard
+recording and camera work-mode commands. This is camera interoperability work
+around stock firmware, not a receive-only session or a validated Mac flight SDK.
+
+Actual aircraft preview has been demonstrated with the aircraft's USB host
+connection disconnected and DJI Fly closed: Mac-only startup, an earlier
+operator-ended 7:59 preview, and a separate 1280 × 720 WebRTC trial at about
+30 fps. The English viewer uses a loopback-only MediaMTX bridge and JPEG
+fallback, with bounded numeric receiver diagnostics. Total camera-to-screen
+delay, actual radio reconnect recovery and an O4-to-Mac ground bridge remain
+unverified. Raw captures, credentials and user media are not published.
+
+Start with [Mac setup and observed results](docs/MACOS-CAMERA.md),
+[WebRTC installation and playback](docs/MEDIAMTX.md), and the
+[read-only integration boundary](https://github.com/Arda-Dinc04/neo2-open-research/blob/main/docs/integration.md).
+Upstream history, licenses and the original Linux implementation are retained.
+The upstream control trials described below are separate from this Mac preview
+work and are not evidence that Mac flight control has been validated.
+
+## Original Linux client
 
 Experimental MIT-licensed Python client for communicating with a **DJI Neo 2**
 from Linux over its local BLE and Wi-Fi interfaces, using the stock firmware.
 The Python package and CLI retain their names: `neo2_control` and `neo2ctl`.
-
-This local branch also contains a [Mac camera-preview port](docs/MACOS-CAMERA.md).
-Bluetooth/GATT discovery and local decoding fixtures have been verified; an
-actual Mac camera frame has not yet been demonstrated. The Mac entry point
-defaults to a disconnected preview with active setup disabled.
 
 The implementation includes BLE setup, SWUDP/DUML session transport, video
 reception, selected telemetry, a local operator interface, simulation and
